@@ -179,6 +179,32 @@
 
 Частота у конкурентов — ориентир, а не данные о поведении; после запуска проверить аналитикой нажатий.
 
+## Блоки контента на главной
+
+> Добавлено 2026-10-02. Главные страницы пройдены до низа на десктопе 1440, блоки собраны по заголовкам
+> разделов. Блок без заголовка мог не попасть в список. У Upgrader.pro на главной только апгрейдер.
+
+| Блок | У кого | Сколько |
+|---|---|---|
+| Полки кейсов по категориям (Hot, Event, дешёвые, ножи и перчатки, аниме, премиум) | Hellcase, Skin.club, Forcedrop, JamSkins, Casehug | 5/7 |
+| «Как это работает» (3–5 шагов) | Casehug, Hellcase, Skin.club, Rain.gg, JamSkins | 5/7 |
+| FAQ («Is it legit?», вывод, честность) | Casehug, Hellcase, Rain.gg, JamSkins | 4/7 |
+| SEO-текст (о кейсах CS2, редкости, float) | Casehug, Hellcase, Skin.club, JamSkins | 4/7 |
+| Бесплатные / ежедневные кейсы | Casehug, Forcedrop, JamSkins, Rain.gg | 4/7 |
+| Кейсы стримеров и киберспортсменов (Amouranth, karrigan, G2, «Bloggers' cases») | Hellcase, Skin.club, Forcedrop | 3/7 |
+| Кейсы от сообщества | Skin.club, JamSkins, Forcedrop | 3/7 |
+| Лидерборд | Casehug, JamSkins | 2/7 |
+| Промо мобильного приложения | Hellcase, Casehug | 2/7 |
+| Розыгрыши за депозит и победители | Forcedrop | 1/7 |
+| Казино-игры (mines, dice, double) | JamSkins, Rain.gg | 2/7 |
+
+**Взяли в главную SkinHub (v10):** полки Hot · Event · Under $1 · Knives & Gloves · Creators вместо общей сетки;
+лидерборд недели; How it works (только гостю); FAQ; SEO-текст. Порядок: полки → лидерборд → How it works →
+FAQ → SEO → футер. См. [`../wireframes/home.md`](../wireframes/home.md).
+
+**Отложили:** кейсы от сообщества (нужен конструктор кейсов, v2). **Не делаем:** казино-игры (риск для лицензии
+и бренда), розыгрыши за депозит (давят на импульсивную покупку).
+
 ## Выводы для SkinHub
 
 **Берём**
