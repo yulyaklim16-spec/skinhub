@@ -160,13 +160,15 @@ section{display:grid;gap:24px}
 .tab.on{background:var(--blk);font-weight:600}
 .tab.lock{color:var(--ink2)}
 .dbody{display:flex;flex-direction:column;gap:16px;padding:18px 22px 28px}
-.dhero{height:300px;border-radius:12px;display:grid;align-content:end;gap:10px;padding:20px;background:repeating-linear-gradient(135deg,var(--blk) 0 10px,var(--blk2) 10px 11px);border:1px solid var(--blk2)}
+.dhero{height:300px;border-radius:12px;display:grid;grid-template-rows:1fr auto 52px 22px 44px 46px;gap:8px;padding:20px;background:repeating-linear-gradient(135deg,var(--blk) 0 10px,var(--blk2) 10px 11px);border:1px solid var(--blk2)}
 .dhero .tag,.dhero b,.dhero small{justify-self:start;background:var(--scr);padding:2px 8px;border-radius:4px}
 .dhero .tag{font-family:var(--f-mono);font-size:10px;font-weight:600;letter-spacing:.06em}
 .dhero b{font-family:var(--f-display);font-size:20px;line-height:1.15}
 .dhero small{color:var(--ink2);font-size:12px}
 .dhero .timer span{font-size:13px;padding:4px 7px}
 .dhero .btn{justify-self:start;padding:9px 18px;font-size:12px}
+.dhero .tag{grid-row:2}.dhero b{grid-row:3;align-self:start}.dhero small{grid-row:4;align-self:start}
+.dhero .timer{grid-row:5;align-self:start}.dhero .btn,.dhero .promo{grid-row:6;align-self:end}
 .trio{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:12px}
 .trio > div{min-width:0}
 .filters{display:flex;gap:8px;align-items:center}
@@ -193,7 +195,7 @@ section{display:grid;gap:24px}
 
 <div class="wrap">
 <header>
-  <span class="eyebrow">SkinHub · Этап 2 · Вайрфреймы · v7 · 2 октября 2026</span>
+  <span class="eyebrow">SkinHub · Этап 2 · Вайрфреймы · v7.1 · 2 октября 2026</span>
   <h1>Главная: первый экран</h1>
   <p class="lede">Первый экран продаёт текущий ивент: живая лента дропов, герой на весь экран с таймером и переход в ивент. Ниже демо, бонус новичка и каталог кейсов. Каждый блок взят у конкурента по итогам исследования. В v2–v7 учтены решения по ревью от 2 октября.</p>
   <div class="legend">
@@ -416,6 +418,7 @@ section{display:grid;gap:24px}
     <div class="dec"><span class="v drop">БЕЗ СТРЕЛОК</span><b>Баннер не на всю ширину, следующий выглядывает</b><span class="d">Край следующего слайда показывает, что баннеров несколько; стрелки убраны на мобайле и десктопе. v5.</span></div>
     <div class="dec"><span class="v keep">В БАННЕР</span><b>Промокод — в баннере карусели</b><span class="d">Отдельное поле без контекста было непонятно. В баннере есть заголовок «Got a code from a streamer?» и выгода. v6.</span></div>
     <div class="dec"><span class="v keep">2-Й СЛАЙД</span><b>Промокод — вторым слайдом</b><span class="d">Чтобы его было видно сразу: на мобайле выглядывает справа, на десктопе стоит в первом ряду. Порядок: ивент, промокод, новый кейс, розыгрыш. v7.</span></div>
+    <div class="dec"><span class="v keep">ВЫРОВНЕНО</span><b>Десктоп: заголовки и кнопки баннеров на одном уровне</b><span class="d">Общая сетка строк: тег, заголовок (резерв в 2 строки), подпись, место под таймер, кнопка или поле внизу. v7.1.</span></div>
   </div>
 </section>
 
