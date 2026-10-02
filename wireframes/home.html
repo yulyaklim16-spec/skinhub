@@ -178,6 +178,7 @@ section{display:grid;gap:24px}
 .search{width:220px;padding:7px 10px;border:1px solid var(--blk2);border-radius:7px;color:var(--ink2)}
 .dgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
 .chat{position:absolute;right:18px;bottom:18px;width:44px;height:44px;border-radius:50%;background:var(--fill);z-index:2}
+.chat.m{right:12px;bottom:74px;width:34px;height:34px}
 .dfoot{display:flex;justify-content:space-between;gap:12px;padding:14px;border-radius:9px;background:var(--blk);font-size:11px;color:var(--ink2)}
 .desk-notes{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px 28px}
 
@@ -198,7 +199,7 @@ section{display:grid;gap:24px}
 
 <div class="wrap">
 <header>
-  <span class="eyebrow">SkinHub · Этап 2 · Вайрфреймы · v7.2 · 2 октября 2026</span>
+  <span class="eyebrow">SkinHub · Этап 2 · Вайрфреймы · v7.3 · 2 октября 2026</span>
   <h1>Главная: первый экран</h1>
   <p class="lede">Первый экран продаёт текущий ивент: живая лента дропов, герой на весь экран с таймером и переход в ивент. Ниже демо, бонус новичка и каталог кейсов. Каждый блок взят у конкурента по итогам исследования. В v2–v7 учтены решения по ревью от 2 октября.</p>
   <div class="legend">
@@ -250,6 +251,7 @@ section{display:grid;gap:24px}
           <div class="trust a"><span>Provably fair</span><span>Avg withdrawal 3 min</span><span>18+</span><span>Play responsibly</span><i class="pin">9</i></div>
         </div>
         <div class="bn a"><span>Cases</span><span>Rewards</span><span class="mid">Sign in</span><span>Inventory</span><span>Profile</span><i class="pin">10</i></div>
+        <div class="chat m a"><i class="pin l">11</i></div>
       </div></div>
       <span class="cap">ГОСТЬ</span>
     </div>
@@ -291,6 +293,7 @@ section{display:grid;gap:24px}
           <div class="trust"><span>Provably fair</span><span>Avg withdrawal 3 min</span><span>18+</span><span>Play responsibly</span></div>
         </div>
         <div class="bn a"><span>Cases</span><span>Rewards<em>3</em></span><span class="mid">Add funds</span><span>Inventory</span><span>Profile</span><i class="pin">10</i></div>
+        <div class="chat m"></div>
       </div></div>
       <span class="cap">ИГРОК · ОТЛИЧИЯ ОТМЕЧЕНЫ</span>
     </div>
@@ -306,6 +309,7 @@ section{display:grid;gap:24px}
       <li><span class="n">8</span><b>Сетка кейсов</b><p>Две колонки, цена и награда XP на карточке. Верх первого ряда выглядывает из-под линии первого экрана и подсказывает, что ниже каталог.</p><div class="srcs"><span class="src">Hellcase</span><span class="src">Casehug</span></div></li>
       <li><span class="n">9</span><b>Блок доверия</b><p>Provably fair, время вывода, 18+, ответственная игра.</p><div class="srcs"><span class="src">Hellcase</span></div></li>
       <li><span class="n">10</span><b>Нижнее меню</b><p>В центре Sign in у гостя и Add funds у игрока. Бейдж миссий на Rewards.</p><div class="srcs"><span class="src">Casehug</span><span class="src">Skin.club</span></div></li>
+      <li><span class="n">11</span><b>Чат <span class="lg-new">v7.3</span></b><p>Чат нужен в v1. Плавающая кнопка над нижним меню, открывает чат поверх экрана. Колонкой не встаёт.</p><div class="srcs"><span class="src">Rain.gg: Rain Pool</span><span class="src">против колонки Rain.gg</span></div></li>
     </ol>
   </div>
 </section>
@@ -403,7 +407,7 @@ section{display:grid;gap:24px}
     <li><span class="n">5</span><b>Фильтры</b><p>Поиск, цены, сортировка.</p><div class="srcs"><span class="src">Forcedrop</span></div></li>
     <li><span class="n">6</span><b>Сетка 5 колонок</b><p>Сразу после фильтров. Верх первого ряда на линии первого экрана.</p><div class="srcs"><span class="src">Hellcase</span></div></li>
     <li><span class="n">7</span><b>Доверие и футер</b><p>Provably fair, время вывода, 18+, ответственная игра.</p><div class="srcs"><span class="src">Hellcase</span></div></li>
-    <li><span class="n">8</span><b>Чат свёрнут</b><p>Плавающая кнопка вместо колонки.</p><div class="srcs"><span class="src">против Rain.gg</span></div></li>
+    <li><span class="n">8</span><b>Чат <span class="lg-new">v7.3</span></b><p>Нужен в v1. Свёрнут в плавающую кнопку, открывается панелью поверх страницы, а не колонкой.</p><div class="srcs"><span class="src">против Rain.gg</span></div></li>
   </ol>
 </section>
 
@@ -423,16 +427,16 @@ section{display:grid;gap:24px}
     <div class="dec"><span class="v keep">2-Й СЛАЙД</span><b>Промокод — вторым слайдом</b><span class="d">Чтобы его было видно сразу: на мобайле выглядывает справа, на десктопе стоит в первом ряду. Порядок: ивент, промокод, новый кейс, розыгрыш. v7.</span></div>
     <div class="dec"><span class="v keep">ВЫРОВНЕНО</span><b>Десктоп: заголовки и кнопки баннеров на одном уровне</b><span class="d">Общая сетка строк: тег, заголовок (резерв в 2 строки), подпись, место под таймер, кнопка или поле внизу. v7.1.</span></div>
     <div class="dec"><span class="v keep">ВЫРОВНЕНО</span><b>Мобайл: заголовки и кнопки баннеров на одном уровне</b><span class="d">Та же сетка, что на десктопе: тег, заголовок (резерв 2 строки), место под таймер, кнопка или поле внизу. v7.2.</span></div>
+    <div class="dec"><span class="v keep">V1</span><b>Contracts входит в v1</b><span class="d">Открывается на 5 уровне, как в строке режимов. v7.3.</span></div>
+    <div class="dec"><span class="v keep">USD</span><b>Все цены в долларах</b><span class="d">Без внутренней валюты: цена кейса, баланс, выигрыши — в $. v7.3.</span></div>
+    <div class="dec"><span class="v keep">НУЖЕН</span><b>Чат в v1</b><span class="d">Плавающая кнопка на мобайле и десктопе, панель поверх страницы. v7.3.</span></div>
   </div>
 </section>
 
 <section>
   <div class="sec-head"><span class="eyebrow">Решить до концепта</span><h2>Открытые вопросы</h2></div>
   <ol class="qs">
-    <li><b>Contracts в v1</b> или после запуска?</li>
-    <li><b>Доллары или внутренняя валюта?</b> Исследование за доллары.</li>
-    <li><b>Демо без ограничений</b> или N спинов в день?</li>
-    <li><b>Нужен ли чат</b> в v1?</li>
+    <li><b>Демо без ограничений или N спинов?</b> Рекомендация Claude: 5 демо-открытий гостю, дальше демо безлимитное после бесплатной регистрации; проверить A/B-тестом против «без лимита» по доле регистраций и D7. Ждёт решения.</li>
   </ol>
 </section>
 </div>
