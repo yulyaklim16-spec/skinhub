@@ -125,6 +125,9 @@ section{display:grid;gap:24px}
 .arw{position:absolute;top:38%;width:26px;height:26px;border-radius:7px;background:var(--scr);border:1px solid var(--blk2);display:grid;place-items:center;font:700 13px/1 var(--f-mono);color:var(--ink);z-index:2}
 .arw.l{left:8px}.arw.r{right:8px}
 .peek{display:grid;grid-auto-flow:column;grid-auto-columns:86%;gap:8px;overflow:hidden;margin-right:-12px}
+.peek .hero{grid-template-rows:1fr auto 48px 40px 44px;align-content:stretch}
+.peek .hero .tag{grid-row:2}.peek .hero b{grid-row:3;align-self:start}.peek .hero .timer{grid-row:4;align-self:start}
+.peek .hero .btn,.peek .hero .promo{grid-row:5;align-self:end}
 .drow{position:relative;display:grid;gap:10px}
 .drow .cards{display:grid;grid-auto-flow:column;grid-auto-columns:31%;gap:12px;overflow:hidden;margin-right:-22px}
 .drow .arw{top:calc(50% - 28px);width:36px;height:36px;font-size:17px;border-radius:50%;box-shadow:0 0 0 3px var(--scr)}
@@ -195,7 +198,7 @@ section{display:grid;gap:24px}
 
 <div class="wrap">
 <header>
-  <span class="eyebrow">SkinHub · Этап 2 · Вайрфреймы · v7.1 · 2 октября 2026</span>
+  <span class="eyebrow">SkinHub · Этап 2 · Вайрфреймы · v7.2 · 2 октября 2026</span>
   <h1>Главная: первый экран</h1>
   <p class="lede">Первый экран продаёт текущий ивент: живая лента дропов, герой на весь экран с таймером и переход в ивент. Ниже демо, бонус новичка и каталог кейсов. Каждый блок взят у конкурента по итогам исследования. В v2–v7 учтены решения по ревью от 2 октября.</p>
   <div class="legend">
@@ -419,6 +422,7 @@ section{display:grid;gap:24px}
     <div class="dec"><span class="v keep">В БАННЕР</span><b>Промокод — в баннере карусели</b><span class="d">Отдельное поле без контекста было непонятно. В баннере есть заголовок «Got a code from a streamer?» и выгода. v6.</span></div>
     <div class="dec"><span class="v keep">2-Й СЛАЙД</span><b>Промокод — вторым слайдом</b><span class="d">Чтобы его было видно сразу: на мобайле выглядывает справа, на десктопе стоит в первом ряду. Порядок: ивент, промокод, новый кейс, розыгрыш. v7.</span></div>
     <div class="dec"><span class="v keep">ВЫРОВНЕНО</span><b>Десктоп: заголовки и кнопки баннеров на одном уровне</b><span class="d">Общая сетка строк: тег, заголовок (резерв в 2 строки), подпись, место под таймер, кнопка или поле внизу. v7.1.</span></div>
+    <div class="dec"><span class="v keep">ВЫРОВНЕНО</span><b>Мобайл: заголовки и кнопки баннеров на одном уровне</b><span class="d">Та же сетка, что на десктопе: тег, заголовок (резерв 2 строки), место под таймер, кнопка или поле внизу. v7.2.</span></div>
   </div>
 </section>
 

@@ -20,7 +20,7 @@
 | Этап | Папка | Статус | Для Claude | Для человека |
 |---|---|---|---|---|
 | 1. Исследование | [`research/`](./research/) | ✅ Готово · 2026-10-02 | [`research.md`](./research/research.md) | [`research.html`](./research/research.html) |
-| 2. Вайрфреймы | [`wireframes/`](./wireframes/) | 🔄 В работе · главная v7.1, кейс v1 | [`home.md`](./wireframes/home.md), [`case.md`](./wireframes/case.md) | [`home.html`](./wireframes/home.html), [`case.html`](./wireframes/case.html) |
+| 2. Вайрфреймы | [`wireframes/`](./wireframes/) | 🔄 В работе · главная v7.2, кейс v1 | [`home.md`](./wireframes/home.md), [`case.md`](./wireframes/case.md) | [`home.html`](./wireframes/home.html), [`case.html`](./wireframes/case.html) |
 | 3. Концепт | [`concept/`](./concept/) | ⬜ Не начат | — | — |
 | 4. Токены | [`tokens/`](./tokens/) | ⬜ Не начат | — | — |
 | 5. Компоненты | [`components/`](./components/) | ⬜ Не начат | — | — |
@@ -38,7 +38,7 @@
   Casehug, Hellcase, Skin.club, Rain.gg, Forcedrop, JamSkins, Upgrader.pro.
 
 ### wireframes/
-- [`home.md`](./wireframes/home.md) / [`home.html`](./wireframes/home.html) — главная v7.1: лента дропов,
+- [`home.md`](./wireframes/home.md) / [`home.html`](./wireframes/home.html) — главная v7.2: лента дропов,
   меню, карусель героя без стрелок с выглядывающим следующим слайдом (на десктопе три в ряд), офферы с таймером, промокод в баннере, каталог.
   Журнал решений внутри. [Опубликованная версия](https://claude.ai/artifact/1uap1AuMtoQEx1KNozQQAn).
 - [`case.md`](./wireframes/case.md) / [`case.html`](./wireframes/case.html) — страница кейса v1:
