@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang="ru">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Разбор CS2-кейс-сайтов</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Golos+Text:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: one reading column (~1080px) — summary → scorecard → funnel → per-site teardowns with screenshot strips → recommendations. Score scale borrows CS2 item rarity colors. */
+:root{
+  --bg:#f3f4f7; --surface:#ffffff; --fg:#161a23; --muted:#5a6273; --line:#dde1e9;
+  --accent:#3b54e0; --good:#14895a; --bad:#c43c3c; --warn:#b7791f;
+  --r1:#8fa3bb; --r2:#4f8ad1; --r3:#4b69ff; --r4:#8847ff; --r5:#c727d9;
+  --shot-bg:#e6e9ef;
+  --f-display:"Unbounded", "Golos Text", system-ui, sans-serif;
+  --f-body:"Golos Text", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono:"JetBrains Mono", ui-monospace, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#10131a; --surface:#181c25; --fg:#e7eaf1; --muted:#9aa3b5; --line:#2a303d;
+  --accent:#7f93ff; --good:#3fc58a; --bad:#f07070; --warn:#e2a94a;
+  --r1:#b0c3d9; --r2:#5e98d9; --r3:#6f86ff; --r4:#a175ff; --r5:#e05cf0; --shot-bg:#0b0d12; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#10131a; --surface:#181c25; --fg:#e7eaf1; --muted:#9aa3b5; --line:#2a303d;
+  --accent:#7f93ff; --good:#3fc58a; --bad:#f07070; --warn:#e2a94a;
+  --r1:#b0c3d9; --r2:#5e98d9; --r3:#6f86ff; --r4:#a175ff; --r5:#e05cf0; --shot-bg:#0b0d12; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:16px;line-height:1.6;margin:0}
+.wrap{max-width:1080px;margin:0 auto;padding-inline:20px;padding-block:40px 80px}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;line-height:1.2;margin:0}
+h1{font-size:clamp(1.7rem,4vw,2.5rem);font-weight:700;letter-spacing:-.01em}
+h2{font-size:1.35rem;font-weight:700}
+h3{font-size:1.1rem;font-weight:500}
+p{margin:0;max-width:68ch}
+a{color:var(--accent)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.eyebrow{font-family:var(--f-mono);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+section{display:grid;gap:20px;padding-block:44px;border-top:1px solid var(--line)}
+header{display:grid;gap:16px;padding-bottom:36px}
+.lede{font-size:1.1rem;color:var(--muted)}
+.meta{display:flex;flex-wrap:wrap;gap:8px 20px}
+
+/* jump nav */
+.jump{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line);margin-inline:-20px;padding:10px 20px;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+.jump a{flex:none;font-size:.85rem;text-decoration:none;color:var(--fg);padding:5px 11px;border:1px solid var(--line);border-radius:999px;background:var(--surface)}
+.jump a:hover{border-color:var(--accent)}
+
+/* verdict columns */
+.verdict{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.vcol{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:22px;display:grid;gap:14px;align-content:start}
+.vcol h3{display:flex;gap:10px;align-items:center}
+.tag{font-family:var(--f-mono);font-size:.7rem;font-weight:600;padding:2px 7px;border-radius:4px;letter-spacing:.04em}
+.tag.fn{background:color-mix(in srgb,var(--good) 16%,transparent);color:var(--good)}
+.tag.bs{background:color-mix(in srgb,var(--bad) 16%,transparent);color:var(--bad)}
+.vlist{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.vlist li{display:grid;grid-template-columns:28px 1fr;gap:4px 10px}
+.vlist .n{font-family:var(--f-mono);color:var(--muted);font-size:.85rem;padding-top:2px}
+.vlist b{font-weight:600}
+.vlist span.d{grid-column:2;color:var(--muted);font-size:.93rem}
+.note{background:color-mix(in srgb,var(--warn) 10%,var(--surface));border:1px solid color-mix(in srgb,var(--warn) 35%,var(--line));border-radius:10px;padding:16px 18px;display:grid;gap:6px;font-size:.95rem}
+.note strong{color:var(--warn)}
+
+/* tables */
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:760px;font-size:.92rem}
+th,td{padding:11px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:middle}
+thead th{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600;white-space:nowrap}
+tbody tr:last-child td{border-bottom:0}
+td.site{font-weight:600;white-space:nowrap}
+td.num{font-family:var(--f-mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.sc{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-mono);font-weight:600}
+.sc::before{content:"";width:10px;height:10px;border-radius:2px;background:var(--c)}
+.s1{--c:var(--r1)}.s2{--c:var(--r2)}.s3{--c:var(--r3)}.s4{--c:var(--r4)}.s5{--c:var(--r5)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:.82rem;color:var(--muted)}
+.yes{color:var(--good);font-weight:600}.no{color:var(--bad);font-weight:600}.na{color:var(--muted)}
+tr.grp td{background:color-mix(in srgb,var(--fg) 4%,transparent);font-family:var(--f-mono);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding-block:6px}
+
+/* site teardown */
+.site-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 16px}
+.site-head a{font-family:var(--f-mono);font-size:.85rem}
+.kpis{display:flex;flex-wrap:wrap;gap:8px}
+.kpi{font-family:var(--f-mono);font-size:.78rem;padding:4px 9px;border:1px solid var(--line);border-radius:6px;background:var(--surface);font-variant-numeric:tabular-nums}
+.kpi b{font-weight:600}
+.shots{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1.6fr) minmax(0,.55fr);gap:12px;align-items:start}
+.shots.two{grid-template-columns:minmax(0,1.6fr) minmax(0,.55fr)}
+figure{margin:0;display:grid;gap:6px;min-width:0}
+figure button{all:unset;cursor:zoom-in;display:block;border-radius:8px;overflow:hidden;border:1px solid var(--line);background:var(--shot-bg)}
+figure button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+figure img{display:block;width:100%;height:auto}
+figcaption{font-size:.8rem;color:var(--muted)}
+.pc{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.pc > div{min-width:0;display:grid;gap:8px;align-content:start}
+.pc h4{margin:0;font-family:var(--f-mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase}
+.pc .plus h4{color:var(--good)}.pc .minus h4{color:var(--bad)}.pc .take h4{color:var(--accent)}
+.pc ul{margin:0;padding-left:18px;display:grid;gap:6px;font-size:.94rem}
+.site-verdict{display:inline-flex;gap:8px;align-items:center}
+
+/* recommendations */
+.recs{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.rec{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px 20px;display:grid;gap:8px;align-content:start}
+.rec .src{font-family:var(--f-mono);font-size:.75rem;color:var(--muted)}
+.avoid{display:grid;gap:10px;padding:0;margin:0;list-style:none}
+.avoid li{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:baseline}
+.avoid li::before{content:"✕";color:var(--bad);font-weight:700}
+
+.sources{font-size:.88rem;color:var(--muted);display:grid;gap:4px;padding-left:18px;margin:0}
+
+dialog{border:0;padding:0;background:transparent;max-width:min(96vw,1500px);max-height:94vh}
+dialog::backdrop{background:rgba(5,7,12,.86)}
+dialog img{display:block;max-width:100%;max-height:88vh;width:auto;height:auto;border-radius:6px}
+dialog .cap{color:#e7eaf1;font-size:.85rem;padding-top:8px;display:flex;justify-content:space-between;gap:12px}
+dialog .cap button{all:unset;cursor:pointer;color:#e7eaf1;text-decoration:underline}
+
+@media (max-width:720px){
+  .shots,.shots.two{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .shots figure:first-child{grid-column:1 / -1}
+}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+</style>
+
+<div class="wrap">
+<header>
+  <span class="eyebrow">Продуктовый ресёрч · 2 октября 2026</span>
+  <h1>Разбор CS2-кейс-сайтов</h1>
+  <p class="lede">Семь платформ с кейсами и скинами CS2: насколько понятен интерфейс, как быстро новичок доходит до первого открытия кейса и чем площадки удерживают пользователей. Основа для дизайна нашего продукта.</p>
+  <div class="meta">
+    <span class="eyebrow">Ручной проход: десктоп 1440 и мобильный 390 px</span>
+    <span class="eyebrow">Трафик: Similarweb 2026</span>
+    <span class="eyebrow">Доверие: Trustpilot</span>
+  </div>
+</header>
+
+<nav class="jump" aria-label="Разделы">
+  <a href="#summary">Итог</a><a href="#scorecard">Оценки</a><a href="#funnel">Первый кейс</a>
+  <a href="#casehug">Casehug</a><a href="#hellcase">Hellcase</a><a href="#skinclub">Skin.club</a>
+  <a href="#rain">Rain.gg</a><a href="#forcedrop">Forcedrop</a><a href="#jamskins">JamSkins</a><a href="#upgrader">Upgrader</a>
+  <a href="#recs">Выводы</a>
+</nav>
+
+<section id="summary">
+  <span class="eyebrow">Итог</span>
+  <h2>Лучшие и худшие примеры</h2>
+  <div class="verdict">
+    <div class="vcol">
+      <h3><span class="tag fn">FN</span> Лучшие примеры</h3>
+      <ul class="vlist">
+        <li><span class="n">1</span><b>Casehug</b><span class="d">Лучшее удержание в выборке (18% отказов, 13,6 страницы за визит). На каждом кейсе видно, сколько XP он даст.</span></li>
+        <li><span class="n">2</span><b>Hellcase</b><span class="d">Самая понятная навигация и лучший мобильный экран: кейсы с ценами сразу на первом экране.</span></li>
+        <li><span class="n">3</span><b>Skin.club</b><span class="d">Самая глубокая геймификация: миссии, ивенты, баттлы, кейсы от сообщества. Но вход сложнее, чем у остальных лидеров.</span></li>
+      </ul>
+    </div>
+    <div class="vcol">
+      <h3><span class="tag bs">BS</span> Худшие примеры</h3>
+      <ul class="vlist">
+        <li><span class="n">1</span><b>Upgrader.pro</b><span class="d">Одна механика, без авторизации ничего нельзя, нет причин вернуться. Trustpilot 3,0.</span></li>
+        <li><span class="n">2</span><b>Rain.gg</b><span class="d">Интерфейс чистый, но 39% отказов: экран регистрации вместо продукта и чат на четверть экрана.</span></li>
+        <li><span class="n">3</span><b>Forcedrop</b><span class="d">Сильнейший онбординг (пробное открытие без входа), но три уровня меню, давящие таймеры и Trustpilot 3,5.</span></li>
+        <li><span class="n">4</span><b>JamSkins</b><span class="d">Отличный демо-режим без регистрации, но ~300 онлайн и кричащий неоновый визуал.</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="note">
+    <strong>Что изменил ручной проход</strong>
+    <p>Rain.gg оказался проще, чем ожидалось: у него всего три игры. Его проблема не в перегрузке, а в том, что продукт закрыт регистрацией. У Skin.club самый слабый мобильный первый экран среди лидеров, и открыть кейс без входа там нельзя. У Forcedrop и JamSkins лучшие механики первого касания (попробовать без регистрации), хотя по доверию и масштабу они слабее.</p>
+  </div>
+</section>
+
+<section id="scorecard">
+  <span class="eyebrow">Сравнение</span>
+  <h2>Оценки по критериям</h2>
+  <p>Оценки от 1 до 5 по итогам ручного прохода. Цвет повторяет редкость скинов CS2: от «ширпотреба» до «засекреченного».</p>
+  <div class="legend">
+    <span class="sc s1">1</span><span class="sc s2">2</span><span class="sc s3">3</span><span class="sc s4">4</span><span class="sc s5">5</span>
+  </div>
+  <div class="tbl">
+  <table>
+    <thead><tr><th>Платформа</th><th>Простота</th><th>Онбординг</th><th>Геймификация</th><th>Доверие</th><th>Мобайл</th><th>Отказы</th><th>Стр./визит</th><th>Длина главной</th></tr></thead>
+    <tbody>
+      <tr class="grp"><td colspan="9">Лучшие</td></tr>
+      <tr><td class="site">Casehug</td><td><span class="sc s4">4</span></td><td><span class="sc s4">4</span></td><td><span class="sc s5">5</span></td><td><span class="sc s3">3</span></td><td><span class="sc s4">4</span></td><td class="num">18,2%</td><td class="num">13,6</td><td class="num">15 763 px</td></tr>
+      <tr><td class="site">Hellcase</td><td><span class="sc s4">4</span></td><td><span class="sc s3">3</span></td><td><span class="sc s4">4</span></td><td><span class="sc s4">4</span></td><td><span class="sc s5">5</span></td><td class="num">22,2%</td><td class="num">9,9</td><td class="num">2 985 px*</td></tr>
+      <tr><td class="site">Skin.club</td><td><span class="sc s2">2</span></td><td><span class="sc s2">2</span></td><td><span class="sc s5">5</span></td><td><span class="sc s4">4</span></td><td><span class="sc s2">2</span></td><td class="num">26,4%</td><td class="num">13,1</td><td class="num">29 772 px</td></tr>
+      <tr class="grp"><td colspan="9">Худшие</td></tr>
+      <tr><td class="site">Rain.gg</td><td><span class="sc s5">5</span></td><td><span class="sc s3">3</span></td><td><span class="sc s3">3</span></td><td><span class="sc s3">3</span></td><td><span class="sc s4">4</span></td><td class="num">39,4%</td><td class="num">7,3</td><td class="num na">лента в окне</td></tr>
+      <tr><td class="site">Forcedrop</td><td><span class="sc s3">3</span></td><td><span class="sc s5">5</span></td><td><span class="sc s3">3</span></td><td><span class="sc s2">2</span></td><td><span class="sc s4">4</span></td><td class="num na">н/д</td><td class="num na">н/д</td><td class="num">18 001 px</td></tr>
+      <tr><td class="site">JamSkins</td><td><span class="sc s3">3</span></td><td><span class="sc s5">5</span></td><td><span class="sc s4">4</span></td><td><span class="sc s3">3</span></td><td><span class="sc s4">4</span></td><td class="num na">н/д</td><td class="num na">н/д</td><td class="num na">лента в окне</td></tr>
+      <tr><td class="site">Upgrader.pro</td><td><span class="sc s4">4</span></td><td><span class="sc s2">2</span></td><td><span class="sc s1">1</span></td><td><span class="sc s2">2</span></td><td><span class="sc s3">3</span></td><td class="num na">н/д</td><td class="num na">н/д</td><td class="num">1 615 px</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p style="font-size:.85rem;color:var(--muted)">* Hellcase подгружает каталог по мере прокрутки, поэтому реальная длина больше. «Лента в окне» означает, что страница прокручивается во внутреннем контейнере, и измерить её длину нельзя.</p>
+</section>
+
+<section id="funnel">
+  <span class="eyebrow">Конверсия</span>
+  <h2>Можно ли открыть кейс до регистрации</h2>
+  <p>Главная точка конверсии — первое открытие кейса. Площадки, где можно попробовать без входа, снимают главный барьер: новичок видит механику до того, как отдаст Steam-аккаунт.</p>
+  <div class="tbl">
+  <table>
+    <thead><tr><th>Платформа</th><th>Демо без входа</th><th>Что видит гость на кнопке</th><th>Вход</th><th>Крючок новичка на главной</th></tr></thead>
+    <tbody>
+      <tr><td class="site">Forcedrop</td><td class="yes">Да</td><td>«Trial open», выигрыши не засчитываются</td><td>Steam</td><td>Бесплатный кейс для новых игроков с таймером, промокод +35%, ежедневный бонус</td></tr>
+      <tr><td class="site">JamSkins</td><td class="yes">Да</td><td>Окно «Try demo mode» на странице кейса</td><td>Steam</td><td>Бесплатный спин колеса, +15% к депозиту, ежедневные награды</td></tr>
+      <tr><td class="site">Casehug</td><td class="no">Нет</td><td>«Login to open for $1.00» и «+714 XP»</td><td>Steam</td><td>Раздел Free Cases, розыгрыши, ивенты</td></tr>
+      <tr><td class="site">Hellcase</td><td class="no">Нет</td><td>«Open $0.50», бейдж Provably Fair</td><td>Steam</td><td>Daily Free в шапке</td></tr>
+      <tr><td class="site">Skin.club</td><td class="no">Нет</td><td>«Authorization is required to open cases»</td><td>Steam</td><td>Плашка «Sign in and try 5 event cases»</td></tr>
+      <tr><td class="site">Rain.gg</td><td class="na">Не проверено</td><td class="na">—</td><td>Steam, Google</td><td>«Register instantly», Rain Pool в чате, промокод</td></tr>
+      <tr><td class="site">Upgrader.pro</td><td class="no">Нет</td><td>«You are not authorized»</td><td>Steam</td><td>Нет</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<!-- ===== SITES ===== -->
+<section id="casehug">
+  <div class="site-head"><span class="tag fn">FN</span><h2>Casehug</h2><a href="https://casehug.com/" target="_blank" rel="noopener">casehug.com</a></div>
+  <div class="kpis"><span class="kpi">Отказы <b>18,2%</b></span><span class="kpi">Стр./визит <b>13,6</b></span><span class="kpi">Онлайн <b>~1 700</b></span></div>
+  <div class="shots">
+    <figure><button data-full="screens/casehug-home.jpg"><img src="screens/casehug-home.jpg" alt="Главная Casehug" loading="lazy"></button><figcaption>Главная: промо-полоса, лента дропов, ивенты, герой-баннер</figcaption></figure>
+    <figure><button data-full="screens/casehug-case.jpg"><img src="screens/casehug-case.jpg" alt="Страница кейса Casehug" loading="lazy"></button><figcaption>Кейс: награда XP и алмазами видна до открытия</figcaption></figure>
+    <figure><button data-full="screens/casehug-mobile.jpg"><img src="screens/casehug-mobile.jpg" alt="Мобильная версия Casehug" loading="lazy"></button><figcaption>Мобайл: «Add Funds» в центре нижнего меню</figcaption></figure>
+  </div>
+  <div class="pc">
+    <div class="plus"><h4>Сильные стороны</h4><ul>
+      <li>На кнопке открытия видна награда «+714 XP, +100 алмазов»: каждое открытие двигает прогресс.</li>
+      <li>Один акцентный цвет для CTA (лаймовый): Steam Login, Join event, Login to open.</li>
+      <li>Мобильное нижнее меню: Case Battle, Giveaways, Add Funds, Free Cases.</li>
+      <li>Единый мир ивентов (Kitchen Fury): персонажи, кейсы и баннеры в одном стиле.</li>
+    </ul></div>
+    <div class="minus"><h4>Слабые стороны</h4><ul>
+      <li>До каталога четыре слоя: платёжная плашка, лента дропов, ивенты, герой. Сами кейсы ниже первого экрана.</li>
+      <li>Мультяшные персонажи вытесняют скины, ради которых пришёл пользователь.</li>
+      <li>Без входа кейс не открыть.</li>
+    </ul></div>
+    <div class="take"><h4>Что взять</h4><ul>
+      <li>Показывать награду за прогресс прямо на кнопке действия.</li>
+      <li>Сезонные ивенты как единый художественный мир.</li>
+    </ul></div>
+  </div>
+</section>
+
+<section id="hellcase">
+  <div class="site-head"><span class="tag fn">FN</span><h2>Hellcase</h2><a href="https://hellcase.com/" target="_blank" rel="noopener">hellcase.com</a></div>
+  <div class="kpis"><span class="kpi">Отказы <b>22,2%</b></span><span class="kpi">Стр./визит <b>9,9</b></span><span class="kpi">Игроков <b>19,4 млн</b></span><span class="kpi">Онлайн <b>~3 100</b></span></div>
+  <div class="shots">
+    <figure><button data-full="screens/hellcase-home.jpg"><img src="screens/hellcase-home.jpg" alt="Главная Hellcase" loading="lazy"></button><figcaption>Главная: пять режимов в одной строке табов, счётчики доверия</figcaption></figure>
+    <figure><button data-full="screens/hellcase-case.jpg"><img src="screens/hellcase-case.jpg" alt="Страница кейса Hellcase" loading="lazy"></button><figcaption>Кейс: Provably Fair, x1–x10, горячие клавиши, шанс токена</figcaption></figure>
+    <figure><button data-full="screens/hellcase-mobile.jpg"><img src="screens/hellcase-mobile.jpg" alt="Мобильная версия Hellcase" loading="lazy"></button><figcaption>Мобайл: кейсы с ценами на первом экране</figcaption></figure>
+  </div>
+  <div class="pc">
+    <div class="plus"><h4>Сильные стороны</h4><ul>
+      <li>Самая ясная навигация: Cases, Upgrade, Event, Case Battle, Contract. Одна строка, равные табы.</li>
+      <li>Счётчики «873 млн кейсов, 19 млн игроков» работают как соцдоказательство.</li>
+      <li>Страница кейса для опытных: мультиоткрытие, быстрый режим, горячие клавиши (Enter, Space, S, R).</li>
+      <li>Лучший мобайл в выборке: сетка кейсов с ценами сразу, без героя на весь экран.</li>
+    </ul></div>
+    <div class="minus"><h4>Слабые стороны</h4><ul>
+      <li>Левая колонка с живыми дропами занимает место и отвлекает.</li>
+      <li>Вторая навигация в шапке (Blog, Daily Free, War Tag Shop, Reviews) соревнуется с основной.</li>
+      <li>Плотный тёмный интерфейс с несколькими цветами акцента (оранжевый, зелёный, фиолетовый).</li>
+    </ul></div>
+    <div class="take"><h4>Что взять</h4><ul>
+      <li>Одна строка режимов и сетка кейсов с ценами как главный экран на мобильном.</li>
+      <li>Provably Fair как постоянная кнопка на странице кейса.</li>
+    </ul></div>
+  </div>
+</section>
+
+<section id="skinclub">
+  <div class="site-head"><span class="tag fn">FN</span><h2>Skin.club</h2><a href="https://skin.club/en" target="_blank" rel="noopener">skin.club</a></div>
+  <div class="kpis"><span class="kpi">Отказы <b>26,4%</b></span><span class="kpi">Стр./визит <b>13,1</b></span><span class="kpi">Пользователей <b>6,47 млн</b></span><span class="kpi">Главная <b>29 772 px</b></span></div>
+  <div class="shots">
+    <figure><button data-full="screens/skinclub-home.jpg"><img src="screens/skinclub-home.jpg" alt="Главная Skin.club" loading="lazy"></button><figcaption>Главная: строка статистики, шесть разделов с бейджами, ивент</figcaption></figure>
+    <figure><button data-full="screens/skinclub-case.jpg"><img src="screens/skinclub-case.jpg" alt="Страница кейса Skin.club" loading="lazy"></button><figcaption>Кейс: гарантия честности, но «нужна авторизация»</figcaption></figure>
+    <figure><button data-full="screens/skinclub-mobile.jpg"><img src="screens/skinclub-mobile.jpg" alt="Мобильная версия Skin.club" loading="lazy"></button><figcaption>Мобайл: обрезанный герой, кейсов на экране нет</figcaption></figure>
+  </div>
+  <div class="pc">
+    <div class="plus"><h4>Сильные стороны</h4><ul>
+      <li>Самая богатая мета-игра: Missions (с бейджем счётчика), ивенты, баттлы, Daily Cases, кейсы от сообщества.</li>
+      <li>Кейсы создают игроки («Created by…»): UGC даёт контент и повод делиться.</li>
+      <li>Ивент-валюта «Palette points» за каждое открытие.</li>
+      <li>Гарантия честности прямо рядом с кейсом.</li>
+    </ul></div>
+    <div class="minus"><h4>Слабые стороны</h4><ul>
+      <li>Самая длинная главная в выборке: почти 30 000 px.</li>
+      <li>Нельзя попробовать без входа: открытие кейса закрыто авторизацией.</li>
+      <li>Мобильный первый экран: обрезанная иллюстрация и таймер без контекста, каталог ниже, сверху всплывает Sign in.</li>
+      <li>Строка статистики, соцсети, шесть разделов и партнёрский баннер в одной шапке.</li>
+    </ul></div>
+    <div class="take"><h4>Что взять</h4><ul>
+      <li>Миссии с бейджем счётчика как ежедневная причина вернуться.</li>
+      <li>Кейсы от игроков как источник контента и виральности.</li>
+    </ul></div>
+  </div>
+</section>
+
+<section id="rain">
+  <div class="site-head"><span class="tag bs">BS</span><h2>Rain.gg</h2><a href="https://rain.gg/" target="_blank" rel="noopener">rain.gg</a></div>
+  <div class="kpis"><span class="kpi">Отказы <b>39,4%</b></span><span class="kpi">Стр./визит <b>7,3</b></span></div>
+  <div class="shots two">
+    <figure><button data-full="screens/rain-home.jpg"><img src="screens/rain-home.jpg" alt="Главная Rain.gg" loading="lazy"></button><figcaption>Главная: три игры, регистрация в центре, чат справа</figcaption></figure>
+    <figure><button data-full="screens/rain-mobile.jpg"><img src="screens/rain-mobile.jpg" alt="Мобильная версия Rain.gg" loading="lazy"></button><figcaption>Мобайл: аккуратная сетка игр</figcaption></figure>
+  </div>
+  <div class="pc">
+    <div class="plus"><h4>Сильные стороны</h4><ul>
+      <li>Самая простая структура: Cases, Battles, Upgrader, крупные карточки.</li>
+      <li>Вход через Google, а не только Steam: ниже барьер.</li>
+      <li>Rain Pool: общий призовой пул в чате даёт ощущение сообщества.</li>
+    </ul></div>
+    <div class="minus"><h4>Слабые стороны</h4><ul>
+      <li>Первый экран продаёт регистрацию («Make It Rain, Register instantly»), а не продукт.</li>
+      <li>Чат занимает около четверти десктопа и выглядит как казино-стрим.</li>
+      <li>Лента дропов по $0.01 работает против мотивации.</li>
+      <li>Внутренняя валюта-монета вместо долларов: стоимость непрозрачна.</li>
+    </ul></div>
+    <div class="take"><h4>Что взять</h4><ul>
+      <li>Короткий список режимов крупными карточками.</li>
+      <li>Общий пул наград как социальная механика, но не на весь экран.</li>
+    </ul></div>
+  </div>
+</section>
+
+<section id="forcedrop">
+  <div class="site-head"><span class="tag bs">BS</span><h2>Forcedrop</h2><a href="https://forcedrop.vip/" target="_blank" rel="noopener">forcedrop.vip</a></div>
+  <div class="kpis"><span class="kpi">Trustpilot <b>3,5</b> (1 390)</span><span class="kpi">Главная <b>18 001 px</b></span></div>
+  <div class="shots">
+    <figure><button data-full="screens/forcedrop-home.jpg"><img src="screens/forcedrop-home.jpg" alt="Главная Forcedrop" loading="lazy"></button><figcaption>Главная: три уровня меню, бесплатный кейс с таймером</figcaption></figure>
+    <figure><button data-full="screens/forcedrop-case.jpg"><img src="screens/forcedrop-case.jpg" alt="Страница кейса Forcedrop" loading="lazy"></button><figcaption>Кейс: «Trial open» без входа</figcaption></figure>
+    <figure><button data-full="screens/forcedrop-mobile.jpg"><img src="screens/forcedrop-mobile.jpg" alt="Мобильная версия Forcedrop" loading="lazy"></button><figcaption>Мобайл: бонусы, затем кейсы</figcaption></figure>
+  </div>
+  <div class="pc">
+    <div class="plus"><h4>Сильные стороны</h4><ul>
+      <li>Пробное открытие кейса без входа: лучший ход на конверсию в выборке.</li>
+      <li>Фильтры каталога по цене (0–5, 5–25, 25–50…), поиск, избранное.</li>
+      <li>Мобильное нижнее меню с понятными иконками.</li>
+    </ul></div>
+    <div class="minus"><h4>Слабые стороны</h4><ul>
+      <li>Три горизонтальных уровня навигации на десктопе: лента, сервисное меню, игры.</li>
+      <li>Таймеры «осталось 29 минут» и промокоды давят на импульсивное решение.</li>
+      <li>Цены в гривнах по геолокации без явного переключателя на главной.</li>
+      <li>Самое низкое доверие среди крупных: жалобы на «слив».</li>
+    </ul></div>
+    <div class="take"><h4>Что взять</h4><ul>
+      <li>Демо-открытие с понятной пометкой «выигрыш не засчитывается».</li>
+      <li>Ценовые фильтры каталога.</li>
+    </ul></div>
+  </div>
+</section>
+
+<section id="jamskins">
+  <div class="site-head"><span class="tag bs">BS</span><h2>JamSkins</h2><a href="https://jamskins.com/" target="_blank" rel="noopener">jamskins.com</a></div>
+  <div class="kpis"><span class="kpi">Онлайн <b>~320</b></span><span class="kpi">Trustpilot <b>н/д</b></span></div>
+  <div class="shots">
+    <figure><button data-full="screens/jamskins-home.jpg"><img src="screens/jamskins-home.jpg" alt="Главная JamSkins" loading="lazy"></button><figcaption>Главная: колесо фортуны, три бонуса, «House games»</figcaption></figure>
+    <figure><button data-full="screens/jamskins-case.jpg"><img src="screens/jamskins-case.jpg" alt="Окно демо-режима JamSkins" loading="lazy"></button><figcaption>Кейс: модальное окно «Try demo mode» поверх страницы</figcaption></figure>
+    <figure><button data-full="screens/jamskins-mobile.jpg"><img src="screens/jamskins-mobile.jpg" alt="Мобильная версия JamSkins" loading="lazy"></button><figcaption>Мобайл: плавающее нижнее меню</figcaption></figure>
+  </div>
+  <div class="pc">
+    <div class="plus"><h4>Сильные стороны</h4><ul>
+      <li>Прямо на главной: «No account? No problem. Play any game in Free Mode».</li>
+      <li>Бейдж Provably Fair рядом с каталогом игр.</li>
+      <li>Ежедневные награды за ранг, колесо фортуны, создание своих кейсов с комиссией.</li>
+    </ul></div>
+    <div class="minus"><h4>Слабые стороны</h4><ul>
+      <li>Около 320 человек онлайн: нет соцдоказательства, лента дропов от одного-двух игроков.</li>
+      <li>Демо-окно перекрывает страницу кейса при первом заходе.</li>
+      <li>Неон, наклонный шрифт и пять акцентных цветов: визуальный шум.</li>
+    </ul></div>
+    <div class="take"><h4>Что взять</h4><ul>
+      <li>«Free Mode» как явное обещание на главной.</li>
+      <li>Не прятать демо за модальным окном, а встроить переключатель в кнопку открытия.</li>
+    </ul></div>
+  </div>
+</section>
+
+<section id="upgrader">
+  <div class="site-head"><span class="tag bs">BS</span><h2>Upgrader.pro</h2><a href="https://upgrader.pro/en" target="_blank" rel="noopener">upgrader.pro</a></div>
+  <div class="kpis"><span class="kpi">Trustpilot <b>3,0</b> (179)</span><span class="kpi">Онлайн <b>~4 400</b></span></div>
+  <div class="shots two">
+    <figure><button data-full="screens/upgrader-home.jpg"><img src="screens/upgrader-home.jpg" alt="Главная Upgrader.pro" loading="lazy"></button><figcaption>Главная = апгрейдер. Инвентарь: «You are not authorized»</figcaption></figure>
+    <figure><button data-full="screens/upgrader-mobile.jpg"><img src="screens/upgrader-mobile.jpg" alt="Мобильная версия Upgrader.pro" loading="lazy"></button><figcaption>Мобайл: колесо и два пустых слота</figcaption></figure>
+  </div>
+  <div class="pc">
+    <div class="plus"><h4>Сильные стороны</h4><ul>
+      <li>Максимальный фокус: главная и есть продукт, один жёлтый CTA.</li>
+      <li>Сразу понятно, что делать: слева то, что отдаёшь, справа то, что хочешь.</li>
+    </ul></div>
+    <div class="minus"><h4>Слабые стороны</h4><ul>
+      <li>Без входа экран пустой: два пустых слота и «Log in to access upgrades».</li>
+      <li>Нет прогрессии, миссий и событий, то есть нет причины вернуться завтра.</li>
+      <li>Отзывы про «подкрученность», Trustpilot удалял фейковые отзывы.</li>
+    </ul></div>
+    <div class="take"><h4>Что взять</h4><ul>
+      <li>Визуальную метафору апгрейда (кольцо с шансом) для нашего режима апгрейда.</li>
+      <li>Пустое состояние с примером, а не с замком.</li>
+    </ul></div>
+  </div>
+</section>
+
+<section id="recs">
+  <span class="eyebrow">Выводы для нашего продукта</span>
+  <h2>Что берём и чего избегаем</h2>
+  <div class="recs">
+    <div class="rec"><h3>Попробовать до входа</h3><p>Демо-открытие любого кейса без регистрации, с пометкой «выигрыш не засчитывается». Вход по Steam или Google только в момент реальной ставки.</p><span class="src">Forcedrop, JamSkins, Rain.gg</span></div>
+    <div class="rec"><h3>Каталог на первом экране</h3><p>На мобильном главная начинается с сетки кейсов с ценами. Ивент получает одну строку, а не весь экран.</p><span class="src">Hellcase</span></div>
+    <div class="rec"><h3>Прогресс на кнопке</h3><p>Каждое действие показывает, сколько XP и ивент-валюты оно принесёт. Уровень всегда виден в шапке.</p><span class="src">Casehug, Skin.club</span></div>
+    <div class="rec"><h3>Ежедневная петля</h3><p>Ежедневные миссии со счётчиком-бейджем, бесплатный кейс по уровню, сезоны раз в 3–4 недели в едином художественном мире.</p><span class="src">Skin.club, Casehug, Hellcase</span></div>
+    <div class="rec"><h3>Честность как интерфейс</h3><p>Проверка Provably Fair на каждом открытии, шансы предметов в процентах, сроки вывода на виду.</p><span class="src">Hellcase, Skin.club, ответ на отзывы Upgrader и Forcedrop</span></div>
+    <div class="rec"><h3>Пять режимов, одна строка</h3><p>Кейсы, Баттлы, Апгрейд, Контракты и Ивент в одной навигации. Новые режимы открываются по уровню.</p><span class="src">Hellcase, Rain.gg</span></div>
+  </div>
+  <h3 style="margin-top:12px">Чего избегаем</h3>
+  <ul class="avoid">
+    <li>Больше одной горизонтальной навигации и ленты над контентом (Forcedrop, Casehug, Skin.club).</li>
+    <li>Регистрация как содержимое первого экрана (Rain.gg) и пустые экраны с замком (Upgrader).</li>
+    <li>Таймеры срочности и промокоды, которые давят на импульсную покупку (Forcedrop).</li>
+    <li>Главная длиной 20–30 тысяч пикселей (Skin.club, Forcedrop).</li>
+    <li>Чат как постоянная колонка на десктопе (Rain.gg).</li>
+    <li>Неон и много акцентных цветов, которые спорят со скинами (JamSkins).</li>
+  </ul>
+  <div class="note">
+    <strong>Юридический риск</strong>
+    <p>Во многих странах платное открытие кейсов со скинами регулируется как азартная игра. Гео-ограничения, проверка возраста и лицензия должны быть в плане с самого начала, а не после запуска.</p>
+  </div>
+</section>
+
+<section id="method">
+  <span class="eyebrow">Метод и ограничения</span>
+  <p>Скриншоты сняты 2 октября 2026 года в браузере без входа в аккаунт, на десктопе 1440×900 и мобильном 390×844. Оценки 1–5 экспертные и сделаны по итогам ручного прохода. Конверсию и ретеншен площадки не публикуют, поэтому их косвенные показатели — отказы и глубина визита по Similarweb. Для Forcedrop, JamSkins и Upgrader открытых данных Similarweb нет. Демо-режим Rain.gg не проверялся.</p>
+  <ul class="sources">
+    <li><a href="https://www.similarweb.com/website/casehug.com/" target="_blank" rel="noopener">Similarweb: casehug.com</a></li>
+    <li><a href="https://www.similarweb.com/website/hellcase.com/" target="_blank" rel="noopener">Similarweb: hellcase.com</a></li>
+    <li><a href="https://www.similarweb.com/website/skin.club/" target="_blank" rel="noopener">Similarweb: skin.club</a></li>
+    <li><a href="https://www.similarweb.com/website/rain.gg/" target="_blank" rel="noopener">Similarweb: rain.gg</a></li>
+    <li><a href="https://www.trustpilot.com/review/forcedrop.net" target="_blank" rel="noopener">Trustpilot: Forcedrop</a></li>
+    <li><a href="https://www.trustpilot.com/review/upgrader.pro" target="_blank" rel="noopener">Trustpilot: Upgrader</a></li>
+  </ul>
+</section>
+</div>
+
+<dialog id="lb" aria-label="Скриншот">
+  <img id="lb-img" alt="">
+  <div class="cap"><span id="lb-cap"></span><button id="lb-close" type="button">Закрыть</button></div>
+</dialog>
+
+<script>
+(function(){
+  var lb=document.getElementById('lb'), img=document.getElementById('lb-img'), cap=document.getElementById('lb-cap');
+  document.querySelectorAll('figure button[data-full]').forEach(function(b){
+    b.addEventListener('click',function(){
+      img.src=b.getAttribute('data-full');
+      var fc=b.parentElement.querySelector('figcaption');
+      cap.textContent=fc?fc.textContent:''; img.alt=cap.textContent;
+      if(lb.showModal) lb.showModal();
+    });
+  });
+  document.getElementById('lb-close').addEventListener('click',function(){lb.close()});
+  lb.addEventListener('click',function(e){if(e.target===lb) lb.close()});
+})();
+</script>
