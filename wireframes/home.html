@@ -183,6 +183,22 @@ section{display:grid;gap:24px}
 .pill span{display:inline-flex;align-items:center;gap:5px;padding:8px 12px;white-space:nowrap}
 .pill span+span{border-left:1px solid color-mix(in srgb,var(--fill-ink) 25%,transparent)}
 .pill .pin{right:-9px;top:-9px}
+.mfoot{display:grid;gap:8px;padding:12px;border-top:1px solid var(--blk2);margin:4px -12px 0;padding-bottom:64px;font-size:10.5px}
+.mfoot small{color:var(--ink2);font-size:9.5px;line-height:1.35}
+.acc{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--blk2);font-weight:600}
+.acc span:last-child{color:var(--ink2)}
+.soc{display:flex;gap:6px}
+.soc i{width:24px;height:24px;border-radius:6px;background:var(--blk2)}
+.paym{display:flex;flex-wrap:wrap;gap:5px}
+.paym span{font-family:var(--f-mono);font-size:8.5px;font-weight:600;border:1px solid var(--blk2);border-radius:4px;padding:2px 5px;color:var(--ink2)}
+.paym span.age{color:var(--fold);border-color:var(--fold)}
+.dfooter{display:grid;gap:16px;padding:22px;border-top:1px solid var(--blk2);font-size:11px}
+.dfooter .cols{display:grid;grid-template-columns:1.6fr repeat(4,1fr);gap:18px}
+.dfooter .cols > div{display:grid;gap:6px;align-content:start}
+.dfooter b{font-size:11px}
+.dfooter .cols span{color:var(--ink2)}
+.dfooter small{color:var(--ink2);font-size:10px;line-height:1.4}
+.dfooter .bottom{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-top:12px;padding-right:56px;border-top:1px solid var(--blk2)}
 .dfoot{display:flex;justify-content:space-between;gap:12px;padding:14px;border-radius:9px;background:var(--blk);font-size:11px;color:var(--ink2)}
 .desk-notes{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px 28px}
 
@@ -203,14 +219,14 @@ section{display:grid;gap:24px}
 
 <div class="wrap">
 <header>
-  <span class="eyebrow">SkinHub · Этап 2 · Вайрфреймы · v8.1 · 2 октября 2026</span>
+  <span class="eyebrow">SkinHub · Этап 2 · Вайрфреймы · v9 · 2 октября 2026</span>
   <h1>Главная: первый экран</h1>
-  <p class="lede">Первый экран продаёт текущий ивент: живая лента дропов, герой на весь экран с таймером и переход в ивент. Ниже демо, бонус новичка и каталог кейсов. Каждый блок взят у конкурента по итогам исследования. В v2–v8 учтены решения по ревью от 2 октября.</p>
+  <p class="lede">Первый экран продаёт текущий ивент: живая лента дропов, герой на весь экран с таймером и переход в ивент. Ниже демо, бонус новичка и каталог кейсов. Каждый блок взят у конкурента по итогам исследования. В v2–v9 учтены решения по ревью от 2 октября.</p>
   <div class="legend">
     <span><i class="pin" style="position:static;box-shadow:none">1</i> блок, пояснение справа</span>
     <span><i class="lg-fold"></i> граница первого экрана без прокрутки</span>
     <span><i class="lg-src">Hellcase</i> откуда взят паттерн</span>
-    <span><i class="lg-new">v2</i>–<i class="lg-new">v8</i> изменено по ревью</span>
+    <span><i class="lg-new">v2</i>–<i class="lg-new">v9</i> изменено по ревью</span>
   </div>
 </header>
 
@@ -219,7 +235,7 @@ section{display:grid;gap:24px}
   <div class="board">
     <!-- guest -->
     <div class="device">
-      <div class="phone"><div class="scr" style="min-height:1080px">
+      <div class="phone"><div class="scr" style="min-height:1320px">
         <div class="fold" style="top:701px"><span>fold · 844 px</span></div>
         <div class="ticker a"><span class="live">● LIVE</span>
           <div class="tk" style="--c:var(--r-cov)"><div class="img"></div><small>$412</small></div>
@@ -251,18 +267,17 @@ section{display:grid;gap:24px}
             <div class="case"><div class="img"></div><span class="nm">Knife Club</span><div class="row"><span class="price">$21.00</span><span class="xp">+2.5k XP</span></div></div>
             <i class="pin">8</i>
           </div>
-          <div class="trust a"><span>Provably fair</span><span>Avg withdrawal 3 min</span><span>18+</span><span>Play responsibly</span><i class="pin">9</i></div>
+          <div class="mfoot a"><span class="logo">SkinHub</span><small>CS2 cases, battles and upgrades. Provably fair.</small><div class="acc"><span>Games</span><span>+</span></div><div class="acc"><span>Help</span><span>+</span></div><div class="acc"><span>Legal</span><span>+</span></div><div class="acc"><span>Community</span><span>+</span></div><div class="soc"><i></i><i></i><i></i><i></i></div><div class="paym"><span>VISA</span><span>MASTERCARD</span><span>APPLE PAY</span><span>CRYPTO</span><span>SKINS</span><span class="age">18+</span></div><small>SkinHub Ltd · Reg. No. ——— · Address ———. help@skinhub.gg</small><small>Powered by Steam. Not affiliated with Valve Corp.</small><small>© 2026 SkinHub · English ▾</small><i class="pin">9</i></div>
         </div>
-        <div class="bn a"><span>Cases</span><span>Rewards</span><span class="mid">Sign in</span><span>Inventory</span><span>Profile</span><i class="pin">10</i></div>
+        <div class="bn a"><span>Cases</span><span>Battles<em>12</em></span><span class="mid">Sign in</span><span>Rewards</span><span>Chat</span><i class="pin">10</i></div>
         <div class="pill a"><span>⌕</span><span>⇅ Price</span><span>☷ Filters</span><i class="pin">7</i></div>
-        <div class="chat m a"><i class="pin l">11</i></div>
       </div></div>
       <span class="cap">ГОСТЬ</span>
     </div>
 
     <!-- player -->
     <div class="device player">
-      <div class="phone"><div class="scr" style="min-height:1080px">
+      <div class="phone"><div class="scr" style="min-height:1320px">
         <div class="fold" style="top:701px"><span>fold · 844 px</span></div>
         <div class="ticker"><span class="live">● LIVE</span>
           <div class="tk" style="--c:var(--r-cov)"><div class="img"></div><small>$412</small></div>
@@ -293,27 +308,25 @@ section{display:grid;gap:24px}
             <div class="case"><div class="img"></div><span class="nm">Covert Drop</span><div class="row"><span class="price">$6.00</span><span class="xp">+720 XP</span></div></div>
             <div class="case"><div class="img"></div><span class="nm">Knife Club</span><div class="row"><span class="price">$21.00</span><span class="xp">+2.5k XP</span></div></div>
           </div>
-          <div class="trust"><span>Provably fair</span><span>Avg withdrawal 3 min</span><span>18+</span><span>Play responsibly</span></div>
+          <div class="mfoot a"><span class="logo">SkinHub</span><small>CS2 cases, battles and upgrades. Provably fair.</small><div class="acc"><span>Games</span><span>+</span></div><div class="acc"><span>Help</span><span>+</span></div><div class="acc"><span>Legal</span><span>+</span></div><div class="acc"><span>Community</span><span>+</span></div><div class="soc"><i></i><i></i><i></i><i></i></div><div class="paym"><span>VISA</span><span>MASTERCARD</span><span>APPLE PAY</span><span>CRYPTO</span><span>SKINS</span><span class="age">18+</span></div><small>SkinHub Ltd · Reg. No. ——— · Address ———. help@skinhub.gg</small><small>Powered by Steam. Not affiliated with Valve Corp.</small><small>© 2026 SkinHub · English ▾</small></div>
         </div>
-        <div class="bn a"><span>Cases</span><span>Rewards<em>3</em></span><span class="mid">Add funds</span><span>Inventory</span><span>Profile</span><i class="pin">10</i></div>
+        <div class="bn a"><span>Cases</span><span>Battles<em>12</em></span><span class="mid">Add funds</span><span>Rewards<em>3</em></span><span>Chat</span><i class="pin">10</i></div>
         <div class="pill"><span>⌕</span><span>⇅ Price</span><span>☷ Filters</span></div>
-        <div class="chat m"></div>
       </div></div>
       <span class="cap">ИГРОК · ОТЛИЧИЯ ОТМЕЧЕНЫ</span>
     </div>
 
     <ol class="notes">
       <li><span class="n">1</span><b>Живая лента дропов над шапкой <span class="lg-new">v2</span></b><p>Все выигрыши в реальном времени, без порога цены: и $0.84, и $412. Цвет полосы — редкость CS2. Работает как соцдоказательство «здесь выигрывают». Тап по дропу открывает кейс, из которого он выпал.</p><div class="srcs"><span class="src">Casehug</span><span class="src">Forcedrop</span><span class="src">Hellcase</span></div></li>
-      <li><span class="n">2</span><b>Верхняя панель и меню <span class="lg-new">v8</span></b><p>Логотип кликабельный: нажатие плавно возвращает наверх страницы. Вход и справа кнопка меню ☰. Меню открывает второстепенное: Provably fair, FAQ, поддержка, партнёрка, язык и валюта, ответственная игра. У игрока уровень с кольцом XP, баланс с «+» и меню. Без статистики и соцсетей.</p><div class="srcs"><span class="src">против Skin.club</span></div></li>
+      <li><span class="n">2</span><b>Верхняя панель и меню <span class="lg-new">v8</span></b><p>Логотип кликабельный: нажатие плавно возвращает наверх страницы. Вход и справа кнопка меню ☰. Меню открывает: профиль и инвентарь (у игрока), поддержку, Provably fair, FAQ, партнёрку, язык, ответственную игру. Нажатие на уровень в шапке тоже открывает профиль. У игрока уровень с кольцом XP, баланс с «+» и меню. Без статистики и соцсетей.</p><div class="srcs"><span class="src">против Skin.club</span></div></li>
       <li><span class="n">3</span><b>Герой ивента <span class="lg-new">v5</span></b><p>Арт сезона, таймер до конца и кнопка «Join event», которая ведёт на страницу ивента. Карусель из 4 слайдов, 2-й — промокод с полем ввода прямо в баннере, его край виден справа сразу (v7). Слайд занимает ~86% ширины, справа виден край следующего — понятно, что можно листать свайпом. Стрелок нет, точки внизу; слайды ниже. У игрока кнопка показывает прогресс: «Continue · Tier 4 of 30».</p><div class="srcs"><span class="src">Casehug</span><span class="src">решение v5: без стрелок</span></div></li>
       <li><span class="n">4</span><b>Демо-полоса</b><p>«Try any case free»: гость получает 5 демо-открытий без регистрации, дальше демо безлимитное после бесплатной регистрации (v7.4). Главный рычаг конверсии гостя. У игрока на этом месте ежедневный бесплатный кейс.</p><div class="srcs"><span class="src">JamSkins</span><span class="src">Forcedrop</span><span class="src">Hellcase Daily Free</span></div></li>
       <li><span class="n">5</span><b>Строка режимов</b><p>Пять чипов. Contracts закрыт до 5 уровня.</p><div class="srcs"><span class="src">Hellcase</span></div></li>
       <li><span class="n">6</span><b>Оффер с таймером <span class="lg-new">v2</span></b><p>Гостю — бесплатный кейс для новичка с обратным отсчётом. Игроку — бонус к депозиту с таймером.</p><div class="srcs"><span class="src">Forcedrop</span><span class="src">JamSkins</span></div></li>
       <li><span class="n">7</span><b>Поиск, Price и Filters над нижним меню <span class="lg-new">v8.1</span></b><p>Плашка прибита к нижнему меню и видна при прокрутке. ⌕ — поиск: открывается на весь экран с клавиатурой, ищет по названиям кейсов и скинов. Price — сортировка по цене (дешевле ↔ дороже). Filters — нижний лист: диапазоны цены (Under $1 … $25+), редкость, тип кейса. Строка ценовых чипов в ленте убрана.</p><div class="srcs"><span class="src">скриншот владельца</span><span class="src">Forcedrop: фильтры</span></div></li>
       <li><span class="n">8</span><b>Сетка кейсов</b><p>Две колонки, цена и награда XP на карточке. Верх первого ряда выглядывает из-под линии первого экрана и подсказывает, что ниже каталог.</p><div class="srcs"><span class="src">Hellcase</span><span class="src">Casehug</span></div></li>
-      <li><span class="n">9</span><b>Блок доверия</b><p>Provably fair, время вывода, 18+, ответственная игра.</p><div class="srcs"><span class="src">Hellcase</span></div></li>
-      <li><span class="n">10</span><b>Нижнее меню</b><p>В центре Sign in у гостя и Add funds у игрока. Бейдж миссий на Rewards.</p><div class="srcs"><span class="src">Casehug</span><span class="src">Skin.club</span></div></li>
-      <li><span class="n">11</span><b>Чат <span class="lg-new">v7.3</span></b><p>Чат нужен в v1. Плавающая кнопка над нижним меню, открывает чат поверх экрана. Колонкой не встаёт.</p><div class="srcs"><span class="src">Rain.gg: Rain Pool</span><span class="src">против колонки Rain.gg</span></div></li>
+      <li><span class="n">9</span><b>Футер <span class="lg-new">v9</span></b><p>Логотип и строка о продукте; разделы Games, Help, Legal, Community свёрнуты аккордеоном; соцсети; способы оплаты и 18+; юрлицо, рег. номер, адрес, email; «Powered by Steam. Not affiliated with Valve Corp.»; копирайт и язык. Заменяет прежний блок доверия.</p><div class="srcs"><span class="src">Hellcase</span><span class="src">Casehug</span><span class="src">Skin.club</span></div></li>
+      <li><span class="n">10</span><b>Нижнее меню <span class="lg-new">v9</span></b><p>Cases · Battles (бейдж активных баттлов) · в центре Sign in у гостя и ＋ Add funds у игрока · Rewards (бейдж миссий) · Chat. Профиль и инвентарь — в меню ☰ и по нажатию на уровень в шапке.</p><div class="srcs"><span class="src">Casehug: Add funds в центре</span><span class="src">Hellcase, Skin.club: бейдж баттлов</span></div></li>
     </ol>
   </div>
 </section>
@@ -331,7 +344,7 @@ section{display:grid;gap:24px}
 <section>
   <div class="sec-head"><span class="eyebrow">Десктоп · 1280 × 800 · гость</span><h2>Та же иерархия, шире сетка</h2></div>
   <div class="desk-scroll">
-    <div class="desk"><div class="scr" style="min-height:900px">
+    <div class="desk"><div class="scr" style="min-height:1060px">
       <div class="fold" style="top:688px"><span>fold · 800 px</span></div>
       <div class="ticker a"><span class="live">● LIVE</span>
         <div class="tk" style="--c:var(--r-cov)"><div class="img"></div><small>$412 · Karambit</small></div>
@@ -398,7 +411,17 @@ section{display:grid;gap:24px}
           <div class="case"><div class="img"></div><span class="nm">Gloves Only</span><div class="row"><span class="price">$45.00</span><span class="xp">+5.4k XP</span></div></div>
           <i class="pin">6</i>
         </div>
-        <div class="dfoot a"><span>Provably fair · Avg withdrawal 3 min · 18+ · Play responsibly</span><span>Terms · Privacy · Support</span><i class="pin">7</i></div>
+      </div>
+      <div class="dfooter a">
+        <div class="cols">
+          <div><span class="logo" style="font-size:15px">SkinHub</span><small>CS2 cases, battles and upgrades. Provably fair, instant withdrawals to Steam.</small><div class="soc"><i></i><i></i><i></i><i></i></div></div>
+          <div><b>Games</b><span>Cases</span><span>Battles</span><span>Upgrade</span><span>Contracts</span><span>Event</span><span>Free cases</span></div>
+          <div><b>Help</b><span>FAQ</span><span>Support</span><span>Provably fair</span><span>How withdrawals work</span></div>
+          <div><b>Legal</b><span>Terms of Service</span><span>Privacy Policy</span><span>Cookie Policy</span><span>Responsible gaming</span><span>AML / KYC</span></div>
+          <div><b>Community</b><span>Discord</span><span>Telegram</span><span>X</span><span>YouTube</span><span>Partners</span></div>
+        </div>
+        <div class="bottom"><div class="paym"><span>VISA</span><span>MASTERCARD</span><span>APPLE PAY</span><span>CRYPTO</span><span>SKINS</span><span class="age">18+</span></div><small>SkinHub Ltd · Reg. No. ——— · Address ——— · help@skinhub.gg<br>Powered by Steam. Not affiliated with Valve Corp.</small><small>© 2026 SkinHub · English ▾</small></div>
+        <i class="pin">7</i>
       </div>
       <div class="chat a"><i class="pin l">8</i></div>
     </div></div>
@@ -410,8 +433,8 @@ section{display:grid;gap:24px}
     <li><span class="n">4</span><b>Демо и оффер <span class="lg-new">v6</span></b><p>Два блока одной строкой под героем: попробовать бесплатно и кейс новичка с таймером. Промокод — во 2-м баннере карусели.</p><div class="srcs"><span class="src">JamSkins</span><span class="src">Forcedrop</span></div></li>
     <li><span class="n">5</span><b>Фильтры</b><p>Поиск, цены, сортировка.</p><div class="srcs"><span class="src">Forcedrop</span></div></li>
     <li><span class="n">6</span><b>Сетка 5 колонок</b><p>Сразу после фильтров. Верх первого ряда на линии первого экрана.</p><div class="srcs"><span class="src">Hellcase</span></div></li>
-    <li><span class="n">7</span><b>Доверие и футер</b><p>Provably fair, время вывода, 18+, ответственная игра.</p><div class="srcs"><span class="src">Hellcase</span></div></li>
-    <li><span class="n">8</span><b>Чат <span class="lg-new">v7.3</span></b><p>Нужен в v1. Свёрнут в плавающую кнопку, открывается панелью поверх страницы, а не колонкой.</p><div class="srcs"><span class="src">против Rain.gg</span></div></li>
+    <li><span class="n">7</span><b>Футер <span class="lg-new">v9</span></b><p>Колонка бренда с описанием и соцсетями, колонки Games, Help, Legal, Community. Внизу способы оплаты и 18+, юрлицо и дисклеймер Steam / Valve, копирайт и язык.</p><div class="srcs"><span class="src">Hellcase</span><span class="src">Casehug</span><span class="src">Skin.club</span></div></li>
+    <li><span class="n">8</span><b>Чат <span class="lg-new">v7.3</span></b><p>На десктопе нижнего меню нет, поэтому чат — плавающая кнопка, панель поверх страницы. На мобайле чат в нижнем меню (v9).</p><div class="srcs"><span class="src">против Rain.gg</span></div></li>
   </ol>
 </section>
 
@@ -438,10 +461,13 @@ section{display:grid;gap:24px}
     <div class="dec"><span class="v keep">НИЖНЯЯ ПАНЕЛЬ</span><b>Мобайл: кнопки Price и Filters прибиты к нижнему меню</b><span class="d">Price — сортировка по цене, Filters — нижний лист с диапазонами цены, редкостью, типом кейса. Строка ценовых чипов убрана. v8.</span></div>
     <div class="dec"><span class="v keep">НАВЕРХ</span><b>Логотип кликабельный</b><span class="d">Нажатие на логотип возвращает наверх страницы, на мобайле и десктопе. v8.</span></div>
     <div class="dec"><span class="v keep">В ПЛАШКЕ</span><b>Поиск</b><span class="d">Третьей кнопкой ⌕ в плашке над нижним меню, первой слева; открывает поиск на весь экран. v8.1.</span></div>
+    <div class="dec"><span class="v keep">НИЖНЕЕ МЕНЮ</span><b>Cases · Battles · ＋ · Rewards · Chat</b><span class="d">По сравнению с конкурентами: Battles с бейджем (как у трёх лидеров), Add funds в центре (Casehug), Rewards — петля возврата. Вместо Profile — Chat; профиль и инвентарь в меню ☰. Плавающая кнопка чата на мобайле убрана. v9.</span></div>
+    <div class="dec"><span class="v keep">МЕНЮ ☰</span><b>Поддержка в меню</b><span class="d">Вместе с профилем, инвентарём, Provably fair, FAQ, партнёркой, языком и ответственной игрой. v9.</span></div>
+    <div class="dec"><span class="v keep">ФУТЕР</span><b>Футер на мобайле и десктопе</b><span class="d">Состав собран по футерам Hellcase, Casehug, Skin.club: разделы ссылок, соцсети, оплата, 18+, юрлицо, дисклеймер Steam / Valve. Заменяет блок доверия. v9.</span></div>
   </div>
 </section>
 
 <section>
-  <div class="sec-head"><span class="eyebrow">Решить до концепта</span><h2>Открытые вопросы</h2><p style="color:var(--muted)">Один вопрос: состав нижнего меню — сравнение с конкурентами и рекомендация у владельца.</p></div>
+  <div class="sec-head"><span class="eyebrow">Решить до концепта</span><h2>Открытые вопросы</h2><p style="color:var(--muted)">По главной открытых вопросов нет. Данные юрлица в футере — заглушки до регистрации компании.</p></div>
 </section>
 </div>
