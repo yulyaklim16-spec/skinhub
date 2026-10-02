@@ -1,0 +1,5 @@
+# Deploy only the human-facing HTML; MD sources stay in the repo
+*.md
+research/screens/
+.playwright-mcp/
+.env*
