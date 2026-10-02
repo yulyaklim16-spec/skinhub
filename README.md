@@ -20,7 +20,7 @@
 | Этап | Папка | Статус | Для Claude | Для человека |
 |---|---|---|---|---|
 | 1. Исследование | [`research/`](./research/) | ✅ Готово · 2026-10-02 | [`research.md`](./research/research.md) | [`research.html`](./research/research.html) |
-| 2. Вайрфреймы | [`wireframes/`](./wireframes/) | 🔄 В работе · главная v4, кейс v2.2 | [`home.md`](./wireframes/home.md), [`case.md`](./wireframes/case.md) | [`home.html`](./wireframes/home.html), [`case.html`](./wireframes/case.html) |
+| 2. Вайрфреймы | [`wireframes/`](./wireframes/) | 🔄 В работе · главная v4, кейс v1 | [`home.md`](./wireframes/home.md), [`case.md`](./wireframes/case.md) | [`home.html`](./wireframes/home.html), [`case.html`](./wireframes/case.html) |
 | 3. Концепт | [`concept/`](./concept/) | ⬜ Не начат | — | — |
 | 4. Токены | [`tokens/`](./tokens/) | ⬜ Не начат | — | — |
 | 5. Компоненты | [`components/`](./components/) | ⬜ Не начат | — | — |
@@ -41,8 +41,8 @@
 - [`home.md`](./wireframes/home.md) / [`home.html`](./wireframes/home.html) — главная v4: лента дропов,
   меню, карусель героя (на десктопе три слайда в ряд), офферы с таймером, промокод, каталог.
   Журнал решений внутри. [Опубликованная версия](https://claude.ai/artifact/1uap1AuMtoQEx1KNozQQAn).
-- [`case.md`](./wireframes/case.md) / [`case.html`](./wireframes/case.html) — страница кейса v2:
-  карусель ивентов с выглядывающим слайдом, без стрелок и кнопок открытия; десктоп. Журнал решений внутри.
+- [`case.md`](./wireframes/case.md) / [`case.html`](./wireframes/case.html) — страница кейса v1:
+  гость до открытия, рулетка, результат демо, результат игрока; десктоп. Журнал решений внутри. Журнал решений внутри.
 - Следующие экраны: вход, Rewards (миссии и прогресс), апгрейд, инвентарь и вывод.
 
 ### concept/
