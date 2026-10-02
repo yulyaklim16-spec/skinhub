@@ -34,6 +34,8 @@
   нижнее меню на мобайле (состав и читабельность), блоки контента на главной, выводы для SkinHub.
 - [`research.html`](./research/research.html) — то же для человека: страница со скриншотами,
   один файл (~2,2 МБ). [Опубликованная версия](https://claude.ai/artifact/7ZuPFD7zzDVnxE3rsFewfv).
+- [`review-fable.md`](./research/review-fable.md) / [`review-fable.html`](./research/review-fable.html) — независимое UX-ревью
+  вайрфреймов агентом на модели Fable: 26 замечаний, чего нет относительно конкурентов, противоречия и недостающие экраны.
 - [`screens/`](./research/screens/) — 19 скриншотов: главная, страница кейса и мобильный экран
   Casehug, Hellcase, Skin.club, Rain.gg, Forcedrop, JamSkins, Upgrader.pro.
 
