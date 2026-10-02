@@ -31,7 +31,7 @@
 
 ### research/
 - [`research.md`](./research/research.md) — разбор 7 конкурентов: оценки, воронка первого кейса,
-  выводы для SkinHub.
+  нижнее меню на мобайле (состав и читабельность), выводы для SkinHub.
 - [`research.html`](./research/research.html) — то же для человека: страница со скриншотами,
   один файл (~2,2 МБ). [Опубликованная версия](https://claude.ai/artifact/7ZuPFD7zzDVnxE3rsFewfv).
 - [`screens/`](./research/screens/) — 19 скриншотов: главная, страница кейса и мобильный экран
