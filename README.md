@@ -17,7 +17,7 @@
 | Этап | Папка | Статус | Для Claude | Для человека |
 |---|---|---|---|---|
 | 1. Исследование | [`research/`](./research/) | ✅ Готово · 2026-10-02 | [`research.md`](./research/research.md) | [`research.html`](./research/research.html) |
-| 2. Вайрфреймы | [`wireframes/`](./wireframes/) | ⏳ Следующий | — | — |
+| 2. Вайрфреймы | [`wireframes/`](./wireframes/) | 🔄 В работе · главная v1 | [`wireframes.md`](./wireframes/wireframes.md) | [`wireframes.html`](./wireframes/wireframes.html) |
 | 3. Концепт | [`concept/`](./concept/) | ⬜ Не начат | — | — |
 | 4. Токены | [`tokens/`](./tokens/) | ⬜ Не начат | — | — |
 | 5. Компоненты | [`components/`](./components/) | ⬜ Не начат | — | — |
@@ -35,7 +35,11 @@
   Casehug, Hellcase, Skin.club, Rain.gg, Forcedrop, JamSkins, Upgrader.pro.
 
 ### wireframes/
-Пусто.
+- [`wireframes.md`](./wireframes/wireframes.md) — вайрфрейм главной v1: блоки сверху вниз для мобайла
+  (гость и игрок) и десктопа, источник каждого паттерна, что убрано, открытые вопросы.
+- [`wireframes.html`](./wireframes/wireframes.html) — то же визуально: low-fi макеты с линией первого экрана
+  и аннотациями. [Опубликованная версия](https://claude.ai/artifact/1uap1AuMtoQEx1KNozQQAn).
+- Следующие экраны: страница кейса, демо-открытие, вход, Rewards, апгрейд, инвентарь и вывод.
 
 ### concept/
 Пусто.
