@@ -27,6 +27,8 @@
   выводы для SkinHub.
 - [`teardown.html`](./research/teardown.html) — та же информация визуально, со скриншотами
   (открыть локально в браузере). [Опубликованная версия](https://claude.ai/artifact/7ZuPFD7zzDVnxE3rsFewfv).
+- [`competitor-teardown.html`](./research/competitor-teardown.html) — автономная копия этой страницы
+  одним файлом: скриншоты встроены внутрь, можно скачать и переслать без папки `screens/` (~2,2 МБ).
 - [`screens/`](./research/screens/) — 19 скриншотов: главная, страница кейса и мобильный экран
   Casehug, Hellcase, Skin.club, Rain.gg, Forcedrop, JamSkins, Upgrader.pro.
 
