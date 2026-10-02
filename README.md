@@ -20,7 +20,7 @@
 | Этап | Папка | Статус | Для Claude | Для человека |
 |---|---|---|---|---|
 | 1. Исследование | [`research/`](./research/) | ✅ Готово · 2026-10-02 | [`research.md`](./research/research.md) | [`research.html`](./research/research.html) |
-| 2. Вайрфреймы | [`wireframes/`](./wireframes/) | 🔄 В работе · главная v1 | [`wireframes.md`](./wireframes/wireframes.md) | [`wireframes.html`](./wireframes/wireframes.html) |
+| 2. Вайрфреймы | [`wireframes/`](./wireframes/) | 🔄 В работе · главная v2 | [`wireframes.md`](./wireframes/wireframes.md) | [`wireframes.html`](./wireframes/wireframes.html) |
 | 3. Концепт | [`concept/`](./concept/) | ⬜ Не начат | — | — |
 | 4. Токены | [`tokens/`](./tokens/) | ⬜ Не начат | — | — |
 | 5. Компоненты | [`components/`](./components/) | ⬜ Не начат | — | — |
@@ -38,7 +38,7 @@
   Casehug, Hellcase, Skin.club, Rain.gg, Forcedrop, JamSkins, Upgrader.pro.
 
 ### wireframes/
-- [`wireframes.md`](./wireframes/wireframes.md) — вайрфрейм главной v1: блоки сверху вниз для мобайла
+- [`wireframes.md`](./wireframes/wireframes.md) — вайрфрейм главной v2 с журналом решений: блоки сверху вниз для мобайла
   (гость и игрок) и десктопа, источник каждого паттерна, что убрано, открытые вопросы.
 - [`wireframes.html`](./wireframes/wireframes.html) — то же визуально: low-fi макеты с линией первого экрана
   и аннотациями. [Опубликованная версия](https://claude.ai/artifact/1uap1AuMtoQEx1KNozQQAn).
@@ -62,7 +62,7 @@
 ## Ключевые выводы исследования
 
 1. Попробовать до входа: демо-открытие без регистрации.
-2. Каталог кейсов на первом мобильном экране.
+2. Первый экран продаёт ивент: лента дропов, герой с таймером; каталог сразу под ним (решение 2026-10-02).
 3. Награда за прогресс (XP) видна на кнопке действия.
 4. Ежедневная петля: миссии, бесплатный кейс по уровню, сезоны.
 5. Provably Fair и шансы в процентах на каждом открытии.

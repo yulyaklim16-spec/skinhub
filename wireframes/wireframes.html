@@ -7,10 +7,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Golos+Text:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
 <style>
-/* Layout: reading column → mobile frames (guest, player) beside numbered notes → desktop frame in a scroll box → notes. Lo-fi greys; one accent for pins; CS2 rarity colors only where they carry meaning. */
+/* Layout: reading column → mobile frames (guest, player) beside numbered notes → desktop frame in a scroll box → notes → decision log. Lo-fi greys; one accent for pins; CS2 rarity colors only where they carry meaning. */
 :root{
   --bg:#eef0f4; --surface:#ffffff; --fg:#161a23; --muted:#5a6273; --line:#d6dae3;
-  --pin:#3b54e0; --pin-ink:#ffffff;
+  --pin:#3b54e0; --pin-ink:#ffffff; --new:#14895a;
   --scr:#ffffff; --ink:#2b303b; --ink2:#8a92a3; --blk:#eceef2; --blk2:#d9dde5; --fill:#2b303b; --fill-ink:#ffffff; --fold:#d0453b;
   --r-mil:#4b69ff; --r-res:#8847ff; --r-cla:#d32ce6; --r-cov:#eb4b4b;
   --f-display:"Unbounded","Golos Text",system-ui,sans-serif;
@@ -20,11 +20,11 @@
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --bg:#10131a; --surface:#181c25; --fg:#e7eaf1; --muted:#9aa3b5; --line:#2c3240;
-  --pin:#7f93ff; --pin-ink:#0d1020;
+  --pin:#7f93ff; --pin-ink:#0d1020; --new:#3fc58a;
   --scr:#1b1f28; --ink:#dfe3ec; --ink2:#7d8699; --blk:#262b36; --blk2:#353b48; --fill:#dfe3ec; --fill-ink:#151821; --fold:#f07068; color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#10131a; --surface:#181c25; --fg:#e7eaf1; --muted:#9aa3b5; --line:#2c3240;
-  --pin:#7f93ff; --pin-ink:#0d1020;
+  --pin:#7f93ff; --pin-ink:#0d1020; --new:#3fc58a;
   --scr:#1b1f28; --ink:#dfe3ec; --ink2:#7d8699; --blk:#262b36; --blk2:#353b48; --fill:#dfe3ec; --fill-ink:#151821; --fold:#f07068; color-scheme:dark}
 
 *{box-sizing:border-box}
@@ -41,6 +41,7 @@ header{display:grid;gap:14px}
 .legend span{display:inline-flex;gap:8px;align-items:center}
 .lg-fold{width:28px;border-top:2px dashed var(--fold)}
 .lg-src{font-family:var(--f-mono);font-size:.72rem;border:1px solid var(--line);padding:1px 6px;border-radius:4px}
+.lg-new{font-family:var(--f-mono);font-size:.68rem;color:var(--new);border:1px solid var(--new);padding:0 5px;border-radius:4px}
 section{display:grid;gap:24px}
 .sec-head{display:grid;gap:8px}
 
@@ -62,6 +63,7 @@ section{display:grid;gap:24px}
 .sp{flex:1}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:4px;padding:6px 11px;border-radius:7px;background:var(--fill);color:var(--fill-ink);font-weight:600;font-size:11px;white-space:nowrap}
 .btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--blk2)}
+.btn.wide{width:100%;padding:9px}
 .body{display:flex;flex-direction:column;gap:12px;padding:12px}
 .strip{display:flex;align-items:center;gap:8px;padding:10px 11px;border:1.5px dashed var(--ink2);border-radius:9px;font-weight:600}
 .strip small{display:block;font-weight:400;color:var(--ink2);font-size:10px}
@@ -69,11 +71,7 @@ section{display:grid;gap:24px}
 .chip{flex:none;padding:5px 10px;border-radius:999px;border:1px solid var(--blk2);font-size:10.5px;white-space:nowrap;color:var(--ink)}
 .chip.on{background:var(--fill);color:var(--fill-ink);border-color:var(--fill)}
 .chip.lock{color:var(--ink2);border-style:dashed}
-.season{display:flex;align-items:center;gap:10px;padding:8px;border-radius:9px;background:var(--blk)}
 .img{background:repeating-linear-gradient(135deg,var(--blk) 0 6px,var(--blk2) 6px 7px);border:1px solid var(--blk2);border-radius:6px}
-.season .img{width:46px;height:46px;flex:none}
-.season b{display:block;font-size:11.5px}
-.season small{color:var(--ink2);font-size:10px}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .case{border:1px solid var(--blk2);border-radius:9px;padding:7px;display:grid;gap:5px}
 .case .img{aspect-ratio:4/3}
@@ -81,12 +79,6 @@ section{display:grid;gap:24px}
 .case .row{display:flex;justify-content:space-between;align-items:center}
 .price{font-family:var(--f-mono);font-weight:600;font-size:11px}
 .xp{font-family:var(--f-mono);font-size:9.5px;padding:1px 5px;border-radius:4px;background:var(--blk);color:var(--ink2)}
-.ttl{display:flex;justify-content:space-between;font-weight:600;font-size:11px}
-.ttl em{font-style:normal;color:var(--ink2);font-weight:400}
-.drops{display:flex;gap:6px;overflow:hidden}
-.drop{flex:none;width:86px;border-radius:7px;border:1px solid var(--blk2);padding:5px;display:grid;gap:3px;border-bottom:3px solid var(--c)}
-.drop .img{height:34px}
-.drop small{font-size:9.5px;color:var(--ink2)}
 .trust{display:flex;flex-wrap:wrap;gap:6px 12px;padding:10px;border-radius:9px;background:var(--blk);font-size:10.5px}
 .trust span{display:inline-flex;gap:4px;align-items:center}
 .trust span::before{content:"";width:8px;height:8px;border-radius:2px;border:1.5px solid var(--ink)}
@@ -102,61 +94,94 @@ section{display:grid;gap:24px}
 .bal{display:inline-flex;gap:6px;align-items:center;font-family:var(--f-mono);font-weight:600;font-size:11px;border:1px solid var(--blk2);border-radius:7px;padding:4px 4px 4px 8px}
 .bal i{font-style:normal;background:var(--fill);color:var(--fill-ink);border-radius:5px;width:18px;height:18px;display:grid;place-items:center}
 
+/* new in v2 */
+.ticker{display:flex;gap:4px;padding:6px 6px 6px 8px;overflow:hidden;border-bottom:1px solid var(--blk2);border-radius:22px 22px 0 0;background:var(--blk)}
+.ticker .live{flex:none;display:grid;place-items:center;font-family:var(--f-mono);font-size:8.5px;font-weight:600;color:var(--fold);padding-right:2px}
+.tk{flex:none;width:52px;border-radius:5px;background:var(--scr);border-bottom:2px solid var(--c);padding:3px;display:grid;gap:2px}
+.tk .img{height:18px;border-radius:3px}
+.tk small{font-size:8px;color:var(--ink2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hero{border-radius:12px;overflow:hidden;display:grid;align-content:end;gap:8px;padding:14px;background:repeating-linear-gradient(135deg,var(--blk) 0 8px,var(--blk2) 8px 9px);border:1px solid var(--blk2)}
+.hero .tag{justify-self:start;font-family:var(--f-mono);font-size:9px;font-weight:600;letter-spacing:.06em;background:var(--scr);padding:2px 6px;border-radius:4px}
+.hero b{font-family:var(--f-display);font-size:18px;line-height:1.15;background:var(--scr);justify-self:start;padding:2px 6px;border-radius:4px}
+.timer{display:flex;gap:4px;align-items:center}
+.timer span{font-family:var(--f-mono);font-weight:600;font-size:12px;background:var(--scr);border:1px solid var(--blk2);border-radius:5px;padding:3px 6px;text-align:center;line-height:1.1}
+.timer span small{display:block;font-size:7.5px;font-weight:400;color:var(--ink2)}
+.dots{display:flex;gap:4px;justify-content:center}
+.dots i{width:6px;height:6px;border-radius:50%;background:var(--blk2)}
+.dots i.on{width:16px;border-radius:3px;background:var(--ink)}
+.offer{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:9px;border:1px solid var(--blk2)}
+.offer .img{width:38px;height:38px;flex:none}
+.offer b{display:block;font-size:11px}
+.offer .mini{font-family:var(--f-mono);font-size:10px;color:var(--fold);font-weight:600}
+.promo{display:flex;gap:6px;align-items:center}
+.promo .in{flex:1;padding:7px 9px;border:1px dashed var(--ink2);border-radius:7px;color:var(--ink2);font-family:var(--f-mono);font-size:10.5px}
+.promo small{display:block;color:var(--ink2);font-size:9.5px;margin-top:3px}
+.new{position:absolute;left:-46px;top:50%;transform:translateY(-50%);font-family:var(--f-mono);font-size:8.5px;font-weight:600;color:var(--new);border:1px solid var(--new);border-radius:4px;padding:0 4px;background:var(--surface)}
+
 /* notes */
 .notes{list-style:none;margin:0;padding:0;display:grid;gap:14px;min-width:0}
 .notes li{display:grid;grid-template-columns:24px minmax(0,1fr);gap:4px 12px}
 .notes .n{width:22px;height:22px;border-radius:50%;background:var(--pin);color:var(--pin-ink);font:600 11.5px/22px var(--f-mono);text-align:center}
 .notes b{font-weight:600}
+.notes b .lg-new{margin-left:6px;vertical-align:1px}
 .notes p{grid-column:2;font-size:.92rem;color:var(--muted)}
 .src{font-family:var(--f-mono);font-size:.7rem;border:1px solid var(--line);padding:1px 6px;border-radius:4px;color:var(--muted);white-space:nowrap}
 .notes .srcs{grid-column:2;display:flex;flex-wrap:wrap;gap:6px}
-.notes .delta{grid-column:1 / -1;padding-top:10px;border-top:1px solid var(--line);font-size:.92rem;color:var(--muted)}
 
 /* desktop */
 .desk-scroll{overflow-x:auto;border-radius:12px}
 .desk{width:1100px;padding:10px;border-radius:14px;background:var(--surface);border:1px solid var(--line)}
 .desk .scr{border-radius:8px;font-size:12px}
+.desk .ticker{border-radius:8px 8px 0 0;padding:8px 12px;gap:6px}
+.desk .tk{width:84px}
+.desk .tk .img{height:24px}
 .dhead{display:flex;align-items:center;gap:22px;padding:14px 22px;border-bottom:1px solid var(--blk2)}
 .tabs{display:flex;gap:4px}
 .tab{padding:7px 14px;border-radius:7px;font-weight:500;color:var(--ink)}
 .tab.on{background:var(--blk);font-weight:600}
 .tab.lock{color:var(--ink2)}
-.dbody{display:flex;flex-direction:column;gap:18px;padding:20px 22px 28px}
-.duo{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.hero{height:120px;border-radius:10px;display:flex;align-items:center;gap:16px;padding:18px}
-.hero.demo{border:1.5px dashed var(--ink2)}
-.hero.season{background:var(--blk)}
-.hero .img{width:110px;height:84px;flex:none}
-.hero b{display:block;font-size:15px;margin-bottom:4px}
-.hero small{display:block;color:var(--ink2);margin-bottom:10px}
+.dbody{display:flex;flex-direction:column;gap:16px;padding:18px 22px 28px}
+.dhero{height:330px;border-radius:12px;display:grid;align-content:center;gap:12px;padding:0 48px;background:repeating-linear-gradient(135deg,var(--blk) 0 10px,var(--blk2) 10px 11px);border:1px solid var(--blk2)}
+.dhero .tag,.dhero b,.dhero small{justify-self:start;background:var(--scr);padding:2px 8px;border-radius:4px}
+.dhero .tag{font-family:var(--f-mono);font-size:10px;font-weight:600;letter-spacing:.06em}
+.dhero b{font-family:var(--f-display);font-size:30px;line-height:1.1}
+.dhero small{color:var(--ink2);font-size:12px}
+.dhero .timer span{font-size:16px;padding:5px 9px}
+.dhero .btn{justify-self:start;padding:10px 22px;font-size:13px}
+.trio{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:12px}
+.trio > div{min-width:0}
 .filters{display:flex;gap:8px;align-items:center}
 .search{width:220px;padding:7px 10px;border:1px solid var(--blk2);border-radius:7px;color:var(--ink2)}
 .dgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
-.dgrid .case .img{aspect-ratio:4/3}
 .chat{position:absolute;right:18px;bottom:18px;width:44px;height:44px;border-radius:50%;background:var(--fill);z-index:2}
 .dfoot{display:flex;justify-content:space-between;gap:12px;padding:14px;border-radius:9px;background:var(--blk);font-size:11px;color:var(--ink2)}
 .desk-notes{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px 28px}
 
-.absent{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
-.absent div{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;display:grid;gap:4px;font-size:.93rem}
-.absent b::before{content:"✕  ";color:var(--fold)}
-.absent span{color:var(--muted);font-size:.86rem}
+/* decisions */
+.log{display:grid;gap:10px}
+.dec{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 14px;align-items:baseline;padding:14px 16px;border-radius:10px;border:1px solid var(--line);background:var(--surface)}
+.dec .v{font-family:var(--f-mono);font-size:.72rem;font-weight:600;padding:2px 7px;border-radius:4px;white-space:nowrap}
+.dec .v.keep{color:var(--new);background:color-mix(in srgb,var(--new) 14%,transparent)}
+.dec .v.drop{color:var(--fold);background:color-mix(in srgb,var(--fold) 14%,transparent)}
+.dec b{font-weight:600}
+.dec span.d{grid-column:2;color:var(--muted);font-size:.92rem}
 .qs{margin:0;padding-left:20px;display:grid;gap:6px;color:var(--muted)}
 .qs b{color:var(--fg);font-weight:600}
 
 @media (max-width:1000px){.board{grid-template-columns:auto minmax(0,1fr)}.board .device.player{display:none}}
-@media (max-width:720px){.board{grid-template-columns:minmax(0,1fr)}.device{justify-items:center}}
+@media (max-width:720px){.board{grid-template-columns:minmax(0,1fr)}.device{justify-items:center}.new{display:none}}
 </style>
 
 <div class="wrap">
 <header>
-  <span class="eyebrow">SkinHub · Этап 2 · Вайрфреймы · v1 · 2 октября 2026</span>
+  <span class="eyebrow">SkinHub · Этап 2 · Вайрфреймы · v2 · 2 октября 2026</span>
   <h1>Главная: первый экран</h1>
-  <p class="lede">За пять секунд новичок понимает, что здесь открывают кейсы со скинами CS2, видит кейсы с ценами и может попробовать любой кейс бесплатно, без регистрации. Каждый блок взят у лучшего конкурента по итогам исследования.</p>
+  <p class="lede">Первый экран продаёт текущий ивент: живая лента дропов, герой на весь экран с таймером и переход в ивент. Ниже бонусы новичка, демо и каталог кейсов. Каждый блок взят у конкурента по итогам исследования. В v2 учтены решения по ревью от 2 октября.</p>
   <div class="legend">
     <span><i class="pin" style="position:static;box-shadow:none">1</i> блок, пояснение справа</span>
     <span><i class="lg-fold"></i> граница первого экрана без прокрутки</span>
     <span><i class="lg-src">Hellcase</i> откуда взят паттерн</span>
+    <span><i class="lg-new">v2</i> изменено по ревью</span>
   </div>
 </header>
 
@@ -165,43 +190,67 @@ section{display:grid;gap:24px}
   <div class="board">
     <!-- guest -->
     <div class="device">
-      <div class="phone"><div class="scr" style="min-height:900px">
+      <div class="phone"><div class="scr" style="min-height:1080px">
         <div class="fold" style="top:701px"><span>fold · 844 px</span></div>
-        <div class="tb a"><span class="logo">SkinHub</span><span class="sp"></span><span class="btn">Sign in</span><i class="pin">1</i></div>
+        <div class="ticker a"><span class="live">● LIVE</span>
+          <div class="tk" style="--c:var(--r-cov)"><div class="img"></div><small>$412</small></div>
+          <div class="tk" style="--c:var(--r-mil)"><div class="img"></div><small>$0.84</small></div>
+          <div class="tk" style="--c:var(--r-cla)"><div class="img"></div><small>$96</small></div>
+          <div class="tk" style="--c:var(--r-res)"><div class="img"></div><small>$7.10</small></div>
+          <div class="tk" style="--c:var(--r-mil)"><div class="img"></div><small>$1.20</small></div>
+          <i class="pin">1</i></div>
+        <div class="tb a"><span class="logo">SkinHub</span><span class="sp"></span><span class="btn">Sign in</span><i class="pin">2</i></div>
         <div class="body">
-          <div class="strip a"><span class="sp">Try any case free<small>No sign-up · demo wins don't count</small></span><span>→</span><i class="pin">2</i></div>
-          <div class="a"><div class="chips"><span class="chip on">Cases</span><span class="chip">Battles</span><span class="chip">Upgrade</span><span class="chip lock">🔒 Contracts · Lv 5</span><span class="chip">Event</span></div><i class="pin">3</i></div>
-          <div class="season a"><div class="img"></div><div class="sp"><b>Season 1 · Neon Heist</b><small>19d left · earn tokens on every case</small></div><span>→</span><i class="pin">4</i></div>
-          <div class="a"><div class="chips"><span class="chip on">All</span><span class="chip">Under $1</span><span class="chip">$1–5</span><span class="chip">$5–25</span><span class="chip">$25+</span></div><i class="pin">5</i></div>
+          <div class="a"><div class="hero" style="height:300px">
+            <span class="tag">EVENT · SEASON 1</span>
+            <b>Neon Heist</b>
+            <div class="timer"><span>19<small>days</small></span><span>08<small>hrs</small></span><span>16<small>min</small></span></div>
+            <span class="btn wide">Join event</span>
+            <div class="dots"><i class="on"></i><i></i><i></i></div>
+          </div><i class="pin">3</i></div>
+          <div class="strip a"><span class="sp">Try any case free<small>No sign-up · demo wins don't count</small></span><span>→</span><i class="pin">4</i></div>
+          <div class="a"><div class="chips"><span class="chip on">Cases</span><span class="chip">Battles</span><span class="chip">Upgrade</span><span class="chip lock">🔒 Contracts · Lv 5</span><span class="chip">Event</span></div><i class="pin">5</i></div>
+          <div class="offer a"><div class="img"></div><div class="sp"><b>Free case for new players</b><span class="mini">Ends in 23:41:08</span></div><span class="btn">Get</span><i class="pin">6</i></div>
+          <div class="promo a"><span class="in">PROMO CODE</span><span class="btn ghost">Apply</span><i class="pin">7</i></div>
+          <div class="a"><div class="chips"><span class="chip on">All</span><span class="chip">Under $1</span><span class="chip">$1–5</span><span class="chip">$5–25</span><span class="chip">$25+</span></div><i class="pin">8</i></div>
           <div class="grid a">
             <div class="case"><div class="img"></div><span class="nm">Prime Cut</span><div class="row"><span class="price">$1.00</span><span class="xp">+120 XP</span></div></div>
             <div class="case"><div class="img"></div><span class="nm">Night Ops</span><div class="row"><span class="price">$2.50</span><span class="xp">+300 XP</span></div></div>
             <div class="case"><div class="img"></div><span class="nm">Covert Drop</span><div class="row"><span class="price">$6.00</span><span class="xp">+720 XP</span></div></div>
             <div class="case"><div class="img"></div><span class="nm">Knife Club</span><div class="row"><span class="price">$21.00</span><span class="xp">+2.5k XP</span></div></div>
-            <i class="pin">6</i>
+            <i class="pin">9</i>
           </div>
-          <div class="ttl a"><span>Top drops today</span><em>$50+</em><i class="pin">7</i></div>
-          <div class="drops">
-            <div class="drop" style="--c:var(--r-cov)"><div class="img"></div><b class="price">$412</b><small>Karambit · m0nk</small></div>
-            <div class="drop" style="--c:var(--r-cla)"><div class="img"></div><b class="price">$96</b><small>AK-47 · nova</small></div>
-            <div class="drop" style="--c:var(--r-cov)"><div class="img"></div><b class="price">$58</b><small>AWP · zed</small></div>
-          </div>
-          <div class="trust a"><span>Provably fair</span><span>Avg withdrawal 3 min</span><span>18+</span><span>Play responsibly</span><i class="pin">8</i></div>
+          <div class="trust a"><span>Provably fair</span><span>Avg withdrawal 3 min</span><span>18+</span><span>Play responsibly</span><i class="pin">10</i></div>
         </div>
-        <div class="bn a"><span>Cases</span><span>Rewards</span><span class="mid">Sign in</span><span>Inventory</span><span>Profile</span><i class="pin">9</i></div>
+        <div class="bn a"><span>Cases</span><span>Rewards</span><span class="mid">Sign in</span><span>Inventory</span><span>Profile</span><i class="pin">11</i></div>
       </div></div>
       <span class="cap">ГОСТЬ</span>
     </div>
 
     <!-- player -->
     <div class="device player">
-      <div class="phone"><div class="scr" style="min-height:900px">
+      <div class="phone"><div class="scr" style="min-height:1080px">
         <div class="fold" style="top:701px"><span>fold · 844 px</span></div>
-        <div class="tb a"><span class="logo">SkinHub</span><span class="sp"></span><span class="lvl"><i class="ring"></i>Lv 7</span><span class="bal">$24.50<i>+</i></span><i class="pin">1</i></div>
+        <div class="ticker"><span class="live">● LIVE</span>
+          <div class="tk" style="--c:var(--r-cov)"><div class="img"></div><small>$412</small></div>
+          <div class="tk" style="--c:var(--r-mil)"><div class="img"></div><small>$0.84</small></div>
+          <div class="tk" style="--c:var(--r-cla)"><div class="img"></div><small>$96</small></div>
+          <div class="tk" style="--c:var(--r-res)"><div class="img"></div><small>$7.10</small></div>
+          <div class="tk" style="--c:var(--r-mil)"><div class="img"></div><small>$1.20</small></div>
+        </div>
+        <div class="tb a"><span class="logo">SkinHub</span><span class="sp"></span><span class="lvl"><i class="ring"></i>Lv 7</span><span class="bal">$24.50<i>+</i></span><i class="pin">2</i></div>
         <div class="body">
-          <div class="strip a" style="border-style:solid"><span class="sp">Free case ready<small>Daily reward · Level 7</small></span><span class="btn">Open</span><i class="pin">2</i></div>
+          <div class="hero" style="height:300px">
+            <span class="tag">EVENT · SEASON 1</span>
+            <b>Neon Heist</b>
+            <div class="timer"><span>19<small>days</small></span><span>08<small>hrs</small></span><span>16<small>min</small></span></div>
+            <span class="btn wide">Continue · Tier 4 of 30</span>
+            <div class="dots"><i class="on"></i><i></i><i></i></div>
+          </div>
+          <div class="strip a" style="border-style:solid"><span class="sp">Free case ready<small>Daily reward · Level 7</small></span><span class="btn">Open</span><i class="pin">4</i></div>
           <div class="chips"><span class="chip on">Cases</span><span class="chip">Battles</span><span class="chip">Upgrade</span><span class="chip lock">🔒 Contracts · Lv 5</span><span class="chip">Event</span></div>
-          <div class="season"><div class="img"></div><div class="sp"><b>Season 1 · Neon Heist</b><small>Tier 4 of 30 · 120 tokens</small></div><span>→</span></div>
+          <div class="offer a"><div class="img"></div><div class="sp"><b>Deposit bonus +15%</b><span class="mini">Ends in 05:12:40</span></div><span class="btn">Top up</span><i class="pin">6</i></div>
+          <div class="promo"><span class="in">PROMO CODE</span><span class="btn ghost">Apply</span></div>
           <div class="chips"><span class="chip on">All</span><span class="chip">Under $1</span><span class="chip">$1–5</span><span class="chip">$5–25</span><span class="chip">$25+</span></div>
           <div class="grid">
             <div class="case"><div class="img"></div><span class="nm">Prime Cut</span><div class="row"><span class="price">$1.00</span><span class="xp">+120 XP</span></div></div>
@@ -209,29 +258,25 @@ section{display:grid;gap:24px}
             <div class="case"><div class="img"></div><span class="nm">Covert Drop</span><div class="row"><span class="price">$6.00</span><span class="xp">+720 XP</span></div></div>
             <div class="case"><div class="img"></div><span class="nm">Knife Club</span><div class="row"><span class="price">$21.00</span><span class="xp">+2.5k XP</span></div></div>
           </div>
-          <div class="ttl"><span>Top drops today</span><em>$50+</em></div>
-          <div class="drops">
-            <div class="drop" style="--c:var(--r-cov)"><div class="img"></div><b class="price">$412</b><small>Karambit · m0nk</small></div>
-            <div class="drop" style="--c:var(--r-cla)"><div class="img"></div><b class="price">$96</b><small>AK-47 · nova</small></div>
-            <div class="drop" style="--c:var(--r-cov)"><div class="img"></div><b class="price">$58</b><small>AWP · zed</small></div>
-          </div>
           <div class="trust"><span>Provably fair</span><span>Avg withdrawal 3 min</span><span>18+</span><span>Play responsibly</span></div>
         </div>
-        <div class="bn a"><span>Cases</span><span>Rewards<em>3</em></span><span class="mid">Add funds</span><span>Inventory</span><span>Profile</span><i class="pin">9</i></div>
+        <div class="bn a"><span>Cases</span><span>Rewards<em>3</em></span><span class="mid">Add funds</span><span>Inventory</span><span>Profile</span><i class="pin">11</i></div>
       </div></div>
       <span class="cap">ИГРОК · ОТЛИЧИЯ ОТМЕЧЕНЫ</span>
     </div>
 
     <ol class="notes">
-      <li><span class="n">1</span><b>Верхняя панель: одна строка</b><p>Логотип и вход. Над панелью ничего: ни ленты дропов, ни платёжной плашки. У игрока вместо входа уровень с кольцом XP и баланс с «+».</p><div class="srcs"><span class="src">против Forcedrop</span><span class="src">против Casehug</span></div></li>
-      <li><span class="n">2</span><b>Демо-полоса</b><p>«Try any case free» ведёт в популярный дешёвый кейс в режиме Demo. Главный рычаг конверсии из исследования. У игрока на этом месте ежедневный бесплатный кейс.</p><div class="srcs"><span class="src">JamSkins</span><span class="src">Forcedrop</span><span class="src">Hellcase Daily Free</span></div></li>
-      <li><span class="n">3</span><b>Строка режимов</b><p>Пять чипов, прокрутка вбок. Contracts виден, но закрыт до 5 уровня: новичок не перегружен, а у игрока есть цель.</p><div class="srcs"><span class="src">Hellcase</span><span class="src">Rain.gg</span></div></li>
-      <li><span class="n">4</span><b>Сезон в одну строку</b><p>Ивент оформлен как мир, но занимает ~64 px, а не весь первый экран.</p><div class="srcs"><span class="src">Casehug</span><span class="src">против Skin.club</span></div></li>
-      <li><span class="n">5</span><b>Фильтр по цене</b><p>Пять ценовых диапазонов. Новичок сразу находит кейс по бюджету.</p><div class="srcs"><span class="src">Forcedrop</span></div></li>
-      <li><span class="n">6</span><b>Сетка кейсов</b><p>Две колонки: цена и награда XP на каждой карточке. Первый ряд целиком выше линии первого экрана.</p><div class="srcs"><span class="src">Hellcase</span><span class="src">Casehug</span></div></li>
-      <li><span class="n">7</span><b>Топ дропов дня</b><p>Только дропы от $50, одна строка. Цвет полосы — редкость CS2.</p><div class="srcs"><span class="src">против Rain.gg</span></div></li>
-      <li><span class="n">8</span><b>Блок доверия</b><p>Provably fair, среднее время вывода, 18+, ответственная игра.</p><div class="srcs"><span class="src">Hellcase</span></div></li>
-      <li><span class="n">9</span><b>Нижнее меню</b><p>Центральная кнопка меняется по состоянию: у гостя Sign in, у игрока Add funds. На Rewards бейдж с числом невыполненных миссий.</p><div class="srcs"><span class="src">Casehug</span><span class="src">Skin.club</span></div></li>
+      <li><span class="n">1</span><b>Живая лента дропов над шапкой <span class="lg-new">v2</span></b><p>Чужие выигрыши в реальном времени, цвет полосы — редкость CS2. Работает как соцдоказательство «здесь выигрывают». Тап по дропу открывает кейс, из которого он выпал.</p><div class="srcs"><span class="src">Casehug</span><span class="src">Forcedrop</span><span class="src">Hellcase</span></div></li>
+      <li><span class="n">2</span><b>Верхняя панель</b><p>Логотип и вход. Без строки статистики и соцсетей. У игрока уровень с кольцом XP и баланс с «+».</p><div class="srcs"><span class="src">против Skin.club</span></div></li>
+      <li><span class="n">3</span><b>Герой ивента на весь экран <span class="lg-new">v2</span></b><p>Арт сезона, таймер до конца и кнопка «Join event», которая ведёт на страницу ивента. Карусель на 2–3 слайда. У игрока кнопка показывает прогресс: «Continue · Tier 4 of 30».</p><div class="srcs"><span class="src">Casehug</span><span class="src">Skin.club</span></div></li>
+      <li><span class="n">4</span><b>Демо-полоса</b><p>«Try any case free» — главный рычаг конверсии гостя. У игрока на этом месте ежедневный бесплатный кейс.</p><div class="srcs"><span class="src">JamSkins</span><span class="src">Forcedrop</span><span class="src">Hellcase Daily Free</span></div></li>
+      <li><span class="n">5</span><b>Строка режимов</b><p>Пять чипов. Contracts закрыт до 5 уровня.</p><div class="srcs"><span class="src">Hellcase</span></div></li>
+      <li><span class="n">6</span><b>Оффер с таймером <span class="lg-new">v2</span></b><p>Гостю — бесплатный кейс для новичка с обратным отсчётом. Игроку — бонус к депозиту с таймером.</p><div class="srcs"><span class="src">Forcedrop</span><span class="src">JamSkins</span></div></li>
+      <li><span class="n">7</span><b>Промокод <span class="lg-new">v2</span></b><p>Поле ввода прямо на главной: коды стримеров и партнёров активируются без перехода в кассу.</p><div class="srcs"><span class="src">Forcedrop</span></div></li>
+      <li><span class="n">8</span><b>Фильтр по цене</b><p>Пять ценовых диапазонов.</p><div class="srcs"><span class="src">Forcedrop</span></div></li>
+      <li><span class="n">9</span><b>Сетка кейсов</b><p>Две колонки, цена и награда XP на карточке. Верх первого ряда выглядывает из-под линии первого экрана и подсказывает, что ниже каталог.</p><div class="srcs"><span class="src">Hellcase</span><span class="src">Casehug</span></div></li>
+      <li><span class="n">10</span><b>Блок доверия</b><p>Provably fair, время вывода, 18+, ответственная игра.</p><div class="srcs"><span class="src">Hellcase</span></div></li>
+      <li><span class="n">11</span><b>Нижнее меню</b><p>В центре Sign in у гостя и Add funds у игрока. Бейдж миссий на Rewards.</p><div class="srcs"><span class="src">Casehug</span><span class="src">Skin.club</span></div></li>
     </ol>
   </div>
 </section>
@@ -239,73 +284,84 @@ section{display:grid;gap:24px}
 <section>
   <div class="sec-head"><span class="eyebrow">Десктоп · 1280 × 800 · гость</span><h2>Та же иерархия, шире сетка</h2></div>
   <div class="desk-scroll">
-    <div class="desk"><div class="scr" style="min-height:760px">
+    <div class="desk"><div class="scr" style="min-height:1000px">
       <div class="fold" style="top:688px"><span>fold · 800 px</span></div>
+      <div class="ticker a"><span class="live">● LIVE</span>
+        <div class="tk" style="--c:var(--r-cov)"><div class="img"></div><small>$412 · Karambit</small></div>
+        <div class="tk" style="--c:var(--r-mil)"><div class="img"></div><small>$0.84 · P250</small></div>
+        <div class="tk" style="--c:var(--r-cla)"><div class="img"></div><small>$96 · AK-47</small></div>
+        <div class="tk" style="--c:var(--r-res)"><div class="img"></div><small>$7.10 · MP9</small></div>
+        <div class="tk" style="--c:var(--r-mil)"><div class="img"></div><small>$1.20 · Glock</small></div>
+        <div class="tk" style="--c:var(--r-cov)"><div class="img"></div><small>$58 · AWP</small></div>
+        <div class="tk" style="--c:var(--r-res)"><div class="img"></div><small>$12 · M4A1-S</small></div>
+        <div class="tk" style="--c:var(--r-mil)"><div class="img"></div><small>$0.40 · Nova</small></div>
+        <div class="tk" style="--c:var(--r-cla)"><div class="img"></div><small>$51 · USP-S</small></div>
+        <div class="tk" style="--c:var(--r-res)"><div class="img"></div><small>$9.30 · FAMAS</small></div>
+        <div class="tk" style="--c:var(--r-mil)"><div class="img"></div><small>$2.10 · MAC-10</small></div>
+        <i class="pin">1</i></div>
       <div class="dhead a">
         <span class="logo" style="font-size:16px">SkinHub</span>
         <div class="tabs"><span class="tab on">Cases</span><span class="tab">Battles</span><span class="tab">Upgrade</span><span class="tab lock">🔒 Contracts · Lv 5</span><span class="tab">Event</span></div>
-        <span class="sp"></span><span class="btn">Sign in</span><i class="pin l">1</i>
+        <span class="sp"></span><span class="btn">Sign in</span><i class="pin">2</i>
       </div>
       <div class="dbody">
-        <div class="duo a">
-          <div class="hero demo"><div class="img"></div><div><b>Try any case free</b><small>No sign-up · demo wins don't count</small><span class="btn">Try free →</span></div></div>
-          <div class="hero season"><div class="img"></div><div><b>Season 1 · Neon Heist</b><small>19 days left · earn tokens on every case</small><span class="btn ghost">See rewards</span></div></div>
-          <i class="pin">2</i>
+        <div class="a"><div class="dhero">
+          <span class="tag">EVENT · SEASON 1</span>
+          <b>Neon Heist</b>
+          <small>Open event cases, collect tokens, unlock 30 reward tiers</small>
+          <div class="timer"><span>19<small>days</small></span><span>08<small>hrs</small></span><span>16<small>min</small></span><span>42<small>sec</small></span></div>
+          <span class="btn">Join event →</span>
+          <div class="dots" style="justify-content:flex-start"><i class="on"></i><i></i><i></i></div>
+        </div><i class="pin">3</i></div>
+        <div class="trio a">
+          <div class="strip" style="height:100%"><span class="sp">Try any case free<small>No sign-up · demo wins don't count</small></span><span class="btn">Try free →</span></div>
+          <div class="offer"><div class="img"></div><div class="sp"><b>Free case for new players</b><span class="mini">Ends in 23:41:08</span></div><span class="btn">Get</span></div>
+          <div class="offer"><div class="promo sp"><span class="in">PROMO CODE</span><span class="btn ghost">Apply</span></div></div>
+          <i class="pin">4</i>
         </div>
-        <div class="filters a"><span class="search">Search cases</span><span class="chip on">All</span><span class="chip">Under $1</span><span class="chip">$1–5</span><span class="chip">$5–25</span><span class="chip">$25+</span><span class="sp"></span><span class="chip">Sort: Popular ▾</span><i class="pin">3</i></div>
+        <div class="filters a"><span class="search">Search cases</span><span class="chip on">All</span><span class="chip">Under $1</span><span class="chip">$1–5</span><span class="chip">$5–25</span><span class="chip">$25+</span><span class="sp"></span><span class="chip">Sort: Popular ▾</span><i class="pin">5</i></div>
         <div class="dgrid a">
           <div class="case"><div class="img"></div><span class="nm">Prime Cut</span><div class="row"><span class="price">$1.00</span><span class="xp">+120 XP</span></div></div>
           <div class="case"><div class="img"></div><span class="nm">Night Ops</span><div class="row"><span class="price">$2.50</span><span class="xp">+300 XP</span></div></div>
           <div class="case"><div class="img"></div><span class="nm">Covert Drop</span><div class="row"><span class="price">$6.00</span><span class="xp">+720 XP</span></div></div>
           <div class="case"><div class="img"></div><span class="nm">Knife Club</span><div class="row"><span class="price">$21.00</span><span class="xp">+2.5k XP</span></div></div>
           <div class="case"><div class="img"></div><span class="nm">Gloves Only</span><div class="row"><span class="price">$45.00</span><span class="xp">+5.4k XP</span></div></div>
-          <div class="case"><div class="img"></div><span class="nm">Starter</span><div class="row"><span class="price">$0.50</span><span class="xp">+60 XP</span></div></div>
-          <div class="case"><div class="img"></div><span class="nm">Mil-Spec Mix</span><div class="row"><span class="price">$1.80</span><span class="xp">+215 XP</span></div></div>
-          <div class="case"><div class="img"></div><span class="nm">AWP Lovers</span><div class="row"><span class="price">$8.00</span><span class="xp">+960 XP</span></div></div>
-          <div class="case"><div class="img"></div><span class="nm">Neon Heist</span><div class="row"><span class="price">$12.00</span><span class="xp">+1.4k XP</span></div></div>
-          <div class="case"><div class="img"></div><span class="nm">Dragon Hoard</span><div class="row"><span class="price">$99.00</span><span class="xp">+12k XP</span></div></div>
-          <i class="pin">4</i>
+          <i class="pin">6</i>
         </div>
-        <div class="ttl a"><span>Top drops today</span><em>$50+</em><i class="pin">5</i></div>
-        <div class="drops">
-          <div class="drop" style="--c:var(--r-cov);width:120px"><div class="img"></div><b class="price">$412</b><small>Karambit · m0nk</small></div>
-          <div class="drop" style="--c:var(--r-cla);width:120px"><div class="img"></div><b class="price">$96</b><small>AK-47 · nova</small></div>
-          <div class="drop" style="--c:var(--r-cov);width:120px"><div class="img"></div><b class="price">$58</b><small>AWP · zed</small></div>
-          <div class="drop" style="--c:var(--r-res);width:120px"><div class="img"></div><b class="price">$54</b><small>M4A1-S · kiv</small></div>
-          <div class="drop" style="--c:var(--r-cla);width:120px"><div class="img"></div><b class="price">$51</b><small>USP-S · r1a</small></div>
-        </div>
-        <div class="dfoot a"><span>Provably fair · Avg withdrawal 3 min · 18+ · Play responsibly</span><span>Terms · Privacy · Support</span><i class="pin">6</i></div>
+        <div class="dfoot a"><span>Provably fair · Avg withdrawal 3 min · 18+ · Play responsibly</span><span>Terms · Privacy · Support</span><i class="pin">7</i></div>
       </div>
-      <div class="chat a"><i class="pin l">7</i></div>
+      <div class="chat a"><i class="pin l">8</i></div>
     </div></div>
   </div>
   <ol class="notes desk-notes">
-    <li><span class="n">1</span><b>Шапка в одну строку</b><p>Табы режимов заменяют мобильную строку чипов. Никакой второй навигации и строки статистики.</p><div class="srcs"><span class="src">Hellcase</span><span class="src">против Skin.club</span></div></li>
-    <li><span class="n">2</span><b>Демо и сезон, ~120 px</b><p>Два блока одной высоты вместо героя на весь экран. Демо слева, на первом месте по чтению.</p><div class="srcs"><span class="src">JamSkins</span><span class="src">Casehug</span></div></li>
-    <li><span class="n">3</span><b>Фильтры</b><p>Поиск, цены, сортировка в одной строке.</p><div class="srcs"><span class="src">Forcedrop</span></div></li>
-    <li><span class="n">4</span><b>Сетка 5 колонок</b><p>Два ряда кейсов выше линии первого экрана.</p><div class="srcs"><span class="src">Hellcase</span></div></li>
-    <li><span class="n">5</span><b>Топ дропов</b><p>Одна строка, от $50, цвет редкости.</p><div class="srcs"><span class="src">против Rain.gg</span></div></li>
-    <li><span class="n">6</span><b>Доверие и футер</b><p>Provably fair, время вывода, 18+, ответственная игра.</p><div class="srcs"><span class="src">Hellcase</span></div></li>
-    <li><span class="n">7</span><b>Чат свёрнут</b><p>Плавающая кнопка вместо колонки на четверть экрана. Боковых колонок нет.</p><div class="srcs"><span class="src">против Rain.gg</span><span class="src">против Hellcase</span></div></li>
+    <li><span class="n">1</span><b>Лента дропов <span class="lg-new">v2</span></b><p>Во всю ширину над шапкой. На десктопе видны скин и цена.</p><div class="srcs"><span class="src">Casehug</span><span class="src">Forcedrop</span></div></li>
+    <li><span class="n">2</span><b>Шапка в одну строку</b><p>Табы режимов, вход. Без статистики и соцсетей.</p><div class="srcs"><span class="src">Hellcase</span><span class="src">против Skin.club</span></div></li>
+    <li><span class="n">3</span><b>Герой ивента <span class="lg-new">v2</span></b><p>~380 px: арт, описание, таймер до секунд, «Join event» ведёт на страницу ивента.</p><div class="srcs"><span class="src">Casehug</span><span class="src">Skin.club</span></div></li>
+    <li><span class="n">4</span><b>Демо, оффер, промокод <span class="lg-new">v2</span></b><p>Три блока одной строкой сразу под героем: попробовать бесплатно, кейс новичка с таймером, поле промокода.</p><div class="srcs"><span class="src">JamSkins</span><span class="src">Forcedrop</span></div></li>
+    <li><span class="n">5</span><b>Фильтры</b><p>Поиск, цены, сортировка.</p><div class="srcs"><span class="src">Forcedrop</span></div></li>
+    <li><span class="n">6</span><b>Сетка 5 колонок</b><p>Сразу после фильтров. Верх первого ряда на линии первого экрана.</p><div class="srcs"><span class="src">Hellcase</span></div></li>
+    <li><span class="n">7</span><b>Доверие и футер</b><p>Provably fair, время вывода, 18+, ответственная игра.</p><div class="srcs"><span class="src">Hellcase</span></div></li>
+    <li><span class="n">8</span><b>Чат свёрнут</b><p>Плавающая кнопка вместо колонки.</p><div class="srcs"><span class="src">против Rain.gg</span></div></li>
   </ol>
 </section>
 
 <section>
-  <div class="sec-head"><span class="eyebrow">Сознательно убрано</span><h2>Чего на экране нет</h2></div>
-  <div class="absent">
-    <div><b>Лента дропов над шапкой</b><span>Шум над каталогом у Forcedrop, Casehug, Hellcase</span></div>
-    <div><b>Герой на весь экран</b><span>Кейсы уходят ниже первого экрана у Casehug и Skin.club</span></div>
-    <div><b>Регистрация как главный блок</b><span>39% отказов у Rain.gg</span></div>
-    <div><b>Таймеры и промокоды</b><span>Давление и потеря доверия у Forcedrop</span></div>
-    <div><b>Статистика и соцсети в шапке</b><span>Перегруженная шапка Skin.club</span></div>
+  <div class="sec-head"><span class="eyebrow">Журнал решений · ревью 2 октября 2026</span><h2>Что решили по спорным блокам</h2></div>
+  <div class="log">
+    <div class="dec"><span class="v keep">НУЖНА</span><b>Лента дропов над шапкой</b><span class="d">Соцдоказательство. У Casehug она есть, а метрики лучшие в выборке.</span></div>
+    <div class="dec"><span class="v keep">НУЖЕН</span><b>Герой на весь экран, ведёт на ивент</b><span class="d">У Casehug и Skin.club глубина визита 13+ страниц при герое на весь экран. Каталог уходит под первый экран.</span></div>
+    <div class="dec"><span class="v keep">НУЖНЫ</span><b>Таймеры и промокоды</b><span class="d">Таймер ивента в герое, оффер новичка и бонус к депозиту с таймером, поле промокода на главной.</span></div>
+    <div class="dec"><span class="v drop">НЕ НУЖНЫ</span><b>Статистика и соцсети в шапке</b><span class="d">Шапка остаётся в одну строку.</span></div>
   </div>
 </section>
 
 <section>
   <div class="sec-head"><span class="eyebrow">Решить до концепта</span><h2>Открытые вопросы</h2></div>
   <ol class="qs">
+    <li><b>Лента дропов: все дропы или от порога?</b> Сейчас показаны все, включая дешёвые.</li>
+    <li><b>Сколько слайдов в герое</b> и что на них кроме ивента?</li>
     <li><b>Contracts в v1</b> или после запуска?</li>
-    <li><b>Доллары или внутренняя валюта?</b> Исследование за доллары: монета у Rain.gg делает цену непрозрачной.</li>
+    <li><b>Доллары или внутренняя валюта?</b> Исследование за доллары.</li>
     <li><b>Демо без ограничений</b> или N спинов в день?</li>
     <li><b>Нужен ли чат</b> в v1?</li>
   </ol>
