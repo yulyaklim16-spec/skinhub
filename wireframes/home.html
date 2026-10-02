@@ -118,6 +118,7 @@ section{display:grid;gap:24px}
 .promo small{display:block;color:var(--ink2);font-size:9.5px;margin-top:3px}
 .dhero .promo{justify-self:stretch;background:var(--scr);padding:6px;border-radius:8px}
 .slide .promo .in{font-size:.72rem}
+.hero .promo{justify-self:stretch;background:var(--scr);padding:5px;border-radius:7px}
 .trio.two{grid-template-columns:1.2fr 1fr}
 .burger{flex:none;width:28px;height:28px;border-radius:7px;border:1px solid var(--blk2);display:grid;place-items:center;font-size:14px;line-height:1;color:var(--ink)}
 .hero,.dhero{position:relative}
@@ -192,14 +193,14 @@ section{display:grid;gap:24px}
 
 <div class="wrap">
 <header>
-  <span class="eyebrow">SkinHub · Этап 2 · Вайрфреймы · v6 · 2 октября 2026</span>
+  <span class="eyebrow">SkinHub · Этап 2 · Вайрфреймы · v7 · 2 октября 2026</span>
   <h1>Главная: первый экран</h1>
-  <p class="lede">Первый экран продаёт текущий ивент: живая лента дропов, герой на весь экран с таймером и переход в ивент. Ниже демо, бонус новичка и каталог кейсов. Каждый блок взят у конкурента по итогам исследования. В v2–v6 учтены решения по ревью от 2 октября.</p>
+  <p class="lede">Первый экран продаёт текущий ивент: живая лента дропов, герой на весь экран с таймером и переход в ивент. Ниже демо, бонус новичка и каталог кейсов. Каждый блок взят у конкурента по итогам исследования. В v2–v7 учтены решения по ревью от 2 октября.</p>
   <div class="legend">
     <span><i class="pin" style="position:static;box-shadow:none">1</i> блок, пояснение справа</span>
     <span><i class="lg-fold"></i> граница первого экрана без прокрутки</span>
     <span><i class="lg-src">Hellcase</i> откуда взят паттерн</span>
-    <span><i class="lg-new">v2</i>–<i class="lg-new">v6</i> изменено по ревью</span>
+    <span><i class="lg-new">v2</i>–<i class="lg-new">v7</i> изменено по ревью</span>
   </div>
 </header>
 
@@ -225,9 +226,9 @@ section{display:grid;gap:24px}
             <div class="timer"><span>19<small>days</small></span><span>08<small>hrs</small></span><span>16<small>min</small></span></div>
             <span class="btn wide">Join event</span>
           </div><div class="hero" style="height:290px">
-            <span class="tag">NEW CASE</span>
-            <b>Dragon Hoard</b>
-            <span class="btn wide">Open case</span>
+            <span class="tag">PROMO</span>
+            <b>Got a code from a streamer?</b>
+            <div class="promo"><span class="in">PROMO CODE</span><span class="btn">Apply</span></div>
           </div></div>
           <div class="dots"><i class="on"></i><i></i><i></i><i></i></div><i class="pin">3</i></div>
           <div class="strip a"><span class="sp">Try any case free<small>No sign-up · demo wins don't count</small></span><span>→</span><i class="pin">4</i></div>
@@ -267,9 +268,9 @@ section{display:grid;gap:24px}
             <div class="timer"><span>19<small>days</small></span><span>08<small>hrs</small></span><span>16<small>min</small></span></div>
             <span class="btn wide">Continue · Tier 4 of 30</span>
           </div><div class="hero" style="height:290px">
-            <span class="tag">NEW CASE</span>
-            <b>Dragon Hoard</b>
-            <span class="btn wide">Open case</span>
+            <span class="tag">PROMO</span>
+            <b>Got a code from a streamer?</b>
+            <div class="promo"><span class="in">PROMO CODE</span><span class="btn">Apply</span></div>
           </div></div>
           <div class="dots"><i class="on"></i><i></i><i></i><i></i></div></div>
           <div class="strip a" style="border-style:solid"><span class="sp">Free case ready<small>Daily reward · Level 7</small></span><span class="btn">Open</span><i class="pin">4</i></div>
@@ -292,7 +293,7 @@ section{display:grid;gap:24px}
     <ol class="notes">
       <li><span class="n">1</span><b>Живая лента дропов над шапкой <span class="lg-new">v2</span></b><p>Все выигрыши в реальном времени, без порога цены: и $0.84, и $412. Цвет полосы — редкость CS2. Работает как соцдоказательство «здесь выигрывают». Тап по дропу открывает кейс, из которого он выпал.</p><div class="srcs"><span class="src">Casehug</span><span class="src">Forcedrop</span><span class="src">Hellcase</span></div></li>
       <li><span class="n">2</span><b>Верхняя панель и меню <span class="lg-new">v3</span></b><p>Логотип, вход и справа кнопка меню ☰. Меню открывает второстепенное: Provably fair, FAQ, поддержка, партнёрка, язык и валюта, ответственная игра. У игрока уровень с кольцом XP, баланс с «+» и меню. Без статистики и соцсетей.</p><div class="srcs"><span class="src">против Skin.club</span></div></li>
-      <li><span class="n">3</span><b>Герой ивента <span class="lg-new">v5</span></b><p>Арт сезона, таймер до конца и кнопка «Join event», которая ведёт на страницу ивента. Карусель из 4 слайдов, 4-й — промокод с полем ввода прямо в баннере (v6). Слайд занимает ~86% ширины, справа виден край следующего — понятно, что можно листать свайпом. Стрелок нет, точки внизу; слайды ниже. У игрока кнопка показывает прогресс: «Continue · Tier 4 of 30».</p><div class="srcs"><span class="src">Casehug</span><span class="src">решение v5: без стрелок</span></div></li>
+      <li><span class="n">3</span><b>Герой ивента <span class="lg-new">v5</span></b><p>Арт сезона, таймер до конца и кнопка «Join event», которая ведёт на страницу ивента. Карусель из 4 слайдов, 2-й — промокод с полем ввода прямо в баннере, его край виден справа сразу (v7). Слайд занимает ~86% ширины, справа виден край следующего — понятно, что можно листать свайпом. Стрелок нет, точки внизу; слайды ниже. У игрока кнопка показывает прогресс: «Continue · Tier 4 of 30».</p><div class="srcs"><span class="src">Casehug</span><span class="src">решение v5: без стрелок</span></div></li>
       <li><span class="n">4</span><b>Демо-полоса</b><p>«Try any case free» — главный рычаг конверсии гостя. У игрока на этом месте ежедневный бесплатный кейс.</p><div class="srcs"><span class="src">JamSkins</span><span class="src">Forcedrop</span><span class="src">Hellcase Daily Free</span></div></li>
       <li><span class="n">5</span><b>Строка режимов</b><p>Пять чипов. Contracts закрыт до 5 уровня.</p><div class="srcs"><span class="src">Hellcase</span></div></li>
       <li><span class="n">6</span><b>Оффер с таймером <span class="lg-new">v2</span></b><p>Гостю — бесплатный кейс для новичка с обратным отсчётом. Игроку — бонус к депозиту с таймером.</p><div class="srcs"><span class="src">Forcedrop</span><span class="src">JamSkins</span></div></li>
@@ -308,9 +309,9 @@ section{display:grid;gap:24px}
   <div class="sec-head"><span class="eyebrow">Карусель героя · 4 слайда · v5</span><h2>Что на слайдах</h2><p style="color:var(--muted)">Подтверждено владельцем 2 октября. Порядок — по приоритету. Каждый слайд ведёт в одно место. Мобайл: слайд на ~86% ширины, справа выглядывает следующий, листается свайпом. Десктоп: три слайда в ряд, справа выглядывает четвёртый, листается перетаскиванием. Стрелок нет. Автопрокрутка раз в 6 секунд останавливается после касания.</p></div>
   <div class="slides">
     <div class="slide"><div class="img">1 · EVENT</div><b>Season 1 · Neon Heist</b><span>Таймер до конца ивента</span><span>Кнопка <code>Join event</code> → страница ивента</span></div>
-    <div class="slide"><div class="img">2 · NEW CASE</div><b>New case: Dragon Hoard</b><span>Плашка «New this week»</span><span>Кнопка <code>Open case</code> → страница кейса</span></div>
-    <div class="slide"><div class="img">3 · GIVEAWAY</div><b>Weekly giveaway: AWP</b><span>Таймер до розыгрыша</span><span>Кнопка <code>Join giveaway</code> → розыгрыши</span></div>
-    <div class="slide"><div class="img">4 · PROMO</div><b>Got a code from a streamer?</b><span>Бонус +15% к пополнению или бесплатный кейс</span><div class="promo"><span class="in">PROMO CODE</span><span class="btn ghost">Apply</span></div><span>Поле ввода прямо в баннере, отдельной строки на главной нет (v6)</span></div>
+    <div class="slide"><div class="img">2 · PROMO</div><b>Got a code from a streamer?</b><span>Бонус +15% к пополнению или бесплатный кейс</span><div class="promo"><span class="in">PROMO CODE</span><span class="btn ghost">Apply</span></div><span>Поле ввода прямо в баннере, второй слайд — виден сразу краем справа (v7)</span></div>
+    <div class="slide"><div class="img">3 · NEW CASE</div><b>New case: Dragon Hoard</b><span>Плашка «New this week»</span><span>Кнопка <code>Open case</code> → страница кейса</span></div>
+    <div class="slide"><div class="img">4 · GIVEAWAY</div><b>Weekly giveaway: AWP</b><span>Таймер до розыгрыша</span><span>Кнопка <code>Join giveaway</code> → розыгрыши</span></div>
   </div>
 </section>
 
@@ -348,6 +349,12 @@ section{display:grid;gap:24px}
               <span class="btn">Join event →</span>
             </div>
             <div class="dhero">
+              <span class="tag">PROMO</span>
+              <b>Got a code from a streamer?</b>
+              <small>+15% on deposit or a free case</small>
+              <div class="promo"><span class="in">PROMO CODE</span><span class="btn">Apply</span></div>
+            </div>
+            <div class="dhero">
               <span class="tag">NEW CASE</span>
               <b>Dragon Hoard</b>
               <small>New this week · from $99</small>
@@ -359,12 +366,6 @@ section{display:grid;gap:24px}
               <small>Free entry for Level 3+</small>
               <div class="timer"><span>03<small>days</small></span><span>11<small>hrs</small></span><span>05<small>min</small></span></div>
               <span class="btn">Join giveaway →</span>
-            </div>
-            <div class="dhero">
-              <span class="tag">PROMO</span>
-              <b>Got a code from a streamer?</b>
-              <small>+15% on deposit or a free case</small>
-              <div class="promo"><span class="in">PROMO CODE</span><span class="btn">Apply</span></div>
             </div>
           </div>
           <div class="dots"><i class="on"></i><i></i></div>
@@ -392,8 +393,8 @@ section{display:grid;gap:24px}
   <ol class="notes desk-notes">
     <li><span class="n">1</span><b>Лента дропов <span class="lg-new">v2</span></b><p>Во всю ширину над шапкой, все дропы без порога. На десктопе видны скин и цена.</p><div class="srcs"><span class="src">Casehug</span><span class="src">Forcedrop</span></div></li>
     <li><span class="n">2</span><b>Шапка в одну строку</b><p>Табы режимов, вход. Без статистики и соцсетей.</p><div class="srcs"><span class="src">Hellcase</span><span class="src">против Skin.club</span></div></li>
-    <li><span class="n">3</span><b>Слайды тремя блоками <span class="lg-new">v5</span></b><p>Три слайда в ряд: ивент, новый кейс, розыгрыш. Справа выглядывает край четвёртого (промокод), поэтому стрелки не нужны: ряд листается перетаскиванием и свайпом на тачпаде. Каждая карточка ведёт в своё место.</p><div class="srcs"><span class="src">Casehug</span><span class="src">Skin.club</span></div></li>
-    <li><span class="n">4</span><b>Демо и оффер <span class="lg-new">v6</span></b><p>Два блока одной строкой под героем: попробовать бесплатно и кейс новичка с таймером. Промокод переехал в 4-й баннер карусели.</p><div class="srcs"><span class="src">JamSkins</span><span class="src">Forcedrop</span></div></li>
+    <li><span class="n">3</span><b>Слайды тремя блоками <span class="lg-new">v5</span></b><p>Три слайда в ряд: ивент, промокод с полем ввода, новый кейс. Справа выглядывает край четвёртого (розыгрыш), поэтому стрелки не нужны: ряд листается перетаскиванием и свайпом на тачпаде. Каждая карточка ведёт в своё место.</p><div class="srcs"><span class="src">Casehug</span><span class="src">Skin.club</span></div></li>
+    <li><span class="n">4</span><b>Демо и оффер <span class="lg-new">v6</span></b><p>Два блока одной строкой под героем: попробовать бесплатно и кейс новичка с таймером. Промокод — во 2-м баннере карусели.</p><div class="srcs"><span class="src">JamSkins</span><span class="src">Forcedrop</span></div></li>
     <li><span class="n">5</span><b>Фильтры</b><p>Поиск, цены, сортировка.</p><div class="srcs"><span class="src">Forcedrop</span></div></li>
     <li><span class="n">6</span><b>Сетка 5 колонок</b><p>Сразу после фильтров. Верх первого ряда на линии первого экрана.</p><div class="srcs"><span class="src">Hellcase</span></div></li>
     <li><span class="n">7</span><b>Доверие и футер</b><p>Provably fair, время вывода, 18+, ответственная игра.</p><div class="srcs"><span class="src">Hellcase</span></div></li>
@@ -413,7 +414,8 @@ section{display:grid;gap:24px}
     <div class="dec"><span class="v keep">НУЖНЫ</span><b>Несколько слайдов героя со стрелками</b><span class="d">Стрелки по образцу Skin.club. Состав слайдов предложил Claude, владелец подтвердил. v3–v4.</span></div>
     <div class="dec"><span class="v keep">3 В РЯД</span><b>Десктоп: слайды тремя блоками в строку</b><span class="d">Больше информации за раз. v4.</span></div>
     <div class="dec"><span class="v drop">БЕЗ СТРЕЛОК</span><b>Баннер не на всю ширину, следующий выглядывает</b><span class="d">Край следующего слайда показывает, что баннеров несколько; стрелки убраны на мобайле и десктопе. v5.</span></div>
-    <div class="dec"><span class="v keep">В БАННЕР</span><b>Промокод — в 4-м баннере карусели</b><span class="d">Отдельное поле без контекста было непонятно. В баннере есть заголовок «Got a code from a streamer?» и выгода. v6.</span></div>
+    <div class="dec"><span class="v keep">В БАННЕР</span><b>Промокод — в баннере карусели</b><span class="d">Отдельное поле без контекста было непонятно. В баннере есть заголовок «Got a code from a streamer?» и выгода. v6.</span></div>
+    <div class="dec"><span class="v keep">2-Й СЛАЙД</span><b>Промокод — вторым слайдом</b><span class="d">Чтобы его было видно сразу: на мобайле выглядывает справа, на десктопе стоит в первом ряду. Порядок: ивент, промокод, новый кейс, розыгрыш. v7.</span></div>
   </div>
 </section>
 
