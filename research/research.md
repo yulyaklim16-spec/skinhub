@@ -198,14 +198,14 @@
 | Розыгрыши за депозит и победители | Forcedrop | 1/7 |
 | Казино-игры (mines, dice, double) | JamSkins, Rain.gg | 2/7 |
 
-**Взяли в главную SkinHub (v10):** полки Hot Cases · Event Cases · Cheap · Gloves & Knife · Creators вместо общей сетки;
+**Взяли в главную SkinHub (v10):** полки Hot Cases · Event Cases · Cheap · Knives · Creators вместо общей сетки;
 лидерборд недели; How it works (только гостю); FAQ; SEO-текст. Порядок: полки → лидерборд → How it works →
 FAQ → SEO → футер. См. [`../wireframes/home.md`](../wireframes/home.md).
 
 Названия полок взяты дословно (v10.1): Hot Cases — Forcedrop «HOT CASES»; Event Cases — Hellcase «Event cases»,
-Skin.club «EVENT CASES»; Cheap — Forcedrop «CHEAP»; Gloves & Knife — JamSkins «GLOVES & KNIFE»; Creators — Hellcase «Creators».
+Skin.club «EVENT CASES»; Cheap — Forcedrop «CHEAP»; Knives — Hellcase «Knives»; Creators — Hellcase «Creators».
 Другие варианты у конкурентов: Hellcase «On Fire», «Best Deals», «Knives»; Skin.club «TRENDING», «BESTSELLER CASES»,
-«CREATORS CASES»; Forcedrop «BLOGGERS' CASES»; JamSkins «Cheap CS2 Cases».
+«CREATORS CASES»; Forcedrop «BLOGGERS' CASES»; JamSkins «Cheap CS2 Cases», «GLOVES & KNIFE».
 
 **Отложили:** кейсы от сообщества (нужен конструктор кейсов, v2). **Не делаем:** казино-игры (риск для лицензии
 и бренда), розыгрыши за депозит (давят на импульсивную покупку).
