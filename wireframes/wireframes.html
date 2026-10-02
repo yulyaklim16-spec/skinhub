@@ -120,8 +120,10 @@ section{display:grid;gap:24px}
 .hero,.dhero{position:relative}
 .arw{position:absolute;top:38%;width:26px;height:26px;border-radius:7px;background:var(--scr);border:1px solid var(--blk2);display:grid;place-items:center;font:700 13px/1 var(--f-mono);color:var(--ink);z-index:2}
 .arw.l{left:8px}.arw.r{right:8px}
-.dhero .arw{top:calc(50% - 20px);width:40px;height:40px;font-size:18px;border-radius:9px}
-.dhero .arw.l{left:-1px;border-radius:0 9px 9px 0}.dhero .arw.r{right:-1px;border-radius:9px 0 0 9px}
+.drow{position:relative;display:grid;gap:10px}
+.drow .cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.drow .arw{top:calc(50% - 28px);width:36px;height:36px;font-size:17px;border-radius:50%;box-shadow:0 0 0 3px var(--scr)}
+.drow .arw.l{left:-16px}.drow .arw.r{right:-16px}
 .slides{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
 .slide{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px;display:grid;gap:8px;align-content:start}
 .slide .img{height:96px;display:grid;place-items:center;font-family:var(--f-mono);font-size:.7rem;color:var(--muted)}
@@ -153,13 +155,13 @@ section{display:grid;gap:24px}
 .tab.on{background:var(--blk);font-weight:600}
 .tab.lock{color:var(--ink2)}
 .dbody{display:flex;flex-direction:column;gap:16px;padding:18px 22px 28px}
-.dhero{height:330px;border-radius:12px;display:grid;align-content:center;gap:12px;padding:0 48px;background:repeating-linear-gradient(135deg,var(--blk) 0 10px,var(--blk2) 10px 11px);border:1px solid var(--blk2)}
+.dhero{height:300px;border-radius:12px;display:grid;align-content:end;gap:10px;padding:20px;background:repeating-linear-gradient(135deg,var(--blk) 0 10px,var(--blk2) 10px 11px);border:1px solid var(--blk2)}
 .dhero .tag,.dhero b,.dhero small{justify-self:start;background:var(--scr);padding:2px 8px;border-radius:4px}
 .dhero .tag{font-family:var(--f-mono);font-size:10px;font-weight:600;letter-spacing:.06em}
-.dhero b{font-family:var(--f-display);font-size:30px;line-height:1.1}
+.dhero b{font-family:var(--f-display);font-size:20px;line-height:1.15}
 .dhero small{color:var(--ink2);font-size:12px}
-.dhero .timer span{font-size:16px;padding:5px 9px}
-.dhero .btn{justify-self:start;padding:10px 22px;font-size:13px}
+.dhero .timer span{font-size:13px;padding:4px 7px}
+.dhero .btn{justify-self:start;padding:9px 18px;font-size:12px}
 .trio{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:12px}
 .trio > div{min-width:0}
 .filters{display:flex;gap:8px;align-items:center}
@@ -186,14 +188,14 @@ section{display:grid;gap:24px}
 
 <div class="wrap">
 <header>
-  <span class="eyebrow">SkinHub · Этап 2 · Вайрфреймы · v3 · 2 октября 2026</span>
+  <span class="eyebrow">SkinHub · Этап 2 · Вайрфреймы · v4 · 2 октября 2026</span>
   <h1>Главная: первый экран</h1>
-  <p class="lede">Первый экран продаёт текущий ивент: живая лента дропов, герой на весь экран с таймером и переход в ивент. Ниже бонусы новичка, демо и каталог кейсов. Каждый блок взят у конкурента по итогам исследования. В v2 и v3 учтены решения по ревью от 2 октября.</p>
+  <p class="lede">Первый экран продаёт текущий ивент: живая лента дропов, герой на весь экран с таймером и переход в ивент. Ниже бонусы новичка, демо и каталог кейсов. Каждый блок взят у конкурента по итогам исследования. В v2–v4 учтены решения по ревью от 2 октября.</p>
   <div class="legend">
     <span><i class="pin" style="position:static;box-shadow:none">1</i> блок, пояснение справа</span>
     <span><i class="lg-fold"></i> граница первого экрана без прокрутки</span>
     <span><i class="lg-src">Hellcase</i> откуда взят паттерн</span>
-    <span><i class="lg-new">v2</i> <i class="lg-new">v3</i> изменено по ревью</span>
+    <span><i class="lg-new">v2</i> <i class="lg-new">v3</i> <i class="lg-new">v4</i> изменено по ревью</span>
   </div>
 </header>
 
@@ -296,7 +298,7 @@ section{display:grid;gap:24px}
 </section>
 
 <section>
-  <div class="sec-head"><span class="eyebrow">Карусель героя · 4 слайда · v3</span><h2>Что на слайдах</h2><p style="color:var(--muted)">Предложение Claude, порядок — по приоритету. Каждый слайд ведёт в одно место. Переключение стрелками ‹ › по бокам и свайпом, автопрокрутка раз в 6 секунд останавливается после касания.</p></div>
+  <div class="sec-head"><span class="eyebrow">Карусель героя · 4 слайда · v3</span><h2>Что на слайдах</h2><p style="color:var(--muted)">Предложение Claude, порядок — по приоритету. Каждый слайд ведёт в одно место. Мобайл: один слайд на экран, стрелки ‹ › по бокам и свайп. Десктоп: три слайда в ряд, стрелки сдвигают ряд на один. Автопрокрутка раз в 6 секунд останавливается после касания.</p></div>
   <div class="slides">
     <div class="slide"><div class="img">1 · EVENT</div><b>Season 1 · Neon Heist</b><span>Таймер до конца ивента</span><span>Кнопка <code>Join event</code> → страница ивента</span></div>
     <div class="slide"><div class="img">2 · NEW CASE</div><b>New case: Dragon Hoard</b><span>Плашка «New this week»</span><span>Кнопка <code>Open case</code> → страница кейса</span></div>
@@ -308,7 +310,7 @@ section{display:grid;gap:24px}
 <section>
   <div class="sec-head"><span class="eyebrow">Десктоп · 1280 × 800 · гость</span><h2>Та же иерархия, шире сетка</h2></div>
   <div class="desk-scroll">
-    <div class="desk"><div class="scr" style="min-height:1000px">
+    <div class="desk"><div class="scr" style="min-height:900px">
       <div class="fold" style="top:688px"><span>fold · 800 px</span></div>
       <div class="ticker a"><span class="live">● LIVE</span>
         <div class="tk" style="--c:var(--r-cov)"><div class="img"></div><small>$412 · Karambit</small></div>
@@ -329,15 +331,33 @@ section{display:grid;gap:24px}
         <span class="sp"></span><span class="btn">Sign in</span><i class="pin">2</i>
       </div>
       <div class="dbody">
-        <div class="a"><div class="dhero">
-          <span class="tag">EVENT · SEASON 1</span>
-          <b>Neon Heist</b>
-          <small>Open event cases, collect tokens, unlock 30 reward tiers</small>
-          <div class="timer"><span>19<small>days</small></span><span>08<small>hrs</small></span><span>16<small>min</small></span><span>42<small>sec</small></span></div>
-          <span class="btn">Join event →</span>
-          <div class="dots" style="justify-content:flex-start"><i class="on"></i><i></i><i></i><i></i></div>
+        <div class="drow a">
+          <div class="cards">
+            <div class="dhero">
+              <span class="tag">EVENT · SEASON 1</span>
+              <b>Neon Heist</b>
+              <small>Open event cases, unlock 30 reward tiers</small>
+              <div class="timer"><span>19<small>days</small></span><span>08<small>hrs</small></span><span>16<small>min</small></span><span>42<small>sec</small></span></div>
+              <span class="btn">Join event →</span>
+            </div>
+            <div class="dhero">
+              <span class="tag">NEW CASE</span>
+              <b>Dragon Hoard</b>
+              <small>New this week · from $99</small>
+              <span class="btn">Open case →</span>
+            </div>
+            <div class="dhero">
+              <span class="tag">GIVEAWAY</span>
+              <b>Weekly AWP giveaway</b>
+              <small>Free entry for Level 3+</small>
+              <div class="timer"><span>03<small>days</small></span><span>11<small>hrs</small></span><span>05<small>min</small></span></div>
+              <span class="btn">Join giveaway →</span>
+            </div>
+          </div>
+          <div class="dots"><i class="on"></i><i></i></div>
           <span class="arw l">‹</span><span class="arw r">›</span>
-        </div><i class="pin">3</i></div>
+          <i class="pin">3</i>
+        </div>
         <div class="trio a">
           <div class="strip" style="height:100%"><span class="sp">Try any case free<small>No sign-up · demo wins don't count</small></span><span class="btn">Try free →</span></div>
           <div class="offer"><div class="img"></div><div class="sp"><b>Free case for new players</b><span class="mini">Ends in 23:41:08</span></div><span class="btn">Get</span></div>
@@ -361,7 +381,7 @@ section{display:grid;gap:24px}
   <ol class="notes desk-notes">
     <li><span class="n">1</span><b>Лента дропов <span class="lg-new">v2</span></b><p>Во всю ширину над шапкой, все дропы без порога. На десктопе видны скин и цена.</p><div class="srcs"><span class="src">Casehug</span><span class="src">Forcedrop</span></div></li>
     <li><span class="n">2</span><b>Шапка в одну строку</b><p>Табы режимов, вход. Без статистики и соцсетей.</p><div class="srcs"><span class="src">Hellcase</span><span class="src">против Skin.club</span></div></li>
-    <li><span class="n">3</span><b>Герой ивента <span class="lg-new">v2</span></b><p>~380 px: арт, описание, таймер до секунд, «Join event» ведёт на страницу ивента. 4 слайда, стрелки по краям, точки.</p><div class="srcs"><span class="src">Casehug</span><span class="src">Skin.club</span></div></li>
+    <li><span class="n">3</span><b>Слайды тремя блоками <span class="lg-new">v4</span></b><p>Три слайда в ряд, чтобы за раз показать больше: ивент, новый кейс, розыгрыш. Стрелки по краям сдвигают ряд на один слайд, 4-й (промокод) появляется справа. Каждая карточка ведёт в своё место.</p><div class="srcs"><span class="src">Casehug</span><span class="src">Skin.club</span></div></li>
     <li><span class="n">4</span><b>Демо, оффер, промокод <span class="lg-new">v2</span></b><p>Три блока одной строкой сразу под героем: попробовать бесплатно, кейс новичка с таймером, поле промокода.</p><div class="srcs"><span class="src">JamSkins</span><span class="src">Forcedrop</span></div></li>
     <li><span class="n">5</span><b>Фильтры</b><p>Поиск, цены, сортировка.</p><div class="srcs"><span class="src">Forcedrop</span></div></li>
     <li><span class="n">6</span><b>Сетка 5 колонок</b><p>Сразу после фильтров. Верх первого ряда на линии первого экрана.</p><div class="srcs"><span class="src">Hellcase</span></div></li>
@@ -380,6 +400,7 @@ section{display:grid;gap:24px}
     <div class="dec"><span class="v keep">НУЖНО</span><b>Меню справа в мобильной шапке</b><span class="d">Кнопка ☰ после входа или баланса. v3.</span></div>
     <div class="dec"><span class="v keep">ВСЕ</span><b>Лента показывает все дропы</b><span class="d">Без порога цены. v3.</span></div>
     <div class="dec"><span class="v keep">НУЖНЫ</span><b>Несколько слайдов героя со стрелками</b><span class="d">Стрелки по образцу Skin.club. Состав слайдов — предложение Claude, ждёт подтверждения. v3.</span></div>
+    <div class="dec"><span class="v keep">3 В РЯД</span><b>Десктоп: слайды тремя блоками в строку</b><span class="d">Больше информации за раз. Стрелки сдвигают ряд на один слайд. v4.</span></div>
   </div>
 </section>
 
