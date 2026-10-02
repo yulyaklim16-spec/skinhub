@@ -29,7 +29,7 @@
 
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:16px;line-height:1.55}
-.wrap{max-width:1180px;margin:0 auto;padding-inline:20px;padding-block:40px 80px;display:grid;gap:48px}
+.wrap{max-width:1300px;margin:0 auto;padding-inline:20px;padding-block:40px 80px;display:grid;gap:48px}
 h1,h2{font-family:var(--f-display);margin:0;line-height:1.2;text-wrap:balance}
 h1{font-size:clamp(1.6rem,4vw,2.3rem)}
 h2{font-size:1.25rem}
@@ -152,7 +152,7 @@ section{display:grid;gap:24px}
 
 /* desktop */
 .desk-scroll{overflow-x:auto;border-radius:12px}
-.desk{width:1100px;padding:10px;border-radius:14px;background:var(--surface);border:1px solid var(--line)}
+.desk{width:1240px;padding:10px;border-radius:14px;background:var(--surface);border:1px solid var(--line)}
 .desk .scr{border-radius:8px;font-size:12px}
 .desk .ticker{border-radius:8px 8px 0 0;padding:8px 12px;gap:6px}
 .desk .tk{width:84px}
@@ -176,7 +176,7 @@ section{display:grid;gap:24px}
 .trio > div{min-width:0}
 .filters{display:flex;gap:8px;align-items:center}
 .search{width:220px;padding:7px 10px;border:1px solid var(--blk2);border-radius:7px;color:var(--ink2)}
-.dgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.dgrid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
 .chat{position:absolute;right:18px;bottom:18px;width:44px;height:44px;border-radius:50%;background:var(--fill);z-index:2}
 .chat.m{right:12px;bottom:74px;width:34px;height:34px}
 .pill{position:absolute;left:50%;bottom:74px;transform:translateX(-50%);z-index:3;display:flex;align-items:center;border-radius:10px;background:var(--fill);color:var(--fill-ink);font-weight:600;font-size:11px;box-shadow:0 4px 14px rgba(0,0,0,.18)}
@@ -232,7 +232,7 @@ section{display:grid;gap:24px}
 
 <div class="wrap">
 <header>
-  <span class="eyebrow">SkinHub · Этап 2 · Вайрфреймы · v9.4 · 2 октября 2026</span>
+  <span class="eyebrow">SkinHub · Этап 2 · Вайрфреймы · v9.5 · 2 октября 2026</span>
   <h1>Главная: первый экран</h1>
   <p class="lede">Первый экран продаёт текущий ивент: живая лента дропов, герой на весь экран с таймером и переход в ивент. Ниже демо, бонус новичка и каталог кейсов. Каждый блок взят у конкурента по итогам исследования. В v2–v9 учтены решения по ревью от 2 октября.</p>
   <div class="legend">
@@ -380,10 +380,10 @@ section{display:grid;gap:24px}
 </section>
 
 <section>
-  <div class="sec-head"><span class="eyebrow">Десктоп · 1280 × 800 · гость</span><h2>Та же иерархия, шире сетка</h2></div>
+  <div class="sec-head"><span class="eyebrow">Десктоп · 1440 × 900 · гость</span><h2>Та же иерархия, шире сетка</h2></div>
   <div class="desk-scroll">
     <div class="desk"><div class="scr" style="min-height:1060px">
-      <div class="fold" style="top:688px"><span>fold · 800 px</span></div>
+      <div class="fold" style="top:774px"><span>fold · 900 px</span></div>
       <div class="ticker a"><span class="live">● LIVE</span>
         <div class="tk" style="--c:var(--r-cov)"><div class="img"></div><small>$412 · Karambit</small></div>
         <div class="tk" style="--c:var(--r-mil)"><div class="img"></div><small>$0.84 · P250</small></div>
@@ -396,6 +396,7 @@ section{display:grid;gap:24px}
         <div class="tk" style="--c:var(--r-cla)"><div class="img"></div><small>$51 · USP-S</small></div>
         <div class="tk" style="--c:var(--r-res)"><div class="img"></div><small>$9.30 · FAMAS</small></div>
         <div class="tk" style="--c:var(--r-mil)"><div class="img"></div><small>$2.10 · MAC-10</small></div>
+        <div class="tk" style="--c:var(--r-cov)"><div class="img"></div><small>$73 · Desert Eagle</small></div><div class="tk" style="--c:var(--r-mil)"><div class="img"></div><small>$0.30 · Tec-9</small></div><div class="tk" style="--c:var(--r-res)"><div class="img"></div><small>$5.40 · P90</small></div><div class="tk" style="--c:var(--r-cla)"><div class="img"></div><small>$18 · AUG</small></div>
         <i class="pin">1</i></div>
       <div class="dhead a">
         <span class="logo" style="font-size:16px">SkinHub</span>
@@ -447,6 +448,7 @@ section{display:grid;gap:24px}
           <div class="case"><div class="img"></div><span class="nm">Covert Drop</span><div class="row"><span class="price">$6.00</span><span class="xp">+720 XP</span></div></div>
           <div class="case"><div class="img"></div><span class="nm">Knife Club</span><div class="row"><span class="price">$21.00</span><span class="xp">+2.5k XP</span></div></div>
           <div class="case"><div class="img"></div><span class="nm">Gloves Only</span><div class="row"><span class="price">$45.00</span><span class="xp">+5.4k XP</span></div></div>
+          <div class="case"><div class="img"></div><span class="nm">Starter</span><div class="row"><span class="price">$0.50</span><span class="xp">+60 XP</span></div></div>
           <i class="pin">6</i>
         </div>
       </div>
@@ -470,7 +472,7 @@ section{display:grid;gap:24px}
     <li><span class="n">3</span><b>Слайды тремя блоками <span class="lg-new">v5</span></b><p>Три слайда в ряд: ивент, промокод с полем ввода, новый кейс. Справа выглядывает край четвёртого (розыгрыш), поэтому стрелки не нужны: ряд листается перетаскиванием и свайпом на тачпаде. Каждая карточка ведёт в своё место.</p><div class="srcs"><span class="src">Casehug</span><span class="src">Skin.club</span></div></li>
     <li><span class="n">4</span><b>Демо и оффер <span class="lg-new">v6</span></b><p>Два блока одной строкой под героем: попробовать бесплатно и кейс новичка с таймером. Промокод — во 2-м баннере карусели.</p><div class="srcs"><span class="src">JamSkins</span><span class="src">Forcedrop</span></div></li>
     <li><span class="n">5</span><b>Фильтры</b><p>Поиск, цены, сортировка.</p><div class="srcs"><span class="src">Forcedrop</span></div></li>
-    <li><span class="n">6</span><b>Сетка 5 колонок</b><p>Сразу после фильтров. Верх первого ряда на линии первого экрана.</p><div class="srcs"><span class="src">Hellcase</span></div></li>
+    <li><span class="n">6</span><b>Сетка 6 колонок <span class="lg-new">v9.5</span></b><p>Сразу после фильтров. Верх первого ряда на линии первого экрана.</p><div class="srcs"><span class="src">Hellcase</span></div></li>
     <li><span class="n">7</span><b>Футер <span class="lg-new">v9</span></b><p>Колонка бренда с описанием и соцсетями, колонки Games, Help, Legal, Company. Внизу способы оплаты и 18+, юрлицо и дисклеймер Steam / Valve, копирайт и язык.</p><div class="srcs"><span class="src">Hellcase</span><span class="src">Casehug</span><span class="src">Skin.club</span></div></li>
     <li><span class="n">8</span><b>Чат <span class="lg-new">v7.3</span></b><p>На десктопе нижнего меню нет, поэтому чат — плавающая кнопка, панель поверх страницы. На мобайле чат в нижнем меню (v9).</p><div class="srcs"><span class="src">против Rain.gg</span></div></li>
   </ol>
@@ -506,6 +508,7 @@ section{display:grid;gap:24px}
     <div class="dec"><span class="v keep">COMPANY</span><b>Раздел Community убран, вместо него Company</b><span class="d">Соцсети уже есть иконками. Company: About SkinHub, Partners (партнёрская программа), Business contact — Partners относится к бизнесу, а не к помощи. Мобайл и десктоп. v9.2.</span></div>
     <div class="dec"><span class="v keep">ЯЗЫК</span><b>Смена языка в футере и в меню ☰</b><span class="d">Отдельная кнопка «🌐 English ▾» вместо подписи в строке копирайта; в меню — внизу списка. Нарисован экран открытого меню. v9.3.</span></div>
     <div class="dec"><span class="v keep">ПОДПИСЬ</span><b>Кнопка поиска с подписью «Search»</b><span class="d">Иконка ⌕ без подписи была неочевидна; теперь «⌕ Search · ⇅ Price · ☷ Filters». v9.4.</span></div>
+    <div class="dec"><span class="v keep">1440</span><b>Десктоп-макеты в разрешении 1440 × 900</b><span class="d">Вместо 1280 × 800, на главной и странице кейса. Сетка кейсов на главной — 6 колонок. v9.5.</span></div>
   </div>
 </section>
 
