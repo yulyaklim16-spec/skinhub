@@ -5,30 +5,32 @@
 
 Бриф продукта и рабочие соглашения: [`CLAUDE.md`](./CLAUDE.md).
 
+**Форматы.** У каждого артефакта пара файлов с одним именем: `.md` для Claude (рабочий источник)
+и `.html` для человека (просмотреть, показать заказчику, задеплоить). HTML автономный: один файл,
+картинки встроены. Чтобы открыть его, скачайте файл и откройте в браузере.
+
 > Этот файл — живой индекс репозитория. Каждый новый артефакт или завершённый этап
 > добавляется сюда сразу.
 
 ## Статус
 
-| Этап | Папка | Статус | Главный артефакт |
-|---|---|---|---|
-| 1. Исследование | [`research/`](./research/) | ✅ Готово · 2026-10-02 | [`research.md`](./research/research.md) |
-| 2. Вайрфреймы | [`wireframes/`](./wireframes/) | ⏳ Следующий | — |
-| 3. Концепт | [`concept/`](./concept/) | ⬜ Не начат | — |
-| 4. Токены | [`tokens/`](./tokens/) | ⬜ Не начат | — |
-| 5. Компоненты | [`components/`](./components/) | ⬜ Не начат | — |
-| 6. Дизайн-система | [`design-system/`](./design-system/) | ⬜ Не начат | — |
-| 7. Хендоф | [`handoff/`](./handoff/) | ⬜ Не начат | — |
+| Этап | Папка | Статус | Для Claude | Для человека |
+|---|---|---|---|---|
+| 1. Исследование | [`research/`](./research/) | ✅ Готово · 2026-10-02 | [`research.md`](./research/research.md) | [`research.html`](./research/research.html) |
+| 2. Вайрфреймы | [`wireframes/`](./wireframes/) | ⏳ Следующий | — | — |
+| 3. Концепт | [`concept/`](./concept/) | ⬜ Не начат | — | — |
+| 4. Токены | [`tokens/`](./tokens/) | ⬜ Не начат | — | — |
+| 5. Компоненты | [`components/`](./components/) | ⬜ Не начат | — | — |
+| 6. Дизайн-система | [`design-system/`](./design-system/) | ⬜ Не начат | — | — |
+| 7. Хендоф | [`handoff/`](./handoff/) | ⬜ Не начат | — | — |
 
 ## Индекс
 
 ### research/
 - [`research.md`](./research/research.md) — разбор 7 конкурентов: оценки, воронка первого кейса,
   выводы для SkinHub.
-- [`teardown.html`](./research/teardown.html) — та же информация визуально, со скриншотами
-  (открыть локально в браузере). [Опубликованная версия](https://claude.ai/artifact/7ZuPFD7zzDVnxE3rsFewfv).
-- [`competitor-teardown.html`](./research/competitor-teardown.html) — автономная копия этой страницы
-  одним файлом: скриншоты встроены внутрь, можно скачать и переслать без папки `screens/` (~2,2 МБ).
+- [`research.html`](./research/research.html) — то же для человека: страница со скриншотами,
+  один файл (~2,2 МБ). [Опубликованная версия](https://claude.ai/artifact/7ZuPFD7zzDVnxE3rsFewfv).
 - [`screens/`](./research/screens/) — 19 скриншотов: главная, страница кейса и мобильный экран
   Casehug, Hellcase, Skin.club, Rain.gg, Forcedrop, JamSkins, Upgrader.pro.
 
