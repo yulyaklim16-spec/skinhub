@@ -77,11 +77,20 @@ a{color:#ffffff}a:hover{color:#d9d9de}
 .disc s{color:#a1a1a6;font-size:13px}
 .ofr{display:flex;align-items:center;gap:12px;margin:28px 16px 0;padding:12px;border:1px solid #28282a;border-radius:6px;background:linear-gradient(90deg,#1f1f21,#18181a)}
 .ofr img{width:64px;height:64px;object-fit:contain;flex:none}
-.lb{margin:32px 16px 0;padding:16px;border:1px solid #28282a;border-radius:6px;background:#18181a}
-.lbr{display:flex;align-items:center;gap:10px;padding:10px 0;border-top:1px solid #28282a}
-.lbr .r{width:26px;font-size:20px;color:#a1a1a6}
-.av{width:32px;height:32px;border-radius:50%;background:#2c2c30;display:grid;place-items:center;font:700 12px 'Golos Text',sans-serif;flex:none}
-.lbr img{width:54px;height:36px;object-fit:contain;flex:none}
+.lb{margin:32px 16px 0;padding:20px 16px 16px;border:1px solid #28282a;border-radius:6px;background:radial-gradient(circle at 0% 100%,rgba(228,174,57,.18),transparent 45%),#1a1a1d;text-align:center}
+.lbt{font:700 22px/1.25 'Golos Text',sans-serif;margin:0}
+.lbt em{font-style:normal;color:var(--acc)}
+.pl{display:flex;justify-content:center;align-items:center;margin:14px 0 6px}
+.pl div{display:flex;align-items:center;gap:6px;padding:0 14px;color:#707072;font:700 30px/1 'Barlow Condensed',sans-serif}
+.pl div+div{border-left:1px solid #39393b}
+.pl div.g{color:#e4ae39}
+.pl sup{font-size:14px;align-self:flex-start;margin:-2px 0 0 -4px}
+.prz{display:flex;align-items:center;text-align:left;min-height:150px;position:relative}
+.prz .gl{position:absolute;right:-10px;top:50%;width:220px;height:220px;transform:translateY(-50%);background:radial-gradient(circle,rgba(228,174,57,.5),rgba(228,174,57,.12) 40%,transparent 68%)}
+.prz img{position:relative;width:190px;height:150px;object-fit:contain;margin-left:auto;transform:rotate(-8deg)}
+.gold{color:#e4ae39;font-weight:600;font-size:13px}
+.pchip{display:inline-block;margin-top:6px;background:#e4ae39;color:#111111;font:700 18px 'Barlow Condensed',sans-serif;padding:2px 8px;border-radius:6px}
+.lbb{width:100%;height:56px;margin-top:12px;font-size:15px;letter-spacing:.06em;text-transform:uppercase}
 .how{margin:32px 16px 0;display:flex;flex-direction:column;gap:14px}
 .st{display:flex;gap:12px;align-items:flex-start}
 .st .ic{width:44px;height:44px;flex:none;display:grid;place-items:center;border:1px solid #39393b;border-radius:6px;color:#ffffff}
@@ -223,14 +232,18 @@ a{color:#ffffff}a:hover{color:#d9d9de}
   </section>
 
   <section class="lb">
-    <div style="display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 10px">
-      <h2 class="dsp" style="margin: 0; font-size: 26px">Best drop this week</h2>
-      <span class="mut" style="font-size: 12px">Ends in 3d</span>
+    <h2 class="lbt">Climb the leaderboard<br>Win epic <em>rewards</em></h2>
+    <div class="pl"><div class="g"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4h8v5a4 4 0 0 1-8 0z"></path><path d="M8 6H5v1a3 3 0 0 0 3 3M16 6h3v1a3 3 0 0 1-3 3M12 13v4M8 20h8M10 17h4"></path></svg>1<sup>st</sup></div><div><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="15" r="5"></circle><path d="M8.6 11.3 6 3h4l2 5 2-5h4l-2.6 8.3"></path></svg>2<sup>nd</sup></div><div><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="15" r="5"></circle><path d="M8.6 11.3 6 3h4l2 5 2-5h4l-2.6 8.3"></path><path d="m12 12.7.8 1.5 1.6.2-1.2 1.1.3 1.6-1.5-.8-1.5.8.3-1.6-1.2-1.1 1.6-.2z" fill="currentColor"></path></svg>3<sup>rd</sup></div></div>
+    <div class="prz">
+      <div style="position: relative; z-index: 1">
+        <div style="font-size: 13px; font-weight: 600">★ Butterfly Knife</div>
+        <div class="gold">Fade (FN)</div>
+        <span class="pchip">$3,167.07</span>
+      </div>
+      <span class="gl"></span>
+      <img src="img/skin-butterfly.webp" alt="Butterfly Knife Fade">
     </div>
-    <div class="lbr"><span class="r num">#1</span><span class="av">M</span><div style="flex: 1; min-width: 0"><div style="font-weight: 600">m0nk</div><span class="bdg" style="--b: #eb4b4b; --t: #ffc2c2">Covert</span></div><img src="img/skin-danger.png" alt="Danger Close"><span class="num" style="font-size: 20px">$73.10</span></div>
-    <div class="lbr"><span class="r num">#2</span><span class="av">N</span><div style="flex: 1; min-width: 0"><div style="font-weight: 600">nova</div><span class="bdg" style="--b: #d32ce6; --t: #f6c4fb">Classified</span></div><img src="img/skin-chrome.png" alt="Chrome Cannon"><span class="num" style="font-size: 20px">$34.20</span></div>
-    <div class="lbr"><span class="r num">#3</span><span class="av">Z</span><div style="flex: 1; min-width: 0"><div style="font-weight: 600">zed</div><span class="bdg" style="--b: #d32ce6; --t: #f6c4fb">Classified</span></div><img src="img/skin-acid.png" alt="Acid Etched"><span class="num" style="font-size: 20px">$21.00</span></div>
-    <a class="bw" href="#" style="width: 100%; margin-top: 8px; background: #2c2c30; color: #ffffff">Sign in to compete</a>
+    <a class="bacc lbb" href="#">Leaderboard</a>
   </section>
 
   <section class="how">
@@ -238,7 +251,6 @@ a{color:#ffffff}a:hover{color:#d9d9de}
     <div class="st"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M3 8l9-5 9 5v8l-9 5-9-5z"></path><path d="M3 8l9 5 9-5M12 13v8"></path></svg></span><div><div style="font-weight: 600">Try any case free</div><div class="mut" style="font-size: 13px">5 demo opens, no sign-up</div></div></div>
     <div class="st"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c1-4 4-6 8-6s7 2 8 6"></path></svg></span><div><div style="font-weight: 600">Sign in</div><div class="mut" style="font-size: 13px">Steam or Google · free</div></div></div>
     <div class="st"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M4 21h16"></path></svg></span><div><div style="font-weight: 600">Open for real, withdraw to Steam</div><div class="mut" style="font-size: 13px">Delivered as a Steam trade offer after Steam confirmation</div></div></div>
-    <span class="bdg" style="--b: #707072; --t: #e6e6e6; align-self: flex-start">Provably fair</span>
   </section>
 
   <section class="faq">
