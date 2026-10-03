@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@1,800&family=Golos+Text:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap">
 <style>
-/* Показ UI главной для гостя: мобайл живёт в мокапе телефона (iframe скроллится внутри экрана),
+/* Показ UI главной для гостя и игрока: мобайл живёт в мокапе телефона (iframe скроллится внутри экрана),
    десктоп — в окне браузера, iframe 1440×900 масштабируется под ширину колонки. */
 :root{--bg:var(--c-bg-deep);--fg:var(--c-neutral-200);--muted:var(--c-text-muted);--line:var(--c-line);--accent:var(--c-accent);color-scheme:dark}
 *{box-sizing:border-box}
@@ -21,6 +21,8 @@ h2{margin:0;font:italic 800 2rem/1 var(--font-display);text-transform:uppercase}
 p{margin:0;max-width:72ch;color:var(--muted)}
 a{color:var(--accent);text-underline-offset:3px}
 section{display:grid;gap:20px}
+.part{margin:24px 0 -8px;padding-top:32px;border-top:1px solid var(--c-line);font-size:2.75rem;color:var(--c-accent)}
+.part.first{margin-top:0;padding-top:0;border-top:0}
 .cap{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 16px}
 
 /* мобайл: телефон слева, состав экрана справа */
@@ -51,9 +53,11 @@ section{display:grid;gap:20px}
 <div class="wrap">
   <header>
     <span class="eyebrow">SkinHub · Этап 3 · UI · 3 октября 2026</span>
-    <h1>Главная · гость</h1>
-    <p>Вайрфрейм главной, заполненный согласованным UI концепта. Мобайл в мокапе телефона, десктоп в окне браузера. Оба экрана живые: внутри можно листать. Разбор приёмов и решений — в <a href="./home.md">home.md</a>, исходная структура — <a href="../wireframes/home.html">вайрфрейм главной</a>, стиль — <a href="./concept.html">стенд стиля</a>.</p>
+    <h1>Главная · гость и игрок</h1>
+    <p>Вайрфрейм главной, заполненный согласованным UI концепта. Два состояния: гость и вошедший игрок. Мобайл в мокапе телефона, десктоп в окне браузера. Оба экрана живые: внутри можно листать. Разбор приёмов и решений — в <a href="./home.md">home.md</a>, исходная структура — <a href="../wireframes/home.html">вайрфрейм главной</a>, стиль — <a href="./concept.html">стенд стиля</a>.</p>
   </header>
+
+  <h2 class="part first">Гость</h2>
 
   <section>
     <div class="cap"><h2>Мобайл</h2><span class="eyebrow">390 × 844 · гость</span></div>
@@ -87,7 +91,7 @@ section{display:grid;gap:20px}
     <div class="cap"><h2>Десктоп</h2><span class="eyebrow">1440 × 900 · гость</span></div>
     <div class="browser">
       <div class="bbar"><i></i><i></i><i></i><span class="url">skinhub.gg</span></div>
-      <div class="vp" id="vp"><iframe src="./home/desktop.html" title="Главная SkinHub на десктопе" loading="lazy"></iframe></div>
+      <div class="vp"><iframe src="./home/desktop.html" title="Главная SkinHub на десктопе" loading="lazy"></iframe></div>
     </div>
     <div class="links">
       <span class="eyebrow">Открыть отдельно:</span>
@@ -96,12 +100,53 @@ section{display:grid;gap:20px}
       <a href="https://claude.ai/artifact/VGpSEgEJ7XKhLT6MGtfWNM">холст в Claude Design</a>
     </div>
   </section>
+  <h2 class="part">Игрок</h2>
+
+  <section>
+    <div class="cap"><h2>Мобайл</h2><span class="eyebrow">390 × 844 · игрок, Lv 7</span></div>
+    <div class="mob">
+      <div class="phone-box">
+        <div class="phone">
+          <span class="island"></span>
+          <span class="btn-side" style="left:-12px;top:150px;height:32px"></span>
+          <span class="btn-side" style="left:-12px;top:205px;height:62px"></span>
+          <span class="btn-side" style="left:-12px;top:280px;height:62px"></span>
+          <span class="btn-side" style="right:-12px;top:230px;height:96px"></span>
+          <iframe src="./home/mobile-player-phone.html" title="Главная SkinHub для игрока на телефоне" loading="lazy"></iframe>
+        </div>
+      </div>
+      <ol class="list">
+        <li><b>Шапка</b><span>Кольцо уровня Lv 7, баланс $24.50 с «+», меню ☰ с бейджем непрочитанных</span></li>
+        <li><b>Карусель ивентов</b><span>На первом слайде — прогресс: Continue · Tier 4 of 30</span></li>
+        <li><b>Лента дропов</b><span>Как у гостя</span></li>
+        <li><b>Free case ready</b><span>Вместо демо — ежедневный бесплатный кейс за уровень</span></li>
+        <li><b>Чипы категорий</b><span>Как у гостя</span></li>
+        <li><b>Полки кейсов</b><span>На каждой карточке — чип опыта +XP; оффер новичка заменён бонусом к депозиту +15%</span></li>
+        <li><b>Лидерборд недели</b><span>Строка игрока: место #128, лучший дроп недели</span></li>
+        <li><b>FAQ, SEO, футер</b><span>Как у гостя; How it works убран — игрок уже знает, как всё устроено</span></li>
+        <li><b>Нижнее меню</b><span>Центр — Add funds; у Rewards лаймовый счётчик 3 наград к получению</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section>
+    <div class="cap"><h2>Десктоп</h2><span class="eyebrow">1440 × 900 · игрок, Lv 7</span></div>
+    <div class="browser">
+      <div class="bbar"><i></i><i></i><i></i><span class="url">skinhub.gg</span></div>
+      <div class="vp"><iframe src="./home/desktop-player.html" title="Главная SkinHub для игрока на десктопе" loading="lazy"></iframe></div>
+    </div>
+    <div class="links">
+      <span class="eyebrow">Открыть отдельно:</span>
+      <a href="./home/mobile-player.html">мобайл, вся страница</a>
+      <a href="./home/desktop-player.html">десктоп</a>
+    </div>
+  </section>
 </div>
 <script>
 // Масштаб десктопного iframe под ширину окна браузера
 (function () {
-  var vp = document.getElementById('vp');
-  function fit() { vp.style.setProperty('--s', Math.min(1, vp.clientWidth / 1440)); }
+  var vps = document.querySelectorAll('.vp');
+  function fit() { vps.forEach(function (vp) { vp.style.setProperty('--s', Math.min(1, vp.clientWidth / 1440)); }); }
   fit();
   window.addEventListener('resize', fit);
 })();
