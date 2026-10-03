@@ -48,6 +48,8 @@
 - Следующие экраны: вход, Rewards (миссии и прогресс), апгрейд, инвентарь и вывод.
 
 ### concept/
+- [`concept.md`](./concept/concept.md) / [`concept.html`](./concept/concept.html) — концепт: атрибуты, вкус дизайнера
+  (Netflix, beton.ua), правила графики для экранов.
 - [`references.md`](./concept/references.md) / [`references.html`](./concept/references.html) — референсы из Refero:
   основа — стиль Home (тёмный, один лаймовый акцент), приёмы из Portal и Discord, экраны Home Page Xbox, Epic Games, Twitch.
   У каждого приёма — какое волнение пользователя он снимает.
