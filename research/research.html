@@ -126,7 +126,7 @@ dialog .cap button{all:unset;cursor:pointer;color:#e7eaf1;text-decoration:underl
 </header>
 
 <nav class="jump" aria-label="Разделы">
-  <a href="#summary">Итог</a><a href="#scorecard">Оценки</a><a href="#funnel">Первый кейс</a>
+  <a href="#summary">Итог</a><a href="#scorecard">Сравнение</a><a href="#funnel">Первый кейс</a>
   <a href="#casehug">Casehug</a><a href="#hellcase">Hellcase</a><a href="#skinclub">Skin.club</a>
   <a href="#rain">Rain.gg</a><a href="#forcedrop">Forcedrop</a><a href="#jamskins">JamSkins</a><a href="#upgrader">Upgrader</a>
   <a href="#bottomnav">Нижнее меню</a><a href="#blocks">Блоки главной</a><a href="#recs">Выводы</a>
@@ -159,26 +159,12 @@ dialog .cap button{all:unset;cursor:pointer;color:#e7eaf1;text-decoration:underl
 
 <section id="scorecard">
   <span class="eyebrow">Сравнение</span>
-  <h2>Оценки по критериям</h2>
-  <p>Оценки от 1 до 5 по итогам ручного прохода. Цвет повторяет редкость скинов CS2: от «ширпотреба» до «засекреченного».</p>
-  <p style="font-size:.88rem;color:var(--muted)">Доверие — рейтинг Trustpilot на 3 октября 2026 · число отзывов. «Скрыт» — Trustpilot снял рейтинг за нарушение своих правил. У JamSkins всего 5 отзывов — не репрезентативно. Остальные оценки 1–5 — экспертные, по ручному проходу.</p>
-  <div class="legend">
-    <span class="sc s1">1</span><span class="sc s2">2</span><span class="sc s3">3</span><span class="sc s4">4</span><span class="sc s5">5</span>
-  </div>
+  <h2>Сравнение по данным</h2>
+  <p style="font-size:.88rem;color:var(--muted)">Доверие — рейтинг Trustpilot на 3 октября 2026 · число отзывов. «Скрыт» — Trustpilot снял рейтинг за нарушение своих правил. У JamSkins всего 5 отзывов — не репрезентативно. Мобильное меню оценено по четырём признакам: есть ли оно, читабельно ли (подписи, контраст), понятно ли без угадывания, удобно ли (рекомендуют 3–5 пунктов). Отказы и страницы за визит — Similarweb.</p>
   <div class="tbl">
   <table>
-    <thead><tr><th>Платформа</th><th>Простота</th><th>Онбординг</th><th>Геймификация</th><th>Доверие (Trustpilot)</th><th>Мобайл</th><th>Отказы</th><th>Стр./визит</th><th>Длина главной</th></tr></thead>
-    <tbody>
-      <tr class="grp"><td colspan="9">Лучшие</td></tr>
-      <tr><td class="site">Casehug</td><td><span class="sc s4">4</span></td><td><span class="sc s4">4</span></td><td><span class="sc s5">5</span></td><td class="num">скрыт · 1 152</td><td><span class="sc s4">4</span></td><td class="num">18,2%</td><td class="num">13,6</td><td class="num">15 763 px</td></tr>
-      <tr><td class="site">Hellcase</td><td><span class="sc s4">4</span></td><td><span class="sc s3">3</span></td><td><span class="sc s4">4</span></td><td class="num">3,4 · 8 807</td><td><span class="sc s5">5</span></td><td class="num">22,2%</td><td class="num">9,9</td><td class="num">2 985 px*</td></tr>
-      <tr><td class="site">Skin.club</td><td><span class="sc s2">2</span></td><td><span class="sc s2">2</span></td><td><span class="sc s5">5</span></td><td class="num">3,7 · 1 960</td><td><span class="sc s2">2</span></td><td class="num">26,4%</td><td class="num">13,1</td><td class="num">29 772 px</td></tr>
-      <tr class="grp"><td colspan="9">Худшие (нет данных для анализа)</td></tr>
-      <tr><td class="site">Rain.gg</td><td><span class="sc s5">5</span></td><td><span class="sc s3">3</span></td><td><span class="sc s3">3</span></td><td class="num">1,6 · 177</td><td><span class="sc s4">4</span></td><td class="num">39,4%</td><td class="num">7,3</td><td class="num na">лента в окне</td></tr>
-      <tr><td class="site">Forcedrop</td><td><span class="sc s3">3</span></td><td><span class="sc s5">5</span></td><td><span class="sc s3">3</span></td><td class="num">3,4 · 1 388</td><td><span class="sc s4">4</span></td><td class="num na">н/д</td><td class="num na">н/д</td><td class="num">18 001 px</td></tr>
-      <tr><td class="site">JamSkins</td><td><span class="sc s3">3</span></td><td><span class="sc s5">5</span></td><td><span class="sc s4">4</span></td><td class="num">4,1 · 5</td><td><span class="sc s4">4</span></td><td class="num na">н/д</td><td class="num na">н/д</td><td class="num na">лента в окне</td></tr>
-      <tr><td class="site">Upgrader.pro</td><td><span class="sc s4">4</span></td><td><span class="sc s2">2</span></td><td><span class="sc s1">1</span></td><td class="num">скрыт · 169</td><td><span class="sc s3">3</span></td><td class="num na">н/д</td><td class="num na">н/д</td><td class="num">1 615 px</td></tr>
-    </tbody>
+    <thead><tr><th>Платформа</th><th>Доверие (Trustpilot)</th><th>Мобильное меню</th><th>Отказы</th><th>Стр./визит</th><th>Длина главной</th></tr></thead>
+    <tbody><tr class="grp"><td colspan="6">Лучшие</td></tr><tr><td class="site">Casehug</td><td class="num">скрыт · 1 152</td><td style="min-width:280px">Есть. Подписи у всех — читабельно и понятно; тесно: 6 пунктов при рекомендованных 3–5</td><td class="num">18,2%</td><td class="num">13,6</td><td class="num">15 763 px</td></tr><tr><td class="site">Hellcase</td><td class="num">3,4 · 8 807</td><td style="min-width:280px">Есть. Иконки без подписей (подписан только активный пункт) — непонятно, пока не нажмёшь; 4 пункта</td><td class="num">22,2%</td><td class="num">9,9</td><td class="num">2 985 px*</td></tr><tr><td class="site">Skin.club</td><td class="num">3,7 · 1 960</td><td style="min-width:280px">Есть. Подписи у всех — понятно, 5 пунктов; текст и иконки тусклые, читабельность хуже</td><td class="num">26,4%</td><td class="num">13,1</td><td class="num">29 772 px</td></tr><tr class="grp"><td colspan="6">Худшие (нет данных для анализа)</td></tr><tr><td class="site">Rain.gg</td><td class="num">1,6 · 177</td><td style="min-width:280px">Есть. Только иконки, ни одной подписи — нечитабельно и непонятно; 5 пунктов</td><td class="num">39,4%</td><td class="num">7,3</td><td class="num na">лента в окне</td></tr><tr><td class="site">Forcedrop</td><td class="num">3,4 · 1 388</td><td style="min-width:280px">Есть. Подписи у всех — читабельно, 5 пунктов; пункт «Back to grind» непонятен</td><td class="num na">н/д</td><td class="num na">н/д</td><td class="num">18 001 px</td></tr><tr><td class="site">JamSkins</td><td class="num">4,1 · 5</td><td style="min-width:280px">Есть. Подписи у всех — читабельно и понятно, 5 пунктов, плавающая панель</td><td class="num na">н/д</td><td class="num na">н/д</td><td class="num na">лента в окне</td></tr><tr><td class="site">Upgrader.pro</td><td class="num">скрыт · 169</td><td class="no" style="min-width:280px">Нет мобильного меню</td><td class="num na">н/д</td><td class="num na">н/д</td><td class="num">1 615 px</td></tr></tbody>
   </table>
   </div>
   <p style="font-size:.85rem;color:var(--muted)">* Hellcase подгружает каталог по мере прокрутки, поэтому реальная длина больше. «Лента в окне» означает, что страница прокручивается во внутреннем контейнере, и измерить её длину нельзя.</p>
@@ -398,7 +384,7 @@ dialog .cap button{all:unset;cursor:pointer;color:#e7eaf1;text-decoration:underl
   <h3>Читабельность</h3>
   <div class="tbl"><table>
     <thead><tr><th>Площадка</th><th>Подписи</th><th>Читабельность</th><th>Что мешает</th></tr></thead>
-    <tbody><tr><td class="site">Skin.club</td><td>Иконка + подпись у всех</td><td><span class="yes">Понятно</span></td><td>—</td></tr><tr><td class="site">JamSkins</td><td>Иконка + подпись у всех</td><td><span class="yes">Понятно</span></td><td>—</td></tr><tr><td class="site">Casehug</td><td>Иконка + подпись</td><td>Понятно, но тесно</td><td>6 пунктов при рекомендованных 3–5 для нижней навигации; на 390 px «Case Battle» переносится на две строки</td></tr><tr><td class="site">Forcedrop</td><td>Иконка + подпись</td><td>Частично</td><td>«Back to grind» — непонятно, что за раздел</td></tr><tr><td class="site">Hellcase</td><td>Подпись только у активного</td><td>Частично</td><td>«VS», шевроны и ☰ без подписей: смысл приходится угадывать</td></tr><tr><td class="site">Rain.gg</td><td>Только иконки</td><td><span class="no">Непонятно</span></td><td>Ни одной подписи: джойстик, корзина, значок</td></tr><tr><td class="site">Upgrader.pro</td><td>—</td><td><span class="no">Меню нет</span></td><td>На мобайле нет быстрого доступа к разделам</td></tr></tbody>
+    <tbody><tr><td class="site">Skin.club</td><td>Иконка + подпись у всех</td><td>Понятно, но тускло</td><td>Текст и иконки тусклые — читабельность хуже</td></tr><tr><td class="site">JamSkins</td><td>Иконка + подпись у всех</td><td><span class="yes">Понятно</span></td><td>—</td></tr><tr><td class="site">Casehug</td><td>Иконка + подпись</td><td>Понятно, но тесно</td><td>6 пунктов при рекомендованных 3–5 для нижней навигации; на 390 px «Case Battle» переносится на две строки</td></tr><tr><td class="site">Forcedrop</td><td>Иконка + подпись</td><td>Частично</td><td>«Back to grind» — непонятно, что за раздел</td></tr><tr><td class="site">Hellcase</td><td>Подпись только у активного</td><td>Частично</td><td>«VS», шевроны и ☰ без подписей: смысл приходится угадывать</td></tr><tr><td class="site">Rain.gg</td><td>Только иконки</td><td><span class="no">Непонятно</span></td><td>Ни одной подписи: джойстик, корзина, значок</td></tr><tr><td class="site">Upgrader.pro</td><td>—</td><td><span class="no">Меню нет</span></td><td>На мобайле нет быстрого доступа к разделам</td></tr></tbody>
   </table></div>
   <div class="note">
     <strong>Вывод для SkinHub</strong>
