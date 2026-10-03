@@ -8,151 +8,257 @@
 <body>
 <x-dc>
 <helmet>
+<style data-tokens>
+/* SkinHub — токены концепта. Единственный источник цветов, шрифтов, радиусов, отступов и теней.
+   Стенд concept.html и экраны concept/home/* берут значения только отсюда.
+   Откуда каждый цвет — в concept.md, раздел «Цвета». */
+
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;1,700;1,800&family=Golos+Text:wght@400;500;600;700&display=swap");
+
+:root {
+  /* ---------- Основной: графитовая арена (атрибут «Игровой») ---------- */
+  --c-bg: #111111;            /* фон страницы */
+  --c-bg-deep: #0b0b0c;       /* под артбордом, вокруг экрана */
+  --c-surface: #1f1f21;       /* карточки */
+  --c-surface-2: #18181a;     /* панели и контейнеры */
+  --c-surface-3: #141415;     /* нижнее меню, How it works */
+  --c-surface-hi: #202023;    /* верх градиента карточки */
+  --c-surface-well: #26262a;  /* лунка под картинкой */
+
+  /* ---------- Акцентный: кислотный лайм (атрибут «Энергичный») ---------- */
+  --c-accent: #7dff3a;
+  --c-on-accent: #000000;     /* текст и иконки на акценте */
+  --acc: var(--c-accent);     /* рабочее имя в экранах; холст переопределяет из Tweaks */
+
+  /* ---------- Нейтральный: шкала серых и текст (атрибут «Простой») ---------- */
+  --c-text: #ffffff;          /* цены, заголовки, главный текст */
+  --c-neutral-200: #d9d9de;   /* текст на чипах оплаты */
+  --c-text-muted: #a1a1a6;    /* подписи, названия в карточках */
+  --c-neutral-500: #707072;   /* неактивные табы, контур бейджа */
+  --c-neutral-600: #4a4a4e;   /* контур цифр 2–3 места */
+  --c-line-strong: #39393b;   /* заметная граница */
+  --c-line: #28282a;          /* граница карточки */
+  --c-black: #000000;         /* тени и затемнения */
+
+  /* ---------- Состояния (атрибут «Честный») ---------- */
+  --c-success: #2fd492;       /* выигрыш засчитан, вывод отправлен */
+  --c-error: #ff5a6a;         /* ошибка, отказ */
+  --c-live: #eb4b4b;          /* плашка LIVE, точка «сейчас идёт» */
+  --c-on-state: #000000;      /* текст на заливке состояния */
+
+  /* ---------- Данные: редкость CS2 (не бренд, а смысл предмета) ---------- */
+  --c-rarity-milspec: #4b69ff;
+  --c-rarity-restricted: #8847ff;
+  --c-rarity-restricted-text: #a77bff;
+  --c-rarity-classified: #d32ce6;
+  --c-rarity-classified-text: #f6c4fb;
+  --c-rarity-covert: #eb4b4b;
+  --c-rarity-covert-text: #ffc2c2;
+  --c-rarity-gold: #e4ae39;
+  --c-rarity-gold-text: #ffe3a6;
+  --c-glow-fire: #ff8c28;     /* тёплое свечение под артом */
+
+  /* ---------- Шрифты: пара ---------- */
+  --font-display: "Barlow Condensed", "Arial Narrow", sans-serif;  /* заголовки, цены, номера */
+  --font-body: "Golos Text", system-ui, sans-serif;                 /* интерфейс и текст */
+
+  /* ---------- Шкала размеров ---------- */
+  --fs-2xs: 10px;
+  --fs-xs: 11px;
+  --fs-sm: 12px;
+  --fs-md: 13px;
+  --fs-base: 14px;
+  --fs-lg: 15px;
+  --fs-xl: 17px;
+  --fs-2xl: 20px;
+  --fs-3xl: 24px;
+  --fs-4xl: 28px;
+  --fs-5xl: 32px;
+  --fs-6xl: 40px;
+  --fs-7xl: 46px;
+  --fs-8xl: 60px;
+  --fs-9xl: 76px;
+  --fs-num-sm: 96px;          /* номера Hot Cases, мобайл */
+  --fs-num-lg: 170px;         /* номера Hot Cases, десктоп */
+
+  /* ---------- Форма: радиусы ---------- */
+  --radius-xs: 2px;           /* плашки EVENT, LIVE, чип скидки */
+  --radius-sm: 4px;           /* чипы оплаты */
+  --radius-md: 6px;           /* всё остальное: карточки, кнопки, баннеры */
+  --radius-full: 999px;       /* круги: аватар, бабл поддержки, точки */
+
+  /* ---------- Форма: отступы ---------- */
+  --space-2: 2px;
+  --space-4: 4px;
+  --space-6: 6px;
+  --space-8: 8px;
+  --space-10: 10px;
+  --space-12: 12px;
+  --space-14: 14px;
+  --space-16: 16px;
+  --space-20: 20px;
+  --space-24: 24px;
+  --space-28: 28px;
+  --space-32: 32px;
+  --space-40: 40px;
+  --space-48: 48px;
+  --space-56: 56px;
+  --space-64: 64px;
+
+  /* ---------- Форма: тени ---------- */
+  --shadow-ring: 0 0 0 6px var(--c-bg);                                            /* отрыв кнопки от фона */
+  --shadow-accent: 0 6px 18px color-mix(in srgb, var(--c-accent) 30%, transparent); /* бабл поддержки */
+  --shadow-halo: 0 0 0 6px color-mix(in srgb, var(--c-accent) 22%, transparent);    /* ореол вокруг аватара */
+  --shadow-live: 0 0 0 3px color-mix(in srgb, var(--c-live) 20%, transparent);      /* точка Live */
+  --shadow-art: drop-shadow(0 8px 14px color-mix(in srgb, var(--c-black) 55%, transparent)); /* filter для арта */
+  --shadow-glow: drop-shadow(0 0 4px color-mix(in srgb, var(--c-accent) 35%, transparent));  /* filter для цифр */
+}
+</style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;1,700;1,800&amp;family=Golos+Text:wght@400;500;600;700&amp;display=swap">
 <style>
-body{margin:0;background:#0b0b0c;overflow-x:hidden}
-a{color:#ffffff}a:hover{color:#d9d9de}
-.m{width:390px;min-height:4060px;box-sizing:border-box;background:#111111;color:#ffffff;font-family:'Golos Text',system-ui,sans-serif;font-size:14px;line-height:1.4;display:flex;flex-direction:column}
+body{margin:0;background:var(--c-bg-deep);overflow-x:hidden}
+a{color:var(--c-text)}a:hover{color:var(--c-neutral-200)}
+.m{width:390px;min-height:4090px;box-sizing:border-box;background:var(--c-bg);color:var(--c-text);font-family:var(--font-body);font-size:var(--fs-base);line-height:1.4;display:flex;flex-direction:column}
 .m *{box-sizing:border-box}
-.dsp{font-family:'Barlow Condensed',sans-serif;font-style:italic;font-weight:800;text-transform:uppercase;letter-spacing:.01em;line-height:.92}
-.num{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-variant-numeric:tabular-nums}
-.mut{color:#a1a1a6}
-.hd{display:flex;align-items:center;gap:8px;height:60px;padding:0 16px;border-bottom:1px solid #28282a}
-.logo{display:flex;align-items:center;gap:6px;font-size:24px;text-decoration:none}
+.dsp{font-family:var(--font-display);font-style:italic;font-weight:800;text-transform:uppercase;letter-spacing:.01em;line-height:.92}
+.num{font-family:var(--font-display);font-weight:700;font-variant-numeric:tabular-nums}
+.mut{color:var(--c-text-muted)}
+.hd{display:flex;align-items:center;gap:var(--space-8);height:60px;padding:0 var(--space-16);border-bottom:1px solid var(--c-line)}
+.logo{display:flex;align-items:center;gap:var(--space-6);font-size:var(--fs-3xl);text-decoration:none}
 .logo i{width:10px;height:22px;background:var(--acc);transform:skewX(-14deg);display:block}
 .sp{flex:1}
-.bacc{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:44px;padding:0 18px;border:0;border-radius:6px;background:var(--acc);color:#000000;font:600 15px 'Golos Text',sans-serif;text-decoration:none;cursor:pointer}
-.bw{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:44px;padding:0 18px;border:0;border-radius:6px;background:#ffffff;color:#111111;font:600 15px 'Golos Text',sans-serif;text-decoration:none;cursor:pointer}
-.ib{width:44px;height:44px;display:grid;place-items:center;border:1px solid #28282a;border-radius:6px;background:#1f1f21;color:#ffffff;cursor:pointer;padding:0}
+.bacc{display:inline-flex;align-items:center;justify-content:center;gap:var(--space-6);height:44px;padding:0 var(--space-16);border:0;border-radius:var(--radius-md);background:var(--acc);color:var(--c-on-accent);font:600 var(--fs-lg) var(--font-body);text-decoration:none;cursor:pointer}
+.bw{display:inline-flex;align-items:center;justify-content:center;gap:var(--space-8);height:44px;padding:0 var(--space-16);border:0;border-radius:var(--radius-md);background:var(--c-text);color:var(--c-bg);font:600 var(--fs-lg) var(--font-body);text-decoration:none;cursor:pointer}
+.ib{width:44px;height:44px;display:grid;place-items:center;border:1px solid var(--c-line);border-radius:var(--radius-md);background:var(--c-surface);color:var(--c-text);cursor:pointer;padding:0}
 .ib svg,.bn svg,.ic svg{display:block}
-.car{display:flex;gap:10px;overflow:hidden;padding:14px 0 0 16px}
-.sl{position:relative;flex:0 0 324px;height:340px;border-radius:6px;overflow:hidden;background:#1f1f21}
+.car{display:flex;gap:var(--space-10);overflow:hidden;padding:var(--space-14) 0 0 var(--space-16)}
+.sl{position:relative;flex:0 0 324px;height:340px;border-radius:var(--radius-md);overflow:hidden;background:var(--c-surface)}
 .sl img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.sl .fade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(17,17,17,0) 30%,rgba(17,17,17,.82) 66%,#111111 100%)}
-.sl .ct{position:absolute;left:16px;right:16px;bottom:16px;display:grid;grid-template-rows:20px 76px 46px 44px;gap:10px;align-items:start}
+.sl .fade{position:absolute;inset:0;background:linear-gradient(180deg,color-mix(in srgb,var(--c-bg) 0%,transparent) 30%,color-mix(in srgb,var(--c-bg) 82%,transparent) 66%,var(--c-bg) 100%)}
+.sl .ct{position:absolute;left:16px;right:16px;bottom:16px;display:grid;grid-template-rows:20px 76px 46px 44px;gap:var(--space-10);align-items:start}
 .sl .ct>:nth-child(3){align-self:center}
 .sl .plq{justify-self:start}
-.plq{align-self:flex-start;background:#ffffff;color:#111111;font:700 11px 'Golos Text',sans-serif;letter-spacing:.075em;text-transform:uppercase;padding:3px 8px;border-radius:2px}
-.sl .dsp{color:var(--acc);font-size:40px;line-height:.93}
-.tmr{display:flex;gap:6px}
-.tmr span{min-width:52px;padding:5px 0 4px;text-align:center;border:1px solid #39393b;border-radius:6px;background:rgba(17,17,17,.72);font-size:22px;line-height:1}
-.tmr small{display:block;margin-top:3px;font:500 9px 'Golos Text',sans-serif;letter-spacing:.08em;color:#a1a1a6;text-transform:uppercase}
-.dots{display:flex;gap:5px;justify-content:center;padding:12px 0 4px}
-.dots i{width:6px;height:6px;border-radius:3px;background:#39393b;display:block}
-.dots i.on{width:20px;background:#ffffff}
-.sec{padding:0 16px}
-.tiles{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px;margin:28px 16px 0;padding:6px;border:1px solid #28282a;border-radius:6px;background:#18181a}
-.tile{min-width:0;height:84px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:4px;padding:0 2px 8px;text-align:center;white-space:nowrap;letter-spacing:-.01em;border:1px solid #28282a;border-radius:6px;background:#1f1f21;color:#a1a1a6;font:600 10.5px 'Golos Text',sans-serif;text-decoration:none;position:relative;overflow:hidden}
+.plq{align-self:flex-start;background:var(--c-text);color:var(--c-bg);font:700 var(--fs-xs) var(--font-body);letter-spacing:.075em;text-transform:uppercase;padding:var(--space-2) var(--space-8);border-radius:var(--radius-xs)}
+.sl .dsp{color:var(--acc);font-size:var(--fs-6xl);line-height:.93}
+.tmr{display:flex;gap:var(--space-6)}
+.tmr span{min-width:52px;padding:var(--space-4) 0 var(--space-4);text-align:center;border:1px solid var(--c-line-strong);border-radius:var(--radius-md);background:color-mix(in srgb,var(--c-bg) 72%,transparent);font-size:var(--fs-3xl);line-height:1}
+.tmr small{display:block;margin-top:var(--space-2);font:500 var(--fs-2xs) var(--font-body);letter-spacing:.08em;color:var(--c-text-muted);text-transform:uppercase}
+.dots{display:flex;gap:var(--space-4);justify-content:center;padding:var(--space-12) 0 var(--space-4)}
+.dots i{width:6px;height:6px;border-radius:var(--radius-xs);background:var(--c-line-strong);display:block}
+.dots i.on{width:20px;background:var(--c-text)}
+.sec{padding:0 var(--space-16)}
+.tiles{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:var(--space-6);margin:var(--space-28) var(--space-16) 0;padding:var(--space-6);border:1px solid var(--c-line);border-radius:var(--radius-md);background:var(--c-surface-2)}
+.tile{min-width:0;height:84px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:var(--space-4);padding:0 var(--space-2) var(--space-8);text-align:center;white-space:nowrap;letter-spacing:-.01em;border:1px solid var(--c-line);border-radius:var(--radius-md);background:var(--c-surface);color:var(--c-text-muted);font:600 var(--fs-2xs) var(--font-body);text-decoration:none;position:relative;overflow:hidden}
 .tile img{width:100%;height:40px;object-fit:contain}
-.tile.on{border-color:var(--acc);color:#ffffff}
-.tk{position:relative;margin:12px 16px 0;padding:10px 12px 12px;border:1px solid #28282a;border-radius:6px;background:#18181a}
+.tile.on{border-color:var(--acc);color:var(--c-text)}
+.tk{position:relative;margin:var(--space-12) var(--space-16) 0;padding:var(--space-10) var(--space-12) var(--space-12);border:1px solid var(--c-line);border-radius:var(--radius-md);background:var(--c-surface-2)}
 .tk input{position:absolute;opacity:0;pointer-events:none}
-.tkh{display:flex;align-items:center;margin-bottom:8px}
-.tkh label{display:flex;align-items:center;gap:7px;font:700 15px/1 'Golos Text',sans-serif;color:#707072;cursor:pointer;padding:6px 0}
-.tkh label+label{margin-left:14px;padding-left:14px;border-left:1px solid #39393b}
-#tk-live:checked~.tkh label[for=tk-live],#tk-top:checked~.tkh label[for=tk-top]{color:#ffffff}
-.dot{width:7px;height:7px;border-radius:50%;background:#eb4b4b;box-shadow:0 0 0 3px rgba(235,75,75,.2);display:block}
-.pz{margin-left:auto;flex:none;width:32px;height:32px;border-radius:6px;border:1px solid #39393b;background:#1f1f21;color:#ffffff;display:grid;place-items:center;padding:0;cursor:pointer}
-.tkr{display:flex;gap:6px;overflow:hidden;margin-right:-12px}
+.tkh{display:flex;align-items:center;margin-bottom:var(--space-8)}
+.tkh label{display:flex;align-items:center;gap:var(--space-6);font:700 var(--fs-lg)/1 var(--font-body);color:var(--c-text-muted);cursor:pointer;padding:var(--space-6) 0}
+.tkh label+label{margin-left:var(--space-14);padding-left:var(--space-14);border-left:1px solid var(--c-line-strong)}
+#tk-live:checked~.tkh label[for=tk-live],#tk-top:checked~.tkh label[for=tk-top]{color:var(--c-text)}
+.dot{width:7px;height:7px;border-radius:var(--radius-full);background:var(--c-rarity-covert);box-shadow:var(--shadow-live);display:block}
+.pz{margin-left:auto;flex:none;width:32px;height:32px;border-radius:var(--radius-md);border:1px solid var(--c-line-strong);background:var(--c-surface);color:var(--c-text);display:grid;place-items:center;padding:0;cursor:pointer}
+.tkr{display:flex;gap:var(--space-6);overflow:hidden;margin-right:calc(var(--space-12) * -1)}
 .tkr.top,#tk-top:checked~.tkr.live{display:none}
 #tk-top:checked~.tkr.top{display:flex}
 #tk-top:checked~.tkh .pz{visibility:hidden}
-.dc{position:relative;flex:0 0 84px;height:84px;border-radius:6px;overflow:hidden;color:#ffffff;text-decoration:none;background:linear-gradient(180deg,color-mix(in srgb,var(--c) 34%,#1f1f21),color-mix(in srgb,var(--c) 16%,#1f1f21));box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--c) 30%,transparent)}
+.dc{position:relative;flex:0 0 84px;height:84px;border-radius:var(--radius-md);overflow:hidden;color:var(--c-text);text-decoration:none;background:linear-gradient(180deg,color-mix(in srgb,var(--c) 34%,var(--c-surface)),color-mix(in srgb,var(--c) 16%,var(--c-surface)));box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--c) 30%,transparent)}
 .dc .cs{position:absolute;top:4px;right:4px;width:16px;height:16px;object-fit:contain;opacity:.85}
-.dc .sk2{position:absolute;left:8%;top:10px;width:84%;height:44px;object-fit:contain;filter:drop-shadow(0 4px 6px rgba(0,0,0,.45))}
-.dc b{position:absolute;left:6px;right:6px;bottom:7px;font:700 10.5px/1.15 'Golos Text',sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.dc .ov{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;background:rgba(17,17,17,.82);opacity:0;transition:opacity .15s}
+.dc .sk2{position:absolute;left:8%;top:10px;width:84%;height:44px;object-fit:contain;filter:var(--shadow-art)}
+.dc b{position:absolute;left:6px;right:6px;bottom:7px;font:700 var(--fs-2xs)/1.15 var(--font-body);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dc .ov{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--space-2);background:color-mix(in srgb,var(--c-bg) 82%,transparent);opacity:0;transition:opacity .15s}
 .dc:hover .ov,.dc:focus-visible .ov{opacity:1}
-.dc .ov small{font-size:12px;color:#a1a1a6}
-.dc .ov em{font-style:normal;font-size:17px}
+.dc .ov small{font-size:var(--fs-sm);color:var(--c-text-muted)}
+.dc .ov em{font-style:normal;font-size:var(--fs-xl)}
 @media (prefers-reduced-motion:reduce){.dc .ov{transition:none}}
-.demo{position:relative;display:flex;align-items:center;gap:12px;margin:14px 16px 0;padding:14px;border:1px solid #28282a;border-radius:6px;overflow:hidden;background:#18181a}
+.demo{position:relative;display:flex;align-items:center;gap:var(--space-12);margin:var(--space-14) var(--space-16) 0;padding:var(--space-14);border:1px solid var(--c-line);border-radius:var(--radius-md);overflow:hidden;background:var(--c-surface-2)}
 .demo .bgi{position:absolute;inset:-24px;width:calc(100% + 48px);height:calc(100% + 48px);object-fit:cover;filter:blur(14px) brightness(.38) saturate(1.2)}
 .demo>*:not(.bgi){position:relative}
-.demo .art{width:74px;height:52px;flex:none;object-fit:contain;filter:drop-shadow(0 6px 12px rgba(0,0,0,.6))}
-.pips{display:flex;gap:3px;margin-top:6px}
-.pips i{width:16px;height:4px;border-radius:2px;background:#ffffff;display:block}
-.bdg{display:inline-block;border:1px solid var(--b);color:var(--t);font:600 9px 'Golos Text',sans-serif;letter-spacing:.2em;text-transform:uppercase;padding:2px 6px;border-radius:6px}
-.shf{margin-top:28px}
-.sh{display:flex;align-items:center;justify-content:space-between;padding:0 16px 10px}
-.sh h2{margin:0;font-size:26px;display:flex;align-items:center;gap:8px}
-.sh a{font-size:13px;color:#a1a1a6;text-decoration:none;display:flex;align-items:center;gap:2px}
-.row{display:flex;gap:10px;overflow:hidden;padding-left:16px}
-.cd{flex:0 0 140px;border:1px solid #28282a;border-radius:6px;background:#1f1f21;padding:8px 10px 10px;display:flex;flex-direction:column;gap:2px;text-decoration:none;color:#ffffff}
+.demo .art{width:74px;height:52px;flex:none;object-fit:contain;filter:var(--shadow-art)}
+.pips{display:flex;gap:var(--space-2);margin-top:var(--space-6)}
+.pips i{width:16px;height:4px;border-radius:var(--radius-xs);background:var(--c-text);display:block}
+.bdg{display:inline-block;border:1px solid var(--b);color:var(--t);font:600 var(--fs-2xs) var(--font-body);letter-spacing:.2em;text-transform:uppercase;padding:var(--space-2) var(--space-6);border-radius:var(--radius-md)}
+.shf{margin-top:var(--space-28)}
+.sh{display:flex;align-items:center;justify-content:space-between;padding:0 var(--space-16) var(--space-10)}
+.sh h2{margin:0;font-size:var(--fs-4xl);display:flex;align-items:center;gap:var(--space-8)}
+.sh a{font-size:var(--fs-md);color:var(--c-text-muted);text-decoration:none;display:flex;align-items:center;gap:var(--space-2)}
+.row{display:flex;gap:var(--space-10);overflow:hidden;padding-left:var(--space-16)}
+.cd{flex:0 0 140px;border:1px solid var(--c-line);border-radius:var(--radius-md);background:var(--c-surface);padding:var(--space-8) var(--space-10) var(--space-10);display:flex;flex-direction:column;gap:var(--space-2);text-decoration:none;color:var(--c-text)}
 .cd img{width:100%;height:84px;object-fit:contain}
-.cd b{font-size:13px;font-weight:500;color:#a1a1a6}
-.cd .num{font-size:22px;line-height:1.05}
-.cd small{font-size:11px;color:#a1a1a6}
-.rk{flex:0 0 150px;display:flex;align-items:flex-end;text-decoration:none;color:#ffffff}
-.rk .n{font:italic 800 96px/0.8 'Barlow Condensed',sans-serif;color:transparent;-webkit-text-stroke:2px var(--acc);filter:drop-shadow(0 0 4px color-mix(in srgb,var(--acc) 35%,transparent));margin-right:-12px;position:relative;z-index:0;flex:none}
-.rk .n.pu{-webkit-text-stroke:2px #a77bff;filter:drop-shadow(0 0 4px rgba(140,80,255,.4));}
+.cd b{font-size:var(--fs-md);font-weight:500;color:var(--c-text-muted)}
+.cd .num{font-size:var(--fs-3xl);line-height:1.05}
+.cd small{font-size:var(--fs-xs);color:var(--c-text-muted)}
+.rk{flex:0 0 150px;display:flex;align-items:flex-end;text-decoration:none;color:var(--c-text)}
+.rk .n{font:italic 800 var(--fs-num-sm)/0.8 var(--font-display);color:transparent;-webkit-text-stroke:2px var(--acc);filter:var(--shadow-glow);margin-right:calc(var(--space-12) * -1);position:relative;z-index:0;flex:none}
+.rk .n.pu{-webkit-text-stroke:2px var(--c-rarity-restricted-text);filter:drop-shadow(0 0 4px color-mix(in srgb,var(--c-rarity-restricted) 40%,transparent));}
 .hot{position:relative;isolation:isolate}
-.hot::before{content:"";position:absolute;inset:-40px 0px;z-index:-1;pointer-events:none;background:radial-gradient(ellipse 60% 70% at 30% 55%,rgba(255,150,30,.12),transparent 70%),radial-gradient(ellipse 45% 60% at 95% 55%,rgba(255,120,30,.07),transparent 70%)}
+.hot::before{content:"";position:absolute;inset:-40px 0px;z-index:-1;pointer-events:none;background:radial-gradient(ellipse 60% 70% at 30% 55%,color-mix(in srgb,var(--c-glow-fire) 12%,transparent),transparent 70%),radial-gradient(ellipse 45% 60% at 95% 55%,color-mix(in srgb,var(--c-glow-fire) 7%,transparent),transparent 70%)}
 .rk .cd{flex:0 0 118px;position:relative;z-index:1}
 .rk .cd img{height:70px}
-.rk .cd .num{font-size:20px}
-.disc{display:flex;align-items:center;gap:6px}
-.disc .ch{background:#ffffff;color:#111111;font:700 11px 'Golos Text',sans-serif;padding:1px 5px;border-radius:2px}
-.disc s{color:#a1a1a6;font-size:13px}
-.ofr{display:flex;align-items:center;gap:12px;margin:28px 16px 0;padding:12px;border:1px solid #28282a;border-radius:6px;background:linear-gradient(90deg,#1f1f21,#18181a)}
+.rk .cd .num{font-size:var(--fs-2xl)}
+.disc{display:flex;align-items:center;gap:var(--space-6)}
+.disc .ch{background:var(--c-text);color:var(--c-bg);font:700 var(--fs-xs) var(--font-body);padding:var(--space-2) var(--space-4);border-radius:var(--radius-xs)}
+.disc s{color:var(--c-text-muted);font-size:var(--fs-md)}
+.ofr{display:flex;align-items:center;gap:var(--space-12);margin:var(--space-28) var(--space-16) 0;padding:var(--space-12);border:1px solid var(--c-line);border-radius:var(--radius-md);background:linear-gradient(90deg,var(--c-surface),var(--c-surface-2))}
 .ofr img{width:64px;height:64px;object-fit:contain;flex:none}
-.lb{margin:32px 16px 0;padding:20px 14px 0;border:1px solid #28282a;border-radius:6px;overflow:hidden;background:radial-gradient(ellipse 60% 50% at 50% 100%,rgba(228,174,57,.14),transparent 70%),#18181a}
-.lbl{display:flex;flex-direction:column;align-items:flex-start;gap:10px;margin-bottom:18px}
-.pod{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;align-items:end;margin-top:16px}
-.pc{position:relative;display:flex;flex-direction:column;align-items:center;gap:4px;padding:14px 4px 12px;border:1px solid #28282a;border-bottom:3px solid var(--c);border-radius:6px 6px 0 0;background:#1f1f21;text-align:center;min-width:0}
-.pc.first{padding-top:20px;padding-bottom:18px;background:linear-gradient(180deg,#26262a,#1f1f21)}
-.pc .pn{position:absolute;z-index:1;top:6px;left:8px;font:italic 800 38px/0.8 'Barlow Condensed',sans-serif;color:transparent;-webkit-text-stroke:1.5px #4a4a4e}
-.pc.first .pn{font-size:48px;-webkit-text-stroke:2px var(--acc);filter:drop-shadow(0 0 4px color-mix(in srgb,var(--acc) 35%,transparent))}
+.lb{margin:var(--space-32) var(--space-16) 0;padding:var(--space-20) var(--space-14) 0;border:1px solid var(--c-line);border-radius:var(--radius-md);overflow:hidden;background:radial-gradient(ellipse 60% 50% at 50% 100%,color-mix(in srgb,var(--c-rarity-gold) 14%,transparent),transparent 70%),var(--c-surface-2)}
+.lbl{display:flex;flex-direction:column;align-items:flex-start;gap:var(--space-10);margin-bottom:var(--space-16)}
+.pod{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-6);align-items:end;margin-top:var(--space-16)}
+.pc{position:relative;display:flex;flex-direction:column;align-items:center;gap:var(--space-4);padding:var(--space-14) var(--space-4) var(--space-12);border:1px solid var(--c-line);border-bottom:3px solid var(--c);border-radius:var(--radius-md) var(--radius-md) 0 0;background:var(--c-surface);text-align:center;min-width:0}
+.pc.first{padding-top:var(--space-20);padding-bottom:var(--space-16);background:linear-gradient(180deg,var(--c-surface-well),var(--c-surface))}
+.pc .pn{position:absolute;z-index:1;top:6px;left:8px;font:italic 800 var(--fs-6xl)/0.8 var(--font-display);color:transparent;-webkit-text-stroke:1.5px var(--c-neutral-600)}
+.pc.first .pn{font-size:var(--fs-7xl);-webkit-text-stroke:2px var(--acc);filter:var(--shadow-glow)}
 .pc img{position:relative;width:100%;height:52px;object-fit:contain}
 .pc.first img{height:76px;transform:rotate(-10deg)}
-.pc b{font-size:11px;font-weight:500;color:#a1a1a6;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
-.pc .bdg{font-size:8px;letter-spacing:.12em;padding:1px 4px}
-.pc .pv{font-size:17px;line-height:1}
-.pc.first .pv{font-size:20px}
-.how{margin:32px 16px 0;padding:20px 14px 14px;border:1px solid #28282a;border-radius:6px;background:radial-gradient(ellipse 80% 50% at 50% 110%,color-mix(in srgb,var(--acc) 10%,transparent),transparent 70%),#141415}
-.steps{display:flex;flex-direction:column;align-items:stretch;gap:6px;margin-top:16px}
-.steps .hw{display:grid;grid-template-columns:104px minmax(0,1fr);grid-template-rows:auto 1fr;column-gap:12px;padding-right:12px}
+.pc b{font-size:var(--fs-xs);font-weight:500;color:var(--c-text-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.pc .bdg{font-size:var(--fs-2xs);letter-spacing:.12em;padding:var(--space-2) var(--space-4)}
+.pc .pv{font-size:var(--fs-xl);line-height:1}
+.pc.first .pv{font-size:var(--fs-2xl)}
+.how{margin:var(--space-32) var(--space-16) 0;padding:var(--space-20) var(--space-14) var(--space-14);border:1px solid var(--c-line);border-radius:var(--radius-md);background:radial-gradient(ellipse 80% 50% at 50% 110%,color-mix(in srgb,var(--acc) 10%,transparent),transparent 70%),var(--c-surface-3)}
+.steps{display:flex;flex-direction:column;align-items:stretch;gap:var(--space-6);margin-top:var(--space-16)}
+.steps .hw{display:grid;grid-template-columns:104px minmax(0,1fr);grid-template-rows:auto 1fr;column-gap:var(--space-12);padding-right:var(--space-12)}
 .ha{grid-row:1 / 3;height:100%;min-height:104px}
 .ha img{width:92px;height:72px}
 .sa{width:46px;height:46px}
 .sa svg{width:24px;height:24px}
-.sc span{padding:2px 6px;font-size:9px}
-.hn{top:12px;right:12px;font-size:28px;-webkit-text-stroke-width:1.5px}
+.sc span{padding:var(--space-2) var(--space-6);font-size:var(--fs-2xs)}
+.hn{top:12px;right:12px;font-size:var(--fs-4xl);-webkit-text-stroke-width:1.5px}
 .steps .sc{display:none}
-.ht{font-size:20px;padding-top:16px}
-.hx{font-size:12.5px;padding:4px 0 14px}
+.ht{font-size:var(--fs-2xl);padding-top:var(--space-16)}
+.hx{font-size:var(--fs-sm);padding:var(--space-4) 0 var(--space-14)}
 .hstep{transform:rotate(90deg);height:22px}
-.hw{position:relative;display:flex;flex-direction:column;border:1px solid #28282a;border-radius:6px;overflow:hidden;background:linear-gradient(180deg,#202023,#18181a)}
+.hw{position:relative;display:flex;flex-direction:column;border:1px solid var(--c-line);border-radius:var(--radius-md);overflow:hidden;background:linear-gradient(180deg,var(--c-surface-hi),var(--c-surface-2))}
 .ha{position:relative;display:grid;place-items:center;overflow:hidden}
 .ha .hg{position:absolute;inset:0;background:radial-gradient(circle at 50% 60%,var(--g),transparent 62%)}
-.ha img{position:relative;object-fit:contain;filter:drop-shadow(0 10px 18px rgba(0,0,0,.55))}
+.ha img{position:relative;object-fit:contain;filter:var(--shadow-art)}
 .ha .kn{transform:rotate(-14deg)}
-.si{position:relative;display:flex;flex-direction:column;align-items:center;gap:10px}
-.sa{display:grid;place-items:center;border-radius:50%;background:var(--acc);color:#000000;box-shadow:0 0 0 6px color-mix(in srgb,var(--acc) 22%,transparent)}
-.sc{display:flex;gap:6px}
-.sc span{padding:3px 10px;border-radius:6px;background:#ffffff;color:#111111;font:700 11px 'Golos Text',sans-serif;letter-spacing:.04em}
-.hn{position:absolute;z-index:1;font:italic 800 56px/0.8 'Barlow Condensed',sans-serif;color:transparent;-webkit-text-stroke:2px var(--acc);filter:drop-shadow(0 0 4px color-mix(in srgb,var(--acc) 35%,transparent))}
-.ht{font:italic 800 26px/1 'Barlow Condensed',sans-serif;text-transform:uppercase}
+.si{position:relative;display:flex;flex-direction:column;align-items:center;gap:var(--space-10)}
+.sa{display:grid;place-items:center;border-radius:var(--radius-full);background:var(--acc);color:var(--c-on-accent);box-shadow:var(--shadow-halo)}
+.sc{display:flex;gap:var(--space-6)}
+.sc span{padding:var(--space-2) var(--space-10);border-radius:var(--radius-md);background:var(--c-text);color:var(--c-bg);font:700 var(--fs-xs) var(--font-body);letter-spacing:.04em}
+.hn{position:absolute;z-index:1;font:italic 800 var(--fs-8xl)/0.8 var(--font-display);color:transparent;-webkit-text-stroke:2px var(--acc);filter:var(--shadow-glow)}
+.ht{font:italic 800 var(--fs-4xl)/1 var(--font-display);text-transform:uppercase}
 .hstep{flex:none;display:grid;place-items:center;color:var(--acc)}
-.steps .hn{font-size:24px;top:8px;left:8px;right:auto}
-.faq{margin:32px 16px 0}
-.q{display:flex;justify-content:space-between;align-items:center;min-height:52px;border-bottom:1px solid #28282a;font-weight:500;color:#ffffff;text-decoration:none}
-.seo{margin:28px 16px 0;color:#a1a1a6;font-size:13px}
-.ft{margin-top:36px;padding:24px 16px 28px;border-top:1px solid #28282a;display:flex;flex-direction:column;gap:12px;font-size:12px;color:#a1a1a6}
-.acc{display:flex;justify-content:space-between;align-items:center;min-height:48px;border-bottom:1px solid #28282a;color:#ffffff;font-weight:600;font-size:14px;text-decoration:none}
-.soc{display:flex;justify-content:center;gap:10px;padding:6px 0}
-.soc a{width:44px;height:44px;border-radius:50%;background:#1f1f21;border:1px solid #28282a;display:grid;place-items:center;color:#ffffff;text-decoration:none}
-.pay{display:flex;flex-wrap:wrap;gap:6px}
-.pay span{border:1px solid #39393b;border-radius:4px;padding:2px 6px;font:600 10px 'Golos Text',sans-serif;letter-spacing:.06em;color:#d9d9de}
-.lang{align-self:center;display:inline-flex;align-items:center;gap:6px;height:40px;padding:0 14px;border:1px solid #39393b;border-radius:6px;background:transparent;color:#ffffff;font:600 13px 'Golos Text',sans-serif}
-.bn{margin-top:auto;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));align-items:end;padding:8px 6px 14px;border-top:1px solid #28282a;background:#141415}
-.bn a{display:flex;flex-direction:column;align-items:center;gap:4px;min-height:48px;justify-content:flex-end;font-size:11px;color:#a1a1a6;text-decoration:none;position:relative}
-.bn a.on{color:#ffffff}
-.bn .mid{color:#ffffff;font-weight:600}
-.bn .mid span.c{width:52px;height:52px;border-radius:50%;background:var(--acc);color:#000000;display:grid;place-items:center;margin-top:-26px;box-shadow:0 0 0 5px #111111}
-.bn em{position:absolute;top:-2px;left:calc(50% + 6px);font:600 10px/16px 'Golos Text',sans-serif;font-style:normal;min-width:18px;text-align:center;border-radius:8px;background:#39393b;color:#ffffff;padding:0 4px}
+.steps .hn{font-size:var(--fs-3xl);top:8px;left:8px;right:auto}
+.faq{margin:var(--space-32) var(--space-16) 0}
+.q{display:flex;justify-content:space-between;align-items:center;min-height:52px;border-bottom:1px solid var(--c-line);font-weight:500;color:var(--c-text);text-decoration:none}
+.seo{margin:var(--space-28) var(--space-16) 0;color:var(--c-text-muted);font-size:var(--fs-md)}
+.ft{margin-top:var(--space-32);padding:var(--space-24) var(--space-16) var(--space-28);border-top:1px solid var(--c-line);display:flex;flex-direction:column;gap:var(--space-12);font-size:var(--fs-sm);color:var(--c-text-muted)}
+.acc{display:flex;justify-content:space-between;align-items:center;min-height:48px;border-bottom:1px solid var(--c-line);color:var(--c-text);font-weight:600;font-size:var(--fs-base);text-decoration:none}
+.soc{display:flex;justify-content:center;gap:var(--space-10);padding:var(--space-6) 0}
+.soc a{width:44px;height:44px;border-radius:var(--radius-full);background:var(--c-surface);border:1px solid var(--c-line);display:grid;place-items:center;color:var(--c-text);text-decoration:none}
+.pay{display:flex;flex-wrap:wrap;gap:var(--space-6)}
+.pay span{border:1px solid var(--c-line-strong);border-radius:var(--radius-sm);padding:var(--space-2) var(--space-6);font:600 var(--fs-2xs) var(--font-body);letter-spacing:.06em;color:var(--c-neutral-200)}
+.lang{align-self:center;display:inline-flex;align-items:center;gap:var(--space-6);height:40px;padding:0 var(--space-14);border:1px solid var(--c-line-strong);border-radius:var(--radius-md);background:transparent;color:var(--c-text);font:600 var(--fs-md) var(--font-body)}
+.bn{margin-top:auto;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));align-items:end;padding:var(--space-8) var(--space-6) var(--space-14);border-top:1px solid var(--c-line);background:var(--c-surface-3)}
+.bn a{display:flex;flex-direction:column;align-items:center;gap:var(--space-4);min-height:48px;justify-content:flex-end;font-size:var(--fs-xs);color:var(--c-text-muted);text-decoration:none;position:relative}
+.bn a.on{color:var(--c-text)}
+.bn .mid{color:var(--c-text);font-weight:600}
+.bn .mid span.c{width:52px;height:52px;border-radius:var(--radius-full);background:var(--acc);color:var(--c-on-accent);display:grid;place-items:center;margin-top:calc(var(--space-24) * -1);box-shadow:var(--shadow-ring)}
+.bn em{position:absolute;top:-2px;left:calc(50% + 6px);font:600 var(--fs-2xs)/16px var(--font-body);font-style:normal;min-width:18px;text-align:center;border-radius:var(--radius-md);background:var(--c-line-strong);color:var(--c-text);padding:0 var(--space-4)}
 </style>
 </helmet>
 <div class="m" style="--acc: {{accent}}">
@@ -181,7 +287,7 @@ a{color:#ffffff}a:hover{color:#d9d9de}
       <div class="ct">
         <span class="plq">Promo</span>
         <div class="dsp">Got a code from a streamer?</div>
-        <div class="mut" style="font-size: 13px">+15% on deposit or a free case</div>
+        <div class="mut" style="font-size: var(--fs-md)">+15% on deposit or a free case</div>
         <a class="bw" href="#" style="width: 100%">I have a code</a>
       </div>
     </div>
@@ -190,19 +296,19 @@ a{color:#ffffff}a:hover{color:#d9d9de}
   <div class="tk">
     <input type="radio" name="tk" id="tk-live" checked><input type="radio" name="tk" id="tk-top">
     <div class="tkh"><label for="tk-live"><i class="dot"></i>Live</label><label for="tk-top">Top today</label><button class="pz" type="button" aria-label="Pause live drops"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 6v12M15 6v12"></path></svg></button></div>
-    <div class="tkr live"><a class="dc" href="#" style="--c: #8847ff"><img class="cs" src="img/case-hell.png" alt=""><img class="sk2" src="img/skin-moonrise.png" alt=""><b>Moonrise</b><span class="ov"><small>m0nk</small><em class="num">$7.10</em></span></a><a class="dc" href="#" style="--c: #d32ce6"><img class="cs" src="img/case-agents.png" alt=""><img class="sk2" src="img/skin-acid.png" alt=""><b>Acid Etched</b><span class="ov"><small>kira</small><em class="num">$21.00</em></span></a><a class="dc" href="#" style="--c: #8847ff"><img class="cs" src="img/case-easy_start.png" alt=""><img class="sk2" src="img/skin-origami.png" alt=""><b>Origami</b><span class="ov"><small>zed</small><em class="num">$2.40</em></span></a><a class="dc" href="#" style="--c: #4b69ff"><img class="cs" src="img/case-file_51.png" alt=""><img class="sk2" src="img/skin-cobalt.png" alt=""><b>Cobalt Core</b><span class="ov"><small>nova</small><em class="num">$0.84</em></span></a><a class="dc" href="#" style="--c: #8847ff"><img class="cs" src="img/case-ruby_tempest.png" alt=""><img class="sk2" src="img/skin-cartel.png" alt=""><b>Cartel</b><span class="ov"><small>rex</small><em class="num">$5.40</em></span></a><a class="dc" href="#" style="--c: #8847ff"><img class="cs" src="img/case-case_51.png" alt=""><img class="sk2" src="img/skin-cassette.png" alt=""><b>Cassette</b><span class="ov"><small>lux</small><em class="num">$3.10</em></span></a><a class="dc" href="#" style="--c: #4b69ff"><img class="cs" src="img/case-magnificence.png" alt=""><img class="sk2" src="img/skin-outbreak.png" alt=""><b>Outbreak</b><span class="ov"><small>ash</small><em class="num">$1.90</em></span></a><a class="dc" href="#" style="--c: #4b69ff"><img class="cs" src="img/case-indomitable.png" alt=""><img class="sk2" src="img/skin-bullfrog.png" alt=""><b>Bullfrog</b><span class="ov"><small>vex</small><em class="num">$1.20</em></span></a><a class="dc" href="#" style="--c: #4b69ff"><img class="cs" src="img/case-easy_start.png" alt=""><img class="sk2" src="img/skin-cyano.png" alt=""><b>Cyanospatter</b><span class="ov"><small>jin</small><em class="num">$0.60</em></span></a><a class="dc" href="#" style="--c: #4b69ff"><img class="cs" src="img/case-hell.png" alt=""><img class="sk2" src="img/skin-copper.png" alt=""><b>Copperflage</b><span class="ov"><small>olz</small><em class="num">$0.40</em></span></a><a class="dc" href="#" style="--c: #4b69ff"><img class="cs" src="img/case-agents.png" alt=""><img class="sk2" src="img/skin-scumbria.png" alt=""><b>Scumbria</b><span class="ov"><small>pax</small><em class="num">$0.52</em></span></a><a class="dc" href="#" style="--c: #4b69ff"><img class="cs" src="img/case-file_51.png" alt=""><img class="sk2" src="img/skin-fubar.png" alt=""><b>Fubar</b><span class="ov"><small>ivy</small><em class="num">$0.30</em></span></a></div>
-    <div class="tkr top"><a class="dc" href="#" style="--c: #e4ae39"><img class="cs" src="img/sc-3.png" alt=""><img class="sk2" src="img/skin-butterfly.webp" alt=""><b>★ Butterfly Knife</b><span class="ov"><small>m0nk</small><em class="num">$3,167.07</em></span></a><a class="dc" href="#" style="--c: #eb4b4b"><img class="cs" src="img/case-ruby_tempest.png" alt=""><img class="sk2" src="img/skin-danger.png" alt=""><b>Danger Close</b><span class="ov"><small>nova</small><em class="num">$73.10</em></span></a><a class="dc" href="#" style="--c: #d32ce6"><img class="cs" src="img/case-agents.png" alt=""><img class="sk2" src="img/skin-chrome.png" alt=""><b>Chrome Cannon</b><span class="ov"><small>zed</small><em class="num">$34.20</em></span></a><a class="dc" href="#" style="--c: #d32ce6"><img class="cs" src="img/case-hell.png" alt=""><img class="sk2" src="img/skin-acid.png" alt=""><b>Acid Etched</b><span class="ov"><small>kira</small><em class="num">$21.00</em></span></a><a class="dc" href="#" style="--c: #8847ff"><img class="cs" src="img/case-project_51.png" alt=""><img class="sk2" src="img/skin-moonrise.png" alt=""><b>Moonrise</b><span class="ov"><small>rex</small><em class="num">$7.10</em></span></a><a class="dc" href="#" style="--c: #8847ff"><img class="cs" src="img/case-case_51.png" alt=""><img class="sk2" src="img/skin-cartel.png" alt=""><b>Cartel</b><span class="ov"><small>ash</small><em class="num">$5.40</em></span></a><a class="dc" href="#" style="--c: #8847ff"><img class="cs" src="img/case-magnificence.png" alt=""><img class="sk2" src="img/skin-cassette.png" alt=""><b>Cassette</b><span class="ov"><small>lux</small><em class="num">$3.10</em></span></a><a class="dc" href="#" style="--c: #8847ff"><img class="cs" src="img/case-easy_start.png" alt=""><img class="sk2" src="img/skin-origami.png" alt=""><b>Origami</b><span class="ov"><small>vex</small><em class="num">$2.40</em></span></a><a class="dc" href="#" style="--c: #4b69ff"><img class="cs" src="img/case-hell.png" alt=""><img class="sk2" src="img/skin-outbreak.png" alt=""><b>Outbreak</b><span class="ov"><small>jin</small><em class="num">$1.90</em></span></a><a class="dc" href="#" style="--c: #4b69ff"><img class="cs" src="img/case-file_51.png" alt=""><img class="sk2" src="img/skin-bullfrog.png" alt=""><b>Bullfrog</b><span class="ov"><small>olz</small><em class="num">$1.20</em></span></a><a class="dc" href="#" style="--c: #4b69ff"><img class="cs" src="img/case-agents.png" alt=""><img class="sk2" src="img/skin-cobalt.png" alt=""><b>Cobalt Core</b><span class="ov"><small>pax</small><em class="num">$0.84</em></span></a></div>
+    <div class="tkr live"><a class="dc" href="#" style="--c: var(--c-rarity-restricted)"><img class="cs" src="img/case-hell.png" alt=""><img class="sk2" src="img/skin-moonrise.png" alt=""><b>Moonrise</b><span class="ov"><small>m0nk</small><em class="num">$7.10</em></span></a><a class="dc" href="#" style="--c: var(--c-rarity-classified)"><img class="cs" src="img/case-agents.png" alt=""><img class="sk2" src="img/skin-acid.png" alt=""><b>Acid Etched</b><span class="ov"><small>kira</small><em class="num">$21.00</em></span></a><a class="dc" href="#" style="--c: var(--c-rarity-restricted)"><img class="cs" src="img/case-easy_start.png" alt=""><img class="sk2" src="img/skin-origami.png" alt=""><b>Origami</b><span class="ov"><small>zed</small><em class="num">$2.40</em></span></a><a class="dc" href="#" style="--c: var(--c-rarity-milspec)"><img class="cs" src="img/case-file_51.png" alt=""><img class="sk2" src="img/skin-cobalt.png" alt=""><b>Cobalt Core</b><span class="ov"><small>nova</small><em class="num">$0.84</em></span></a><a class="dc" href="#" style="--c: var(--c-rarity-restricted)"><img class="cs" src="img/case-ruby_tempest.png" alt=""><img class="sk2" src="img/skin-cartel.png" alt=""><b>Cartel</b><span class="ov"><small>rex</small><em class="num">$5.40</em></span></a><a class="dc" href="#" style="--c: var(--c-rarity-restricted)"><img class="cs" src="img/case-case_51.png" alt=""><img class="sk2" src="img/skin-cassette.png" alt=""><b>Cassette</b><span class="ov"><small>lux</small><em class="num">$3.10</em></span></a><a class="dc" href="#" style="--c: var(--c-rarity-milspec)"><img class="cs" src="img/case-magnificence.png" alt=""><img class="sk2" src="img/skin-outbreak.png" alt=""><b>Outbreak</b><span class="ov"><small>ash</small><em class="num">$1.90</em></span></a><a class="dc" href="#" style="--c: var(--c-rarity-milspec)"><img class="cs" src="img/case-indomitable.png" alt=""><img class="sk2" src="img/skin-bullfrog.png" alt=""><b>Bullfrog</b><span class="ov"><small>vex</small><em class="num">$1.20</em></span></a><a class="dc" href="#" style="--c: var(--c-rarity-milspec)"><img class="cs" src="img/case-easy_start.png" alt=""><img class="sk2" src="img/skin-cyano.png" alt=""><b>Cyanospatter</b><span class="ov"><small>jin</small><em class="num">$0.60</em></span></a><a class="dc" href="#" style="--c: var(--c-rarity-milspec)"><img class="cs" src="img/case-hell.png" alt=""><img class="sk2" src="img/skin-copper.png" alt=""><b>Copperflage</b><span class="ov"><small>olz</small><em class="num">$0.40</em></span></a><a class="dc" href="#" style="--c: var(--c-rarity-milspec)"><img class="cs" src="img/case-agents.png" alt=""><img class="sk2" src="img/skin-scumbria.png" alt=""><b>Scumbria</b><span class="ov"><small>pax</small><em class="num">$0.52</em></span></a><a class="dc" href="#" style="--c: var(--c-rarity-milspec)"><img class="cs" src="img/case-file_51.png" alt=""><img class="sk2" src="img/skin-fubar.png" alt=""><b>Fubar</b><span class="ov"><small>ivy</small><em class="num">$0.30</em></span></a></div>
+    <div class="tkr top"><a class="dc" href="#" style="--c: var(--c-rarity-gold)"><img class="cs" src="img/sc-3.png" alt=""><img class="sk2" src="img/skin-butterfly.webp" alt=""><b>★ Butterfly Knife</b><span class="ov"><small>m0nk</small><em class="num">$3,167.07</em></span></a><a class="dc" href="#" style="--c: var(--c-rarity-covert)"><img class="cs" src="img/case-ruby_tempest.png" alt=""><img class="sk2" src="img/skin-danger.png" alt=""><b>Danger Close</b><span class="ov"><small>nova</small><em class="num">$73.10</em></span></a><a class="dc" href="#" style="--c: var(--c-rarity-classified)"><img class="cs" src="img/case-agents.png" alt=""><img class="sk2" src="img/skin-chrome.png" alt=""><b>Chrome Cannon</b><span class="ov"><small>zed</small><em class="num">$34.20</em></span></a><a class="dc" href="#" style="--c: var(--c-rarity-classified)"><img class="cs" src="img/case-hell.png" alt=""><img class="sk2" src="img/skin-acid.png" alt=""><b>Acid Etched</b><span class="ov"><small>kira</small><em class="num">$21.00</em></span></a><a class="dc" href="#" style="--c: var(--c-rarity-restricted)"><img class="cs" src="img/case-project_51.png" alt=""><img class="sk2" src="img/skin-moonrise.png" alt=""><b>Moonrise</b><span class="ov"><small>rex</small><em class="num">$7.10</em></span></a><a class="dc" href="#" style="--c: var(--c-rarity-restricted)"><img class="cs" src="img/case-case_51.png" alt=""><img class="sk2" src="img/skin-cartel.png" alt=""><b>Cartel</b><span class="ov"><small>ash</small><em class="num">$5.40</em></span></a><a class="dc" href="#" style="--c: var(--c-rarity-restricted)"><img class="cs" src="img/case-magnificence.png" alt=""><img class="sk2" src="img/skin-cassette.png" alt=""><b>Cassette</b><span class="ov"><small>lux</small><em class="num">$3.10</em></span></a><a class="dc" href="#" style="--c: var(--c-rarity-restricted)"><img class="cs" src="img/case-easy_start.png" alt=""><img class="sk2" src="img/skin-origami.png" alt=""><b>Origami</b><span class="ov"><small>vex</small><em class="num">$2.40</em></span></a><a class="dc" href="#" style="--c: var(--c-rarity-milspec)"><img class="cs" src="img/case-hell.png" alt=""><img class="sk2" src="img/skin-outbreak.png" alt=""><b>Outbreak</b><span class="ov"><small>jin</small><em class="num">$1.90</em></span></a><a class="dc" href="#" style="--c: var(--c-rarity-milspec)"><img class="cs" src="img/case-file_51.png" alt=""><img class="sk2" src="img/skin-bullfrog.png" alt=""><b>Bullfrog</b><span class="ov"><small>olz</small><em class="num">$1.20</em></span></a><a class="dc" href="#" style="--c: var(--c-rarity-milspec)"><img class="cs" src="img/case-agents.png" alt=""><img class="sk2" src="img/skin-cobalt.png" alt=""><b>Cobalt Core</b><span class="ov"><small>pax</small><em class="num">$0.84</em></span></a></div>
   </div>
 
   <div class="demo">
     <img class="bgi" src="img/slide-case.jpg" alt="">
     <img class="art" src="img/case-ruby_tempest.png" alt="">
     <div style="flex: 1; min-width: 0">
-      <div style="font-weight: 700; font-size: 15px">Try any case free</div>
-      <div class="mut" style="font-size: 12px">No sign-up · same odds as real</div>
-      <div style="display: flex; align-items: center; gap: 8px"><div class="pips"><i></i><i></i><i></i><i></i><i></i></div><span style="font-size: 12px; margin-top: 6px">5 of 5 left</span></div>
+      <div style="font-weight: 700; font-size: var(--fs-lg)">Try any case free</div>
+      <div class="mut" style="font-size: var(--fs-sm)">No sign-up · same odds as real</div>
+      <div style="display: flex; align-items: center; gap: var(--space-8)"><div class="pips"><i></i><i></i><i></i><i></i><i></i></div><span style="font-size: var(--fs-sm); margin-top: var(--space-6)">5 of 5 left</span></div>
     </div>
-    <a class="bw" href="#" style="padding: 0 14px">Try</a>
+    <a class="bw" href="#" style="padding: 0 var(--space-14)">Try</a>
   </div>
 
   <nav class="tiles" aria-label="Case categories">
@@ -213,8 +319,8 @@ a{color:#ffffff}a:hover{color:#d9d9de}
     <a class="tile" href="#"><img src="img/sc-4.png" alt="">Creators</a>
   </nav>
 
-  <section class="shf" style="margin-top: 18px">
-    <div class="sh"><h2 class="dsp"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linejoin="round"><path d="M12 3c1 4 5 5.5 5 10.5a5 5 0 0 1-10 0c0-3 2-4 2-6.5 1 1 2 2.2 2 3.5 0-3.5 1-5.5 1-7.5z"></path></svg>Hot Cases</h2><a href="#">See all <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 6 6 6-6 6"></path></svg></a></div>
+  <section class="shf" style="margin-top: var(--space-16)">
+    <div class="sh"><h2 class="dsp"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--c-text)" stroke-width="2" stroke-linejoin="round"><path d="M12 3c1 4 5 5.5 5 10.5a5 5 0 0 1-10 0c0-3 2-4 2-6.5 1 1 2 2.2 2 3.5 0-3.5 1-5.5 1-7.5z"></path></svg>Hot Cases</h2><a href="#">See all <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 6 6 6-6 6"></path></svg></a></div>
     <div class="row hot">
       <a class="rk" href="#"><span class="n">1</span><div class="cd"><img src="img/case-hell.png" alt=""><b>Prime Cut</b><span class="num">$1.00</span></div></a>
       <a class="rk" href="#"><span class="n">2</span><div class="cd"><img src="img/case-agents.png" alt=""><b>Night Ops</b><span class="num">$2.50</span></div></a>
@@ -234,17 +340,17 @@ a{color:#ffffff}a:hover{color:#d9d9de}
   <div class="ofr">
     <img src="img/case-capsule2.png" alt="">
     <div style="flex: 1">
-      <div style="font-weight: 700; font-size: 15px">Free case for new players</div>
-      <div class="mut" style="font-size: 12px">Sign in and get it at Level 1</div>
+      <div style="font-weight: 700; font-size: var(--fs-lg)">Free case for new players</div>
+      <div class="mut" style="font-size: var(--fs-sm)">Sign in and get it at Level 1</div>
     </div>
-    <a class="bw" href="#" style="padding: 0 16px">Get</a>
+    <a class="bw" href="#" style="padding: 0 var(--space-16)">Get</a>
   </div>
 
   <section class="shf">
     <div class="sh"><h2 class="dsp">Cheap</h2><a href="#">See all <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 6 6 6-6 6"></path></svg></a></div>
     <div class="row">
       <a class="cd" href="#"><img src="img/case-easy_start.png" alt=""><b>Starter</b><span class="num">$0.50</span></a>
-      <a class="cd" href="#"><img src="img/case-magnificence.png" alt=""><b>Pistol Pack</b><div class="disc"><span class="ch">-20%</span><s class="num">$1.10</s><span class="num" style="font-size: 22px">$0.90</span></div></a>
+      <a class="cd" href="#"><img src="img/case-magnificence.png" alt=""><b>Pistol Pack</b><div class="disc"><span class="ch">-20%</span><s class="num">$1.10</s><span class="num" style="font-size: var(--fs-3xl)">$0.90</span></div></a>
       <a class="cd" href="#"><img src="img/case-indomitable.png" alt=""><b>Neon Mini</b><span class="num">$0.70</span></a>
     </div>
   </section>
@@ -270,41 +376,41 @@ a{color:#ffffff}a:hover{color:#d9d9de}
   <section class="lb">
     <div class="lbl" style="margin-bottom: 0">
       <span class="plq">Weekly race · ends in 3d 14h</span>
-      <h2 class="dsp" style="margin: 0; font-size: 40px">Climb the<br>leaderboard</h2>
-      <div class="mut" style="font-size: 13px">The biggest drops of the week take the prizes</div>
+      <h2 class="dsp" style="margin: 0; font-size: var(--fs-6xl)">Climb the<br>leaderboard</h2>
+      <div class="mut" style="font-size: var(--fs-md)">The biggest drops of the week take the prizes</div>
     </div>
-    <div class="pod"><div class="pc" style="--c: #d32ce6"><span class="pn">2</span><img src="img/skin-chrome.png" alt=""><b>Chrome Cannon</b><span class="bdg" style="--b: #d32ce6; --t: #f6c4fb">Classified</span><span class="num pv">$340.00</span></div><div class="pc first" style="--c: #e4ae39"><span class="pn">1</span><img src="img/skin-butterfly.webp" alt=""><b>★ Butterfly Knife</b><span class="bdg" style="--b: #e4ae39; --t: #ffe3a6">Fade · FN</span><span class="num pv">$3,167.07</span></div><div class="pc" style="--c: #eb4b4b"><span class="pn">3</span><img src="img/skin-danger.png" alt=""><b>Danger Close</b><span class="bdg" style="--b: #eb4b4b; --t: #ffc2c2">Covert</span><span class="num pv">$210.00</span></div></div>
-    <a class="bw" href="#" style="width: 100%; margin: 14px 0 16px">See leaderboard</a>
+    <div class="pod"><div class="pc" style="--c: var(--c-rarity-classified)"><span class="pn">2</span><img src="img/skin-chrome.png" alt=""><b>Chrome Cannon</b><span class="bdg" style="--b: var(--c-rarity-classified); --t: var(--c-rarity-classified-text)">Classified</span><span class="num pv">$340.00</span></div><div class="pc first" style="--c: var(--c-rarity-gold)"><span class="pn">1</span><img src="img/skin-butterfly.webp" alt=""><b>★ Butterfly Knife</b><span class="bdg" style="--b: var(--c-rarity-gold); --t: var(--c-rarity-gold-text)">Fade · FN</span><span class="num pv">$3,167.07</span></div><div class="pc" style="--c: var(--c-rarity-covert)"><span class="pn">3</span><img src="img/skin-danger.png" alt=""><b>Danger Close</b><span class="bdg" style="--b: var(--c-rarity-covert); --t: var(--c-rarity-covert-text)">Covert</span><span class="num pv">$210.00</span></div></div>
+    <a class="bw" href="#" style="width: 100%; margin: var(--space-14) 0 var(--space-16)">See leaderboard</a>
   </section>
 
   <section class="how">
-    <h2 class="dsp" style="margin: 0; font-size: 30px">How it works</h2>
-    <div class="mut" style="font-size: 13px; margin-top: 4px">From a free open to a skin in your Steam inventory</div>
-    <div class="steps"><div class="hw" style="--g: rgba(255,120,40,.55)"><div class="ha"><span class="hg"></span><img src="img/case-hell.png" alt=""></div><span class="hn">01</span><div class="ht">Try any case free</div><div class="mut hx">5 demo opens, no sign-up. Same odds as real.</div></div><span class="hstep"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span><div class="hw" style="--g: color-mix(in srgb,var(--acc) 45%,transparent)"><div class="ha"><span class="hg"></span><div class="si"><span class="sa"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c1-4 4-6 8-6s7 2 8 6"></path></svg></span><div class="sc"><span>Steam</span><span>Google</span></div></div></div><span class="hn">02</span><div class="ht">Sign in</div><div class="mut hx">One tap with Steam or Google. Free.</div></div><span class="hstep"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span><div class="hw" style="--g: rgba(228,174,57,.55)"><div class="ha"><span class="hg"></span><img src="img/skin-butterfly.webp" alt="" class="kn"></div><span class="hn">03</span><div class="ht">Withdraw to Steam</div><div class="mut hx">Your skin arrives as a Steam trade offer.</div></div></div>
+    <h2 class="dsp" style="margin: 0; font-size: var(--fs-5xl)">How it works</h2>
+    <div class="mut" style="font-size: var(--fs-md); margin-top: var(--space-4)">From a free open to a skin in your Steam inventory</div>
+    <div class="steps"><div class="hw" style="--g: color-mix(in srgb,var(--c-glow-fire) 55%,transparent)"><div class="ha"><span class="hg"></span><img src="img/case-hell.png" alt=""></div><span class="hn">01</span><div class="ht">Try any case free</div><div class="mut hx">5 demo opens, no sign-up. Same odds as real.</div></div><span class="hstep"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span><div class="hw" style="--g: color-mix(in srgb,var(--acc) 45%,transparent)"><div class="ha"><span class="hg"></span><div class="si"><span class="sa"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c1-4 4-6 8-6s7 2 8 6"></path></svg></span><div class="sc"><span>Steam</span><span>Google</span></div></div></div><span class="hn">02</span><div class="ht">Sign in</div><div class="mut hx">One tap with Steam or Google. Free.</div></div><span class="hstep"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span><div class="hw" style="--g: color-mix(in srgb,var(--c-rarity-gold) 55%,transparent)"><div class="ha"><span class="hg"></span><img src="img/skin-butterfly.webp" alt="" class="kn"></div><span class="hn">03</span><div class="ht">Withdraw to Steam</div><div class="mut hx">Your skin arrives as a Steam trade offer.</div></div></div>
   </section>
 
   <section class="faq">
-    <h2 class="dsp" style="margin: 0 0 4px; font-size: 26px">FAQ</h2>
-    <a class="q" href="#">Is SkinHub legit?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a1a1a6" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></a>
-    <a class="q" href="#">How does Provably fair work?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a1a1a6" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></a>
-    <a class="q" href="#">How fast are withdrawals?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a1a1a6" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></a>
-    <a class="q" href="#">Is there an age limit?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a1a1a6" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></a>
+    <h2 class="dsp" style="margin: 0 0 var(--space-4); font-size: var(--fs-4xl)">FAQ</h2>
+    <a class="q" href="#">Is SkinHub legit?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--c-text-muted)" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></a>
+    <a class="q" href="#">How does Provably fair work?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--c-text-muted)" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></a>
+    <a class="q" href="#">How fast are withdrawals?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--c-text-muted)" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></a>
+    <a class="q" href="#">Is there an age limit?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--c-text-muted)" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></a>
   </section>
 
   <section class="seo">
-    <div style="color: #ffffff; font-weight: 600; margin-bottom: 4px">CS2 case opening on SkinHub</div>
+    <div style="color: var(--c-text); font-weight: 600; margin-bottom: var(--space-4)">CS2 case opening on SkinHub</div>
     <div>Open CS2 cases with published odds for every skin. Every result is verifiable with Provably fair seeds.</div>
-    <a href="#" style="display: inline-block; margin-top: 6px">Read more</a>
+    <a href="#" style="display: inline-block; margin-top: var(--space-6)">Read more</a>
   </section>
 
   <footer class="ft">
-    <a class="logo dsp" href="#" style="font-size: 22px"><i></i>SkinHub</a>
+    <a class="logo dsp" href="#" style="font-size: var(--fs-3xl)"><i></i>SkinHub</a>
     <div>CS2 cases, battles and upgrades. Provably fair.</div>
     <div>
-      <a class="acc" href="#">Games<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#a1a1a6" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></a>
-      <a class="acc" href="#">Help<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#a1a1a6" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></a>
-      <a class="acc" href="#">Legal<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#a1a1a6" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></a>
-      <a class="acc" href="#">Company<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#a1a1a6" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></a>
+      <a class="acc" href="#">Games<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--c-text-muted)" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></a>
+      <a class="acc" href="#">Help<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--c-text-muted)" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></a>
+      <a class="acc" href="#">Legal<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--c-text-muted)" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></a>
+      <a class="acc" href="#">Company<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--c-text-muted)" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></a>
     </div>
     <div class="soc">
       <a href="#" aria-label="Discord"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M7 7c3-1.3 7-1.3 10 0l2 9c-2 1.6-4 2.4-5 2.6l-1-1.6h-2l-1 1.6c-1-.2-3-1-5-2.6z"></path><circle cx="9.5" cy="12.5" r="1" fill="currentColor"></circle><circle cx="14.5" cy="12.5" r="1" fill="currentColor"></circle></svg></a>
@@ -312,7 +418,7 @@ a{color:#ffffff}a:hover{color:#d9d9de}
       <a href="#" aria-label="X"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 4l16 16M20 4 4 20"></path></svg></a>
       <a href="#" aria-label="YouTube"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="3"></rect><path d="m10 9.5 5 2.5-5 2.5z" fill="currentColor"></path></svg></a>
     </div>
-    <div class="pay"><span>VISA</span><span>MASTERCARD</span><span>APPLE PAY</span><span>CRYPTO</span><span>SKINS</span><span style="border-color: #eb4b4b; color: #ffc2c2">18+</span></div>
+    <div class="pay"><span>VISA</span><span>MASTERCARD</span><span>APPLE PAY</span><span>CRYPTO</span><span>SKINS</span><span style="border-color: var(--c-rarity-covert); color: var(--c-rarity-covert-text)">18+</span></div>
     <div>SkinHub Ltd · Reg. No. [REG NO] · [ADDRESS] · help@skinhub.gg</div>
     <div>Licensed by [REGULATOR] · License No. [LICENSE NO]</div>
     <div>Sign-in via Steam. Not affiliated with Valve Corporation.</div>
@@ -330,7 +436,7 @@ a{color:#ffffff}a:hover{color:#d9d9de}
 
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#7dff3a","options":["#7dff3a","#b7ff2c","#e5ff00","#00e0a4"]},"$preview":{"width":390,"height":4060}}'>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#7dff3a","options":["#7dff3a","#b7ff2c","#e5ff00","#00e0a4"]},"$preview":{"width":390,"height":4090}}'>
 class Component extends DCLogic {
   renderVals() {
     return { accent: this.props.accent ?? '#7dff3a' };

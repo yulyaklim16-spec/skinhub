@@ -3,47 +3,429 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Концепт SkinHub</title>
+<title>Стенд стиля SkinHub</title>
+<link rel="stylesheet" href="./tokens.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
 <style>
-/* Тёмная страница-справочник в палитре выбранной основы: #111111, карточки #1f1f21, один лаймовый акцент на ссылках */
-:root{--bg:#111111;--surface:#1f1f21;--line:#28282a;--fg:#ececee;--muted:#a3a3ad;--accent:#b7ff2c;color-scheme:dark}
+/* Стенд стиля: все значения — из tokens.css. Здесь только раскладка стенда.
+   Иконки Solar Linear подключены масками, цвет берут из currentColor. */
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 "Golos Text",system-ui,sans-serif}
-.wrap{max-width:1100px;margin:0 auto;padding:40px 16px 80px}
-.eyebrow{font:600 .74rem "JetBrains Mono",monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-h1{font-size:clamp(1.7rem,4vw,2.4rem);line-height:1.15;margin:8px 0 12px}
-h2{font-size:1.35rem;margin:40px 0 12px}
-h3{font-size:1.08rem;margin:28px 0 8px}
-p{max-width:75ch;margin:10px 0}
-.lede{color:var(--muted)}
-hr{border:0;border-top:1px solid var(--line);margin:36px 0}
-a{color:var(--accent);text-underline-offset:3px}
-code{font:500 .84em "JetBrains Mono",monospace;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:1px 6px;white-space:nowrap}
-code.hex i{display:inline-block;width:.85em;height:.85em;border-radius:3px;margin-right:5px;vertical-align:-1px;box-shadow:0 0 0 1px #ffffff33}
-.tw{overflow-x:auto;margin:12px 0;border:1px solid var(--line);border-radius:6px}
-table{border-collapse:collapse;width:100%;font-size:.92rem}
-th,td{text-align:left;vertical-align:top;padding:10px 12px;border-bottom:1px solid var(--line)}
-th{background:var(--surface);font-weight:600}
+html{color-scheme:dark}
+body{margin:0;background:var(--c-bg-deep);color:var(--c-text);font:400 var(--fs-lg)/1.55 var(--font-body)}
+.wrap{max-width:1240px;margin:0 auto;padding:var(--space-40) var(--space-16) var(--space-64);display:grid;gap:var(--space-64)}
+.eyebrow{font:600 var(--fs-xs)/1.2 var(--font-body);letter-spacing:.12em;text-transform:uppercase;color:var(--c-text-muted)}
+.dsp{font-family:var(--font-display);font-style:italic;font-weight:800;text-transform:uppercase;line-height:.92}
+.num{font-family:var(--font-display);font-weight:700;font-variant-numeric:tabular-nums}
+.mut{color:var(--c-text-muted)}
+h1{margin:var(--space-8) 0 var(--space-12);font-size:var(--fs-8xl)}
+h2{margin:0 0 var(--space-4);font-size:var(--fs-6xl)}
+h3{margin:0;font:700 var(--fs-xl)/1.3 var(--font-body)}
+p{margin:0;max-width:72ch;color:var(--c-text-muted)}
+a{color:var(--c-accent);text-underline-offset:3px}
+code{font:500 var(--fs-sm)/1 ui-monospace,Consolas,monospace;color:var(--c-neutral-200)}
+section{display:grid;gap:var(--space-24)}
+.wrap>*,section>*,.side>*,.grid>*{min-width:0}
+.sh{display:grid;gap:var(--space-6)}
+.grid{display:grid;gap:var(--space-16)}
+.panel{border:1px solid var(--c-line);border-radius:var(--radius-md);background:var(--c-surface-2);padding:var(--space-20)}
+.i{display:inline-block;flex:none;width:24px;height:24px;background:currentColor;-webkit-mask:var(--i) center/contain no-repeat;mask:var(--i) center/contain no-repeat}
+
+/* ---------- компоненты (те же, что в экранах) ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:var(--space-8);height:44px;padding:0 var(--space-20);border:0;border-radius:var(--radius-md);font:600 var(--fs-lg)/1 var(--font-body);text-decoration:none;cursor:pointer;white-space:nowrap}
+.btn .i{width:20px;height:20px}
+.btn-acc{background:var(--c-accent);color:var(--c-on-accent)}
+.btn-acc:hover{background:color-mix(in srgb,var(--c-accent) 88%,var(--c-text))}
+.btn-w{background:var(--c-text);color:var(--c-bg)}
+.btn-w:hover{background:var(--c-neutral-200)}
+.btn-gh{background:transparent;color:var(--c-text);box-shadow:inset 0 0 0 1px var(--c-line-strong)}
+.btn-gh:hover{background:var(--c-surface)}
+.btn:disabled,.btn.dis{background:var(--c-surface);color:var(--c-text-muted);cursor:not-allowed}
+.btn-sm{height:36px;padding:0 var(--space-14);font-size:var(--fs-base)}
+.btn-ic{width:44px;padding:0;background:var(--c-surface);color:var(--c-text);box-shadow:inset 0 0 0 1px var(--c-line)}
+
+.dc{position:relative;flex:none;width:112px;height:104px;border-radius:var(--radius-md);overflow:hidden;color:var(--c-text);text-decoration:none;background:linear-gradient(180deg,color-mix(in srgb,var(--c) 34%,var(--c-surface)),color-mix(in srgb,var(--c) 16%,var(--c-surface)));box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--c) 30%,transparent)}
+.dc .cs{position:absolute;top:var(--space-4);right:var(--space-4);width:20px;height:20px;object-fit:contain;opacity:.85}
+.dc .sk{position:absolute;left:8%;top:var(--space-12);width:84%;height:56px;object-fit:contain;filter:var(--shadow-art)}
+.dc b{position:absolute;left:var(--space-8);right:var(--space-8);bottom:var(--space-8);font:700 var(--fs-sm)/1.15 var(--font-body);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dc .ov{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--space-2);background:color-mix(in srgb,var(--c-bg) 82%,transparent);opacity:0;transition:opacity .15s}
+.dc:hover .ov,.dc.hov .ov{opacity:1}
+.dc .ov small{font-size:var(--fs-sm);color:var(--c-text-muted)}
+.dc .ov em{font:700 var(--fs-2xl)/1 var(--font-display);font-style:normal}
+
+.cd{display:flex;flex-direction:column;gap:var(--space-2);width:184px;padding:var(--space-12) var(--space-14) var(--space-14);border:1px solid var(--c-line);border-radius:var(--radius-md);background:var(--c-surface);color:var(--c-text);text-decoration:none}
+.cd img{width:100%;height:110px;object-fit:contain}
+.cd b{font-size:var(--fs-base);font-weight:500;color:var(--c-text-muted)}
+.cd small{font-size:var(--fs-sm);color:var(--c-text-muted)}
+.cd .pr{font:700 var(--fs-3xl)/1.05 var(--font-display)}
+.disc{display:flex;align-items:center;gap:var(--space-8)}
+.disc .ch{background:var(--c-text);color:var(--c-bg);font:700 var(--fs-xs)/1.4 var(--font-body);padding:0 var(--space-6);border-radius:var(--radius-xs)}
+.disc s{color:var(--c-text-muted);font:700 var(--fs-lg)/1 var(--font-display)}
+.plq{display:inline-block;background:var(--c-text);color:var(--c-bg);font:700 var(--fs-xs)/1.4 var(--font-body);letter-spacing:.075em;text-transform:uppercase;padding:var(--space-2) var(--space-8);border-radius:var(--radius-xs)}
+.bdg{display:inline-flex;align-items:center;gap:var(--space-4);border:1px solid var(--b);color:var(--t);font:600 var(--fs-2xs)/1.4 var(--font-body);letter-spacing:.2em;text-transform:uppercase;padding:var(--space-2) var(--space-6);border-radius:var(--radius-md)}
+
+/* ---------- 1. стиль в деле ---------- */
+.stage{display:flex;flex-wrap:wrap;gap:var(--space-32);align-items:flex-start;padding:var(--space-32);border:1px solid var(--c-line);border-radius:var(--radius-md);background:radial-gradient(ellipse 50% 60% at 15% 0%,color-mix(in srgb,var(--c-accent) 8%,transparent),transparent 70%),var(--c-bg)}
+.scr{flex:none;width:360px;max-width:100%;border:1px solid var(--c-line);border-radius:var(--radius-md);overflow:hidden;background:var(--c-bg)}
+.scr .hd{display:flex;align-items:center;gap:var(--space-8);height:56px;padding:0 var(--space-14);border-bottom:1px solid var(--c-line)}
+.logo{display:flex;align-items:center;gap:var(--space-6);font-size:var(--fs-2xl)}
+.logo i{width:9px;height:20px;background:var(--c-accent);transform:skewX(-14deg);display:block}
+.sp{flex:1}
+.ban{position:relative;height:250px;margin:var(--space-12);border-radius:var(--radius-md);overflow:hidden}
+.ban img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:70% 30%}
+.ban .fade{position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,color-mix(in srgb,var(--c-bg) 82%,transparent) 66%,var(--c-bg))}
+.ban .ct{position:absolute;left:var(--space-14);right:var(--space-14);bottom:var(--space-14);display:grid;gap:var(--space-10);justify-items:start}
+.ban .dsp{font-size:var(--fs-6xl);color:var(--c-accent)}
+.row{display:flex;gap:var(--space-8);overflow:hidden;padding:0 var(--space-12)}
+.row .dc{width:84px;height:84px}
+.row .dc .sk{height:44px;top:var(--space-10)}
+.row .dc b{font-size:var(--fs-2xs)}
+.bn{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));align-items:end;margin-top:var(--space-16);padding:var(--space-8) var(--space-4) var(--space-14);border-top:1px solid var(--c-line);background:var(--c-surface-3)}
+.bn a{display:flex;flex-direction:column;align-items:center;gap:var(--space-4);font-size:var(--fs-xs);color:var(--c-text-muted);text-decoration:none}
+.bn a.on{color:var(--c-text)}
+.bn .mid{color:var(--c-text);font-weight:600}
+.bn .mid>span{width:48px;height:48px;border-radius:var(--radius-full);background:var(--c-accent);color:var(--c-on-accent);display:grid;place-items:center;margin-top:calc(var(--space-24) * -1);box-shadow:var(--shadow-ring)}
+.side{flex:1 1 380px;min-width:0;display:grid;gap:var(--space-24)}
+.btnrow{display:flex;flex-wrap:wrap;gap:var(--space-12);align-items:center}
+.cards{display:flex;flex-wrap:wrap;gap:var(--space-12);align-items:flex-start}
+
+/* ---------- 2–4. атрибуты, цвета, шрифты ---------- */
+.attrs{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:var(--space-16)}
+.attr{padding:var(--space-20);border:1px solid var(--c-line);border-radius:var(--radius-md);background:var(--c-surface-2);display:grid;gap:var(--space-6);align-content:start}
+.attr .dsp{font-size:var(--fs-4xl);color:var(--c-accent)}
+.cgroup{display:grid;gap:var(--space-12)}
+.cgroup .why{font-size:var(--fs-base)}
+.sws{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:var(--space-12)}
+.sw2{border:1px solid var(--c-line);border-radius:var(--radius-md);overflow:hidden;background:var(--c-surface-2)}
+.sw2 .c{height:72px;background:var(--v);border-bottom:1px solid var(--c-line)}
+.sw2 .t{padding:var(--space-10) var(--space-12);display:grid;gap:var(--space-2);font-size:var(--fs-sm)}
+.sw2 b{font-size:var(--fs-md)}
+.pair{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:var(--space-16)}
+.spec{padding:var(--space-24);border:1px solid var(--c-line);border-radius:var(--radius-md);background:var(--c-surface-2);display:grid;gap:var(--space-12);align-content:start}
+.tw{overflow-x:auto;border:1px solid var(--c-line);border-radius:var(--radius-md)}
+table{border-collapse:collapse;width:100%;font-size:var(--fs-base)}
+th,td{text-align:left;padding:var(--space-10) var(--space-12);border-bottom:1px solid var(--c-line);vertical-align:middle}
+th{background:var(--c-surface);font-weight:600;color:var(--c-neutral-200)}
 tr:last-child td{border-bottom:0}
-td:first-child{min-width:140px}
-ul{padding-left:20px}
-@media (max-width:640px){table{font-size:.86rem}th,td{padding:8px}}
+td.r{white-space:nowrap}
+
+/* ---------- 5. форма ---------- */
+.shapes{display:flex;flex-wrap:wrap;gap:var(--space-16)}
+.rad{width:120px;height:84px;background:var(--c-surface);border:1px solid var(--c-line-strong);display:grid;place-items:center;font-size:var(--fs-sm);color:var(--c-text-muted);text-align:center}
+.spc{display:grid;gap:var(--space-6)}
+.spc div{display:grid;grid-template-columns:110px 28px 1fr;gap:var(--space-12);align-items:center;font-size:var(--fs-sm)}
+.spc i{display:block;height:12px;background:var(--c-accent);border-radius:var(--radius-xs)}
+.shd{width:150px;height:96px;border-radius:var(--radius-md);background:var(--c-surface);display:grid;place-items:center;font-size:var(--fs-sm);color:var(--c-text-muted);text-align:center;padding:var(--space-8)}
+
+/* ---------- 6. иконки ---------- */
+.ics{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:var(--space-16)}
+.icg{padding:var(--space-20);border:1px solid var(--c-line);border-radius:var(--radius-md);background:var(--c-surface-2);display:grid;gap:var(--space-14);align-content:start}
+.icl{display:flex;flex-wrap:wrap;gap:var(--space-12)}
+.icl>span{display:grid;justify-items:center;gap:var(--space-6);width:68px;font-size:var(--fs-2xs);color:var(--c-text-muted);text-align:center}
+.icl .box{width:48px;height:48px;border-radius:var(--radius-md);background:var(--c-surface);border:1px solid var(--c-line);display:grid;place-items:center;color:var(--c-text);font-style:normal}
+
+/* ---------- 7. компоненты ---------- */
+.comp{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,280px);gap:var(--space-24);align-items:start;padding:var(--space-24);border:1px solid var(--c-line);border-radius:var(--radius-md);background:var(--c-surface-2)}
+.comp .demo{display:flex;flex-wrap:wrap;gap:var(--space-16);align-items:flex-start}
+.comp .lbl{display:grid;gap:var(--space-6);font-size:var(--fs-xs);color:var(--c-text-muted);justify-items:start}
+.comp ul{margin:var(--space-8) 0 0;padding-left:var(--space-16);font-size:var(--fs-base);color:var(--c-text-muted);display:grid;gap:var(--space-4)}
+.st{display:flex;flex-wrap:wrap;gap:var(--space-10);align-items:center}
+.state{display:inline-flex;align-items:center;gap:var(--space-8);padding:var(--space-8) var(--space-12);border-radius:var(--radius-md);font:600 var(--fs-base)/1 var(--font-body)}
+.state .i{width:20px;height:20px}
+.ok{color:var(--c-success)}
+.no{color:var(--c-error)}
+.ct .sw{display:inline-block;width:14px;height:14px;border-radius:var(--radius-xs);vertical-align:-2px;margin-right:var(--space-6);box-shadow:inset 0 0 0 1px var(--c-line-strong)}
+.ct .smp{display:inline-block;padding:var(--space-4) var(--space-8);border-radius:var(--radius-sm);font-weight:600}
+.ct td small{color:var(--c-text-muted)}
+.ct td.ok,.ct td.no{white-space:nowrap}
+@media (max-width:760px){.comp{grid-template-columns:minmax(0,1fr)}h1{font-size:var(--fs-6xl)}h2{font-size:var(--fs-5xl)}.stage{padding:var(--space-16)}}
+@media (prefers-reduced-motion:reduce){.dc .ov{transition:none}}
 </style>
 </head>
 <body>
 <div class="wrap">
-<span class="eyebrow">SkinHub · Этап 3 · Концепт · 3 октября 2026</span>
-<h1>Визуальный концепт SkinHub</h1>
-<p class="lede">Референсы стилей и экранов с приёмами — <a href="./references.html"><code>references.md</code></a>.</p>
-<h2>Атрибуты</h2>
-<h3>Вкус дизайнера</h3>
-<p><b>Нравится</b> — конкретные продукты, а не прилагательные:</p>
-<ul><li><a href="https://www.netflix.com">Netflix</a></li><li><a href="https://beton.ua/">beton.ua</a></li></ul>
-<p><b>Правила для экранов концепта:</b></p>
-<ul><li>Продукт не для коммерческих целей, поэтому графику для заполнения интерфейса (кейсы, скины, баннеры ивентов) можно брать у конкурентов из <a href="../research/research.html"><code>../research/research.md</code></a>.</li><li>Экраны — с иконками и графикой, не серыми плашками: концепт показывает, как продукт выглядит на самом деле.</li></ul>
+
+<header>
+  <span class="eyebrow">SkinHub · Этап 3 · Концепт · стенд стиля · 3 октября 2026</span>
+  <h1 class="dsp">Стенд стиля</h1>
+  <p>Как стиль выглядит в деле и из чего он собран. Все цвета, шрифты, радиусы, отступы и тени живут в одном файле <a href="./tokens.css">tokens.css</a>; стенд и экраны главной берут значения только оттуда. Контраст проверяется скриптом <a href="./contrast.py">contrast.py</a>. Экраны: <a href="./home.html">UI главной</a>.</p>
+</header>
+
+<!-- 1. стиль в деле -->
+<section>
+  <div class="sh"><span class="eyebrow">01 · Стиль в деле</span><h2 class="dsp">В деле</h2></div>
+  <div class="stage">
+    <div class="scr">
+      <div class="hd"><span class="logo dsp"><i></i>SkinHub</span><span class="sp"></span><a class="btn btn-acc btn-sm" href="#">Sign in</a><a class="btn btn-ic" href="#" aria-label="Menu"><span class="i" style="--i:url(icons/hamburger-menu.svg)"></span></a></div>
+      <div class="ban">
+        <img src="home/img/slide-event.jpg" alt="">
+        <span class="fade"></span>
+        <div class="ct"><span class="plq">Event · Season 1</span><span class="dsp">Neon Heist</span><a class="btn btn-w btn-sm" href="#">Join event <span class="i" style="--i:url(icons/arrow-right.svg)"></span></a></div>
+      </div>
+      <div class="row">
+        <a class="dc" href="#" style="--c: var(--c-rarity-gold)"><img class="cs" src="home/img/sc-3.png" alt=""><img class="sk" src="home/img/skin-butterfly.webp" alt=""><b>★ Butterfly</b></a>
+        <a class="dc" href="#" style="--c: var(--c-rarity-covert)"><img class="cs" src="home/img/case-ruby_tempest.png" alt=""><img class="sk" src="home/img/skin-danger.png" alt=""><b>Danger Close</b></a>
+        <a class="dc" href="#" style="--c: var(--c-rarity-classified)"><img class="cs" src="home/img/case-hell.png" alt=""><img class="sk" src="home/img/skin-acid.png" alt=""><b>Acid Etched</b></a>
+        <a class="dc" href="#" style="--c: var(--c-rarity-restricted)"><img class="cs" src="home/img/case-agents.png" alt=""><img class="sk" src="home/img/skin-moonrise.png" alt=""><b>Moonrise</b></a>
+      </div>
+      <nav class="bn" aria-label="Main">
+        <a class="on" href="#"><span class="i" style="--i:url(icons/box.svg)"></span>Cases</a>
+        <a href="#"><span class="i" style="--i:url(icons/target.svg)"></span>Battles</a>
+        <a class="mid" href="#"><span><span class="i" style="--i:url(icons/user.svg)"></span></span>Sign in</a>
+        <a href="#"><span class="i" style="--i:url(icons/gift.svg)"></span>Rewards</a>
+        <a href="#"><span class="i" style="--i:url(icons/magnifer.svg)"></span>Search</a>
+      </nav>
+    </div>
+    <div class="side">
+      <div class="grid"><span class="eyebrow">Кнопки</span>
+        <div class="btnrow"><a class="btn btn-acc" href="#">Open case · $1.00</a><a class="btn btn-w" href="#">Try free <span class="i" style="--i:url(icons/arrow-right.svg)"></span></a><a class="btn btn-gh" href="#">See all</a><a class="btn btn-ic" href="#" aria-label="Search"><span class="i" style="--i:url(icons/magnifer.svg)"></span></a></div>
+      </div>
+      <div class="grid"><span class="eyebrow">Карточки</span>
+        <div class="cards">
+          <a class="cd" href="#"><img src="home/img/case-hell.png" alt=""><b>Prime Cut</b><span class="pr">$1.00</span></a>
+          <a class="cd" href="#"><img src="home/img/case-magnificence.png" alt=""><b>Pistol Pack</b><div class="disc"><span class="ch">-20%</span><s>$1.10</s><span class="pr">$0.90</span></div></a>
+        </div>
+      </div>
+      <div class="grid"><span class="eyebrow">Состояния и проверка</span>
+        <div class="st">
+          <span class="state ok" style="background:color-mix(in srgb,var(--c-success) 14%,transparent)"><span class="i" style="--i:url(icons/check-circle.svg)"></span>Skin sent to Steam</span>
+          <span class="state no" style="background:color-mix(in srgb,var(--c-error) 14%,transparent)"><span class="i" style="--i:url(icons/danger-circle.svg)"></span>Not enough balance</span>
+          <span class="bdg" style="--b: var(--c-neutral-500); --t: var(--c-neutral-200)"><span class="i" style="--i:url(icons/shield-check.svg);width:12px;height:12px"></span>Provably fair</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. атрибуты -->
+<section>
+  <div class="sh"><span class="eyebrow">02 · Атрибуты</span><h2 class="dsp">Атрибуты</h2><p>Из задачи продукта и исследования: самый понятный интерфейс в категории и доверие к честности выпадения. Вкус дизайнера — Netflix и beton.ua. Каждый цвет ниже выводится из одного атрибута.</p></div>
+  <div class="attrs">
+    <div class="attr"><span class="dsp">Игровой</span><span class="mut">Тёмная арена CS2: арт и цвета редкости читаются только на тёмном. beton.ua, Netflix, стиль Home.</span></div>
+    <div class="attr"><span class="dsp">Энергичный</span><span class="mut">Азарт ивентов и открытий — один кислотный акцент на действиях. beton.ua.</span></div>
+    <div class="attr"><span class="dsp">Простой</span><span class="mut">Иерархия текстом, а не цветом: цена белая, остальное серое. Задача продукта, приём Discord.</span></div>
+    <div class="attr"><span class="dsp">Честный</span><span class="mut">Результат и ошибка названы явно и своим цветом. Боль «нет доверия к честности».</span></div>
+  </div>
+</section>
+
+<!-- 3. цвета -->
+<section>
+  <div class="sh"><span class="eyebrow">03 · Цвета</span><h2 class="dsp">Цвета</h2></div>
+  <div class="cgroup"><h3>Основной · графит</h3><p class="why">Из атрибута «Игровой»: тёмная арена, на которой арт скинов и редкость — самое яркое.</p>
+    <div class="sws">
+      <div class="sw2" style="--v:var(--c-bg)"><div class="c"></div><div class="t"><b>Фон</b><code>--c-bg</code><span class="mut">#111111</span></div></div>
+      <div class="sw2" style="--v:var(--c-surface)"><div class="c"></div><div class="t"><b>Карточка</b><code>--c-surface</code><span class="mut">#1f1f21</span></div></div>
+      <div class="sw2" style="--v:var(--c-surface-2)"><div class="c"></div><div class="t"><b>Панель</b><code>--c-surface-2</code><span class="mut">#18181a</span></div></div>
+      <div class="sw2" style="--v:var(--c-surface-3)"><div class="c"></div><div class="t"><b>Меню</b><code>--c-surface-3</code><span class="mut">#141415</span></div></div>
+      <div class="sw2" style="--v:var(--c-surface-well)"><div class="c"></div><div class="t"><b>Лунка</b><code>--c-surface-well</code><span class="mut">#26262a</span></div></div>
+    </div>
+  </div>
+  <div class="cgroup"><h3>Акцентный · лайм</h3><p class="why">Из атрибута «Энергичный»: кислотный цвет beton.ua, один на весь интерфейс. Только действия, выбранное состояние, заголовок баннера.</p>
+    <div class="sws">
+      <div class="sw2" style="--v:var(--c-accent)"><div class="c"></div><div class="t"><b>Акцент</b><code>--c-accent</code><span class="mut">#7dff3a</span></div></div>
+      <div class="sw2" style="--v:var(--c-on-accent)"><div class="c"></div><div class="t"><b>На акценте</b><code>--c-on-accent</code><span class="mut">#000000</span></div></div>
+    </div>
+  </div>
+  <div class="cgroup"><h3>Нейтральный · шкала серых</h3><p class="why">Из атрибута «Простой»: иерархия держится на яркости текста — белые цены, серые подписи.</p>
+    <div class="sws">
+      <div class="sw2" style="--v:var(--c-text)"><div class="c"></div><div class="t"><b>Текст, цена</b><code>--c-text</code><span class="mut">#ffffff</span></div></div>
+      <div class="sw2" style="--v:var(--c-neutral-200)"><div class="c"></div><div class="t"><b>Светлый</b><code>--c-neutral-200</code><span class="mut">#d9d9de</span></div></div>
+      <div class="sw2" style="--v:var(--c-text-muted)"><div class="c"></div><div class="t"><b>Подписи</b><code>--c-text-muted</code><span class="mut">#a1a1a6</span></div></div>
+      <div class="sw2" style="--v:var(--c-neutral-500)"><div class="c"></div><div class="t"><b>Контур, не текст</b><code>--c-neutral-500</code><span class="mut">#707072</span></div></div>
+      <div class="sw2" style="--v:var(--c-line-strong)"><div class="c"></div><div class="t"><b>Граница</b><code>--c-line-strong</code><span class="mut">#39393b</span></div></div>
+      <div class="sw2" style="--v:var(--c-line)"><div class="c"></div><div class="t"><b>Граница карточки</b><code>--c-line</code><span class="mut">#28282a</span></div></div>
+    </div>
+  </div>
+  <div class="cgroup"><h3>Состояния</h3><p class="why">Из атрибута «Честный»: результат называется явно. Успех не совпадает с акцентом по оттенку и светлоте, ошибка — с редкостью Covert.</p>
+    <div class="sws">
+      <div class="sw2" style="--v:var(--c-success)"><div class="c"></div><div class="t"><b>Успех</b><code>--c-success</code><span class="mut">#2fd492</span></div></div>
+      <div class="sw2" style="--v:var(--c-error)"><div class="c"></div><div class="t"><b>Ошибка</b><code>--c-error</code><span class="mut">#ff5a6a</span></div></div>
+      <div class="sw2" style="--v:var(--c-live)"><div class="c"></div><div class="t"><b>Live</b><code>--c-live</code><span class="mut">#eb4b4b</span></div></div>
+    </div>
+  </div>
+  <div class="cgroup"><h3>Данные · редкость CS2</h3><p class="why">Не бренд, а смысл предмета: игрок узнаёт редкость по цвету из самой игры. Поэтому акцент не совпадает ни с одной из них.</p>
+    <div class="sws">
+      <div class="sw2" style="--v:var(--c-rarity-milspec)"><div class="c"></div><div class="t"><b>Mil-Spec</b><code>--c-rarity-milspec</code><span class="mut">#4b69ff</span></div></div>
+      <div class="sw2" style="--v:var(--c-rarity-restricted)"><div class="c"></div><div class="t"><b>Restricted</b><code>--c-rarity-restricted</code><span class="mut">#8847ff</span></div></div>
+      <div class="sw2" style="--v:var(--c-rarity-classified)"><div class="c"></div><div class="t"><b>Classified</b><code>--c-rarity-classified</code><span class="mut">#d32ce6</span></div></div>
+      <div class="sw2" style="--v:var(--c-rarity-covert)"><div class="c"></div><div class="t"><b>Covert</b><code>--c-rarity-covert</code><span class="mut">#eb4b4b</span></div></div>
+      <div class="sw2" style="--v:var(--c-rarity-gold)"><div class="c"></div><div class="t"><b>★ Rare</b><code>--c-rarity-gold</code><span class="mut">#e4ae39</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. шрифты -->
+<section>
+  <div class="sh"><span class="eyebrow">04 · Шрифты</span><h2 class="dsp">Шрифты</h2><p>Пара: сжатый наклонный капс для громкого (заголовки, цены, номера) и спокойный гротеск для интерфейса.</p></div>
+  <div class="pair">
+    <div class="spec"><code>--font-display</code><span class="dsp" style="font-size:var(--fs-8xl);color:var(--c-accent)">Neon Heist</span><span class="num" style="font-size:var(--fs-6xl)">$3,167.07</span><span class="mut">Barlow Condensed 800 Italic — заголовки, капсом. 700 — цены и номера, цифры табличные.</span></div>
+    <div class="spec"><code>--font-body</code><span style="font:700 var(--fs-3xl)/1.2 var(--font-body)">Try any case free</span><span style="font-size:var(--fs-lg)">No sign-up · same odds as real · demo wins don't count</span><span class="mut">Golos Text 400–700 — весь интерфейс. Кириллица и латиница в одном рисунке.</span></div>
+  </div>
+  <div class="tw"><table>
+    <thead><tr><th>Токен</th><th>Размер, px</th><th>Образец</th><th>Где</th></tr></thead>
+    <tbody>
+      <tr><td><code>--fs-2xs</code></td><td>10</td><td style="font-size:var(--fs-2xs)">Badge · COVERT</td><td>бейджи, подписи плиток</td></tr>
+      <tr><td><code>--fs-xs</code></td><td>11</td><td style="font-size:var(--fs-xs)">Bottom menu label</td><td>нижнее меню, плашки</td></tr>
+      <tr><td><code>--fs-sm</code></td><td>12</td><td style="font-size:var(--fs-sm)">Sign in and get it at Level 1</td><td>подписи</td></tr>
+      <tr><td><code>--fs-md</code></td><td>13</td><td style="font-size:var(--fs-md)">Case name in a card</td><td>названия, мобайл</td></tr>
+      <tr><td><code>--fs-base</code></td><td>14</td><td style="font-size:var(--fs-base)">Interface text</td><td>текст, десктоп</td></tr>
+      <tr><td><code>--fs-lg</code></td><td>15</td><td style="font-size:var(--fs-lg)">Buttons and tabs</td><td>кнопки, табы</td></tr>
+      <tr><td><code>--fs-xl</code></td><td>17</td><td style="font-size:var(--fs-xl)">Strip title</td><td>заголовки плашек</td></tr>
+      <tr><td><code>--fs-2xl</code></td><td>20</td><td class="num" style="font-size:var(--fs-2xl)">$21.00</td><td>цены, мобайл</td></tr>
+      <tr><td><code>--fs-3xl</code></td><td>24</td><td class="num" style="font-size:var(--fs-3xl)">$34.20</td><td>цены, десктоп</td></tr>
+      <tr><td><code>--fs-4xl</code></td><td>28</td><td class="dsp" style="font-size:var(--fs-4xl)">Hot Cases</td><td>заголовки полок, мобайл</td></tr>
+      <tr><td><code>--fs-5xl</code></td><td>32</td><td class="dsp" style="font-size:var(--fs-5xl)">How it works</td><td>заголовки полок, десктоп</td></tr>
+      <tr><td><code>--fs-6xl</code></td><td>40</td><td class="dsp" style="font-size:var(--fs-6xl)">Neon Heist</td><td>баннер, мобайл</td></tr>
+      <tr><td><code>--fs-7xl</code></td><td>46</td><td class="dsp" style="font-size:var(--fs-7xl)">Dragon Hoard</td><td>баннер, десктоп</td></tr>
+      <tr><td><code>--fs-8xl</code></td><td>60</td><td class="dsp" style="font-size:var(--fs-8xl)">Climb</td><td>лидерборд</td></tr>
+      <tr><td><code>--fs-num-sm / -lg</code></td><td>96 / 170</td><td class="dsp" style="font-size:var(--fs-num-sm);color:transparent;-webkit-text-stroke:2px var(--c-accent)">1</td><td>номера Hot Cases</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- 5. форма -->
+<section>
+  <div class="sh"><span class="eyebrow">05 · Форма</span><h2 class="dsp">Форма</h2><p>Один рабочий радиус 6px на всё — от стиля Home. Тени — не глубина, а отрыв и свечение.</p></div>
+  <div class="grid"><h3>Радиусы</h3>
+    <div class="shapes">
+      <div class="rad" style="border-radius:var(--radius-xs)"><span><code>--radius-xs</code><br>2 · плашки</span></div>
+      <div class="rad" style="border-radius:var(--radius-sm)"><span><code>--radius-sm</code><br>4 · чипы</span></div>
+      <div class="rad" style="border-radius:var(--radius-md)"><span><code>--radius-md</code><br>6 · всё</span></div>
+      <div class="rad" style="border-radius:var(--radius-full);width:84px"><span><code>full</code></span></div>
+    </div>
+  </div>
+  <div class="grid"><h3>Отступы</h3>
+    <div class="panel spc">
+      <div><code>--space-2</code><span class="mut">2</span><i style="width:var(--space-2)"></i></div>
+      <div><code>--space-4</code><span class="mut">4</span><i style="width:var(--space-4)"></i></div>
+      <div><code>--space-6</code><span class="mut">6</span><i style="width:var(--space-6)"></i></div>
+      <div><code>--space-8</code><span class="mut">8</span><i style="width:var(--space-8)"></i></div>
+      <div><code>--space-10</code><span class="mut">10</span><i style="width:var(--space-10)"></i></div>
+      <div><code>--space-12</code><span class="mut">12</span><i style="width:var(--space-12)"></i></div>
+      <div><code>--space-14</code><span class="mut">14</span><i style="width:var(--space-14)"></i></div>
+      <div><code>--space-16</code><span class="mut">16</span><i style="width:var(--space-16)"></i></div>
+      <div><code>--space-20</code><span class="mut">20</span><i style="width:var(--space-20)"></i></div>
+      <div><code>--space-24</code><span class="mut">24</span><i style="width:var(--space-24)"></i></div>
+      <div><code>--space-28</code><span class="mut">28</span><i style="width:var(--space-28)"></i></div>
+      <div><code>--space-32</code><span class="mut">32</span><i style="width:var(--space-32)"></i></div>
+      <div><code>--space-40</code><span class="mut">40</span><i style="width:var(--space-40)"></i></div>
+      <div><code>--space-48</code><span class="mut">48</span><i style="width:var(--space-48)"></i></div>
+      <div><code>--space-56</code><span class="mut">56</span><i style="width:var(--space-56)"></i></div>
+      <div><code>--space-64</code><span class="mut">64</span><i style="width:var(--space-64)"></i></div>
+    </div>
+  </div>
+  <div class="grid"><h3>Тени</h3>
+    <div class="shapes">
+      <div class="shd" style="box-shadow:var(--shadow-ring),0 0 0 7px var(--c-line-strong)"><span><code>--shadow-ring</code><br>отрыв от фона</span></div>
+      <div class="shd" style="background:var(--c-accent);color:var(--c-on-accent);box-shadow:var(--shadow-accent)"><span><code style="color:var(--c-on-accent)">--shadow-accent</code><br>бабл поддержки</span></div>
+      <div class="shd" style="box-shadow:var(--shadow-halo)"><span><code>--shadow-halo</code><br>ореол аватара</span></div>
+      <div class="shd"><span><span style="display:inline-block;width:10px;height:10px;border-radius:var(--radius-full);background:var(--c-live);box-shadow:var(--shadow-live)"></span><br><code>--shadow-live</code></span></div>
+      <div class="shd"><span><img src="home/img/case-hell.png" alt="" style="width:96px;filter:var(--shadow-art)"><br><code>--shadow-art</code></span></div>
+      <div class="shd"><span><span class="dsp" style="font-size:var(--fs-6xl);color:transparent;-webkit-text-stroke:2px var(--c-accent);filter:var(--shadow-glow)">1</span><br><code>--shadow-glow</code></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. иконки -->
+<section>
+  <div class="sh"><span class="eyebrow">06 · Иконки</span><h2 class="dsp">Иконки Solar</h2><p>Набор <a href="https://icon-sets.iconify.design/solar/">Solar</a>, вариант <b>Linear</b>: линия 1.5px, скруглённые концы — под линейный стиль интерфейса и тонкие контуры цифр. Цвет — из токенов через currentColor. Файлы — в <code>concept/icons/</code>.</p></div>
+  <div class="ics">
+    <div class="icg"><h3>Нижнее меню</h3><div class="icl">
+      <span><i class="box"><b class="i" style="--i:url(icons/box.svg)"></b></i>Cases<br>box</span>
+      <span><i class="box"><b class="i" style="--i:url(icons/target.svg)"></b></i>Battles<br>target</span>
+      <span><i class="box" style="background:var(--c-accent);color:var(--c-on-accent)"><b class="i" style="--i:url(icons/user.svg)"></b></i>Sign in<br>user</span>
+      <span><i class="box"><b class="i" style="--i:url(icons/gift.svg)"></b></i>Rewards<br>gift</span>
+      <span><i class="box"><b class="i" style="--i:url(icons/magnifer.svg)"></b></i>Search<br>magnifer</span>
+    </div></div>
+    <div class="icg"><h3>Характеристики</h3><div class="icl">
+      <span><i class="box"><b class="i" style="--i:url(icons/fire.svg)"></b></i>Hot<br>fire</span>
+      <span><i class="box"><b class="i" style="--i:url(icons/lock-keyhole.svg)"></b></i>Lv 5<br>lock-keyhole</span>
+      <span><i class="box"><b class="i" style="--i:url(icons/clock-circle.svg)"></b></i>Timer<br>clock-circle</span>
+      <span><i class="box"><b class="i" style="--i:url(icons/cup-star.svg)"></b></i>Top<br>cup-star</span>
+      <span><i class="box"><b class="i" style="--i:url(icons/tag-price.svg)"></b></i>Price<br>tag-price</span>
+      <span><i class="box"><b class="i" style="--i:url(icons/bolt.svg)"></b></i>Fast mode<br>bolt</span>
+      <span><i class="box"><b class="i" style="--i:url(icons/users-group-rounded.svg)"></b></i>Players<br>users-group</span>
+    </div></div>
+    <div class="icg"><h3>Отметка проверки</h3><div class="icl">
+      <span><i class="box" style="color:var(--c-success)"><b class="i" style="--i:url(icons/shield-check.svg)"></b></i>Provably fair<br>shield-check</span>
+      <span><i class="box" style="color:var(--c-success)"><b class="i" style="--i:url(icons/verified-check.svg)"></b></i>Verified<br>verified-check</span>
+    </div></div>
+    <div class="icg"><h3>Кнопки</h3><div class="icl">
+      <span><i class="box"><b class="i" style="--i:url(icons/arrow-right.svg)"></b></i>Next<br>arrow-right</span>
+      <span><i class="box"><b class="i" style="--i:url(icons/pause.svg)"></b></i>Pause<br>pause</span>
+      <span><i class="box"><b class="i" style="--i:url(icons/hamburger-menu.svg)"></b></i>Menu<br>hamburger</span>
+      <span><i class="box"><b class="i" style="--i:url(icons/close-circle.svg)"></b></i>Close<br>close-circle</span>
+      <span><i class="box" style="background:var(--c-accent);color:var(--c-on-accent)"><b class="i" style="--i:url(icons/headphones-round.svg)"></b></i>Support<br>headphones</span>
+    </div></div>
+    <div class="icg"><h3>Состояния</h3><div class="icl">
+      <span><i class="box" style="color:var(--c-success)"><b class="i" style="--i:url(icons/check-circle.svg)"></b></i>Success<br>check-circle</span>
+      <span><i class="box" style="color:var(--c-error)"><b class="i" style="--i:url(icons/danger-circle.svg)"></b></i>Error<br>danger-circle</span>
+      <span><i class="box"><b class="i" style="--i:url(icons/info-circle.svg)"></b></i>Info<br>info-circle</span>
+      <span><i class="box" style="color:var(--c-text-muted)"><b class="i" style="--i:url(icons/clock-circle.svg)"></b></i>Pending<br>clock-circle</span>
+    </div></div>
+  </div>
+</section>
+
+<!-- 7. компоненты -->
+<section>
+  <div class="sh"><span class="eyebrow">07 · Компоненты</span><h2 class="dsp">Компоненты</h2><p>Три готовых компонента проекта — те же, что на экранах главной.</p></div>
+
+  <div class="comp">
+    <div class="demo">
+      <div class="lbl">Главная · акцент<a class="btn btn-acc" href="#">Sign in</a></div>
+      <div class="lbl">Главная с ценой<a class="btn btn-acc" href="#">Open case · $1.00</a></div>
+      <div class="lbl">Вторая · белая<a class="btn btn-w" href="#">Join event <span class="i" style="--i:url(icons/arrow-right.svg)"></span></a></div>
+      <div class="lbl">Третья · контур<a class="btn btn-gh" href="#">See leaderboard</a></div>
+      <div class="lbl">Иконка<a class="btn btn-ic" href="#" aria-label="Pause live drops"><span class="i" style="--i:url(icons/pause.svg)"></span></a></div>
+      <div class="lbl">Недоступна<button class="btn dis" type="button" disabled>Open case · $1.00</button></div>
+      <div class="lbl">Малая<a class="btn btn-w btn-sm" href="#">Try</a></div>
+    </div>
+    <div><h3>1 · Кнопка действия</h3><ul>
+      <li>Высота 44 (малая 36) — тач-цель ≥ 44 на основной.</li>
+      <li>Лайм — только деньги и вход; белая — всё остальное; рядом не две лаймовые.</li>
+      <li><code>--radius-md</code>, <code>--fs-lg</code> 600, отступ <code>--space-20</code>.</li>
+      <li>Недоступна — серая поверхность, текст <code>--c-text-muted</code>.</li>
+    </ul></div>
+  </div>
+
+  <div class="comp">
+    <div class="demo">
+      <div class="lbl">Mil-Spec<a class="dc" href="#" style="--c: var(--c-rarity-milspec)"><img class="cs" src="home/img/case-file_51.png" alt=""><img class="sk" src="home/img/skin-cobalt.png" alt=""><b>Cobalt Core</b><span class="ov"><small>nova</small><em>$0.84</em></span></a></div>
+      <div class="lbl">Restricted<a class="dc" href="#" style="--c: var(--c-rarity-restricted)"><img class="cs" src="home/img/case-hell.png" alt=""><img class="sk" src="home/img/skin-moonrise.png" alt=""><b>Moonrise</b><span class="ov"><small>m0nk</small><em>$7.10</em></span></a></div>
+      <div class="lbl">Classified<a class="dc" href="#" style="--c: var(--c-rarity-classified)"><img class="cs" src="home/img/case-agents.png" alt=""><img class="sk" src="home/img/skin-acid.png" alt=""><b>Acid Etched</b><span class="ov"><small>kira</small><em>$21.00</em></span></a></div>
+      <div class="lbl">Covert<a class="dc" href="#" style="--c: var(--c-rarity-covert)"><img class="cs" src="home/img/case-ruby_tempest.png" alt=""><img class="sk" src="home/img/skin-danger.png" alt=""><b>Danger Close</b><span class="ov"><small>nova</small><em>$73.10</em></span></a></div>
+      <div class="lbl">★ Rare · наведение<a class="dc hov" href="#" style="--c: var(--c-rarity-gold)"><img class="cs" src="home/img/sc-3.png" alt=""><img class="sk" src="home/img/skin-butterfly.webp" alt=""><b>★ Butterfly Knife</b><span class="ov"><small>m0nk</small><em>$3,167.07</em></span></a></div>
+    </div>
+    <div><h3>2 · Карточка скина с графикой</h3><ul>
+      <li>Фон — цвет редкости, смешанный с <code>--c-surface</code> (34% → 16%).</li>
+      <li>Справа сверху — кейс, из которого выпал скин; по центру — скин с <code>--shadow-art</code>.</li>
+      <li>Название внизу; ник и цена — при наведении и фокусе.</li>
+      <li>Белое название на любой редкости ≥ 7.8:1.</li>
+    </ul></div>
+  </div>
+
+  <div class="comp">
+    <div class="demo">
+      <div class="lbl">Обычная<a class="cd" href="#"><img src="home/img/case-hell.png" alt=""><b>Prime Cut</b><span class="pr">$1.00</span></a></div>
+      <div class="lbl">Скидка<a class="cd" href="#"><img src="home/img/case-magnificence.png" alt=""><b>Pistol Pack</b><div class="disc"><span class="ch">-20%</span><s>$1.10</s><span class="pr">$0.90</span></div></a></div>
+      <div class="lbl">Автор<a class="cd" href="#"><img src="home/img/sc-4.png" alt=""><b>m0nk's pick</b><small>by m0nk</small><span class="pr">$3.00</span></a></div>
+    </div>
+    <div><h3>3 · Карточка кейса</h3><ul>
+      <li>Название серое <code>--c-text-muted</code> 500, цена белая жирная — самое яркое.</li>
+      <li>Скидка: чип → зачёркнутая → новая цена (Epic Games).</li>
+      <li>У авторских кейсов — строка «by автор».</li>
+    </ul></div>
+  </div>
+</section>
+
+<!-- 8. контраст -->
+<section>
+  <div class="sh"><span class="eyebrow">08 · Доступность</span><h2 class="dsp">Контраст WCAG AA</h2><p>Посчитано скриптом <a href="./contrast.py">contrast.py</a> по значениям из tokens.css. Норма AA: обычный текст ≥ 4.5:1, крупный (≥ 24px) ≥ 3:1. Серый <code>--c-neutral-500</code> не проходил на табе «Top today» (3.59:1) — таб переведён на <code>--c-text-muted</code>; этот серый остаётся только для контуров.</p></div>
+<!-- contrast:start -->
+<div class="tw"><table class="ct"><thead><tr><th>Текст</th><th>Фон</th><th>Образец</th><th>Коэффициент</th><th>AA</th><th>Где</th></tr></thead><tbody><tr><td><span class="sw" style="background:var(--c-text)"></span><code>--c-text</code> #ffffff</td><td><span class="sw" style="background:var(--c-bg)"></span><code>--c-bg</code> #111111</td><td class="r"><span class="smp" style="color:var(--c-text);background:var(--c-bg)">Aa $3.10</span></td><td class="r">18.88:1</td><td class="ok">проходит <small>≥ 4.5</small></td><td>Основной текст и цены на фоне</td></tr><tr><td><span class="sw" style="background:var(--c-text)"></span><code>--c-text</code> #ffffff</td><td><span class="sw" style="background:var(--c-surface)"></span><code>--c-surface</code> #1f1f21</td><td class="r"><span class="smp" style="color:var(--c-text);background:var(--c-surface)">Aa $3.10</span></td><td class="r">16.45:1</td><td class="ok">проходит <small>≥ 4.5</small></td><td>Цены и заголовки в карточках</td></tr><tr><td><span class="sw" style="background:var(--c-text-muted)"></span><code>--c-text-muted</code> #a1a1a6</td><td><span class="sw" style="background:var(--c-bg)"></span><code>--c-bg</code> #111111</td><td class="r"><span class="smp" style="color:var(--c-text-muted);background:var(--c-bg)">Aa $3.10</span></td><td class="r">7.34:1</td><td class="ok">проходит <small>≥ 4.5</small></td><td>Подписи, FAQ, футер</td></tr><tr><td><span class="sw" style="background:var(--c-text-muted)"></span><code>--c-text-muted</code> #a1a1a6</td><td><span class="sw" style="background:var(--c-surface)"></span><code>--c-surface</code> #1f1f21</td><td class="r"><span class="smp" style="color:var(--c-text-muted);background:var(--c-surface)">Aa $3.10</span></td><td class="r">6.40:1</td><td class="ok">проходит <small>≥ 4.5</small></td><td>Названия кейсов в карточках</td></tr><tr><td><span class="sw" style="background:var(--c-text-muted)"></span><code>--c-text-muted</code> #a1a1a6</td><td><span class="sw" style="background:var(--c-surface-2)"></span><code>--c-surface-2</code> #18181a</td><td class="r"><span class="smp" style="color:var(--c-text-muted);background:var(--c-surface-2)">Aa $3.10</span></td><td class="r">6.89:1</td><td class="ok">проходит <small>≥ 4.5</small></td><td>Подписи в панелях</td></tr><tr><td><span class="sw" style="background:var(--c-text-muted)"></span><code>--c-text-muted</code> #a1a1a6</td><td><span class="sw" style="background:var(--c-surface-3)"></span><code>--c-surface-3</code> #141415</td><td class="r"><span class="smp" style="color:var(--c-text-muted);background:var(--c-surface-3)">Aa $3.10</span></td><td class="r">7.16:1</td><td class="ok">проходит <small>≥ 4.5</small></td><td>Подписи в нижнем меню</td></tr><tr><td><span class="sw" style="background:var(--c-text-muted)"></span><code>--c-text-muted</code> #a1a1a6</td><td><span class="sw" style="background:var(--c-surface-2)"></span><code>--c-surface-2</code> #18181a</td><td class="r"><span class="smp" style="color:var(--c-text-muted);background:var(--c-surface-2)">Aa $3.10</span></td><td class="r">6.89:1</td><td class="ok">проходит <small>≥ 4.5</small></td><td>Неактивный таб «Top today»</td></tr><tr><td><span class="sw" style="background:var(--c-neutral-200)"></span><code>--c-neutral-200</code> #d9d9de</td><td><span class="sw" style="background:var(--c-bg)"></span><code>--c-bg</code> #111111</td><td class="r"><span class="smp" style="color:var(--c-neutral-200);background:var(--c-bg)">Aa $3.10</span></td><td class="r">13.43:1</td><td class="ok">проходит <small>≥ 4.5</small></td><td>Текст на чипах оплаты</td></tr><tr><td><span class="sw" style="background:var(--c-on-accent)"></span><code>--c-on-accent</code> #000000</td><td><span class="sw" style="background:var(--c-accent)"></span><code>--c-accent</code> #7dff3a</td><td class="r"><span class="smp" style="color:var(--c-on-accent);background:var(--c-accent)">Aa $3.10</span></td><td class="r">16.24:1</td><td class="ok">проходит <small>≥ 4.5</small></td><td>Кнопка действия: Sign in</td></tr><tr><td><span class="sw" style="background:var(--c-bg)"></span><code>--c-bg</code> #111111</td><td><span class="sw" style="background:var(--c-text)"></span><code>--c-text</code> #ffffff</td><td class="r"><span class="smp" style="color:var(--c-bg);background:var(--c-text)">Aa $3.10</span></td><td class="r">18.88:1</td><td class="ok">проходит <small>≥ 4.5</small></td><td>Белая кнопка, плашка EVENT</td></tr><tr><td><span class="sw" style="background:var(--c-accent)"></span><code>--c-accent</code> #7dff3a</td><td><span class="sw" style="background:var(--c-bg)"></span><code>--c-bg</code> #111111</td><td class="r"><span class="smp" style="color:var(--c-accent);background:var(--c-bg)">Aa $3.10</span></td><td class="r">14.60:1</td><td class="ok">проходит <small>≥ 3</small></td><td>Заголовки баннеров лаймом</td></tr><tr><td><span class="sw" style="background:var(--c-accent)"></span><code>--c-accent</code> #7dff3a</td><td><span class="sw" style="background:var(--c-surface)"></span><code>--c-surface</code> #1f1f21</td><td class="r"><span class="smp" style="color:var(--c-accent);background:var(--c-surface)">Aa $3.10</span></td><td class="r">12.72:1</td><td class="ok">проходит <small>≥ 4.5</small></td><td>Лайм на карточке</td></tr><tr><td><span class="sw" style="background:var(--c-success)"></span><code>--c-success</code> #2fd492</td><td><span class="sw" style="background:var(--c-bg)"></span><code>--c-bg</code> #111111</td><td class="r"><span class="smp" style="color:var(--c-success);background:var(--c-bg)">Aa $3.10</span></td><td class="r">9.85:1</td><td class="ok">проходит <small>≥ 4.5</small></td><td>Текст успеха</td></tr><tr><td><span class="sw" style="background:var(--c-error)"></span><code>--c-error</code> #ff5a6a</td><td><span class="sw" style="background:var(--c-bg)"></span><code>--c-bg</code> #111111</td><td class="r"><span class="smp" style="color:var(--c-error);background:var(--c-bg)">Aa $3.10</span></td><td class="r">6.22:1</td><td class="ok">проходит <small>≥ 4.5</small></td><td>Текст ошибки</td></tr><tr><td><span class="sw" style="background:var(--c-on-state)"></span><code>--c-on-state</code> #000000</td><td><span class="sw" style="background:var(--c-success)"></span><code>--c-success</code> #2fd492</td><td class="r"><span class="smp" style="color:var(--c-on-state);background:var(--c-success)">Aa $3.10</span></td><td class="r">10.95:1</td><td class="ok">проходит <small>≥ 4.5</small></td><td>Плашка успеха</td></tr><tr><td><span class="sw" style="background:var(--c-on-state)"></span><code>--c-on-state</code> #000000</td><td><span class="sw" style="background:var(--c-error)"></span><code>--c-error</code> #ff5a6a</td><td class="r"><span class="smp" style="color:var(--c-on-state);background:var(--c-error)">Aa $3.10</span></td><td class="r">6.92:1</td><td class="ok">проходит <small>≥ 4.5</small></td><td>Плашка ошибки</td></tr><tr><td><span class="sw" style="background:var(--c-rarity-covert-text)"></span><code>--c-rarity-covert-text</code> #ffc2c2</td><td><span class="sw" style="background:var(--c-surface)"></span><code>--c-surface</code> #1f1f21</td><td class="r"><span class="smp" style="color:var(--c-rarity-covert-text);background:var(--c-surface)">Aa $3.10</span></td><td class="r">10.77:1</td><td class="ok">проходит <small>≥ 4.5</small></td><td>Бейдж Covert</td></tr><tr><td><span class="sw" style="background:var(--c-rarity-classified-text)"></span><code>--c-rarity-classified-text</code> #f6c4fb</td><td><span class="sw" style="background:var(--c-surface)"></span><code>--c-surface</code> #1f1f21</td><td class="r"><span class="smp" style="color:var(--c-rarity-classified-text);background:var(--c-surface)">Aa $3.10</span></td><td class="r">11.13:1</td><td class="ok">проходит <small>≥ 4.5</small></td><td>Бейдж Classified</td></tr><tr><td><span class="sw" style="background:var(--c-rarity-gold-text)"></span><code>--c-rarity-gold-text</code> #ffe3a6</td><td><span class="sw" style="background:var(--c-surface)"></span><code>--c-surface</code> #1f1f21</td><td class="r"><span class="smp" style="color:var(--c-rarity-gold-text);background:var(--c-surface)">Aa $3.10</span></td><td class="r">13.16:1</td><td class="ok">проходит <small>≥ 4.5</small></td><td>Бейдж Fade · FN</td></tr><tr><td><span class="sw" style="background:var(--c-text)"></span><code>--c-text</code> #ffffff</td><td><span class="sw" style="background:color-mix(in srgb,var(--c-rarity-milspec) 34%,var(--c-surface))"></span><code>--c-rarity-milspec 34% + --c-surface</code> #2e386c</td><td class="r"><span class="smp" style="color:var(--c-text);background:color-mix(in srgb,var(--c-rarity-milspec) 34%,var(--c-surface))">Aa $3.10</span></td><td class="r">11.06:1</td><td class="ok">проходит <small>≥ 4.5</small></td><td>Название на плитке дропа: milspec</td></tr><tr><td><span class="sw" style="background:var(--c-text)"></span><code>--c-text</code> #ffffff</td><td><span class="sw" style="background:color-mix(in srgb,var(--c-rarity-restricted) 34%,var(--c-surface))"></span><code>--c-rarity-restricted 34% + --c-surface</code> #432d6c</td><td class="r"><span class="smp" style="color:var(--c-text);background:color-mix(in srgb,var(--c-rarity-restricted) 34%,var(--c-surface))">Aa $3.10</span></td><td class="r">11.47:1</td><td class="ok">проходит <small>≥ 4.5</small></td><td>Название на плитке дропа: restricted</td></tr><tr><td><span class="sw" style="background:var(--c-text)"></span><code>--c-text</code> #ffffff</td><td><span class="sw" style="background:color-mix(in srgb,var(--c-rarity-classified) 34%,var(--c-surface))"></span><code>--c-rarity-classified 34% + --c-surface</code> #5c2364</td><td class="r"><span class="smp" style="color:var(--c-text);background:color-mix(in srgb,var(--c-rarity-classified) 34%,var(--c-surface))">Aa $3.10</span></td><td class="r">11.17:1</td><td class="ok">проходит <small>≥ 4.5</small></td><td>Название на плитке дропа: classified</td></tr><tr><td><span class="sw" style="background:var(--c-text)"></span><code>--c-text</code> #ffffff</td><td><span class="sw" style="background:color-mix(in srgb,var(--c-rarity-covert) 34%,var(--c-surface))"></span><code>--c-rarity-covert 34% + --c-surface</code> #642e2f</td><td class="r"><span class="smp" style="color:var(--c-text);background:color-mix(in srgb,var(--c-rarity-covert) 34%,var(--c-surface))">Aa $3.10</span></td><td class="r">10.64:1</td><td class="ok">проходит <small>≥ 4.5</small></td><td>Название на плитке дропа: covert</td></tr><tr><td><span class="sw" style="background:var(--c-text)"></span><code>--c-text</code> #ffffff</td><td><span class="sw" style="background:color-mix(in srgb,var(--c-rarity-gold) 34%,var(--c-surface))"></span><code>--c-rarity-gold 34% + --c-surface</code> #625029</td><td class="r"><span class="smp" style="color:var(--c-text);background:color-mix(in srgb,var(--c-rarity-gold) 34%,var(--c-surface))">Aa $3.10</span></td><td class="r">7.78:1</td><td class="ok">проходит <small>≥ 4.5</small></td><td>Название на плитке дропа: gold</td></tr></tbody></table></div>
+<!-- contrast:end -->
+</section>
+
 </div>
 </body>
 </html>

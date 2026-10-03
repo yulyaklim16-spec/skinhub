@@ -1,0 +1,104 @@
+/* SkinHub — токены концепта. Единственный источник цветов, шрифтов, радиусов, отступов и теней.
+   Стенд concept.html и экраны concept/home/* берут значения только отсюда.
+   Откуда каждый цвет — в concept.md, раздел «Цвета». */
+
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;1,700;1,800&family=Golos+Text:wght@400;500;600;700&display=swap");
+
+:root {
+  /* ---------- Основной: графитовая арена (атрибут «Игровой») ---------- */
+  --c-bg: #111111;            /* фон страницы */
+  --c-bg-deep: #0b0b0c;       /* под артбордом, вокруг экрана */
+  --c-surface: #1f1f21;       /* карточки */
+  --c-surface-2: #18181a;     /* панели и контейнеры */
+  --c-surface-3: #141415;     /* нижнее меню, How it works */
+  --c-surface-hi: #202023;    /* верх градиента карточки */
+  --c-surface-well: #26262a;  /* лунка под картинкой */
+
+  /* ---------- Акцентный: кислотный лайм (атрибут «Энергичный») ---------- */
+  --c-accent: #7dff3a;
+  --c-on-accent: #000000;     /* текст и иконки на акценте */
+  --acc: var(--c-accent);     /* рабочее имя в экранах; холст переопределяет из Tweaks */
+
+  /* ---------- Нейтральный: шкала серых и текст (атрибут «Простой») ---------- */
+  --c-text: #ffffff;          /* цены, заголовки, главный текст */
+  --c-neutral-200: #d9d9de;   /* текст на чипах оплаты */
+  --c-text-muted: #a1a1a6;    /* подписи, названия в карточках */
+  --c-neutral-500: #707072;   /* неактивные табы, контур бейджа */
+  --c-neutral-600: #4a4a4e;   /* контур цифр 2–3 места */
+  --c-line-strong: #39393b;   /* заметная граница */
+  --c-line: #28282a;          /* граница карточки */
+  --c-black: #000000;         /* тени и затемнения */
+
+  /* ---------- Состояния (атрибут «Честный») ---------- */
+  --c-success: #2fd492;       /* выигрыш засчитан, вывод отправлен */
+  --c-error: #ff5a6a;         /* ошибка, отказ */
+  --c-live: #eb4b4b;          /* плашка LIVE, точка «сейчас идёт» */
+  --c-on-state: #000000;      /* текст на заливке состояния */
+
+  /* ---------- Данные: редкость CS2 (не бренд, а смысл предмета) ---------- */
+  --c-rarity-milspec: #4b69ff;
+  --c-rarity-restricted: #8847ff;
+  --c-rarity-restricted-text: #a77bff;
+  --c-rarity-classified: #d32ce6;
+  --c-rarity-classified-text: #f6c4fb;
+  --c-rarity-covert: #eb4b4b;
+  --c-rarity-covert-text: #ffc2c2;
+  --c-rarity-gold: #e4ae39;
+  --c-rarity-gold-text: #ffe3a6;
+  --c-glow-fire: #ff8c28;     /* тёплое свечение под артом */
+
+  /* ---------- Шрифты: пара ---------- */
+  --font-display: "Barlow Condensed", "Arial Narrow", sans-serif;  /* заголовки, цены, номера */
+  --font-body: "Golos Text", system-ui, sans-serif;                 /* интерфейс и текст */
+
+  /* ---------- Шкала размеров ---------- */
+  --fs-2xs: 10px;
+  --fs-xs: 11px;
+  --fs-sm: 12px;
+  --fs-md: 13px;
+  --fs-base: 14px;
+  --fs-lg: 15px;
+  --fs-xl: 17px;
+  --fs-2xl: 20px;
+  --fs-3xl: 24px;
+  --fs-4xl: 28px;
+  --fs-5xl: 32px;
+  --fs-6xl: 40px;
+  --fs-7xl: 46px;
+  --fs-8xl: 60px;
+  --fs-9xl: 76px;
+  --fs-num-sm: 96px;          /* номера Hot Cases, мобайл */
+  --fs-num-lg: 170px;         /* номера Hot Cases, десктоп */
+
+  /* ---------- Форма: радиусы ---------- */
+  --radius-xs: 2px;           /* плашки EVENT, LIVE, чип скидки */
+  --radius-sm: 4px;           /* чипы оплаты */
+  --radius-md: 6px;           /* всё остальное: карточки, кнопки, баннеры */
+  --radius-full: 999px;       /* круги: аватар, бабл поддержки, точки */
+
+  /* ---------- Форма: отступы ---------- */
+  --space-2: 2px;
+  --space-4: 4px;
+  --space-6: 6px;
+  --space-8: 8px;
+  --space-10: 10px;
+  --space-12: 12px;
+  --space-14: 14px;
+  --space-16: 16px;
+  --space-20: 20px;
+  --space-24: 24px;
+  --space-28: 28px;
+  --space-32: 32px;
+  --space-40: 40px;
+  --space-48: 48px;
+  --space-56: 56px;
+  --space-64: 64px;
+
+  /* ---------- Форма: тени ---------- */
+  --shadow-ring: 0 0 0 6px var(--c-bg);                                            /* отрыв кнопки от фона */
+  --shadow-accent: 0 6px 18px color-mix(in srgb, var(--c-accent) 30%, transparent); /* бабл поддержки */
+  --shadow-halo: 0 0 0 6px color-mix(in srgb, var(--c-accent) 22%, transparent);    /* ореол вокруг аватара */
+  --shadow-live: 0 0 0 3px color-mix(in srgb, var(--c-live) 20%, transparent);      /* точка Live */
+  --shadow-art: drop-shadow(0 8px 14px color-mix(in srgb, var(--c-black) 55%, transparent)); /* filter для арта */
+  --shadow-glow: drop-shadow(0 0 4px color-mix(in srgb, var(--c-accent) 35%, transparent));  /* filter для цифр */
+}

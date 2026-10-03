@@ -50,8 +50,10 @@
 ### concept/
 - [`home.md`](./concept/home.md) / [`home.html`](./concept/home.html) — концепт главной v1: мобайл и десктоп,
   [холст в Claude Design](https://claude.ai/artifact/VGpSEgEJ7XKhLT6MGtfWNM).
-- [`concept.md`](./concept/concept.md) / [`concept.html`](./concept/concept.html) — концепт: атрибуты, вкус дизайнера
-  (Netflix, beton.ua), правила графики для экранов.
+- [`concept.md`](./concept/concept.md) / [`concept.html`](./concept/concept.html) — стенд стиля: атрибуты, цвета, шрифты,
+  форма, иконки Solar, три компонента, контраст WCAG AA.
+- [`tokens.css`](./concept/tokens.css) — единственный источник цветов, шрифтов, радиусов, отступов и теней;
+  [`contrast.py`](./concept/contrast.py) — проверка контраста по токенам.
 - [`references.md`](./concept/references.md) / [`references.html`](./concept/references.html) — референсы из Refero:
   основа — стиль Home (тёмный, один лаймовый акцент), приёмы из Portal и Discord, экраны Home Page Xbox, Epic Games, Twitch.
   У каждого приёма — какое волнение пользователя он снимает.
