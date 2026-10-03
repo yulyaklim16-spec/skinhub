@@ -45,7 +45,7 @@ a{color:#ffffff}a:hover{color:#d9d9de}
 .dots{display:flex;gap:5px;justify-content:center;padding:14px 0 0}
 .dots i{width:6px;height:6px;border-radius:3px;background:#39393b;display:block}
 .dots i.on{width:22px;background:#ffffff}
-.bar{display:flex;align-items:center;gap:10px;margin-top:24px;flex-wrap:wrap}
+.bar{display:flex;align-items:center;gap:10px;margin-top:44px;flex-wrap:wrap}
 .tile{display:inline-flex;align-items:center;gap:8px;height:52px;padding:0 16px 0 6px;border:1px solid #28282a;border-radius:6px;background:#1f1f21;color:#a1a1a6;font-weight:600;font-size:14px;text-decoration:none}
 .tile img{width:58px;height:40px;object-fit:contain}
 .tile.on{border-color:var(--acc);color:#ffffff}
@@ -61,8 +61,10 @@ a{color:#ffffff}a:hover{color:#d9d9de}
 .live{flex:none;background:#eb4b4b;color:#ffffff;font:700 11px 'Golos Text',sans-serif;letter-spacing:.06em;padding:3px 6px;border-radius:2px}
 .lv{display:flex;gap:8px;overflow:hidden;flex:1;min-width:0}
 .pz{flex:none;width:44px;height:44px;border-radius:6px;border:1px solid #39393b;background:#1f1f21;color:#ffffff;display:grid;place-items:center;padding:0;cursor:pointer}
-.demo{display:flex;align-items:center;gap:16px;margin-top:16px;padding:16px 20px;border:1px dashed #4a4a4e;border-radius:6px}
-.demo .ic{width:48px;height:48px;flex:none;display:grid;place-items:center;border-radius:6px;background:#1f1f21}
+.demo{position:relative;display:flex;align-items:center;gap:18px;margin-top:16px;padding:16px 20px;border:1px solid #28282a;border-radius:6px;overflow:hidden;background:#18181a}
+.demo .bgi{position:absolute;inset:-30px;width:calc(100% + 60px);height:calc(100% + 60px);object-fit:cover;filter:blur(18px) brightness(.36) saturate(1.2)}
+.demo>*:not(.bgi){position:relative}
+.demo .art{width:104px;height:70px;flex:none;object-fit:contain;filter:drop-shadow(0 8px 16px rgba(0,0,0,.6))}
 .pips{display:flex;gap:3px}
 .pips i{width:18px;height:4px;border-radius:2px;background:#ffffff;display:block}
 .bdg{display:inline-block;border:1px solid var(--b);color:var(--t);font:600 10px 'Golos Text',sans-serif;letter-spacing:.2em;text-transform:uppercase;padding:2px 7px;border-radius:6px}
@@ -185,19 +187,6 @@ a{color:#ffffff}a:hover{color:#d9d9de}
         </div>
       </div>
       <button class="arw" type="button" aria-label="Next slides"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 6 6 6-6 6"></path></svg></button>
-      <div class="dots"><i class="on"></i><i></i></div>
-    </div>
-
-    <div class="bar">
-      <nav style="display: flex; gap: 10px; flex-wrap: wrap" aria-label="Case categories">
-        <a class="tile on" href="#"><img src="img/case-hell.png" alt="">Hot Cases</a>
-        <a class="tile" href="#"><img src="img/case-case_51.png" alt="">Event Cases</a>
-        <a class="tile" href="#"><img src="img/case-easy_start.png" alt="">Cheap</a>
-        <a class="tile" href="#"><img src="img/sc-2.png" alt="">Knives</a>
-        <a class="tile" href="#"><img src="img/sc-4.png" alt="">Creators</a>
-      </nav>
-      <span class="sp"></span>
-      <a class="lnk" href="#">Browse all cases <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 6 6 6-6 6"></path></svg></a>
     </div>
 
     <div class="tk">
@@ -222,17 +211,29 @@ a{color:#ffffff}a:hover{color:#d9d9de}
     </div>
 
     <div class="demo">
-      <span class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="3"></rect><circle cx="9" cy="9" r="1.2" fill="currentColor"></circle><circle cx="15" cy="15" r="1.2" fill="currentColor"></circle><circle cx="15" cy="9" r="1.2" fill="currentColor"></circle><circle cx="9" cy="15" r="1.2" fill="currentColor"></circle></svg></span>
+      <img class="bgi" src="img/slide-case.jpg" alt="">
+      <img class="art" src="img/case-ruby_tempest.png" alt="">
       <div style="flex: 1">
         <div style="font-weight: 700; font-size: 17px">Try any case free</div>
         <div class="mut" style="font-size: 13px">No sign-up · same odds as real · demo wins don't count</div>
       </div>
       <div style="display: flex; align-items: center; gap: 10px"><div class="pips"><i></i><i></i><i></i><i></i><i></i></div><span style="font-size: 13px">5 of 5 left</span></div>
-      <span class="bdg" style="--b: #707072; --t: #e6e6e6">Provably fair</span>
       <a class="bw" href="#">Try free</a>
     </div>
 
-    <section class="shf">
+    <div class="bar">
+      <nav style="display: flex; gap: 10px; flex-wrap: wrap" aria-label="Case categories">
+        <a class="tile on" href="#"><img src="img/case-hell.png" alt="">Hot Cases</a>
+        <a class="tile" href="#"><img src="img/case-case_51.png" alt="">Event Cases</a>
+        <a class="tile" href="#"><img src="img/case-easy_start.png" alt="">Cheap</a>
+        <a class="tile" href="#"><img src="img/sc-2.png" alt="">Knives</a>
+        <a class="tile" href="#"><img src="img/sc-4.png" alt="">Creators</a>
+      </nav>
+      <span class="sp"></span>
+      <a class="lnk" href="#">Browse all cases <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 6 6 6-6 6"></path></svg></a>
+    </div>
+
+    <section class="shf" style="margin-top: 20px">
       <div class="sh"><h2 class="dsp"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linejoin="round"><path d="M12 3c1 4 5 5.5 5 10.5a5 5 0 0 1-10 0c0-3 2-4 2-6.5 1 1 2 2.2 2 3.5 0-3.5 1-5.5 1-7.5z"></path></svg>Hot Cases</h2><a href="#">See all <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 6 6 6-6 6"></path></svg></a></div>
       <div class="g6r">
         <a class="rk" href="#"><span class="n">1</span><div class="cd"><img src="img/case-hell.png" alt=""><b>Prime Cut</b><span class="num">$1.00</span></div></a>
