@@ -17,8 +17,8 @@
 **Задача:** сделать продукт с самым простым и понятным интерфейсом в категории и с более высокой
 конверсией и удержанием, чем у конкурентов.
 
-**Рынок и конкуренты:** Casehug, Hellcase, Skin.club (лучшие примеры), Rain.gg, Forcedrop,
-JamSkins, Upgrader.pro (худшие). Разбор в [`research/research.md`](./research/research.md).
+**Рынок и конкуренты:** Casehug, Hellcase (лучшие примеры); Skin.club, Forcedrop, Upgrader.pro (средние);
+Rain.gg, JamSkins (худшие) — по Similarweb (август 2026) и Trustpilot. Разбор в [`research/research.md`](./research/research.md).
 
 ## 2. Аудитория
 
