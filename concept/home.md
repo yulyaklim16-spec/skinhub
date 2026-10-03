@@ -1,6 +1,8 @@
 # Концепт главной v1.2
 
-> Этап 3 · 2026-10-03. Версия для человека: [`home.html`](./home.html) — мобайл и десктоп рядом.
+> Этап 3 · 2026-10-03. Версия для человека: [`home.html`](./home.html) — UI главной для гостя:
+> мобайл в мокапе телефона ([`home/mobile-phone.html`](./home/mobile-phone.html): строка статуса, липкое нижнее меню),
+> десктоп в окне браузера.
 > Холст в Claude Design: https://claude.ai/artifact/VGpSEgEJ7XKhLT6MGtfWNM
 > Исходники холста — [`home/canvas/`](./home/canvas/), автономные страницы — [`home/mobile.html`](./home/mobile.html),
 > [`home/desktop.html`](./home/desktop.html). Структура — вайрфрейм главной v12.1 ([`../wireframes/home.md`](../wireframes/home.md)).

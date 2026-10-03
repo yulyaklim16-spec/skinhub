@@ -3,41 +3,107 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Концепт главной SkinHub</title>
+<title>UI главной SkinHub</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@1,800&family=Golos+Text:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap">
 <style>
-/* Просмотр концепта: мобайл и десктоп рядом в рамках-iframe, ниже — ссылки на исходники */
-:root{--bg:#0b0b0c;--fg:#ececee;--muted:#a3a3ad;--line:#28282a;--accent:#b7ff2c;color-scheme:dark}
+/* Показ UI главной для гостя: мобайл живёт в мокапе телефона (iframe скроллится внутри экрана),
+   десктоп — в окне браузера, iframe 1440×900 масштабируется под ширину колонки. */
+:root{--bg:#0b0b0c;--fg:#ececee;--muted:#a3a3ad;--line:#28282a;--accent:#7dff3a;color-scheme:dark}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 "Golos Text",system-ui,sans-serif}
-.wrap{max-width:1900px;margin:0 auto;padding:32px 16px 64px;display:grid;gap:24px}
+body{margin:0;background:radial-gradient(ellipse 60% 40% at 20% 0%,rgba(125,255,58,.06),transparent 70%),var(--bg);color:var(--fg);font:16px/1.6 "Golos Text",system-ui,sans-serif}
+.wrap{max-width:1500px;margin:0 auto;padding:40px 16px 80px;display:grid;gap:56px}
 .eyebrow{font:500 .74rem "JetBrains Mono",monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-h1{margin:6px 0 8px;font-size:clamp(1.6rem,4vw,2.3rem);line-height:1.15}
-p{margin:0;max-width:75ch;color:var(--muted)}
+h1{margin:6px 0 10px;font:italic 800 clamp(2.2rem,6vw,3.6rem)/.95 "Barlow Condensed",sans-serif;text-transform:uppercase}
+h2{margin:0;font:italic 800 2rem/1 "Barlow Condensed",sans-serif;text-transform:uppercase}
+p{margin:0;max-width:72ch;color:var(--muted)}
 a{color:var(--accent);text-underline-offset:3px}
-.frames{display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap}
-.fr{display:grid;gap:8px}
-.fr span{font:500 .74rem "JetBrains Mono",monospace;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
-iframe{border:1px solid var(--line);border-radius:12px;background:#111}
-.m{width:392px;height:844px;max-width:100%}
-.dbox{flex:1 1 640px;min-width:0;overflow-x:auto;border-radius:12px}
-.d{width:1440px;height:900px}
+section{display:grid;gap:20px}
+.cap{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 16px}
+
+/* мобайл: телефон слева, состав экрана справа */
+.mob{display:flex;flex-wrap:wrap;gap:40px 56px;align-items:flex-start}
+.phone-box{flex:none;width:418px;max-width:100%}
+.phone{position:relative;width:418px;height:872px;padding:14px;border-radius:62px;background:#000;box-shadow:0 0 0 2px #2e2e33,0 0 0 9px #161618,0 0 0 10px #2a2a2e,0 40px 90px rgba(0,0,0,.65);transform-origin:top left}
+.phone iframe{display:block;width:390px;height:844px;border:0;border-radius:48px;background:#111}
+.island{position:absolute;top:25px;left:50%;width:122px;height:35px;margin-left:-61px;border-radius:20px;background:#000;z-index:2}
+.btn-side{position:absolute;width:4px;border-radius:2px;background:#2a2a2e}
+.list{flex:1 1 320px;min-width:0;margin:0;padding:0;list-style:none;display:grid;gap:12px;counter-reset:b}
+.list li{display:grid;grid-template-columns:30px minmax(0,1fr);gap:2px 12px;counter-increment:b}
+.list li::before{content:counter(b,decimal-leading-zero);grid-row:1 / 3;font:italic 800 22px/1 "Barlow Condensed",sans-serif;color:transparent;-webkit-text-stroke:1.2px var(--accent);padding-top:2px}
+.list b{font-weight:600}
+.list span{color:var(--muted);font-size:.92rem}
+
+/* десктоп: окно браузера */
+.browser{border:1px solid #2e2e33;border-radius:12px;overflow:hidden;background:#18181a;box-shadow:0 40px 90px rgba(0,0,0,.55)}
+.bbar{display:flex;align-items:center;gap:8px;height:42px;padding:0 14px;border-bottom:1px solid #26262a}
+.bbar i{width:12px;height:12px;border-radius:50%;background:#3a3a3e;display:block}
+.url{flex:1;max-width:420px;margin:0 auto;height:26px;border-radius:6px;background:#0f0f10;color:var(--muted);font:500 12px "JetBrains Mono",monospace;display:flex;align-items:center;justify-content:center}
+.vp{position:relative;overflow:hidden;height:calc(900px * var(--s,.8))}
+.vp iframe{position:absolute;top:0;left:0;width:1440px;height:900px;border:0;transform:scale(var(--s,.8));transform-origin:top left;background:#111}
+.links{display:flex;flex-wrap:wrap;gap:8px 20px;font-size:.95rem}
+@media (max-width:460px){.phone-box{width:343px;height:715px}.phone{transform:scale(.82)}}
 </style>
 </head>
 <body>
 <div class="wrap">
   <header>
-    <span class="eyebrow">SkinHub · Этап 3 · Концепт · 3 октября 2026</span>
-    <h1>Главная: концепт v1</h1>
-    <p>Тёмная основа со стилем Home и одним лаймовым акцентом на действиях. Добавлены приёмы Discord, Portal, Xbox, Epic Games и Twitch, вкус взят у beton.ua и Netflix. Структура — вайрфрейм v12.1. Разбор приёмов — в <a href="./home.md">home.md</a> и <a href="./references.html">references</a>.</p>
+    <span class="eyebrow">SkinHub · Этап 3 · UI · 3 октября 2026</span>
+    <h1>Главная · гость</h1>
+    <p>Вайрфрейм главной, заполненный согласованным UI концепта. Мобайл в мокапе телефона, десктоп в окне браузера. Оба экрана живые: внутри можно листать. Разбор приёмов и решений — в <a href="./home.md">home.md</a>, исходная структура — <a href="../wireframes/home.html">вайрфрейм главной</a>.</p>
   </header>
-  <div class="frames">
-    <div class="fr"><span>Мобайл 390 · гость</span><iframe class="m" src="./home/mobile.html" title="Концепт главной, мобайл"></iframe></div>
-    <div class="fr dbox"><span>Десктоп 1440 · гость</span><iframe class="d" src="./home/desktop.html" title="Концепт главной, десктоп"></iframe></div>
-  </div>
-  <p>Открыть отдельно: <a href="./home/mobile.html">мобайл</a> · <a href="./home/desktop.html">десктоп</a>.</p>
+
+  <section>
+    <div class="cap"><h2>Мобайл</h2><span class="eyebrow">390 × 844 · гость</span></div>
+    <div class="mob">
+      <div class="phone-box">
+        <div class="phone">
+          <span class="island"></span>
+          <span class="btn-side" style="left:-12px;top:150px;height:32px"></span>
+          <span class="btn-side" style="left:-12px;top:205px;height:62px"></span>
+          <span class="btn-side" style="left:-12px;top:280px;height:62px"></span>
+          <span class="btn-side" style="right:-12px;top:230px;height:96px"></span>
+          <iframe src="./home/mobile-phone.html" title="Главная SkinHub на телефоне" loading="lazy"></iframe>
+        </div>
+      </div>
+      <ol class="list">
+        <li><b>Шапка</b><span>Логотип, Sign in лаймом, меню ☰</span></li>
+        <li><b>Карусель ивентов</b><span>Слайды по кругу, без точек; плашка типа слайда, таймер</span></li>
+        <li><b>Лента дропов</b><span>Top today и живой поток с плашкой LIVE, пауза</span></li>
+        <li><b>Try any case free</b><span>Арт кейса на размытом фоне, счётчик 5 of 5</span></li>
+        <li><b>Чипы категорий</b><span>Пять плиток в общем контейнере</span></li>
+        <li><b>Полки кейсов</b><span>Hot Cases с номерами контуром, Event, Cheap со скидкой, Knives, Creators; оффер новичка между полками</span></li>
+        <li><b>Лидерборд недели</b><span>Пьедестал призов 2 · 1 · 3</span></li>
+        <li><b>How it works</b><span>Три шага с артом</span></li>
+        <li><b>FAQ, SEO, футер</b><span>Аккордеоны, соцсети, оплата и 18+, лицензия, язык</span></li>
+        <li><b>Нижнее меню</b><span>Прилипает к низу экрана: Cases · Battles · Sign in · Rewards · Search</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section>
+    <div class="cap"><h2>Десктоп</h2><span class="eyebrow">1440 × 900 · гость</span></div>
+    <div class="browser">
+      <div class="bbar"><i></i><i></i><i></i><span class="url">skinhub.gg</span></div>
+      <div class="vp" id="vp"><iframe src="./home/desktop.html" title="Главная SkinHub на десктопе" loading="lazy"></iframe></div>
+    </div>
+    <div class="links">
+      <span class="eyebrow">Открыть отдельно:</span>
+      <a href="./home/mobile.html">мобайл, вся страница</a>
+      <a href="./home/desktop.html">десктоп</a>
+      <a href="https://claude.ai/artifact/VGpSEgEJ7XKhLT6MGtfWNM">холст в Claude Design</a>
+    </div>
+  </section>
 </div>
+<script>
+// Масштаб десктопного iframe под ширину окна браузера
+(function () {
+  var vp = document.getElementById('vp');
+  function fit() { vp.style.setProperty('--s', Math.min(1, vp.clientWidth / 1440)); }
+  fit();
+  window.addEventListener('resize', fit);
+})();
+</script>
 </body>
 </html>

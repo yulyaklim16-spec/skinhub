@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Главная · мобайл в телефоне</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;1,700;1,800&amp;family=Golos+Text:wght@400;500;600;700&amp;display=swap">
+<style>
+html,body{margin:0;background:#111111;overflow-x:clip;scrollbar-width:none}
+body::-webkit-scrollbar{display:none}
+.sbar{position:sticky;top:0;z-index:6;height:47px;display:flex;align-items:center;justify-content:space-between;padding:0 28px 0 36px;background:#111111;color:#ffffff;font:600 16px 'Golos Text',sans-serif}
+.sbar span{display:flex;align-items:center;gap:6px}
+.hi{position:absolute;left:50%;bottom:8px;width:134px;height:5px;margin-left:-67px;border-radius:3px;background:#ffffff}
+a{color:#ffffff}a:hover{color:#d9d9de}
+.m{width:390px;min-height:100vh;box-sizing:border-box;background:#111111;color:#ffffff;font-family:'Golos Text',system-ui,sans-serif;font-size:14px;line-height:1.4;display:flex;flex-direction:column}
+.m *{box-sizing:border-box}
+.dsp{font-family:'Barlow Condensed',sans-serif;font-style:italic;font-weight:800;text-transform:uppercase;letter-spacing:.01em;line-height:.92}
+.num{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-variant-numeric:tabular-nums}
+.mut{color:#a1a1a6}
+.hd{display:flex;align-items:center;gap:8px;height:60px;padding:0 16px;border-bottom:1px solid #28282a}
+.logo{display:flex;align-items:center;gap:6px;font-size:24px;text-decoration:none}
+.logo i{width:10px;height:22px;background:var(--acc);transform:skewX(-14deg);display:block}
+.sp{flex:1}
+.bacc{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:44px;padding:0 18px;border:0;border-radius:6px;background:var(--acc);color:#000000;font:600 15px 'Golos Text',sans-serif;text-decoration:none;cursor:pointer}
+.bw{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:44px;padding:0 18px;border:0;border-radius:6px;background:#ffffff;color:#111111;font:600 15px 'Golos Text',sans-serif;text-decoration:none;cursor:pointer}
+.ib{width:44px;height:44px;display:grid;place-items:center;border:1px solid #28282a;border-radius:6px;background:#1f1f21;color:#ffffff;cursor:pointer;padding:0}
+.ib svg,.bn svg,.ic svg{display:block}
+.car{display:flex;gap:10px;overflow:hidden;padding:14px 0 0 16px}
+.sl{position:relative;flex:0 0 324px;height:340px;border-radius:6px;overflow:hidden;background:#1f1f21}
+.sl img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.sl .fade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(17,17,17,0) 30%,rgba(17,17,17,.82) 66%,#111111 100%)}
+.sl .ct{position:absolute;left:16px;right:16px;bottom:16px;display:flex;flex-direction:column;gap:10px}
+.plq{align-self:flex-start;background:#ffffff;color:#111111;font:700 11px 'Golos Text',sans-serif;letter-spacing:.075em;text-transform:uppercase;padding:3px 8px;border-radius:2px}
+.tmr{display:flex;gap:6px}
+.tmr span{min-width:52px;padding:5px 0 4px;text-align:center;border:1px solid #39393b;border-radius:6px;background:rgba(17,17,17,.72);font-size:22px;line-height:1}
+.tmr small{display:block;margin-top:3px;font:500 9px 'Golos Text',sans-serif;letter-spacing:.08em;color:#a1a1a6;text-transform:uppercase}
+.dots{display:flex;gap:5px;justify-content:center;padding:12px 0 4px}
+.dots i{width:6px;height:6px;border-radius:3px;background:#39393b;display:block}
+.dots i.on{width:20px;background:#ffffff}
+.sec{padding:0 16px}
+.tiles{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px;margin:28px 16px 0;padding:6px;border:1px solid #28282a;border-radius:6px;background:#18181a}
+.tile{min-width:0;height:84px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:4px;padding:0 2px 8px;text-align:center;white-space:nowrap;letter-spacing:-.01em;border:1px solid #28282a;border-radius:6px;background:#1f1f21;color:#a1a1a6;font:600 10.5px 'Golos Text',sans-serif;text-decoration:none;position:relative;overflow:hidden}
+.tile img{width:100%;height:40px;object-fit:contain}
+.tile.on{border-color:var(--acc);color:#ffffff}
+.tk{display:flex;align-items:center;gap:6px;margin:12px 16px 0;padding:8px;border:1px solid #28282a;border-radius:6px;background:#18181a;overflow:hidden}
+.tk .lab{flex:none;font:700 9px/1.15 'Golos Text',sans-serif;letter-spacing:.08em;color:#a1a1a6;text-transform:uppercase}
+.sk{flex:none;width:58px;border-radius:4px;background:#232326;border-bottom:2px solid var(--c);padding:3px 3px 2px;display:flex;flex-direction:column;align-items:center}
+.sk img{width:50px;height:30px;object-fit:contain}
+.sk span{font-size:11px;color:#ffffff}
+.sk.pin{width:66px;box-shadow:inset 0 0 0 1px var(--c)}
+.vr{flex:none;width:1px;align-self:stretch;background:#39393b}
+.live{flex:none;background:#eb4b4b;color:#ffffff;font:700 10px 'Golos Text',sans-serif;letter-spacing:.06em;padding:2px 5px;border-radius:2px}
+.lv{display:flex;gap:6px;overflow:hidden;flex:1;min-width:0}
+.pz{flex:none;width:36px;height:36px;border-radius:6px;border:1px solid #39393b;background:#1f1f21;color:#ffffff;display:grid;place-items:center;padding:0;cursor:pointer}
+.demo{position:relative;display:flex;align-items:center;gap:12px;margin:14px 16px 0;padding:14px;border:1px solid #28282a;border-radius:6px;overflow:hidden;background:#18181a}
+.demo .bgi{position:absolute;inset:-24px;width:calc(100% + 48px);height:calc(100% + 48px);object-fit:cover;filter:blur(14px) brightness(.38) saturate(1.2)}
+.demo>*:not(.bgi){position:relative}
+.demo .art{width:74px;height:52px;flex:none;object-fit:contain;filter:drop-shadow(0 6px 12px rgba(0,0,0,.6))}
+.pips{display:flex;gap:3px;margin-top:6px}
+.pips i{width:16px;height:4px;border-radius:2px;background:#ffffff;display:block}
+.bdg{display:inline-block;border:1px solid var(--b);color:var(--t);font:600 9px 'Golos Text',sans-serif;letter-spacing:.2em;text-transform:uppercase;padding:2px 6px;border-radius:6px}
+.shf{margin-top:28px}
+.sh{display:flex;align-items:center;justify-content:space-between;padding:0 16px 10px}
+.sh h2{margin:0;font-size:26px;display:flex;align-items:center;gap:8px}
+.sh a{font-size:13px;color:#a1a1a6;text-decoration:none;display:flex;align-items:center;gap:2px}
+.row{display:flex;gap:10px;overflow:hidden;padding-left:16px}
+.cd{flex:0 0 140px;border:1px solid #28282a;border-radius:6px;background:#1f1f21;padding:8px 10px 10px;display:flex;flex-direction:column;gap:2px;text-decoration:none;color:#ffffff}
+.cd img{width:100%;height:84px;object-fit:contain}
+.cd b{font-size:13px;font-weight:600}
+.cd .num{font-size:22px;line-height:1.05}
+.cd small{font-size:11px;color:#a1a1a6}
+.rk{flex:0 0 150px;display:flex;align-items:flex-end;text-decoration:none;color:#ffffff}
+.rk .n{font:italic 800 96px/0.8 'Barlow Condensed',sans-serif;color:transparent;-webkit-text-stroke:2px var(--acc);filter:drop-shadow(0 0 4px color-mix(in srgb,var(--acc) 35%,transparent));margin-right:-12px;position:relative;z-index:0;flex:none}
+.rk .n.pu{-webkit-text-stroke:2px #a77bff;filter:drop-shadow(0 0 4px rgba(140,80,255,.4));}
+.hot{position:relative;isolation:isolate}
+.hot::before{content:"";position:absolute;inset:-40px 0px;z-index:-1;pointer-events:none;background:radial-gradient(ellipse 60% 70% at 30% 55%,rgba(255,150,30,.12),transparent 70%),radial-gradient(ellipse 45% 60% at 95% 55%,rgba(255,120,30,.07),transparent 70%)}
+.rk .cd{flex:0 0 118px;position:relative;z-index:1}
+.rk .cd img{height:70px}
+.rk .cd .num{font-size:20px}
+.disc{display:flex;align-items:center;gap:6px}
+.disc .ch{background:#ffffff;color:#111111;font:700 11px 'Golos Text',sans-serif;padding:1px 5px;border-radius:2px}
+.disc s{color:#a1a1a6;font-size:13px}
+.ofr{display:flex;align-items:center;gap:12px;margin:28px 16px 0;padding:12px;border:1px solid #28282a;border-radius:6px;background:linear-gradient(90deg,#1f1f21,#18181a)}
+.ofr img{width:64px;height:64px;object-fit:contain;flex:none}
+.lb{margin:32px 16px 0;padding:20px 14px 0;border:1px solid #28282a;border-radius:6px;overflow:hidden;background:radial-gradient(ellipse 60% 50% at 50% 100%,rgba(228,174,57,.14),transparent 70%),#18181a}
+.lbl{display:flex;flex-direction:column;align-items:flex-start;gap:10px;margin-bottom:18px}
+.pod{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;align-items:end;margin-top:16px}
+.pc{position:relative;display:flex;flex-direction:column;align-items:center;gap:4px;padding:14px 4px 12px;border:1px solid #28282a;border-bottom:3px solid var(--c);border-radius:6px 6px 0 0;background:#1f1f21;text-align:center;min-width:0}
+.pc.first{padding-top:20px;padding-bottom:18px;background:linear-gradient(180deg,#26262a,#1f1f21)}
+.pc .pn{position:absolute;z-index:1;top:6px;left:8px;font:italic 800 38px/0.8 'Barlow Condensed',sans-serif;color:transparent;-webkit-text-stroke:1.5px #4a4a4e}
+.pc.first .pn{font-size:48px;-webkit-text-stroke:2px var(--acc);filter:drop-shadow(0 0 4px color-mix(in srgb,var(--acc) 35%,transparent))}
+.pc img{position:relative;width:100%;height:52px;object-fit:contain}
+.pc.first img{height:76px;transform:rotate(-10deg)}
+.pc b{font-size:11px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.pc .bdg{font-size:8px;letter-spacing:.12em;padding:1px 4px}
+.pc .pv{font-size:17px;line-height:1}
+.pc.first .pv{font-size:20px}
+.how{margin:32px 16px 0;padding:20px 14px 14px;border:1px solid #28282a;border-radius:6px;background:radial-gradient(ellipse 80% 50% at 50% 110%,color-mix(in srgb,var(--acc) 10%,transparent),transparent 70%),#141415}
+.steps{display:flex;flex-direction:column;align-items:stretch;gap:6px;margin-top:16px}
+.steps .hw{display:grid;grid-template-columns:104px minmax(0,1fr);grid-template-rows:auto 1fr;column-gap:12px;padding-right:12px}
+.ha{grid-row:1 / 3;height:100%;min-height:104px}
+.ha img{width:92px;height:72px}
+.sa{width:46px;height:46px}
+.sa svg{width:24px;height:24px}
+.sc span{padding:2px 6px;font-size:9px}
+.hn{top:12px;right:12px;font-size:28px;-webkit-text-stroke-width:1.5px}
+.steps .sc{display:none}
+.ht{font-size:20px;padding-top:16px}
+.hx{font-size:12.5px;padding:4px 0 14px}
+.hstep{transform:rotate(90deg);height:22px}
+.hw{position:relative;display:flex;flex-direction:column;border:1px solid #28282a;border-radius:6px;overflow:hidden;background:linear-gradient(180deg,#202023,#18181a)}
+.ha{position:relative;display:grid;place-items:center;overflow:hidden}
+.ha .hg{position:absolute;inset:0;background:radial-gradient(circle at 50% 60%,var(--g),transparent 62%)}
+.ha img{position:relative;object-fit:contain;filter:drop-shadow(0 10px 18px rgba(0,0,0,.55))}
+.ha .kn{transform:rotate(-14deg)}
+.si{position:relative;display:flex;flex-direction:column;align-items:center;gap:10px}
+.sa{display:grid;place-items:center;border-radius:50%;background:var(--acc);color:#000000;box-shadow:0 0 0 6px color-mix(in srgb,var(--acc) 22%,transparent)}
+.sc{display:flex;gap:6px}
+.sc span{padding:3px 10px;border-radius:6px;background:#ffffff;color:#111111;font:700 11px 'Golos Text',sans-serif;letter-spacing:.04em}
+.hn{position:absolute;z-index:1;font:italic 800 56px/0.8 'Barlow Condensed',sans-serif;color:transparent;-webkit-text-stroke:2px var(--acc);filter:drop-shadow(0 0 4px color-mix(in srgb,var(--acc) 35%,transparent))}
+.ht{font:italic 800 26px/1 'Barlow Condensed',sans-serif;text-transform:uppercase}
+.hstep{flex:none;display:grid;place-items:center;color:var(--acc)}
+.steps .hn{font-size:24px;top:8px;left:8px;right:auto}
+.faq{margin:32px 16px 0}
+.q{display:flex;justify-content:space-between;align-items:center;min-height:52px;border-bottom:1px solid #28282a;font-weight:500;color:#ffffff;text-decoration:none}
+.seo{margin:28px 16px 0;color:#a1a1a6;font-size:13px}
+.ft{margin-top:36px;padding:24px 16px 28px;border-top:1px solid #28282a;display:flex;flex-direction:column;gap:12px;font-size:12px;color:#a1a1a6}
+.acc{display:flex;justify-content:space-between;align-items:center;min-height:48px;border-bottom:1px solid #28282a;color:#ffffff;font-weight:600;font-size:14px;text-decoration:none}
+.soc{display:flex;justify-content:center;gap:10px;padding:6px 0}
+.soc a{width:44px;height:44px;border-radius:50%;background:#1f1f21;border:1px solid #28282a;display:grid;place-items:center;color:#ffffff;text-decoration:none}
+.pay{display:flex;flex-wrap:wrap;gap:6px}
+.pay span{border:1px solid #39393b;border-radius:4px;padding:2px 6px;font:600 10px 'Golos Text',sans-serif;letter-spacing:.06em;color:#d9d9de}
+.lang{align-self:center;display:inline-flex;align-items:center;gap:6px;height:40px;padding:0 14px;border:1px solid #39393b;border-radius:6px;background:transparent;color:#ffffff;font:600 13px 'Golos Text',sans-serif}
+.bn{position:sticky;bottom:0;z-index:5;margin-top:auto;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));align-items:end;padding:8px 6px 28px;border-top:1px solid #28282a;background:#141415}
+.bn a{display:flex;flex-direction:column;align-items:center;gap:4px;min-height:48px;justify-content:flex-end;font-size:11px;color:#a1a1a6;text-decoration:none;position:relative}
+.bn a.on{color:#ffffff}
+.bn .mid{color:#ffffff;font-weight:600}
+.bn .mid span.c{width:52px;height:52px;border-radius:50%;background:var(--acc);color:#000000;display:grid;place-items:center;margin-top:-26px;box-shadow:0 0 0 5px #111111}
+.bn em{position:absolute;top:-2px;left:calc(50% + 6px);font:600 10px/16px 'Golos Text',sans-serif;font-style:normal;min-width:18px;text-align:center;border-radius:8px;background:#39393b;color:#ffffff;padding:0 4px}
+</style>
+
+</head>
+<body>
+<div class="m" style="--acc: #7dff3a">
+
+  <div class="sbar"><span>9:41</span><span><svg width="18" height="12" viewBox="0 0 18 12" fill="#ffffff"><rect x="0" y="8" width="3" height="4" rx="1"></rect><rect x="5" y="5.5" width="3" height="6.5" rx="1"></rect><rect x="10" y="3" width="3" height="9" rx="1"></rect><rect x="15" y="0" width="3" height="12" rx="1"></rect></svg><svg width="16" height="12" viewBox="0 0 16 12" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round"><path d="M1.5 4.2a9.5 9.5 0 0 1 13 0M4 7a6 6 0 0 1 8 0"></path><circle cx="8" cy="10" r="1.2" fill="#ffffff" stroke="none"></circle></svg><svg width="26" height="12" viewBox="0 0 26 12" fill="none"><rect x="0.5" y="0.5" width="22" height="11" rx="3.5" stroke="#ffffff" opacity=".45"></rect><rect x="2.5" y="2.5" width="16" height="7" rx="2" fill="#ffffff"></rect><path d="M24 4v4" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round" opacity=".45"></path></svg></span></div>
+
+  <header class="hd">
+    <a class="logo dsp" href="#" aria-label="SkinHub home"><i></i>SkinHub</a>
+    <span class="sp"></span>
+    <a class="bacc" href="#">Sign in</a>
+    <button class="ib" type="button" aria-label="Menu"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"></path></svg></button>
+  </header>
+
+  <div class="car">
+    <div class="sl">
+      <img src="img/slide-event.jpg" alt="" style="object-position: 72% 30%">
+      <div class="fade"></div>
+      <div class="ct">
+        <span class="plq">Event · Season 1</span>
+        <div class="dsp" style="font-size: 52px">Neon Heist</div>
+        <div class="tmr num"><span>19<small>days</small></span><span>08<small>hrs</small></span><span>16<small>min</small></span></div>
+        <a class="bw" href="#" style="width: 100%">Join event <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+      </div>
+    </div>
+    <div class="sl">
+      <img src="img/slide-promo.jpg" alt="" style="object-position: 80% 50%">
+      <div class="fade"></div>
+      <div class="ct">
+        <span class="plq">Promo</span>
+        <div class="dsp" style="font-size: 40px">Got a code from a streamer?</div>
+        <a class="bw" href="#" style="width: 100%">I have a code</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="tk">
+    <span class="lab">Top<br>today</span>
+    <div class="sk pin" style="--c: #eb4b4b"><img src="img/skin-danger.png" alt="Danger Close"><span class="num">$73.10</span></div>
+    <div class="sk pin" style="--c: #d32ce6"><img src="img/skin-chrome.png" alt="Chrome Cannon"><span class="num">$34.20</span></div>
+    <span class="vr"></span>
+    <span class="live">LIVE</span>
+    <div class="lv">
+      <div class="sk" style="--c: #d32ce6"><img src="img/skin-acid.png" alt="Acid Etched"><span class="num">$21.00</span></div>
+      <div class="sk" style="--c: #8847ff"><img src="img/skin-moonrise.png" alt="Moonrise"><span class="num">$7.10</span></div>
+      <div class="sk" style="--c: #8847ff"><img src="img/skin-origami.png" alt="Origami"><span class="num">$2.40</span></div>
+      <div class="sk" style="--c: #4b69ff"><img src="img/skin-cobalt.png" alt="Cobalt Core"><span class="num">$0.84</span></div>
+    </div>
+    <button class="pz" type="button" aria-label="Pause live drops"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 6v12M15 6v12"></path></svg></button>
+  </div>
+
+  <div class="demo">
+    <img class="bgi" src="img/slide-case.jpg" alt="">
+    <img class="art" src="img/case-ruby_tempest.png" alt="">
+    <div style="flex: 1; min-width: 0">
+      <div style="font-weight: 700; font-size: 15px">Try any case free</div>
+      <div class="mut" style="font-size: 12px">No sign-up · same odds as real</div>
+      <div style="display: flex; align-items: center; gap: 8px"><div class="pips"><i></i><i></i><i></i><i></i><i></i></div><span style="font-size: 12px; margin-top: 6px">5 of 5 left</span></div>
+    </div>
+    <a class="bw" href="#" style="padding: 0 14px">Try</a>
+  </div>
+
+  <nav class="tiles" aria-label="Case categories">
+    <a class="tile on" href="#"><img src="img/case-hell.png" alt="">Hot Cases</a>
+    <a class="tile" href="#"><img src="img/case-case_51.png" alt="">Event</a>
+    <a class="tile" href="#"><img src="img/case-easy_start.png" alt="">Cheap</a>
+    <a class="tile" href="#"><img src="img/sc-2.png" alt="">Knives</a>
+    <a class="tile" href="#"><img src="img/sc-4.png" alt="">Creators</a>
+  </nav>
+
+  <section class="shf" style="margin-top: 18px">
+    <div class="sh"><h2 class="dsp"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linejoin="round"><path d="M12 3c1 4 5 5.5 5 10.5a5 5 0 0 1-10 0c0-3 2-4 2-6.5 1 1 2 2.2 2 3.5 0-3.5 1-5.5 1-7.5z"></path></svg>Hot Cases</h2><a href="#">See all <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 6 6 6-6 6"></path></svg></a></div>
+    <div class="row hot">
+      <a class="rk" href="#"><span class="n">1</span><div class="cd"><img src="img/case-hell.png" alt=""><b>Prime Cut</b><span class="num">$1.00</span></div></a>
+      <a class="rk" href="#"><span class="n">2</span><div class="cd"><img src="img/case-agents.png" alt=""><b>Night Ops</b><span class="num">$2.50</span></div></a>
+      <a class="rk" href="#"><span class="n">3</span><div class="cd"><img src="img/case-ruby_tempest.png" alt=""><b>Covert Drop</b><span class="num">$6.00</span></div></a>
+    </div>
+  </section>
+
+  <section class="shf">
+    <div class="sh"><h2 class="dsp">Event Cases</h2><a href="#">See all <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 6 6 6-6 6"></path></svg></a></div>
+    <div class="row">
+      <a class="cd" href="#"><img src="img/case-file_51.png" alt=""><b>Neon Crate</b><span class="num">$1.50</span></a>
+      <a class="cd" href="#"><img src="img/case-case_51.png" alt=""><b>Neon Rush</b><span class="num">$4.00</span></a>
+      <a class="cd" href="#"><img src="img/case-project_51.png" alt=""><b>Neon Vault</b><span class="num">$12.00</span></a>
+    </div>
+  </section>
+
+  <div class="ofr">
+    <img src="img/case-capsule2.png" alt="">
+    <div style="flex: 1">
+      <div style="font-weight: 700; font-size: 15px">Free case for new players</div>
+      <div class="mut" style="font-size: 12px">Sign in and get it at Level 1</div>
+    </div>
+    <a class="bw" href="#" style="padding: 0 16px">Get</a>
+  </div>
+
+  <section class="shf">
+    <div class="sh"><h2 class="dsp">Cheap</h2><a href="#">See all <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 6 6 6-6 6"></path></svg></a></div>
+    <div class="row">
+      <a class="cd" href="#"><img src="img/case-easy_start.png" alt=""><b>Starter</b><span class="num">$0.50</span></a>
+      <a class="cd" href="#"><img src="img/case-magnificence.png" alt=""><b>Pistol Pack</b><div class="disc"><span class="ch">-20%</span><s class="num">$1.10</s><span class="num" style="font-size: 22px">$0.90</span></div></a>
+      <a class="cd" href="#"><img src="img/case-indomitable.png" alt=""><b>Neon Mini</b><span class="num">$0.70</span></a>
+    </div>
+  </section>
+
+  <section class="shf">
+    <div class="sh"><h2 class="dsp">Knives</h2><a href="#">See all <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 6 6 6-6 6"></path></svg></a></div>
+    <div class="row">
+      <a class="cd" href="#"><img src="img/sc-1.png" alt=""><b>Knife Club</b><span class="num">$21.00</span></a>
+      <a class="cd" href="#"><img src="img/sc-2.png" alt=""><b>Bayonet Box</b><span class="num">$45.00</span></a>
+      <a class="cd" href="#"><img src="img/sc-3.png" alt=""><b>Karambit Hunt</b><span class="num">$70.00</span></a>
+    </div>
+  </section>
+
+  <section class="shf">
+    <div class="sh"><h2 class="dsp">Creators</h2><a href="#">See all <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 6 6 6-6 6"></path></svg></a></div>
+    <div class="row">
+      <a class="cd" href="#"><img src="img/sc-4.png" alt=""><b>m0nk's pick</b><small>by m0nk</small><span class="num">$3.00</span></a>
+      <a class="cd" href="#"><img src="img/sc-5.png" alt=""><b>nova case</b><small>by nova</small><span class="num">$5.00</span></a>
+      <a class="cd" href="#"><img src="img/sc-6.png" alt=""><b>zed drop</b><small>by zed</small><span class="num">$1.20</span></a>
+    </div>
+  </section>
+
+  <section class="lb">
+    <div class="lbl" style="margin-bottom: 0">
+      <span class="plq">Weekly race · ends in 3d 14h</span>
+      <h2 class="dsp" style="margin: 0; font-size: 40px">Climb the<br>leaderboard</h2>
+      <div class="mut" style="font-size: 13px">The biggest drops of the week take the prizes</div>
+    </div>
+    <div class="pod"><div class="pc" style="--c: #d32ce6"><span class="pn">2</span><img src="img/skin-chrome.png" alt=""><b>Chrome Cannon</b><span class="bdg" style="--b: #d32ce6; --t: #f6c4fb">Classified</span><span class="num pv">$340.00</span></div><div class="pc first" style="--c: #e4ae39"><span class="pn">1</span><img src="img/skin-butterfly.webp" alt=""><b>★ Butterfly Knife</b><span class="bdg" style="--b: #e4ae39; --t: #ffe3a6">Fade · FN</span><span class="num pv">$3,167.07</span></div><div class="pc" style="--c: #eb4b4b"><span class="pn">3</span><img src="img/skin-danger.png" alt=""><b>Danger Close</b><span class="bdg" style="--b: #eb4b4b; --t: #ffc2c2">Covert</span><span class="num pv">$210.00</span></div></div>
+    <a class="bw" href="#" style="width: 100%; margin: 14px 0 16px">See leaderboard</a>
+  </section>
+
+  <section class="how">
+    <h2 class="dsp" style="margin: 0; font-size: 30px">How it works</h2>
+    <div class="mut" style="font-size: 13px; margin-top: 4px">From a free open to a skin in your Steam inventory</div>
+    <div class="steps"><div class="hw" style="--g: rgba(255,120,40,.55)"><div class="ha"><span class="hg"></span><img src="img/case-hell.png" alt=""></div><span class="hn">01</span><div class="ht">Try any case free</div><div class="mut hx">5 demo opens, no sign-up. Same odds as real.</div></div><span class="hstep"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span><div class="hw" style="--g: color-mix(in srgb,var(--acc) 45%,transparent)"><div class="ha"><span class="hg"></span><div class="si"><span class="sa"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c1-4 4-6 8-6s7 2 8 6"></path></svg></span><div class="sc"><span>Steam</span><span>Google</span></div></div></div><span class="hn">02</span><div class="ht">Sign in</div><div class="mut hx">One tap with Steam or Google. Free.</div></div><span class="hstep"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span><div class="hw" style="--g: rgba(228,174,57,.55)"><div class="ha"><span class="hg"></span><img src="img/skin-butterfly.webp" alt="" class="kn"></div><span class="hn">03</span><div class="ht">Withdraw to Steam</div><div class="mut hx">Your skin arrives as a Steam trade offer.</div></div></div>
+  </section>
+
+  <section class="faq">
+    <h2 class="dsp" style="margin: 0 0 4px; font-size: 26px">FAQ</h2>
+    <a class="q" href="#">Is SkinHub legit?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a1a1a6" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></a>
+    <a class="q" href="#">How does Provably fair work?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a1a1a6" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></a>
+    <a class="q" href="#">How fast are withdrawals?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a1a1a6" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></a>
+    <a class="q" href="#">Is there an age limit?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a1a1a6" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></a>
+  </section>
+
+  <section class="seo">
+    <div style="color: #ffffff; font-weight: 600; margin-bottom: 4px">CS2 case opening on SkinHub</div>
+    <div>Open CS2 cases with published odds for every skin. Every result is verifiable with Provably fair seeds.</div>
+    <a href="#" style="display: inline-block; margin-top: 6px">Read more</a>
+  </section>
+
+  <footer class="ft">
+    <a class="logo dsp" href="#" style="font-size: 22px"><i></i>SkinHub</a>
+    <div>CS2 cases, battles and upgrades. Provably fair.</div>
+    <div>
+      <a class="acc" href="#">Games<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#a1a1a6" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></a>
+      <a class="acc" href="#">Help<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#a1a1a6" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></a>
+      <a class="acc" href="#">Legal<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#a1a1a6" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></a>
+      <a class="acc" href="#">Company<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#a1a1a6" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></a>
+    </div>
+    <div class="soc">
+      <a href="#" aria-label="Discord"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M7 7c3-1.3 7-1.3 10 0l2 9c-2 1.6-4 2.4-5 2.6l-1-1.6h-2l-1 1.6c-1-.2-3-1-5-2.6z"></path><circle cx="9.5" cy="12.5" r="1" fill="currentColor"></circle><circle cx="14.5" cy="12.5" r="1" fill="currentColor"></circle></svg></a>
+      <a href="#" aria-label="Telegram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M21 4 3 11l6 2 2 6 3-4 5 4z"></path><path d="m9 13 8-6"></path></svg></a>
+      <a href="#" aria-label="X"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 4l16 16M20 4 4 20"></path></svg></a>
+      <a href="#" aria-label="YouTube"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="3"></rect><path d="m10 9.5 5 2.5-5 2.5z" fill="currentColor"></path></svg></a>
+    </div>
+    <div class="pay"><span>VISA</span><span>MASTERCARD</span><span>APPLE PAY</span><span>CRYPTO</span><span>SKINS</span><span style="border-color: #eb4b4b; color: #ffc2c2">18+</span></div>
+    <div>SkinHub Ltd · Reg. No. [REG NO] · [ADDRESS] · help@skinhub.gg</div>
+    <div>Licensed by [REGULATOR] · License No. [LICENSE NO]</div>
+    <div>Sign-in via Steam. Not affiliated with Valve Corporation.</div>
+    <button class="lang" type="button"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"></path></svg>English<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg></button>
+    <div style="text-align: center">© 2026 SkinHub</div>
+  </footer>
+
+  <nav class="bn" aria-label="Main">
+    <a class="on" href="#"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M3 8l9-5 9 5v8l-9 5-9-5z"></path><path d="M3 8l9 5 9-5M12 13v8"></path></svg>Cases</a>
+    <a href="#"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M5 4l10 10M19 4 9 14M6 15l3 3M18 15l-3 3M4 20l3-3M20 20l-3-3"></path></svg>Battles<em>12</em></a>
+    <a class="mid" href="#"><span class="c"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c1-4 4-6 8-6s7 2 8 6"></path></svg></span>Sign in</a>
+    <a href="#"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="3" y="8" width="18" height="4" rx="1"></rect><path d="M12 8v13M5 12v9h14v-9"></path><path d="M12 8c-2-4-6-4-6-1s4 1 6 1c2 0 6 2 6-1s-4-3-6 1"></path></svg>Rewards</a>
+    <a href="#"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>Search</a>
+    <i class="hi"></i>
+  </nav>
+
+</div>
+</body>
+</html>
