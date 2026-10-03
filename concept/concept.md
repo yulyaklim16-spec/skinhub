@@ -136,4 +136,19 @@
 | `--c-text` #ffffff | `--c-rarity-classified 34% + --c-surface` #5c2364 | 11.17:1 | проходит (≥ 4.5) | Название на плитке дропа: classified |
 | `--c-text` #ffffff | `--c-rarity-covert 34% + --c-surface` #642e2f | 10.64:1 | проходит (≥ 4.5) | Название на плитке дропа: covert |
 | `--c-text` #ffffff | `--c-rarity-gold 34% + --c-surface` #625029 | 7.78:1 | проходит (≥ 4.5) | Название на плитке дропа: gold |
+| `--c-text` #ffffff | `--c-bg-deep` #0b0b0c | 19.67:1 | проходит (≥ 4.5) | Кейс: текст страницы |
+| `--c-text-muted` #a1a1a6 | `--c-bg-deep` #0b0b0c | 7.65:1 | проходит (≥ 4.5) | Кейс: лид, подписи, заметки |
+| `--c-accent` #7dff3a | `--c-bg-deep` #0b0b0c | 15.21:1 | проходит (≥ 4.5) | Кейс: ссылки |
+| `--c-success` #2fd492 | `--c-bg-deep` #0b0b0c | 10.26:1 | проходит (≥ 4.5) | Кейс: метка версии v1.x |
+| `--c-live` #eb4b4b | `--c-bg` #111111 | 5.07:1 | проходит (≥ 4.5) | Кейс: подпись «fold · 844 px» |
+| `--c-text` #ffffff | `--c-line-strong` #39393b | 11.52:1 | проходит (≥ 4.5) | Кейс: нейтральный счётчик Battles |
+| `--c-neutral-200` #d9d9de | `--c-surface-well` #26262a | 10.72:1 | проходит (≥ 4.5) | Кейс: бейдж +XP |
+| `--c-neutral-200` #d9d9de | `--c-surface` #1f1f21 | 11.70:1 | проходит (≥ 4.5) | Кейс: бейдж DEMO |
+| `--c-text-muted` #a1a1a6 | `--c-surface` #1f1f21 | 6.40:1 | проходит (≥ 4.5) | Кейс: неактивный сегмент Real |
+| `--c-error` #ff5a6a | `--c-error 14% + --c-surface-2` #382125 | 4.90:1 | проходит (≥ 4.5) | Кейс: метка «НЕТ» |
+| `--c-neutral-200` #d9d9de | `--c-rarity-milspec 34% + --c-surface` #2e386c | 7.86:1 | проходит (≥ 4.5) | Кейс: подпись и шанс на плитке скина: milspec |
+| `--c-neutral-200` #d9d9de | `--c-rarity-restricted 34% + --c-surface` #432d6c | 8.16:1 | проходит (≥ 4.5) | Кейс: подпись и шанс на плитке скина: restricted |
+| `--c-neutral-200` #d9d9de | `--c-rarity-classified 34% + --c-surface` #5c2364 | 7.94:1 | проходит (≥ 4.5) | Кейс: подпись и шанс на плитке скина: classified |
+| `--c-neutral-200` #d9d9de | `--c-rarity-covert 34% + --c-surface` #642e2f | 7.56:1 | проходит (≥ 4.5) | Кейс: подпись и шанс на плитке скина: covert |
+| `--c-neutral-200` #d9d9de | `--c-rarity-gold 34% + --c-surface` #625029 | 5.53:1 | проходит (≥ 4.5) | Кейс: подпись и шанс на плитке скина: gold |
 <!-- contrast:end -->

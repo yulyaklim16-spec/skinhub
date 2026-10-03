@@ -75,6 +75,9 @@
   --radius-sm: 4px;           /* чипы оплаты */
   --radius-md: 6px;           /* всё остальное: карточки, кнопки, баннеры */
   --radius-full: 999px;       /* круги: аватар, бабл поддержки, точки */
+  --radius-device: 30px;      /* корпус телефона в мокапах вайрфреймов */
+  --radius-screen: 22px;      /* экран телефона в мокапах */
+  --radius-window: 12px;      /* окно десктопа, сцена кейса */
 
   /* ---------- Форма: отступы ---------- */
   --space-2: 2px;
@@ -101,4 +104,6 @@
   --shadow-live: 0 0 0 3px color-mix(in srgb, var(--c-live) 20%, transparent);      /* точка Live */
   --shadow-art: drop-shadow(0 8px 14px color-mix(in srgb, var(--c-black) 55%, transparent)); /* filter для арта */
   --shadow-glow: drop-shadow(0 0 4px color-mix(in srgb, var(--c-accent) 35%, transparent));  /* filter для цифр */
+  --shadow-pin: 0 0 0 2px var(--c-bg);                                              /* пин аннотации отрывается от экрана */
+  --shadow-device: 0 24px 60px color-mix(in srgb, var(--c-black) 55%, transparent); /* мокап телефона и окна */
 }

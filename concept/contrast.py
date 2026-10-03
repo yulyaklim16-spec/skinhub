@@ -66,15 +66,32 @@ PAIRS = [
 for r in ['milspec', 'restricted', 'classified', 'covert', 'gold']:
     PAIRS.append(('--c-text', ('mix', f'--c-rarity-{r}'), f'Название на плитке дропа: {r}', False))
 
+# вайрфрейм страницы кейса (wireframes/case.html)
+PAIRS += [
+    ('--c-text', '--c-bg-deep', 'Кейс: текст страницы', False),
+    ('--c-text-muted', '--c-bg-deep', 'Кейс: лид, подписи, заметки', False),
+    ('--c-accent', '--c-bg-deep', 'Кейс: ссылки', False),
+    ('--c-success', '--c-bg-deep', 'Кейс: метка версии v1.x', False),
+    ('--c-live', '--c-bg', 'Кейс: подпись «fold · 844 px»', False),
+    ('--c-text', '--c-line-strong', 'Кейс: нейтральный счётчик Battles', False),
+    ('--c-neutral-200', '--c-surface-well', 'Кейс: бейдж +XP', False),
+    ('--c-neutral-200', '--c-surface', 'Кейс: бейдж DEMO', False),
+    ('--c-text-muted', '--c-surface', 'Кейс: неактивный сегмент Real', False),
+    ('--c-error', ('mix', '--c-error', 0.14, '--c-surface-2'), 'Кейс: метка «НЕТ»', False),
+]
+for r in ['milspec', 'restricted', 'classified', 'covert', 'gold']:
+    PAIRS.append(('--c-neutral-200', ('mix', f'--c-rarity-{r}'), f'Кейс: подпись и шанс на плитке скина: {r}', False))
+
 
 def rows():
     out = []
     for fg, bg, where, large in PAIRS:
         fgv = t(fg)
         if isinstance(bg, tuple):
-            bgv = mix(t(bg[1]), t('--c-surface'), 0.34)
-            bgname = f'{bg[1]} 34% + --c-surface'
-            bgcss = f'color-mix(in srgb,var({bg[1]}) 34%,var(--c-surface))'
+            tok, p, base = (bg[1], 0.34, '--c-surface') if len(bg) == 2 else bg[1:]
+            bgv = mix(t(tok), t(base), p)
+            bgname = f'{tok} {round(p * 100)}% + {base}'
+            bgcss = f'color-mix(in srgb,var({tok}) {round(p * 100)}%,var({base}))'
         else:
             bgv, bgname, bgcss = t(bg), bg, f'var({bg})'
         r = ratio(fgv, bgv)
