@@ -15,51 +15,54 @@ a{color:var(--c-text)}a:hover{color:var(--c-neutral-200)}
 .p{position:relative;min-height:100vh;background:var(--c-bg);color:var(--c-text);font-family:var(--font-body);font-size:var(--fs-lg);line-height:1.45}
 .p *{box-sizing:border-box}
 .w{max-width:1440px;margin:0 auto;padding:0 var(--space-56)}
+main.w{display:flex;flex-direction:column;gap:var(--space-24);padding-top:var(--space-24)}
 .hact{display:flex;align-items:center;gap:var(--space-16)}
 .dsp{font-family:var(--font-display);font-style:italic;font-weight:800;text-transform:uppercase;letter-spacing:.01em;line-height:.92}
 .num{font-family:var(--font-display);font-weight:700;font-variant-numeric:tabular-nums}
 .mut{color:var(--c-text-muted)}
 .hd{border-bottom:1px solid var(--c-line);background:var(--c-bg)}
-.hd .w{display:flex;align-items:center;gap:var(--space-28);height:72px}
+.hd .w{display:flex;align-items:center;gap:var(--space-28);height:72px;justify-content:space-between}
 .logo{display:flex;align-items:center;gap:var(--space-6);font-size:var(--fs-5xl);text-decoration:none}
 .logo i{width:12px;height:26px;background:var(--acc);transform:skewX(-14deg);display:block}
 .tabs{display:flex;gap:var(--space-4);flex-wrap:wrap}
 .tab{display:inline-flex;align-items:center;gap:var(--space-6);height:40px;padding:0 var(--space-14);border-radius:var(--radius-md);color:var(--c-text-muted);text-decoration:none;font-weight:500}
 .tab.on{background:var(--c-surface);color:var(--c-text);font-weight:600}
-.sp{flex:1}
+.hl{display:flex;align-items:center;gap:var(--space-28)}
 .bacc{display:inline-flex;align-items:center;justify-content:center;gap:var(--space-6);height:44px;padding:0 var(--space-20);border:0;border-radius:var(--radius-md);background:var(--acc);color:var(--c-on-accent);font:600 var(--fs-lg) var(--font-body);text-decoration:none;cursor:pointer}
 .bw{display:inline-flex;align-items:center;justify-content:center;gap:var(--space-8);height:44px;padding:0 var(--space-20);border:0;border-radius:var(--radius-md);background:var(--c-text);color:var(--c-bg);font:600 var(--fs-lg) var(--font-body);text-decoration:none;cursor:pointer}
 .ib{width:44px;height:44px;display:grid;place-items:center;border:1px solid var(--c-line);border-radius:var(--radius-md);background:var(--c-surface);color:var(--c-text);cursor:pointer;padding:0}
-.car{position:relative;margin-top:var(--space-24)}
+.car{position:relative}
 .track{display:flex;gap:var(--space-16);overflow:hidden;border-radius:var(--radius-md)}
 .sl{position:relative;flex:0 0 calc((100% - 72px) / 3.12);height:380px;border-radius:var(--radius-md);overflow:hidden;background:var(--c-surface)}
 .sl img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .sl .fade{position:absolute;inset:0;background:linear-gradient(180deg,color-mix(in srgb,var(--c-bg) 0%,transparent) 25%,color-mix(in srgb,var(--c-bg) 80%,transparent) 62%,var(--c-bg) 100%)}
-.sl .ct{position:absolute;left:24px;right:24px;bottom:24px;display:grid;grid-template-rows:22px 86px 52px 44px;gap:var(--space-12);align-items:start}
-.plq{justify-self:start;background:var(--c-text);color:var(--c-bg);font:700 var(--fs-xs) var(--font-body);letter-spacing:.075em;text-transform:uppercase;padding:var(--space-2) var(--space-8);border-radius:var(--radius-xs)}
-.sl .dsp{color:var(--acc);font-size:var(--fs-7xl);line-height:.93}
-.sl .ct>:nth-child(3){align-self:center}
+.sl .ct{position:absolute;left:24px;right:24px;bottom:24px;display:flex;flex-direction:column;align-items:flex-start;gap:var(--space-12)}
+.plq{background:var(--c-text);color:var(--c-bg);font:700 var(--fs-xs) var(--font-body);letter-spacing:.075em;text-transform:uppercase;padding:var(--space-2) var(--space-8);border-radius:var(--radius-xs)}
+.sl .plq{height:22px;display:inline-flex;align-items:center}
+.sl .dsp{color:var(--acc);font-size:var(--fs-7xl);line-height:.93;height:86px}
+.sl .ct>:nth-child(3){height:52px;display:flex;align-items:center}
 .tmr{display:flex;gap:var(--space-6)}
-.tmr span{min-width:58px;padding:var(--space-6) 0 var(--space-4);text-align:center;border:1px solid var(--c-line-strong);border-radius:var(--radius-md);background:color-mix(in srgb,var(--c-bg) 72%,transparent);font-size:var(--fs-3xl);line-height:1}
-.tmr small{display:block;margin-top:var(--space-2);font:500 var(--fs-2xs) var(--font-body);letter-spacing:.08em;color:var(--c-text-muted);text-transform:uppercase}
+.tmr span{min-width:58px;padding:var(--space-6) 0 var(--space-4);text-align:center;border:1px solid var(--c-line-strong);border-radius:var(--radius-md);background:color-mix(in srgb,var(--c-bg) 72%,transparent);font-size:var(--fs-3xl);line-height:1;display:flex;flex-direction:column;align-items:center;gap:var(--space-2)}
+.tmr small{display:block;font:500 var(--fs-2xs) var(--font-body);letter-spacing:.08em;color:var(--c-text-muted);text-transform:uppercase}
 .arw{position:absolute;top:166px;right:14px;width:48px;height:48px;border-radius:var(--radius-full);border:1px solid var(--c-line-strong);background:var(--c-surface);color:var(--c-text);display:grid;place-items:center;padding:0;cursor:pointer;box-shadow:var(--shadow-ring)}
 .dots{display:flex;gap:var(--space-4);justify-content:center;padding:var(--space-14) 0 0}
 .dots i{width:6px;height:6px;border-radius:var(--radius-xs);background:var(--c-line-strong);display:block}
 .dots i.on{width:22px;background:var(--c-text)}
-.bar{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:var(--space-8);margin-top:var(--space-40);padding:var(--space-8);border:1px solid var(--c-line);border-radius:var(--radius-md);background:var(--c-surface-2)}
+.bar{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:var(--space-8);padding:var(--space-8);border:1px solid var(--c-line);border-radius:var(--radius-md);background:var(--c-surface-2)}
 .tile{display:flex;align-items:center;justify-content:center;gap:var(--space-10);height:56px;padding:0 var(--space-12);border:1px solid var(--c-line);border-radius:var(--radius-md);background:var(--c-surface);color:var(--c-text-muted);font-weight:600;font-size:var(--fs-base);text-decoration:none}
 .tile img{width:58px;height:40px;object-fit:contain}
 .tile.on{border-color:var(--acc);color:var(--c-text)}
 .lnk{display:inline-flex;align-items:center;gap:var(--space-4);height:44px;padding:0 var(--space-16);border:1px solid var(--c-line-strong);border-radius:var(--radius-md);color:var(--c-text);text-decoration:none;font-weight:600;font-size:var(--fs-base)}
-.tk{position:relative;margin:var(--space-16) 0 0;padding:var(--space-14) var(--space-16) var(--space-16);border:1px solid var(--c-line);border-radius:var(--radius-md);background:var(--c-surface-2)}
+.tk{position:relative;padding:var(--space-14) 0 var(--space-16) var(--space-16);border:1px solid var(--c-line);border-radius:var(--radius-md);background:var(--c-surface-2);display:flex;flex-direction:column;gap:var(--space-12)}
 .tk input{position:absolute;opacity:0;pointer-events:none}
-.tkh{display:flex;align-items:center;margin-bottom:var(--space-12)}
+.tkh{display:flex;align-items:center;justify-content:space-between;padding-right:var(--space-16)}
+.tks{display:flex;align-items:center;gap:var(--space-14)}
 .tkh label{display:flex;align-items:center;gap:var(--space-6);font:700 var(--fs-xl)/1 var(--font-body);color:var(--c-text-muted);cursor:pointer;padding:var(--space-6) 0}
-.tkh label+label{margin-left:var(--space-14);padding-left:var(--space-14);border-left:1px solid var(--c-line-strong)}
+.tkh label+label{padding-left:var(--space-14);border-left:1px solid var(--c-line-strong)}
 #tk-live:checked~.tkh label[for=tk-live],#tk-top:checked~.tkh label[for=tk-top]{color:var(--c-text)}
 .dot{width:8px;height:8px;border-radius:var(--radius-full);background:var(--c-rarity-covert);box-shadow:var(--shadow-live);display:block}
-.pz{margin-left:auto;flex:none;width:36px;height:36px;border-radius:var(--radius-md);border:1px solid var(--c-line-strong);background:var(--c-surface);color:var(--c-text);display:grid;place-items:center;padding:0;cursor:pointer}
-.tkr{display:flex;gap:var(--space-8);overflow:hidden;margin-right:calc(var(--space-16) * -1)}
+.pz{flex:none;width:36px;height:36px;border-radius:var(--radius-md);border:1px solid var(--c-line-strong);background:var(--c-surface);color:var(--c-text);display:grid;place-items:center;padding:0;cursor:pointer}
+.tkr{display:flex;gap:var(--space-8);overflow:hidden}
 .tkr.top,#tk-top:checked~.tkr.live{display:none}
 #tk-top:checked~.tkr.top{display:flex}
 #tk-top:checked~.tkh .pz{visibility:hidden}
@@ -72,15 +75,15 @@ a{color:var(--c-text)}a:hover{color:var(--c-neutral-200)}
 .dc .ov small{font-size:var(--fs-sm);color:var(--c-text-muted)}
 .dc .ov em{font-style:normal;font-size:var(--fs-2xl)}
 @media (prefers-reduced-motion:reduce){.dc .ov{transition:none}}
-.demo{position:relative;display:flex;align-items:center;gap:var(--space-16);margin-top:var(--space-16);padding:var(--space-16) var(--space-20);border:1px solid var(--c-line);border-radius:var(--radius-md);overflow:hidden;background:var(--c-surface-2)}
+.demo{position:relative;display:flex;align-items:center;gap:var(--space-16);padding:var(--space-16) var(--space-20);border:1px solid var(--c-line);border-radius:var(--radius-md);overflow:hidden;background:var(--c-surface-2)}
 .demo .bgi{position:absolute;inset:-30px;width:calc(100% + 60px);height:calc(100% + 60px);object-fit:cover;filter:blur(18px) brightness(.36) saturate(1.2)}
 .demo>*:not(.bgi){position:relative}
 .demo .art{width:104px;height:70px;flex:none;object-fit:contain;filter:var(--shadow-art)}
 .pips{display:flex;gap:var(--space-2)}
 .pips i{width:18px;height:4px;border-radius:var(--radius-xs);background:var(--c-text);display:block}
 .bdg{display:inline-block;border:1px solid var(--b);color:var(--t);font:600 var(--fs-2xs) var(--font-body);letter-spacing:.2em;text-transform:uppercase;padding:var(--space-2) var(--space-6);border-radius:var(--radius-md)}
-.shf{margin-top:var(--space-40)}
-.sh{display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--space-14)}
+.shf{display:flex;flex-direction:column;gap:var(--space-14)}
+.sh{display:flex;align-items:center;justify-content:space-between}
 .sh h2{margin:0;font-size:var(--fs-5xl);display:flex;align-items:center;gap:var(--space-10)}
 .sh a{font-size:var(--fs-base);color:var(--c-text-muted);text-decoration:none;display:flex;align-items:center;gap:var(--space-2)}
 .g6{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:var(--space-16)}
@@ -99,9 +102,9 @@ a{color:var(--c-text)}a:hover{color:var(--c-neutral-200)}
 .disc{display:flex;align-items:center;gap:var(--space-8)}
 .disc .ch{background:var(--c-text);color:var(--c-bg);font:700 var(--fs-sm) var(--font-body);padding:var(--space-2) var(--space-6);border-radius:var(--radius-xs)}
 .disc s{color:var(--c-text-muted);font-size:var(--fs-lg)}
-.ofr{display:flex;align-items:center;gap:var(--space-16);margin-top:var(--space-40);padding:var(--space-16) var(--space-24);border:1px solid var(--c-line);border-radius:var(--radius-md);background:linear-gradient(90deg,var(--c-surface),var(--c-surface-2))}
+.ofr{display:flex;align-items:center;gap:var(--space-16);padding:var(--space-16) var(--space-24);border:1px solid var(--c-line);border-radius:var(--radius-md);background:linear-gradient(90deg,var(--c-surface),var(--c-surface-2))}
 .ofr img{width:84px;height:84px;object-fit:contain}
-.lb{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.55fr);gap:var(--space-40);align-items:end;margin-top:var(--space-56);padding:var(--space-32) var(--space-32) 0;border:1px solid var(--c-line);border-radius:var(--radius-md);overflow:hidden;background:radial-gradient(ellipse 34% 80% at 66% 100%,color-mix(in srgb,var(--c-rarity-gold) 12%,transparent),transparent 70%),var(--c-surface-2)}
+.lb{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.55fr);gap:var(--space-40);align-items:end;padding:var(--space-32) var(--space-32) 0;border:1px solid var(--c-line);border-radius:var(--radius-md);overflow:hidden;background:radial-gradient(ellipse 34% 80% at 66% 100%,color-mix(in srgb,var(--c-rarity-gold) 12%,transparent),transparent 70%),var(--c-surface-2)}
 .lbl{display:flex;flex-direction:column;align-items:flex-start;gap:var(--space-14);padding-bottom:var(--space-32)}
 .pod{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-12);align-items:end}
 .pc{position:relative;display:flex;flex-direction:column;align-items:center;gap:var(--space-6);padding:var(--space-20) var(--space-14) var(--space-16);border:1px solid var(--c-line);border-bottom:4px solid var(--c);border-radius:var(--radius-md) var(--radius-md) 0 0;background:var(--c-surface);text-align:center}
@@ -110,13 +113,15 @@ a{color:var(--c-text)}a:hover{color:var(--c-neutral-200)}
 .pc.first .pn{font-size:var(--fs-9xl);-webkit-text-stroke:2px var(--acc);filter:var(--shadow-glow)}
 .pc img{position:relative;width:100%;height:96px;object-fit:contain}
 .pc.first img{height:140px;transform:rotate(-10deg)}
-.pc b{font-size:var(--fs-base);font-weight:500;color:var(--c-text-muted);margin-top:var(--space-2)}
+.pc b{font-size:var(--fs-base);font-weight:500;color:var(--c-text-muted)}
 .pc .pv{font-size:var(--fs-4xl);line-height:1}
 .pc.first .pv{font-size:var(--fs-5xl)}
-.how{margin-top:var(--space-24);padding:var(--space-32);border:1px solid var(--c-line);border-radius:var(--radius-md);background:radial-gradient(ellipse 50% 90% at 50% 120%,color-mix(in srgb,var(--acc) 10%,transparent),transparent 70%),var(--c-surface-3)}
-.steps{display:flex;align-items:stretch;gap:var(--space-12);margin-top:var(--space-20)}
-.steps .hw{flex:1 1 0;min-width:0;display:grid;grid-template-columns:132px minmax(0,1fr);grid-template-rows:auto 1fr;column-gap:var(--space-16);padding-right:var(--space-16)}
-.ha{grid-row:1 / 3;height:100%;min-height:128px}
+.how{padding:var(--space-32);border:1px solid var(--c-line);border-radius:var(--radius-md);background:radial-gradient(ellipse 50% 90% at 50% 120%,color-mix(in srgb,var(--acc) 10%,transparent),transparent 70%),var(--c-surface-3);display:flex;flex-direction:column;gap:var(--space-20)}
+.hh{display:flex;flex-direction:column;gap:var(--space-6)}
+.steps{display:flex;align-items:stretch;gap:var(--space-12)}
+.steps .hw{flex:1 1 0;min-width:0;display:flex;flex-direction:row;gap:var(--space-16);--ha:132px;padding-right:var(--space-16)}
+.steps .ha{flex:0 0 var(--ha);min-height:128px}
+.hb{flex:1;min-width:0;display:flex;flex-direction:column}
 .ha img{width:118px;height:88px}
 .sa{width:56px;height:56px}
 .sa svg{width:28px;height:28px}
@@ -137,17 +142,18 @@ a{color:var(--c-text)}a:hover{color:var(--c-neutral-200)}
 .hstep{flex:none;display:grid;place-items:center;color:var(--acc)}
 .steps .hn{font-size:var(--fs-4xl)}
 .steps .sc{display:none}
-.faq{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:var(--space-40);margin-top:var(--space-56)}
+.faq{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:var(--space-40)}
 .q{display:flex;justify-content:space-between;align-items:center;min-height:56px;border-bottom:1px solid var(--c-line);font-weight:500;color:var(--c-text);text-decoration:none}
-.seo{margin-top:var(--space-40);color:var(--c-text-muted);font-size:var(--fs-base);max-width:760px}
-.ft{margin-top:var(--space-64);border-top:1px solid var(--c-line);padding:var(--space-40) 0 var(--space-32);color:var(--c-text-muted);font-size:var(--fs-md)}
+.seo{color:var(--c-text-muted);font-size:var(--fs-base);max-width:760px;display:flex;flex-direction:column;align-items:flex-start;gap:var(--space-4)}
+.ft{border-top:1px solid var(--c-line);padding:var(--space-40) 0 var(--space-32);color:var(--c-text-muted);font-size:var(--fs-md);display:flex;flex-direction:column;gap:var(--space-32)}
 .cols{display:grid;grid-template-columns:1.6fr repeat(4,minmax(0,1fr));gap:var(--space-24)}
-.cols b{display:block;color:var(--c-text);font-size:var(--fs-base);margin-bottom:var(--space-10)}
+.cols b{display:block;color:var(--c-text);font-size:var(--fs-base);padding-bottom:var(--space-10)}
 .cols a{display:block;color:var(--c-text-muted);text-decoration:none;line-height:2}
+.fc{display:flex;flex-direction:column;align-items:flex-start;gap:var(--space-10)}
 .cols a.logo{display:flex;color:var(--c-text);line-height:.92}
-.soc{display:flex;gap:var(--space-10);margin-top:var(--space-16)}
+.soc{display:flex;gap:var(--space-10);padding-top:var(--space-6)}
 .soc a{width:44px;height:44px;border-radius:var(--radius-full);background:var(--c-surface);border:1px solid var(--c-line);display:grid;place-items:center;color:var(--c-text);text-decoration:none;line-height:1}
-.fb{display:flex;justify-content:space-between;align-items:center;gap:var(--space-16);flex-wrap:wrap;margin-top:var(--space-32);padding-top:var(--space-20);border-top:1px solid var(--c-line)}
+.fb{display:flex;justify-content:space-between;align-items:center;gap:var(--space-16);flex-wrap:wrap;padding-top:var(--space-20);border-top:1px solid var(--c-line)}
 .pay{display:flex;flex-wrap:wrap;gap:var(--space-6)}
 .pay span{border:1px solid var(--c-line-strong);border-radius:var(--radius-sm);padding:var(--space-2) var(--space-6);font:600 var(--fs-2xs) var(--font-body);letter-spacing:.06em;color:var(--c-neutral-200)}
 .lang{display:inline-flex;align-items:center;gap:var(--space-6);height:40px;padding:0 var(--space-14);border:1px solid var(--c-line-strong);border-radius:var(--radius-md);background:transparent;color:var(--c-text);font:600 var(--fs-md) var(--font-body)}
@@ -160,15 +166,14 @@ a{color:var(--c-text)}a:hover{color:var(--c-neutral-200)}
 
   <header class="hd">
     <div class="w">
-      <a class="logo dsp" href="#" aria-label="SkinHub home"><i></i>SkinHub</a>
+      <div class="hl"><a class="logo dsp" href="#" aria-label="SkinHub home"><i></i>SkinHub</a>
       <nav class="tabs" aria-label="Modes">
         <a class="tab on" href="#">Cases</a>
         <a class="tab" href="#">Battles</a>
         <a class="tab" href="#">Upgrade</a>
         <a class="tab" href="#"><svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><path d="M2 16C2 13.1716 2 11.7574 2.87868 10.8787C3.75736 10 5.17157 10 8 10H16C18.8284 10 20.2426 10 21.1213 10.8787C22 11.7574 22 13.1716 22 16C22 18.8284 22 20.2426 21.1213 21.1213C20.2426 22 18.8284 22 16 22H8C5.17157 22 3.75736 22 2.87868 21.1213C2 20.2426 2 18.8284 2 16Z"></path><circle cx="12" cy="16" r="2"></circle><path d="M6 10V8C6 4.68629 8.68629 2 12 2C15.3137 2 18 4.68629 18 8V10"></path></g></svg>Contracts · Lv 5</a>
         <a class="tab" href="#">Event</a>
-      </nav>
-      <span class="sp"></span>
+      </nav></div>
       <div class="hact">
         <button class="ib" type="button" aria-label="Search"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><circle cx="11.5" cy="11.5" r="9.5"></circle><path d="M18.2173 18.2178L21.9999 22.0004"></path></g></svg></button>
         <a class="bacc" href="#">Sign in</a>
@@ -187,7 +192,7 @@ a{color:var(--c-text)}a:hover{color:var(--c-neutral-200)}
             <span class="plq">Event · Season 1</span>
             <div class="dsp">Neon Heist</div>
             <div class="tmr num"><span>19<small>days</small></span><span>08<small>hrs</small></span><span>16<small>min</small></span><span>42<small>sec</small></span></div>
-            <a class="bw" href="#" style="justify-self: start">Join event <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 12H20M14 18L20 12L14 6"></path></svg></a>
+            <a class="bw" href="#">Join event <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 12H20M14 18L20 12L14 6"></path></svg></a>
           </div>
         </div>
         <div class="sl">
@@ -197,7 +202,7 @@ a{color:var(--c-text)}a:hover{color:var(--c-neutral-200)}
             <span class="plq">Promo</span>
             <div class="dsp">Got a code from a streamer?</div>
             <div class="mut">+15% on deposit or a free case</div>
-            <a class="bw" href="#" style="justify-self: start">I have a code</a>
+            <a class="bw" href="#">I have a code</a>
           </div>
         </div>
         <div class="sl">
@@ -207,7 +212,7 @@ a{color:var(--c-text)}a:hover{color:var(--c-neutral-200)}
             <span class="plq">New case</span>
             <div class="dsp">Dragon Hoard</div>
             <div class="mut">New this week · from $99</div>
-            <a class="bw" href="#" style="justify-self: start">Open case <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 12H20M14 18L20 12L14 6"></path></svg></a>
+            <a class="bw" href="#">Open case <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 12H20M14 18L20 12L14 6"></path></svg></a>
           </div>
         </div>
         <div class="sl">
@@ -217,7 +222,7 @@ a{color:var(--c-text)}a:hover{color:var(--c-neutral-200)}
             <span class="plq">Giveaway</span>
             <div class="dsp">Weekly AWP</div>
             <div class="tmr num"><span>02<small>days</small></span><span>11<small>hrs</small></span><span>05<small>min</small></span></div>
-            <a class="bw" href="#" style="justify-self: start">Join giveaway</a>
+            <a class="bw" href="#">Join giveaway</a>
           </div>
         </div>
       </div>
@@ -226,7 +231,7 @@ a{color:var(--c-text)}a:hover{color:var(--c-neutral-200)}
 
     <div class="tk">
       <input type="radio" name="tk" id="tk-live" checked><input type="radio" name="tk" id="tk-top">
-      <div class="tkh"><label for="tk-live"><i class="dot"></i>Live</label><label for="tk-top">Top today</label><button class="pz" type="button" aria-label="Pause live drops"><svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><path d="M2 6C2 4.11438 2 3.17157 2.58579 2.58579C3.17157 2 4.11438 2 6 2C7.88562 2 8.82843 2 9.41421 2.58579C10 3.17157 10 4.11438 10 6V18C10 19.8856 10 20.8284 9.41421 21.4142C8.82843 22 7.88562 22 6 22C4.11438 22 3.17157 22 2.58579 21.4142C2 20.8284 2 19.8856 2 18V6Z"></path><path d="M14 6C14 4.11438 14 3.17157 14.5858 2.58579C15.1716 2 16.1144 2 18 2C19.8856 2 20.8284 2 21.4142 2.58579C22 3.17157 22 4.11438 22 6V18C22 19.8856 22 20.8284 21.4142 21.4142C20.8284 22 19.8856 22 18 22C16.1144 22 15.1716 22 14.5858 21.4142C14 20.8284 14 19.8856 14 18V6Z"></path></g></svg></button></div>
+      <div class="tkh"><div class="tks"><label for="tk-live"><i class="dot"></i>Live</label><label for="tk-top">Top today</label></div><button class="pz" type="button" aria-label="Pause live drops"><svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><path d="M2 6C2 4.11438 2 3.17157 2.58579 2.58579C3.17157 2 4.11438 2 6 2C7.88562 2 8.82843 2 9.41421 2.58579C10 3.17157 10 4.11438 10 6V18C10 19.8856 10 20.8284 9.41421 21.4142C8.82843 22 7.88562 22 6 22C4.11438 22 3.17157 22 2.58579 21.4142C2 20.8284 2 19.8856 2 18V6Z"></path><path d="M14 6C14 4.11438 14 3.17157 14.5858 2.58579C15.1716 2 16.1144 2 18 2C19.8856 2 20.8284 2 21.4142 2.58579C22 3.17157 22 4.11438 22 6V18C22 19.8856 22 20.8284 21.4142 21.4142C20.8284 22 19.8856 22 18 22C16.1144 22 15.1716 22 14.5858 21.4142C14 20.8284 14 19.8856 14 18V6Z"></path></g></svg></button></div>
       <div class="tkr live"><a class="dc" href="#" style="--c: var(--c-rarity-restricted)"><img class="cs" src="img/case-hell.png" alt=""><img class="sk2" src="img/skin-moonrise.png" alt=""><b>Moonrise</b><span class="ov"><small>m0nk</small><em class="num">$7.10</em></span></a><a class="dc" href="#" style="--c: var(--c-rarity-classified)"><img class="cs" src="img/case-agents.png" alt=""><img class="sk2" src="img/skin-acid.png" alt=""><b>Acid Etched</b><span class="ov"><small>kira</small><em class="num">$21.00</em></span></a><a class="dc" href="#" style="--c: var(--c-rarity-restricted)"><img class="cs" src="img/case-easy_start.png" alt=""><img class="sk2" src="img/skin-origami.png" alt=""><b>Origami</b><span class="ov"><small>zed</small><em class="num">$2.40</em></span></a><a class="dc" href="#" style="--c: var(--c-rarity-milspec)"><img class="cs" src="img/case-file_51.png" alt=""><img class="sk2" src="img/skin-cobalt.png" alt=""><b>Cobalt Core</b><span class="ov"><small>nova</small><em class="num">$0.84</em></span></a><a class="dc" href="#" style="--c: var(--c-rarity-restricted)"><img class="cs" src="img/case-ruby_tempest.png" alt=""><img class="sk2" src="img/skin-cartel.png" alt=""><b>Cartel</b><span class="ov"><small>rex</small><em class="num">$5.40</em></span></a><a class="dc" href="#" style="--c: var(--c-rarity-restricted)"><img class="cs" src="img/case-case_51.png" alt=""><img class="sk2" src="img/skin-cassette.png" alt=""><b>Cassette</b><span class="ov"><small>lux</small><em class="num">$3.10</em></span></a><a class="dc" href="#" style="--c: var(--c-rarity-milspec)"><img class="cs" src="img/case-magnificence.png" alt=""><img class="sk2" src="img/skin-outbreak.png" alt=""><b>Outbreak</b><span class="ov"><small>ash</small><em class="num">$1.90</em></span></a><a class="dc" href="#" style="--c: var(--c-rarity-milspec)"><img class="cs" src="img/case-indomitable.png" alt=""><img class="sk2" src="img/skin-bullfrog.png" alt=""><b>Bullfrog</b><span class="ov"><small>vex</small><em class="num">$1.20</em></span></a><a class="dc" href="#" style="--c: var(--c-rarity-milspec)"><img class="cs" src="img/case-easy_start.png" alt=""><img class="sk2" src="img/skin-cyano.png" alt=""><b>Cyanospatter</b><span class="ov"><small>jin</small><em class="num">$0.60</em></span></a><a class="dc" href="#" style="--c: var(--c-rarity-milspec)"><img class="cs" src="img/case-hell.png" alt=""><img class="sk2" src="img/skin-copper.png" alt=""><b>Copperflage</b><span class="ov"><small>olz</small><em class="num">$0.40</em></span></a><a class="dc" href="#" style="--c: var(--c-rarity-milspec)"><img class="cs" src="img/case-agents.png" alt=""><img class="sk2" src="img/skin-scumbria.png" alt=""><b>Scumbria</b><span class="ov"><small>pax</small><em class="num">$0.52</em></span></a><a class="dc" href="#" style="--c: var(--c-rarity-milspec)"><img class="cs" src="img/case-file_51.png" alt=""><img class="sk2" src="img/skin-fubar.png" alt=""><b>Fubar</b><span class="ov"><small>ivy</small><em class="num">$0.30</em></span></a></div>
       <div class="tkr top"><a class="dc" href="#" style="--c: var(--c-rarity-gold)"><img class="cs" src="img/sc-3.png" alt=""><img class="sk2" src="img/skin-butterfly.webp" alt=""><b>★ Butterfly Knife</b><span class="ov"><small>m0nk</small><em class="num">$3,167.07</em></span></a><a class="dc" href="#" style="--c: var(--c-rarity-covert)"><img class="cs" src="img/case-ruby_tempest.png" alt=""><img class="sk2" src="img/skin-danger.png" alt=""><b>Danger Close</b><span class="ov"><small>nova</small><em class="num">$73.10</em></span></a><a class="dc" href="#" style="--c: var(--c-rarity-classified)"><img class="cs" src="img/case-agents.png" alt=""><img class="sk2" src="img/skin-chrome.png" alt=""><b>Chrome Cannon</b><span class="ov"><small>zed</small><em class="num">$34.20</em></span></a><a class="dc" href="#" style="--c: var(--c-rarity-classified)"><img class="cs" src="img/case-hell.png" alt=""><img class="sk2" src="img/skin-acid.png" alt=""><b>Acid Etched</b><span class="ov"><small>kira</small><em class="num">$21.00</em></span></a><a class="dc" href="#" style="--c: var(--c-rarity-restricted)"><img class="cs" src="img/case-project_51.png" alt=""><img class="sk2" src="img/skin-moonrise.png" alt=""><b>Moonrise</b><span class="ov"><small>rex</small><em class="num">$7.10</em></span></a><a class="dc" href="#" style="--c: var(--c-rarity-restricted)"><img class="cs" src="img/case-case_51.png" alt=""><img class="sk2" src="img/skin-cartel.png" alt=""><b>Cartel</b><span class="ov"><small>ash</small><em class="num">$5.40</em></span></a><a class="dc" href="#" style="--c: var(--c-rarity-restricted)"><img class="cs" src="img/case-magnificence.png" alt=""><img class="sk2" src="img/skin-cassette.png" alt=""><b>Cassette</b><span class="ov"><small>lux</small><em class="num">$3.10</em></span></a><a class="dc" href="#" style="--c: var(--c-rarity-restricted)"><img class="cs" src="img/case-easy_start.png" alt=""><img class="sk2" src="img/skin-origami.png" alt=""><b>Origami</b><span class="ov"><small>vex</small><em class="num">$2.40</em></span></a><a class="dc" href="#" style="--c: var(--c-rarity-milspec)"><img class="cs" src="img/case-hell.png" alt=""><img class="sk2" src="img/skin-outbreak.png" alt=""><b>Outbreak</b><span class="ov"><small>jin</small><em class="num">$1.90</em></span></a><a class="dc" href="#" style="--c: var(--c-rarity-milspec)"><img class="cs" src="img/case-file_51.png" alt=""><img class="sk2" src="img/skin-bullfrog.png" alt=""><b>Bullfrog</b><span class="ov"><small>olz</small><em class="num">$1.20</em></span></a><a class="dc" href="#" style="--c: var(--c-rarity-milspec)"><img class="cs" src="img/case-agents.png" alt=""><img class="sk2" src="img/skin-cobalt.png" alt=""><b>Cobalt Core</b><span class="ov"><small>pax</small><em class="num">$0.84</em></span></a></div>
     </div>
@@ -250,7 +255,7 @@ a{color:var(--c-text)}a:hover{color:var(--c-neutral-200)}
       <a class="tile" href="#"><img src="img/sc-4.png" alt="">Creators</a>
     </nav>
 
-    <section class="shf" style="margin-top: var(--space-20)">
+    <section class="shf">
       <div class="sh"><h2 class="dsp"><svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true" style="color: var(--c-text)"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><path d="M20 13.1111C20 20.2222 13.9556 22 10.9333 22C8.28889 22 3 20.2222 3 13.1111C3 10.3295 4.46147 8.46138 5.85996 7.39454C6.63841 6.80069 7.6304 7.39197 7.73017 8.36598L7.816 9.20382C7.92052 10.2241 8.84932 11.0606 9.70932 10.5017C11.3938 9.40705 12 6.7752 12 5.33334V5.00971C12 3.58 13.4438 2.65985 14.6023 3.49767C17.1653 5.35127 20 8.58427 20 13.1111Z"></path><path d="M8 18.4445C8 21.2889 10.4889 22 11.7333 22C12.8222 22 15 21.2889 15 18.4445C15 17.3435 14.4107 16.6002 13.8404 16.1713C13.4424 15.872 12.8828 16.1408 12.7459 16.6196C12.5675 17.2437 11.9228 17.636 11.5944 17.0759C11.2941 16.5638 11.2941 15.7957 11.2941 15.3334C11.2941 14.6968 10.6539 14.2847 10.1389 14.6589C9.10649 15.4091 8 16.6815 8 18.4445Z"></path></g></svg>Hot Cases</h2><a href="#">See all <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5L15 12L9 19"></path></svg></a></div>
       <div class="g6r hot">
         <a class="rk" href="#"><span class="n">1</span><div class="cd"><img src="img/case-hell.png" alt=""><b>Prime Cut</b><span class="num">$1.00</span></div></a>
@@ -323,20 +328,20 @@ a{color:var(--c-text)}a:hover{color:var(--c-neutral-200)}
         <span class="plq">Weekly race · ends in 3d 14h</span>
         <h2 class="dsp" style="margin: 0; font-size: var(--fs-8xl)">Climb the<br>leaderboard</h2>
         <div class="mut">The biggest drops of the week take the prizes</div>
-        <a class="bw" href="#" style="margin-top: var(--space-6)">See leaderboard <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 12H20M14 18L20 12L14 6"></path></svg></a>
+        <a class="bw" href="#">See leaderboard <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 12H20M14 18L20 12L14 6"></path></svg></a>
       </div>
       <div class="pod"><div class="pc" style="--c: var(--c-rarity-classified)"><span class="pn">2</span><img src="img/skin-chrome.png" alt=""><b>Chrome Cannon</b><span class="bdg" style="--b: var(--c-rarity-classified); --t: var(--c-rarity-classified-text)">Classified</span><span class="num pv">$340.00</span></div><div class="pc first" style="--c: var(--c-rarity-gold)"><span class="pn">1</span><img src="img/skin-butterfly.webp" alt=""><b>★ Butterfly Knife</b><span class="bdg" style="--b: var(--c-rarity-gold); --t: var(--c-rarity-gold-text)">Fade · FN</span><span class="num pv">$3,167.07</span></div><div class="pc" style="--c: var(--c-rarity-covert)"><span class="pn">3</span><img src="img/skin-danger.png" alt=""><b>Danger Close</b><span class="bdg" style="--b: var(--c-rarity-covert); --t: var(--c-rarity-covert-text)">Covert</span><span class="num pv">$210.00</span></div></div>
     </section>
 
     <section class="how">
-      <h2 class="dsp" style="margin: 0; font-size: var(--fs-6xl)">How it works</h2>
-      <div class="mut" style="margin-top: var(--space-6)">From your first free open to a skin in your Steam inventory</div>
-      <div class="steps"><div class="hw" style="--g: color-mix(in srgb,var(--c-glow-fire) 55%,transparent)"><div class="ha"><span class="hg"></span><img src="img/case-hell.png" alt=""></div><span class="hn">01</span><div class="ht">Try any case free</div><div class="mut hx">5 demo opens, no sign-up. Same odds as real.</div></div><span class="hstep"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 12H20M14 18L20 12L14 6"></path></svg></span><div class="hw" style="--g: color-mix(in srgb,var(--acc) 45%,transparent)"><div class="ha"><span class="hg"></span><div class="si"><span class="sa"><svg width="34" height="34" viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><circle cx="12" cy="6" r="4"></circle><path d="M20 17.5C20 19.9853 20 22 12 22C4 22 4 19.9853 4 17.5C4 15.0147 7.58172 13 12 13C16.4183 13 20 15.0147 20 17.5Z"></path></g></svg></span><div class="sc"><span>Steam</span><span>Google</span></div></div></div><span class="hn">02</span><div class="ht">Sign in</div><div class="mut hx">One tap with Steam or Google. Free.</div></div><span class="hstep"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 12H20M14 18L20 12L14 6"></path></svg></span><div class="hw" style="--g: color-mix(in srgb,var(--c-rarity-gold) 55%,transparent)"><div class="ha"><span class="hg"></span><img src="img/skin-butterfly.webp" alt="" class="kn"></div><span class="hn">03</span><div class="ht">Withdraw to Steam</div><div class="mut hx">Your skin arrives as a Steam trade offer.</div></div></div>
+      <div class="hh"><h2 class="dsp" style="margin: 0; font-size: var(--fs-6xl)">How it works</h2>
+      <div class="mut">From your first free open to a skin in your Steam inventory</div></div>
+      <div class="steps"><div class="hw" style="--g: color-mix(in srgb,var(--c-glow-fire) 55%,transparent)"><div class="ha"><span class="hg"></span><img src="img/case-hell.png" alt=""></div><span class="hn">01</span><div class="hb"><div class="ht">Try any case free</div><div class="mut hx">5 demo opens, no sign-up. Same odds as real.</div></div></div><span class="hstep"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 12H20M14 18L20 12L14 6"></path></svg></span><div class="hw" style="--g: color-mix(in srgb,var(--acc) 45%,transparent)"><div class="ha"><span class="hg"></span><div class="si"><span class="sa"><svg width="34" height="34" viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><circle cx="12" cy="6" r="4"></circle><path d="M20 17.5C20 19.9853 20 22 12 22C4 22 4 19.9853 4 17.5C4 15.0147 7.58172 13 12 13C16.4183 13 20 15.0147 20 17.5Z"></path></g></svg></span><div class="sc"><span>Steam</span><span>Google</span></div></div></div><span class="hn">02</span><div class="hb"><div class="ht">Sign in</div><div class="mut hx">One tap with Steam or Google. Free.</div></div></div><span class="hstep"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 12H20M14 18L20 12L14 6"></path></svg></span><div class="hw" style="--g: color-mix(in srgb,var(--c-rarity-gold) 55%,transparent)"><div class="ha"><span class="hg"></span><img src="img/skin-butterfly.webp" alt="" class="kn"></div><span class="hn">03</span><div class="hb"><div class="ht">Withdraw to Steam</div><div class="mut hx">Your skin arrives as a Steam trade offer.</div></div></div></div>
     </section>
 
     <section>
-      <h2 class="dsp" style="margin: var(--space-56) 0 var(--space-6); font-size: var(--fs-5xl)">FAQ</h2>
-      <div class="faq" style="margin-top: 0">
+      <h2 class="dsp" style="margin: 0; padding-bottom: var(--space-6); font-size: var(--fs-5xl)">FAQ</h2>
+      <div class="faq">
         <a class="q" href="#">Is SkinHub legit?<svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" style="color: var(--c-text-muted)"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9L12 15L5 9"></path></svg></a>
         <a class="q" href="#">How does Provably Fair work?<svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" style="color: var(--c-text-muted)"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9L12 15L5 9"></path></svg></a>
         <a class="q" href="#">How fast are withdrawals?<svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" style="color: var(--c-text-muted)"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9L12 15L5 9"></path></svg></a>
@@ -345,16 +350,16 @@ a{color:var(--c-text)}a:hover{color:var(--c-neutral-200)}
     </section>
 
     <section class="seo">
-      <div style="color: var(--c-text); font-weight: 600; margin-bottom: var(--space-4)">CS2 case opening on SkinHub</div>
+      <div style="color: var(--c-text); font-weight: 600">CS2 case opening on SkinHub</div>
       <div>Open CS2 cases with published odds for every skin. Every result is verifiable with Provably Fair seeds.</div>
-      <a href="#" style="display: inline-block; margin-top: var(--space-6)">Read more</a>
+      <a href="#">Read more</a>
     </section>
 
     <footer class="ft">
       <div class="cols">
-        <div>
+        <div class="fc">
           <a class="logo dsp" href="#" style="font-size: var(--fs-4xl)"><i></i>SkinHub</a>
-          <div style="margin-top: var(--space-10)">CS2 cases, battles and upgrades. Provably Fair.</div>
+          <div>CS2 cases, battles and upgrades. Provably Fair.</div>
           <div class="soc">
             <a href="#" aria-label="Discord"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M7 7c3-1.3 7-1.3 10 0l2 9c-2 1.6-4 2.4-5 2.6l-1-1.6h-2l-1 1.6c-1-.2-3-1-5-2.6z"></path><circle cx="9.5" cy="12.5" r="1" fill="currentColor"></circle><circle cx="14.5" cy="12.5" r="1" fill="currentColor"></circle></svg></a>
             <a href="#" aria-label="Telegram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M21 4 3 11l6 2 2 6 3-4 5 4z"></path><path d="m9 13 8-6"></path></svg></a>
