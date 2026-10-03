@@ -11,7 +11,7 @@
 <style>
 body{margin:0;background:#0b0b0c;overflow-x:hidden}
 a{color:#ffffff}a:hover{color:#d9d9de}
-.m{width:390px;min-height:3660px;box-sizing:border-box;background:#111111;color:#ffffff;font-family:'Golos Text',system-ui,sans-serif;font-size:14px;line-height:1.4;display:flex;flex-direction:column}
+.m{width:390px;min-height:3720px;box-sizing:border-box;background:#111111;color:#ffffff;font-family:'Golos Text',system-ui,sans-serif;font-size:14px;line-height:1.4;display:flex;flex-direction:column}
 .m *{box-sizing:border-box}
 .dsp{font-family:'Barlow Condensed',sans-serif;font-style:italic;font-weight:800;text-transform:uppercase;letter-spacing:.01em;line-height:.92}
 .num{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-variant-numeric:tabular-nums}
@@ -81,20 +81,19 @@ a{color:#ffffff}a:hover{color:#d9d9de}
 .disc s{color:#a1a1a6;font-size:13px}
 .ofr{display:flex;align-items:center;gap:12px;margin:28px 16px 0;padding:12px;border:1px solid #28282a;border-radius:6px;background:linear-gradient(90deg,#1f1f21,#18181a)}
 .ofr img{width:64px;height:64px;object-fit:contain;flex:none}
-.lb{margin:32px 16px 0;padding:20px 16px 16px;border:1px solid #28282a;border-radius:6px;background:radial-gradient(circle at 0% 100%,rgba(228,174,57,.18),transparent 45%),#1a1a1d;text-align:center}
-.lbt{font:700 22px/1.25 'Golos Text',sans-serif;margin:0}
-.lbt em{font-style:normal;color:var(--acc)}
-.pl{display:flex;justify-content:center;align-items:center;margin:14px 0 6px}
-.pl div{display:flex;align-items:center;gap:6px;padding:0 14px;color:#707072;font:700 30px/1 'Barlow Condensed',sans-serif}
-.pl div+div{border-left:1px solid #39393b}
-.pl div.g{color:#e4ae39}
-.pl sup{font-size:14px;align-self:flex-start;margin:-2px 0 0 -4px}
-.prz{display:flex;align-items:center;text-align:left;min-height:150px;position:relative}
-.prz .gl{position:absolute;right:-10px;top:50%;width:220px;height:220px;transform:translateY(-50%);background:radial-gradient(circle,rgba(228,174,57,.5),rgba(228,174,57,.12) 40%,transparent 68%)}
-.prz img{position:relative;width:190px;height:150px;object-fit:contain;margin-left:auto;transform:rotate(-8deg)}
-.gold{color:#e4ae39;font-weight:600;font-size:13px}
-.pchip{display:inline-block;margin-top:6px;background:#e4ae39;color:#111111;font:700 18px 'Barlow Condensed',sans-serif;padding:2px 8px;border-radius:6px}
-.lbb{width:100%;height:56px;margin-top:12px;font-size:15px;letter-spacing:.06em;text-transform:uppercase}
+.lb{margin:32px 16px 0;padding:20px 14px 0;border:1px solid #28282a;border-radius:6px;overflow:hidden;background:radial-gradient(ellipse 60% 50% at 50% 100%,rgba(228,174,57,.14),transparent 70%),#18181a}
+.lbl{display:flex;flex-direction:column;align-items:flex-start;gap:10px;margin-bottom:18px}
+.pod{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;align-items:end;margin-top:16px}
+.pc{position:relative;display:flex;flex-direction:column;align-items:center;gap:4px;padding:14px 4px 12px;border:1px solid #28282a;border-bottom:3px solid var(--c);border-radius:6px 6px 0 0;background:#1f1f21;text-align:center;min-width:0}
+.pc.first{padding-top:20px;padding-bottom:18px;background:linear-gradient(180deg,#26262a,#1f1f21)}
+.pc .pn{position:absolute;z-index:1;top:6px;left:8px;font:italic 800 38px/0.8 'Barlow Condensed',sans-serif;color:transparent;-webkit-text-stroke:1.5px #4a4a4e}
+.pc.first .pn{font-size:48px;-webkit-text-stroke:2px var(--acc);filter:drop-shadow(0 0 4px color-mix(in srgb,var(--acc) 35%,transparent))}
+.pc img{position:relative;width:100%;height:52px;object-fit:contain}
+.pc.first img{height:76px;transform:rotate(-10deg)}
+.pc b{font-size:11px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.pc .bdg{font-size:8px;letter-spacing:.12em;padding:1px 4px}
+.pc .pv{font-size:17px;line-height:1}
+.pc.first .pv{font-size:20px}
 .how{margin:32px 16px 0;display:flex;flex-direction:column;gap:14px}
 .st{display:flex;gap:12px;align-items:flex-start}
 .st .ic{width:44px;height:44px;flex:none;display:grid;place-items:center;border:1px solid #39393b;border-radius:6px;color:#ffffff}
@@ -238,18 +237,13 @@ a{color:#ffffff}a:hover{color:#d9d9de}
   </section>
 
   <section class="lb">
-    <h2 class="lbt">Climb the leaderboard<br>Win epic <em>rewards</em></h2>
-    <div class="pl"><div class="g"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4h8v5a4 4 0 0 1-8 0z"></path><path d="M8 6H5v1a3 3 0 0 0 3 3M16 6h3v1a3 3 0 0 1-3 3M12 13v4M8 20h8M10 17h4"></path></svg>1<sup>st</sup></div><div><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="15" r="5"></circle><path d="M8.6 11.3 6 3h4l2 5 2-5h4l-2.6 8.3"></path></svg>2<sup>nd</sup></div><div><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="15" r="5"></circle><path d="M8.6 11.3 6 3h4l2 5 2-5h4l-2.6 8.3"></path><path d="m12 12.7.8 1.5 1.6.2-1.2 1.1.3 1.6-1.5-.8-1.5.8.3-1.6-1.2-1.1 1.6-.2z" fill="currentColor"></path></svg>3<sup>rd</sup></div></div>
-    <div class="prz">
-      <div style="position: relative; z-index: 1">
-        <div style="font-size: 13px; font-weight: 600">★ Butterfly Knife</div>
-        <div class="gold">Fade (FN)</div>
-        <span class="pchip">$3,167.07</span>
-      </div>
-      <span class="gl"></span>
-      <img src="img/skin-butterfly.webp" alt="Butterfly Knife Fade">
+    <div class="lbl" style="margin-bottom: 0">
+      <span class="plq">Weekly race · ends in 3d 14h</span>
+      <h2 class="dsp" style="margin: 0; font-size: 40px">Climb the<br>leaderboard</h2>
+      <div class="mut" style="font-size: 13px">The biggest drops of the week take the prizes</div>
     </div>
-    <a class="bw lbb" href="#">Leaderboard</a>
+    <div class="pod"><div class="pc" style="--c: #d32ce6"><span class="pn">2</span><img src="img/skin-chrome.png" alt=""><b>Chrome Cannon</b><span class="bdg" style="--b: #d32ce6; --t: #f6c4fb">Classified</span><span class="num pv">$340.00</span></div><div class="pc first" style="--c: #e4ae39"><span class="pn">1</span><img src="img/skin-butterfly.webp" alt=""><b>★ Butterfly Knife</b><span class="bdg" style="--b: #e4ae39; --t: #ffe3a6">Fade · FN</span><span class="num pv">$3,167.07</span></div><div class="pc" style="--c: #eb4b4b"><span class="pn">3</span><img src="img/skin-danger.png" alt=""><b>Danger Close</b><span class="bdg" style="--b: #eb4b4b; --t: #ffc2c2">Covert</span><span class="num pv">$210.00</span></div></div>
+    <a class="bw" href="#" style="width: 100%; margin: 14px 0 16px">See leaderboard</a>
   </section>
 
   <section class="how">

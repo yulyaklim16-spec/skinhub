@@ -90,21 +90,18 @@ a{color:#ffffff}a:hover{color:#d9d9de}
 .disc s{color:#a1a1a6;font-size:15px}
 .ofr{display:flex;align-items:center;gap:18px;margin-top:44px;padding:16px 24px;border:1px solid #28282a;border-radius:6px;background:linear-gradient(90deg,#1f1f21,#18181a)}
 .ofr img{width:84px;height:84px;object-fit:contain}
-.lb{position:relative;display:flex;align-items:center;gap:24px;height:176px;margin-top:56px;padding-right:28px;border:1px solid #28282a;border-radius:6px;overflow:hidden;background:radial-gradient(circle at 4% 110%,rgba(228,174,57,.32),transparent 28%),radial-gradient(circle at 86% -20%,rgba(228,174,57,.22),transparent 26%),#1a1a1d}
-.lbh{align-self:stretch;flex:0 0 440px;display:flex;align-items:center;padding:0 40px;background:linear-gradient(90deg,rgba(255,255,255,.035),rgba(255,255,255,.06));clip-path:polygon(0 0,calc(100% - 44px) 0,100% 50%,calc(100% - 44px) 100%,0 100%)}
-.lbt{font:700 30px/1.2 'Golos Text',sans-serif;margin:0}
-.lbt em{font-style:normal;color:var(--acc)}
-.pl{flex:none;display:flex;flex-direction:column}
-.pl div{display:flex;align-items:center;gap:8px;padding:6px 18px 6px 0;color:#707072;font:700 32px/1 'Barlow Condensed',sans-serif}
-.pl div+div{border-top:1px solid #39393b}
-.pl div.g{color:#e4ae39}
-.pl sup{font-size:15px;align-self:flex-start;margin:-2px 0 0 -6px}
-.prz{position:relative;flex:0 0 220px;height:176px;display:grid;place-items:center}
-.prz .gl{position:absolute;inset:-30px;background:radial-gradient(circle at 50% 60%,rgba(228,174,57,.5),rgba(228,174,57,.12) 38%,transparent 62%)}
-.prz img{position:relative;width:230px;height:170px;object-fit:contain;transform:rotate(-12deg)}
-.gold{color:#e4ae39;font-weight:600;font-size:14px}
-.pchip{display:inline-block;margin-top:6px;background:#e4ae39;color:#111111;font:700 20px 'Barlow Condensed',sans-serif;padding:2px 9px;border-radius:6px}
-.lbb{flex:0 1 280px;min-width:200px;height:60px;margin-left:auto;font-size:15px;letter-spacing:.06em;text-transform:uppercase}
+.lb{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.55fr);gap:40px;align-items:end;margin-top:56px;padding:32px 32px 0;border:1px solid #28282a;border-radius:6px;overflow:hidden;background:radial-gradient(ellipse 34% 80% at 66% 100%,rgba(228,174,57,.12),transparent 70%),#18181a}
+.lbl{display:flex;flex-direction:column;align-items:flex-start;gap:14px;padding-bottom:32px}
+.pod{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;align-items:end}
+.pc{position:relative;display:flex;flex-direction:column;align-items:center;gap:6px;padding:20px 14px 18px;border:1px solid #28282a;border-bottom:3px solid var(--c);border-radius:6px 6px 0 0;background:#1f1f21;text-align:center}
+.pc.first{padding-top:28px;padding-bottom:26px;background:linear-gradient(180deg,#26262a,#1f1f21)}
+.pc .pn{position:absolute;z-index:1;top:10px;left:14px;font:italic 800 60px/0.8 'Barlow Condensed',sans-serif;color:transparent;-webkit-text-stroke:1.5px #4a4a4e}
+.pc.first .pn{font-size:76px;-webkit-text-stroke:2px var(--acc);filter:drop-shadow(0 0 4px color-mix(in srgb,var(--acc) 35%,transparent))}
+.pc img{position:relative;width:100%;height:96px;object-fit:contain}
+.pc.first img{height:140px;transform:rotate(-10deg)}
+.pc b{font-size:14px;font-weight:600;margin-top:2px}
+.pc .pv{font-size:26px;line-height:1}
+.pc.first .pv{font-size:32px}
 .how{margin-top:24px;padding:28px 32px;border:1px solid #28282a;border-radius:6px}
 .steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;margin-top:20px}
 .st{display:flex;gap:16px;align-items:flex-start}
@@ -144,7 +141,7 @@ a{color:#ffffff}a:hover{color:#d9d9de}
     </div>
   </header>
 
-  <main class="w">
+  <main class="w" style="width: 1321px">
 
     <div class="car">
       <div class="track">
@@ -300,15 +297,13 @@ a{color:#ffffff}a:hover{color:#d9d9de}
     </section>
 
     <section class="lb">
-      <div class="lbh"><h2 class="lbt">Climb the leaderboard<br>Win epic <em>rewards</em></h2></div>
-      <div class="pl"><div class="g"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4h8v5a4 4 0 0 1-8 0z"></path><path d="M8 6H5v1a3 3 0 0 0 3 3M16 6h3v1a3 3 0 0 1-3 3M12 13v4M8 20h8M10 17h4"></path></svg>1<sup>st</sup></div><div><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="15" r="5"></circle><path d="M8.6 11.3 6 3h4l2 5 2-5h4l-2.6 8.3"></path></svg>2<sup>nd</sup></div><div><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="15" r="5"></circle><path d="M8.6 11.3 6 3h4l2 5 2-5h4l-2.6 8.3"></path><path d="m12 12.7.8 1.5 1.6.2-1.2 1.1.3 1.6-1.5-.8-1.5.8.3-1.6-1.2-1.1 1.6-.2z" fill="currentColor"></path></svg>3<sup>rd</sup></div></div>
-      <div class="prz"><span class="gl"></span><img src="img/skin-butterfly.webp" alt="Butterfly Knife Fade"></div>
-      <div style="white-space: nowrap">
-        <div style="font-size: 14px; font-weight: 600">★ Butterfly Knife</div>
-        <div class="gold">Fade (FN)</div>
-        <span class="pchip">$3,167.07</span>
+      <div class="lbl">
+        <span class="plq">Weekly race · ends in 3d 14h</span>
+        <h2 class="dsp" style="margin: 0; font-size: 60px">Climb the<br>leaderboard</h2>
+        <div class="mut">The biggest drops of the week take the prizes</div>
+        <a class="bw" href="#" style="margin-top: 6px">See leaderboard <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
       </div>
-      <a class="bw lbb" href="#">Leaderboard</a>
+      <div class="pod"><div class="pc" style="--c: #d32ce6"><span class="pn">2</span><img src="img/skin-chrome.png" alt=""><b>Chrome Cannon</b><span class="bdg" style="--b: #d32ce6; --t: #f6c4fb">Classified</span><span class="num pv">$340.00</span></div><div class="pc first" style="--c: #e4ae39"><span class="pn">1</span><img src="img/skin-butterfly.webp" alt=""><b>★ Butterfly Knife</b><span class="bdg" style="--b: #e4ae39; --t: #ffe3a6">Fade · FN</span><span class="num pv">$3,167.07</span></div><div class="pc" style="--c: #eb4b4b"><span class="pn">3</span><img src="img/skin-danger.png" alt=""><b>Danger Close</b><span class="bdg" style="--b: #eb4b4b; --t: #ffc2c2">Covert</span><span class="num pv">$210.00</span></div></div>
     </section>
 
     <section class="how">
@@ -370,7 +365,7 @@ a{color:#ffffff}a:hover{color:#d9d9de}
 
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#b7ff2c","options":["#b7ff2c","#e5ff00","#00e0a4"]},"$preview":{"width":1440,"height":3560}}'>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#b7ff2c","options":["#b7ff2c","#e5ff00","#00e0a4"]},"$preview":{"width":1440,"height":3700}}'>
 class Component extends DCLogic {
   renderVals() {
     return { accent: this.props.accent ?? '#b7ff2c' };
