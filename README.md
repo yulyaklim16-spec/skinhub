@@ -21,7 +21,7 @@
 |---|---|---|---|---|
 | 1. Исследование | [`research/`](./research/) | ✅ Готово · 2026-10-02 | [`research.md`](./research/research.md) | [`research.html`](./research/research.html) |
 | 2. Вайрфреймы | [`wireframes/`](./wireframes/) | 🔄 В работе · главная v12.1, кейс v1.3 | [`home.md`](./wireframes/home.md), [`case.md`](./wireframes/case.md) | [`home.html`](./wireframes/home.html), [`case.html`](./wireframes/case.html) |
-| 3. Концепт | [`concept/`](./concept/) | 🟡 Референсы собраны | — | — |
+| 3. Концепт | [`concept/`](./concept/) | 🟡 Главная v1 | — | — |
 | 4. Токены | [`tokens/`](./tokens/) | ⬜ Не начат | — | — |
 | 5. Компоненты | [`components/`](./components/) | ⬜ Не начат | — | — |
 | 6. Дизайн-система | [`design-system/`](./design-system/) | ⬜ Не начат | — | — |
@@ -48,6 +48,8 @@
 - Следующие экраны: вход, Rewards (миссии и прогресс), апгрейд, инвентарь и вывод.
 
 ### concept/
+- [`home.md`](./concept/home.md) / [`home.html`](./concept/home.html) — концепт главной v1: мобайл и десктоп,
+  [холст в Claude Design](https://claude.ai/artifact/VGpSEgEJ7XKhLT6MGtfWNM).
 - [`concept.md`](./concept/concept.md) / [`concept.html`](./concept/concept.html) — концепт: атрибуты, вкус дизайнера
   (Netflix, beton.ua), правила графики для экранов.
 - [`references.md`](./concept/references.md) / [`references.html`](./concept/references.html) — референсы из Refero:

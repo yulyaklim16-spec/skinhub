@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Концепт главной SkinHub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Просмотр концепта: мобайл и десктоп рядом в рамках-iframe, ниже — ссылки на исходники */
+:root{--bg:#0b0b0c;--fg:#ececee;--muted:#a3a3ad;--line:#28282a;--accent:#b7ff2c;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 "Golos Text",system-ui,sans-serif}
+.wrap{max-width:1900px;margin:0 auto;padding:32px 16px 64px;display:grid;gap:24px}
+.eyebrow{font:500 .74rem "JetBrains Mono",monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+h1{margin:6px 0 8px;font-size:clamp(1.6rem,4vw,2.3rem);line-height:1.15}
+p{margin:0;max-width:75ch;color:var(--muted)}
+a{color:var(--accent);text-underline-offset:3px}
+.frames{display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap}
+.fr{display:grid;gap:8px}
+.fr span{font:500 .74rem "JetBrains Mono",monospace;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+iframe{border:1px solid var(--line);border-radius:12px;background:#111}
+.m{width:392px;height:844px;max-width:100%}
+.dbox{flex:1 1 640px;min-width:0;overflow-x:auto;border-radius:12px}
+.d{width:1440px;height:900px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <span class="eyebrow">SkinHub · Этап 3 · Концепт · 3 октября 2026</span>
+    <h1>Главная: концепт v1</h1>
+    <p>Тёмная основа со стилем Home и одним лаймовым акцентом на действиях. Добавлены приёмы Discord, Portal, Xbox, Epic Games и Twitch, вкус взят у beton.ua и Netflix. Структура — вайрфрейм v12.1. Разбор приёмов — в <a href="./home.md">home.md</a> и <a href="./references.html">references</a>.</p>
+  </header>
+  <div class="frames">
+    <div class="fr"><span>Мобайл 390 · гость</span><iframe class="m" src="./home/mobile.html" title="Концепт главной, мобайл"></iframe></div>
+    <div class="fr dbox"><span>Десктоп 1440 · гость</span><iframe class="d" src="./home/desktop.html" title="Концепт главной, десктоп"></iframe></div>
+  </div>
+  <p>Открыть отдельно: <a href="./home/mobile.html">мобайл</a> · <a href="./home/desktop.html">десктоп</a>.</p>
+</div>
+</body>
+</html>
