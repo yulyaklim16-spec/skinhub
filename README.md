@@ -21,7 +21,7 @@
 |---|---|---|---|---|
 | 1. Исследование | [`research/`](./research/) | ✅ Готово · 2026-10-02 | [`research.md`](./research/research.md) | [`research.html`](./research/research.html) |
 | 2. Вайрфреймы | [`wireframes/`](./wireframes/) | 🔄 В работе · главная v11.5, кейс v1.3 | [`home.md`](./wireframes/home.md), [`case.md`](./wireframes/case.md) | [`home.html`](./wireframes/home.html), [`case.html`](./wireframes/case.html) |
-| 3. Концепт | [`concept/`](./concept/) | ⬜ Не начат | — | — |
+| 3. Концепт | [`concept/`](./concept/) | 🟡 Референсы собраны | — | — |
 | 4. Токены | [`tokens/`](./tokens/) | ⬜ Не начат | — | — |
 | 5. Компоненты | [`components/`](./components/) | ⬜ Не начат | — | — |
 | 6. Дизайн-система | [`design-system/`](./design-system/) | ⬜ Не начат | — | — |
@@ -48,7 +48,9 @@
 - Следующие экраны: вход, Rewards (миссии и прогресс), апгрейд, инвентарь и вывод.
 
 ### concept/
-Пусто.
+- [`references.md`](./concept/references.md) / [`references.html`](./concept/references.html) — референсы из Refero:
+  основа — стиль Home (тёмный, один лаймовый акцент), приёмы из Portal и Discord, экраны Home Page Xbox, Epic Games, Twitch.
+  У каждого приёма — какое волнение пользователя он снимает.
 
 ### tokens/
 Пусто.
