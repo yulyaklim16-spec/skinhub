@@ -47,17 +47,25 @@ a{color:#ffffff}a:hover{color:#d9d9de}
 .tile img{width:58px;height:40px;object-fit:contain}
 .tile.on{border-color:var(--acc);color:#ffffff}
 .lnk{display:inline-flex;align-items:center;gap:4px;height:44px;padding:0 16px;border:1px solid #39393b;border-radius:6px;color:#ffffff;text-decoration:none;font-weight:600;font-size:14px}
-.tk{display:flex;align-items:center;gap:8px;margin-top:16px;padding:10px;border:1px solid #28282a;border-radius:6px;background:#18181a;overflow:hidden}
-.tk .lab{flex:none;font:700 10px/1.15 'Golos Text',sans-serif;letter-spacing:.08em;color:#a1a1a6;text-transform:uppercase;padding:0 4px}
-.sk{flex:none;width:96px;border-radius:4px;background:#232326;border-bottom:2px solid var(--c);padding:4px 6px 3px;display:flex;flex-direction:column}
-.sk img{width:100%;height:38px;object-fit:contain}
-.sk span{font-size:11px;color:#a1a1a6;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.sk b{font:700 14px 'Barlow Condensed',sans-serif;color:#ffffff}
-.sk.pin{width:112px;box-shadow:inset 0 0 0 1px var(--c)}
-.vr{flex:none;width:1px;align-self:stretch;background:#39393b}
-.live{flex:none;background:#eb4b4b;color:#ffffff;font:700 11px 'Golos Text',sans-serif;letter-spacing:.06em;padding:3px 6px;border-radius:2px}
-.lv{display:flex;gap:8px;overflow:hidden;flex:1;min-width:0}
-.pz{flex:none;width:44px;height:44px;border-radius:6px;border:1px solid #39393b;background:#1f1f21;color:#ffffff;display:grid;place-items:center;padding:0;cursor:pointer}
+.tk{position:relative;margin:16px 0 0;padding:14px 16px 16px;border:1px solid #28282a;border-radius:6px;background:#18181a}
+.tk input{position:absolute;opacity:0;pointer-events:none}
+.tkh{display:flex;align-items:center;margin-bottom:12px}
+.tkh label{display:flex;align-items:center;gap:7px;font:700 17px/1 'Golos Text',sans-serif;color:#707072;cursor:pointer;padding:6px 0}
+.tkh label+label{margin-left:14px;padding-left:14px;border-left:1px solid #39393b}
+#tk-live:checked~.tkh label[for=tk-live],#tk-top:checked~.tkh label[for=tk-top]{color:#ffffff}
+.dot{width:7px;height:7px;border-radius:50%;background:#eb4b4b;box-shadow:0 0 0 3px rgba(235,75,75,.2);display:block}
+.pz{margin-left:auto;flex:none;width:36px;height:36px;border-radius:6px;border:1px solid #39393b;background:#1f1f21;color:#ffffff;display:grid;place-items:center;padding:0;cursor:pointer}
+.tkr{display:flex;gap:8px;overflow:hidden;margin-right:-16px}
+.tkr.top,#tk-top:checked~.tkr.live{display:none}
+#tk-top:checked~.tkr.top{display:flex}
+#tk-top:checked~.tkh .pz{visibility:hidden}
+.dc{flex:0 0 214px;display:flex;align-items:center;gap:10px;padding:8px;border:1px solid #28282a;border-radius:6px;background:#1f1f21;color:#ffffff;text-decoration:none;min-width:0}
+.dc .im{flex:none;width:60px;height:60px;border-radius:6px;background:#26262a;border-bottom:2px solid var(--c);display:grid;place-items:center}
+.dc .im img{width:88%;height:70%;object-fit:contain}
+.dc .tx{display:flex;flex-direction:column;min-width:0;line-height:1.25}
+.dc small{font-size:12px;color:#a1a1a6}
+.dc b{font-size:20px;line-height:1.1}
+.dc .tx span{font-size:12px;color:#a1a1a6;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .demo{position:relative;display:flex;align-items:center;gap:18px;margin-top:16px;padding:16px 20px;border:1px solid #28282a;border-radius:6px;overflow:hidden;background:#18181a}
 .demo .bgi{position:absolute;inset:-30px;width:calc(100% + 60px);height:calc(100% + 60px);object-fit:cover;filter:blur(18px) brightness(.36) saturate(1.2)}
 .demo>*:not(.bgi){position:relative}
@@ -209,24 +217,10 @@ a{color:#ffffff}a:hover{color:#d9d9de}
     </div>
 
     <div class="tk">
-      <span class="lab">Top<br>today</span>
-      <div class="sk pin" style="--c: #eb4b4b"><img src="img/skin-danger.png" alt=""><span>Danger Close</span><b>$73.10</b></div>
-      <div class="sk pin" style="--c: #d32ce6"><img src="img/skin-chrome.png" alt=""><span>Chrome Cannon</span><b>$34.20</b></div>
-      <div class="sk pin" style="--c: #d32ce6"><img src="img/skin-acid.png" alt=""><span>Acid Etched</span><b>$21.00</b></div>
-      <span class="vr"></span>
-      <span class="live">LIVE</span>
-      <div class="lv">
-        <div class="sk" style="--c: #8847ff"><img src="img/skin-moonrise.png" alt=""><span>Moonrise</span><b>$7.10</b></div>
-        <div class="sk" style="--c: #8847ff"><img src="img/skin-cartel.png" alt=""><span>Cartel</span><b>$5.40</b></div>
-        <div class="sk" style="--c: #8847ff"><img src="img/skin-cassette.png" alt=""><span>Cassette</span><b>$3.10</b></div>
-        <div class="sk" style="--c: #8847ff"><img src="img/skin-origami.png" alt=""><span>Origami</span><b>$2.40</b></div>
-        <div class="sk" style="--c: #4b69ff"><img src="img/skin-outbreak.png" alt=""><span>Outbreak</span><b>$1.90</b></div>
-        <div class="sk" style="--c: #4b69ff"><img src="img/skin-bullfrog.png" alt=""><span>Bullfrog</span><b>$1.20</b></div>
-        <div class="sk" style="--c: #4b69ff"><img src="img/skin-cobalt.png" alt=""><span>Cobalt Core</span><b>$0.84</b></div>
-        <div class="sk" style="--c: #4b69ff"><img src="img/skin-cyano.png" alt=""><span>Cyanospatter</span><b>$0.60</b></div>
-        <div class="sk" style="--c: #4b69ff"><img src="img/skin-copper.png" alt=""><span>Copperflage</span><b>$0.40</b></div>
-      </div>
-      <button class="pz" type="button" aria-label="Pause live drops"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 6v12M15 6v12"></path></svg></button>
+      <input type="radio" name="tk" id="tk-live" checked><input type="radio" name="tk" id="tk-top">
+      <div class="tkh"><label for="tk-live"><i class="dot"></i>Live</label><label for="tk-top">Top today</label><button class="pz" type="button" aria-label="Pause live drops"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 6v12M15 6v12"></path></svg></button></div>
+      <div class="tkr live"><a class="dc" href="#"><span class="im" style="--c: #8847ff"><img src="img/skin-moonrise.png" alt=""></span><span class="tx"><small>m0nk won</small><b class="num">$7.10</b><span>Moonrise</span></span></a><a class="dc" href="#"><span class="im" style="--c: #d32ce6"><img src="img/skin-acid.png" alt=""></span><span class="tx"><small>kira won</small><b class="num">$21.00</b><span>Acid Etched</span></span></a><a class="dc" href="#"><span class="im" style="--c: #8847ff"><img src="img/skin-origami.png" alt=""></span><span class="tx"><small>zed won</small><b class="num">$2.40</b><span>Origami</span></span></a><a class="dc" href="#"><span class="im" style="--c: #4b69ff"><img src="img/skin-cobalt.png" alt=""></span><span class="tx"><small>nova won</small><b class="num">$0.84</b><span>Cobalt Core</span></span></a><a class="dc" href="#"><span class="im" style="--c: #8847ff"><img src="img/skin-cartel.png" alt=""></span><span class="tx"><small>rex won</small><b class="num">$5.40</b><span>Cartel</span></span></a><a class="dc" href="#"><span class="im" style="--c: #8847ff"><img src="img/skin-cassette.png" alt=""></span><span class="tx"><small>lux won</small><b class="num">$3.10</b><span>Cassette</span></span></a><a class="dc" href="#"><span class="im" style="--c: #4b69ff"><img src="img/skin-outbreak.png" alt=""></span><span class="tx"><small>ash won</small><b class="num">$1.90</b><span>Outbreak</span></span></a><a class="dc" href="#"><span class="im" style="--c: #4b69ff"><img src="img/skin-bullfrog.png" alt=""></span><span class="tx"><small>vex won</small><b class="num">$1.20</b><span>Bullfrog</span></span></a></div>
+      <div class="tkr top"><a class="dc" href="#"><span class="im" style="--c: #e4ae39"><img src="img/skin-butterfly.webp" alt=""></span><span class="tx"><small>m0nk won</small><b class="num">$3,167.07</b><span>★ Butterfly Knife</span></span></a><a class="dc" href="#"><span class="im" style="--c: #eb4b4b"><img src="img/skin-danger.png" alt=""></span><span class="tx"><small>nova won</small><b class="num">$73.10</b><span>Danger Close</span></span></a><a class="dc" href="#"><span class="im" style="--c: #d32ce6"><img src="img/skin-chrome.png" alt=""></span><span class="tx"><small>zed won</small><b class="num">$34.20</b><span>Chrome Cannon</span></span></a><a class="dc" href="#"><span class="im" style="--c: #d32ce6"><img src="img/skin-acid.png" alt=""></span><span class="tx"><small>kira won</small><b class="num">$21.00</b><span>Acid Etched</span></span></a><a class="dc" href="#"><span class="im" style="--c: #8847ff"><img src="img/skin-moonrise.png" alt=""></span><span class="tx"><small>rex won</small><b class="num">$7.10</b><span>Moonrise</span></span></a><a class="dc" href="#"><span class="im" style="--c: #8847ff"><img src="img/skin-cartel.png" alt=""></span><span class="tx"><small>ash won</small><b class="num">$5.40</b><span>Cartel</span></span></a></div>
     </div>
 
     <div class="demo">
