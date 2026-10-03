@@ -120,6 +120,9 @@ section{display:grid;gap:24px}
 .slide .promo .in{font-size:.72rem}
 .hero .promo{justify-self:stretch;background:var(--scr);padding:5px;border-radius:7px}
 .trio.two{grid-template-columns:1.2fr 1fr}
+.burger{position:relative}
+.burger em{position:absolute;top:-6px;right:-6px;font-style:normal;background:var(--fold);color:#fff;border-radius:8px;padding:0 4px;font:600 8.5px/14px var(--f-mono);min-width:14px;text-align:center}
+.it2 .cnt{display:inline-block;background:var(--fold);color:#fff;border-radius:8px;padding:0 5px;font:600 9px/15px var(--f-mono);margin-right:6px}
 .burger{flex:none;width:28px;height:28px;border-radius:7px;border:1px solid var(--blk2);display:grid;place-items:center;font-size:14px;line-height:1;color:var(--ink)}
 .hero,.dhero{position:relative}
 .arw{position:absolute;top:38%;width:26px;height:26px;border-radius:7px;background:var(--scr);border:1px solid var(--blk2);display:grid;place-items:center;font:700 13px/1 var(--f-mono);color:var(--ink);z-index:2}
@@ -284,7 +287,7 @@ section{display:grid;gap:24px}
 
 <div class="wrap">
 <header>
-  <span class="eyebrow">SkinHub · Этап 2 · Вайрфреймы · v11.3 · 2 октября 2026</span>
+  <span class="eyebrow">SkinHub · Этап 2 · Вайрфреймы · v11.4 · 2 октября 2026</span>
   <h1>Главная: первый экран</h1>
   <p class="lede">Первый экран продаёт текущий ивент: живая лента дропов, герой на весь экран с таймером и переход в ивент. Ниже демо, бонус новичка и каталог кейсов. Каждый блок взят у конкурента по итогам исследования. В v2–v9 учтены решения по ревью от 2 октября.</p>
   <div class="legend">
@@ -321,7 +324,7 @@ section{display:grid;gap:24px}
     <div class="device player"><div class="phone"><div class="scr" style="min-height:2060px">
         <div class="fold" style="top:701px"><span>fold · 844 px</span></div>
         <div class="ticker"><span class="top">TOP<br>TODAY</span><div class="tk pinned" style="--c:var(--r-gold)"><div class="img"></div><small>$412</small></div><div class="tk pinned" style="--c:var(--r-cov)"><div class="img"></div><small>$96</small></div><span class="sep"></span><span class="live">● LIVE</span><div class="lv"><div class="tk" style="--c:var(--r-mil)"><div class="img"></div><small>$0.84</small></div><div class="tk" style="--c:var(--r-res)"><div class="img"></div><small>$7.10</small></div><div class="tk" style="--c:var(--r-mil)"><div class="img"></div><small>$1.20</small></div><div class="tk" style="--c:var(--r-cla)"><div class="img"></div><small>$51</small></div><div class="tk" style="--c:var(--r-res)"><div class="img"></div><small>$12</small></div><div class="tk" style="--c:var(--r-mil)"><div class="img"></div><small>$0.40</small></div><div class="tk" style="--c:var(--r-res)"><div class="img"></div><small>$9.30</small></div><div class="tk" style="--c:var(--r-mil)"><div class="img"></div><small>$2.10</small></div><div class="tk" style="--c:var(--r-cov)"><div class="img"></div><small>$73</small></div><div class="tk" style="--c:var(--r-mil)"><div class="img"></div><small>$0.30</small></div></div><span class="pause">❚❚</span></div>
-        <div class="tb a"><span class="logo">SkinHub</span><span class="sp"></span><span class="lvl"><i class="ring"></i>Lv 7</span><span class="bal">$24.50<i>+</i></span><span class="burger">☰</span><i class="pin">2</i></div>
+        <div class="tb a"><span class="logo">SkinHub</span><span class="sp"></span><span class="lvl"><i class="ring"></i>Lv 7</span><span class="bal">$24.50<i>+</i></span><span class="burger">☰<em>4</em></span><i class="pin l">2</i></div>
         <div class="body">
           <div class="" style="display:grid;gap:8px"><div class="peek"><div class="hero" style="height:290px"><span class="tag">EVENT · SEASON 1</span><b>Neon Heist</b><div class="timer"><span>19<small>days</small></span><span>08<small>hrs</small></span><span>16<small>min</small></span></div><span class="btn wide">Continue · Tier 4 of 30</span></div><div class="hero" style="height:290px"><span class="tag">PROMO</span><b>Got a code from a streamer?</b><span class="btn ghost wide">I have a code</span></div></div><div class="dots"><i class="on"></i><i></i><i></i><i></i></div></div>
           <div class=""><div class="chips"><span class="chip on">Cases</span><span class="chip">Battles</span><span class="chip">Upgrade</span><span class="chip lock">🔒 Contracts · Lv 5</span><span class="chip">Event</span></div></div>
@@ -339,7 +342,7 @@ section{display:grid;gap:24px}
 
     <ol class="notes">
       <li><span class="n">1</span><b>Лента дропов: топ дня + живой поток <span class="lg-new">v11</span></b><p>Слева 2 закреплённых «Top today» (крупнейшие дропы дня), справа живой поток всех дропов и кнопка паузы ❚❚. На мобайле лента сворачивается при прокрутке вниз. Тап по плитке открывает кейс только у закреплённых.</p><div class="srcs"><span class="src">Skin.club: WOW DROP + LIVE DROP</span><span class="src">ревью Fable #10</span></div></li>
-      <li><span class="n">2</span><b>Шапка</b><p>Логотип кликабельный: на главной — наверх страницы, на других страницах — на главную. Sign in и меню ☰. У игрока уровень, баланс с «+» (зона нажатия 44 px) и меню.</p><div class="srcs"><span class="src">ревью Fable #20, #22</span></div></li>
+      <li><span class="n">2</span><b>Шапка</b><p>Логотип кликабельный: на главной — наверх страницы, на других страницах — на главную. Sign in и меню ☰. У игрока уровень, баланс с «+» (зона нажатия 44 px) и меню; на кнопке меню бабл с числом непрочитанных сообщений чата (v11.4).</p><div class="srcs"><span class="src">ревью Fable #20, #22</span></div></li>
       <li><span class="n">3</span><b>Карусель ивентов <span class="lg-new">v11</span></b><p>Слайд ~86% ширины, край следующего выглядывает. Без автопрокрутки. 2-й слайд — промо: кнопка «I have a code» открывает поле; у гостя после Apply — вход, код сохраняется до регистрации.</p><div class="srcs"><span class="src">Casehug</span><span class="src">ревью Fable #12</span></div></li>
       <li><span class="n">4</span><b>Строка режимов</b><p>Пять чипов, остаётся как есть (решение владельца). Нажатие на 🔒 Contracts открывает тизер режима с прогрессом «Lv 2/5 · 340 XP to unlock».</p><div class="srcs"><span class="src">Hellcase</span><span class="src">ревью Fable #21</span></div></li>
       <li><span class="n">5</span><b>Демо-полоса над каталогом <span class="lg-new">v11</span></b><p>Стоит прямо над полкой Hot Cases. Счётчик «5 of 5 left», «same odds as real». При 0 — «No free opens left · Sign in for unlimited demo». У игрока на этом месте ежедневный бесплатный кейс.</p><div class="srcs"><span class="src">JamSkins: Free Mode над играми</span><span class="src">ревью Fable #4, #6</span></div></li>
@@ -365,7 +368,7 @@ section{display:grid;gap:24px}
         <div class="menu">
           <div class="usr a"><i></i><div><b>nova_cs</b><small>Level 7 · 760 / 1000 XP</small></div><i class="pin">1</i></div>
           <div class="a"><div class="it2"><span>Profile</span><em>›</em></div><div class="it2"><span>Inventory</span><em>14 skins ›</em></div><i class="pin">2</i></div>
-          <div class="a"><div class="it2"><span>Chat</span><em>›</em></div><div class="it2"><span>Support</span><em>›</em></div><div class="it2"><span>Provably fair</span><em>›</em></div><div class="it2"><span>FAQ</span><em>›</em></div><i class="pin">3</i></div>
+          <div class="a"><div class="it2"><span>Chat</span><em><span class="cnt">4</span>›</em></div><div class="it2"><span>Support</span><em>›</em></div><div class="it2"><span>Provably fair</span><em>›</em></div><div class="it2"><span>FAQ</span><em>›</em></div><i class="pin">3</i></div>
           <div class="a"><div class="it2"><span>Partners</span><em>›</em></div><div class="it2"><span>Responsible gaming</span><em>›</em></div><i class="pin">4</i></div>
           <div class="a" style="display:grid"><span class="lang">🌐 English ▾</span><i class="pin">5</i></div>
           <div class="it2" style="border:0;color:var(--ink2)"><span>Sign out</span></div>
@@ -375,7 +378,7 @@ section{display:grid;gap:24px}
     <ol class="notes">
       <li><span class="n">1</span><b>Профиль игрока</b><p>Аватар, ник, уровень и прогресс XP. У гостя на этом месте кнопки Sign in · Steam / Google.</p><div class="srcs"><span class="src">решение v9</span></div></li>
       <li><span class="n">2</span><b>Профиль и инвентарь</b><p>Переехали из нижнего меню, когда на его место встал чат. Инвентарь показывает число скинов.</p><div class="srcs"><span class="src">решение v9</span></div></li>
-      <li><span class="n">3</span><b>Помощь</b><p>Chat (перенесён из нижнего меню, v11.3), Support, Provably fair, FAQ.</p><div class="srcs"><span class="src">решение v9: поддержка в меню</span></div></li>
+      <li><span class="n">3</span><b>Помощь</b><p>Chat (перенесён из нижнего меню, v11.3) с баблом непрочитанных — то же число, что на кнопке ☰ (v11.4), Support, Provably fair, FAQ.</p><div class="srcs"><span class="src">решение v9: поддержка в меню</span></div></li>
       <li><span class="n">4</span><b>Партнёрка и ответственная игра</b><p>Partners — та же программа, что в разделе Company футера.</p><div class="srcs"><span class="src">Hellcase, Skin.club</span></div></li>
       <li><span class="n">5</span><b>Смена языка <span class="lg-new">v9.3</span></b><p>Кнопка «🌐 English ▾» открывает список языков. Та же кнопка есть в футере.</p><div class="srcs"><span class="src">Skin.club: язык в футере и шапке</span></div></li>
     </ol>
@@ -481,6 +484,7 @@ section{display:grid;gap:24px}
     <div class="dec"><span class="v keep">ВЕРНУЛИ</span><b>Оффер «Free case for new players» вернулся на главную гостя</b><span class="d">Ниже, между полками Event Cases и Cheap, на мобайле и десктопе. Без таймера. v11.1.</span></div>
     <div class="dec"><span class="v keep">НИЖЕ</span><b>Игрок: плашка «Deposit bonus +15%» между полками</b><span class="d">Перенесена из-под ежедневного кейса на место между Event Cases и Cheap — так же, как оффер новичка у гостя. v11.2.</span></div>
     <div class="dec"><span class="v keep">ПОИСК</span><b>Мобайл: Search в нижнем меню вместо Chat</b><span class="d">Плашка Search над меню убрана; чат переехал в меню ☰ (на десктопе — плавающая кнопка). v11.3.</span></div>
+    <div class="dec"><span class="v keep">БАБЛ</span><b>Непрочитанные чата — бабл на кнопке меню ☰</b><span class="d">Чат остаётся в меню; у игрока на ☰ в шапке и у пункта Chat в меню горит число непрочитанных. У гостя бабла нет. v11.4.</span></div>
   </div>
 </section>
 
