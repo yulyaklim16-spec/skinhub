@@ -206,6 +206,7 @@ section{display:grid;gap:24px}
 .menu .it2{display:flex;justify-content:space-between;align-items:center;padding:10px 2px;border-bottom:1px solid var(--blk2);font-size:11.5px;font-weight:500}
 .menu .it2 em{font-style:normal;color:var(--ink2)}
 .menu .lang{margin-top:12px}
+.menu .mh{display:block;font-family:var(--f-mono);font-size:9px;font-weight:600;letter-spacing:.08em;color:var(--ink2);padding:8px 2px 0}
 .shelf{display:grid;gap:7px}
 .shelf .sh{display:flex;justify-content:space-between;align-items:baseline;font-weight:700;font-size:12px}
 .shelf .sh em{font-style:normal;font-weight:500;font-size:10px;color:var(--ink2)}
@@ -290,7 +291,7 @@ section{display:grid;gap:24px}
 
 <div class="wrap">
 <header>
-  <span class="eyebrow">SkinHub · Этап 2 · Вайрфреймы · v12 · 3 октября 2026</span>
+  <span class="eyebrow">SkinHub · Этап 2 · Вайрфреймы · v12.1 · 3 октября 2026</span>
   <h1>Главная: первый экран</h1>
   <p class="lede">Первый экран продаёт текущий ивент: живая лента дропов, герой на весь экран с таймером и переход в ивент. Ниже демо, бонус новичка и каталог кейсов. Каждый блок взят у конкурента по итогам исследования. В v2–v9 учтены решения по ревью от 2 октября.</p>
   <div class="legend">
@@ -364,26 +365,27 @@ section{display:grid;gap:24px}
 </section>
 
 <section>
-  <div class="sec-head"><span class="eyebrow">Мобайл · меню ☰ · v9.3</span><h2>Открытое меню</h2></div>
+  <div class="sec-head"><span class="eyebrow">Мобайл · меню ☰ · v12.1</span><h2>Открытое меню</h2></div>
   <div class="menu-wrap">
     <div class="device"><div class="phone"><div class="scr" style="min-height:700px">
         <div class="tb"><span class="logo">SkinHub</span><span class="sp"></span><span class="lvl"><i class="ring"></i>Lv 7</span><span class="bal">$24.50<i>+</i></span><span class="burger">✕</span></div>
         <div class="menu">
           <div class="usr a"><i></i><div><b>nova_cs</b><small>Level 7 · 760 / 1000 XP</small></div><i class="pin">1</i></div>
-          <div class="a"><div class="it2"><span>Profile</span><em>›</em></div><div class="it2"><span>Inventory</span><em>14 skins ›</em></div><i class="pin">2</i></div>
-          <div class="a"><div class="it2"><span>Chat</span><em><span class="cnt">4</span>›</em></div><div class="it2"><span>Support</span><em>›</em></div><div class="it2"><span>Provably fair</span><em>›</em></div><div class="it2"><span>FAQ</span><em>›</em></div><i class="pin">3</i></div>
-          <div class="a"><div class="it2"><span>Partners</span><em>›</em></div><div class="it2"><span>Responsible gaming</span><em>›</em></div><i class="pin">4</i></div>
-          <div class="a" style="display:grid"><span class="lang">🌐 English ▾</span><i class="pin">5</i></div>
+          <div class="a"><span class="mh">MODES</span><div class="it2"><span>Upgrade</span><em>›</em></div><div class="it2"><span>Contracts</span><em>›</em></div><i class="pin">2</i></div>
+          <div class="a"><div class="it2"><span>Profile</span><em>›</em></div><div class="it2"><span>Inventory</span><em>14 skins ›</em></div><i class="pin">3</i></div>
+          <div class="a"><div class="it2"><span>Chat</span><em><span class="cnt">4</span>›</em></div><div class="it2"><span>Support</span><em>›</em></div><div class="it2"><span>Provably fair</span><em>›</em></div><div class="it2"><span>FAQ</span><em>›</em></div><i class="pin">4</i></div>
+          <div class="a"><div class="it2"><span>Partners</span><em>›</em></div><div class="it2"><span>Responsible gaming</span><em>›</em></div><i class="pin">5</i></div>
+          <div class="a" style="display:grid"><span class="lang">🌐 English ▾</span><i class="pin">6</i></div>
           <div class="it2" style="border:0;color:var(--ink2)"><span>Sign out</span></div>
         </div>
         <div class="bn"><span>Cases</span><span>Battles<em class="nt">12</em></span><span class="mid">Add funds</span><span>Rewards<em>3</em></span><span>Search</span></div>
       </div></div><span class="cap">МЕНЮ ☰ ОТКРЫТО · ИГРОК</span></div>
     <ol class="notes">
       <li><span class="n">1</span><b>Профиль игрока</b><p>Аватар, ник, уровень и прогресс XP. У гостя на этом месте кнопки Sign in · Steam / Google.</p><div class="srcs"><span class="src">решение v9</span></div></li>
-      <li><span class="n">2</span><b>Профиль и инвентарь</b><p>Переехали из нижнего меню, когда на его место встал чат. Инвентарь показывает число скинов.</p><div class="srcs"><span class="src">решение v9</span></div></li>
-      <li><span class="n">3</span><b>Помощь</b><p>Chat (перенесён из нижнего меню, v11.3) с баблом непрочитанных — то же число, что на кнопке ☰ (v11.4), Support, Provably fair, FAQ.</p><div class="srcs"><span class="src">решение v9: поддержка в меню</span></div></li>
-      <li><span class="n">4</span><b>Партнёрка и ответственная игра</b><p>Partners — та же программа, что в разделе Company футера.</p><div class="srcs"><span class="src">Hellcase, Skin.club</span></div></li>
-      <li><span class="n">5</span><b>Смена языка <span class="lg-new">v9.3</span></b><p>Кнопка «🌐 English ▾» открывает список языков. Та же кнопка есть в футере.</p><div class="srcs"><span class="src">Skin.club: язык в футере и шапке</span></div></li>
+      <li><span class="n">2</span><b>Modes <span class="lg-new">v12.1</span></b><p>Upgrade и Contracts. У игрока ниже 5 уровня Contracts с замком «🔒 Lv 5», нажатие открывает тизер с прогрессом; здесь игрок 7 уровня, замка нет. Вход в режимы на мобайле после того, как чипы на главной стали категориями. Battles — в нижнем меню, Event — в карусели.</p><div class="srcs"><span class="src">решение владельца</span></div></li><li><span class="n">3</span><b>Профиль и инвентарь</b><p>Переехали из нижнего меню, когда на его место встал чат. Инвентарь показывает число скинов.</p><div class="srcs"><span class="src">решение v9</span></div></li>
+      <li><span class="n">4</span><b>Помощь</b><p>Chat (перенесён из нижнего меню, v11.3) с баблом непрочитанных — то же число, что на кнопке ☰ (v11.4), Support, Provably fair, FAQ.</p><div class="srcs"><span class="src">решение v9: поддержка в меню</span></div></li>
+      <li><span class="n">5</span><b>Партнёрка и ответственная игра</b><p>Partners — та же программа, что в разделе Company футера.</p><div class="srcs"><span class="src">Hellcase, Skin.club</span></div></li>
+      <li><span class="n">6</span><b>Смена языка <span class="lg-new">v9.3</span></b><p>Кнопка «🌐 English ▾» открывает список языков. Та же кнопка есть в футере.</p><div class="srcs"><span class="src">Skin.club: язык в футере и шапке</span></div></li>
     </ol>
   </div>
 </section>
@@ -490,6 +492,7 @@ section{display:grid;gap:24px}
     <div class="dec"><span class="v keep">БАБЛ</span><b>Непрочитанные чата — бабл на кнопке меню ☰</b><span class="d">Чат остаётся в меню; у игрока на ☰ в шапке и у пункта Chat в меню горит число непрочитанных. У гостя бабла нет. v11.4.</span></div>
     <div class="dec"><span class="v keep">ПОИСК</span><b>Десктоп: поиск — кнопка-иконка в шапке</b><span class="d">Иконка ⌕ перед Sign in у гостя и перед Rewards у игрока; поле поиска под каруселью убрано. v11.5.</span></div>
     <div class="dec"><span class="v keep">КАТЕГОРИИ</span><b>Чипы — названия категорий, лента дропов под ними</b><span class="d">Строка режимов заменена чипами полок (Hot Cases · Event Cases · Cheap · Knives · Creators). Лента дропов перенесена из-над шапки под чипы, за ней — демо-полоса и полки. Мобайл и десктоп. v12.</span></div>
+    <div class="dec"><span class="v keep">MODES</span><b>Мобайл: блок Modes в меню ☰</b><span class="d">Upgrade и Contracts 🔒 Lv 5 — вторым блоком меню, сразу под профилем. Иначе с телефона в эти режимы не попасть после v12. v12.1.</span></div>
   </div>
 </section>
 
