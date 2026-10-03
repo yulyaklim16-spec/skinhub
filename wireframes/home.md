@@ -37,7 +37,7 @@
 | 2026-10-02 | v9 | **Поддержка — в меню ☰**, там же профиль и инвентарь | Владелец продукта |
 | 2026-10-02 | v9 | **Футер** на мобайле и десктопе; заменяет блок доверия | Владелец продукта |
 | 2026-10-02 | v9.1 | **Мобайл: иконки соцсетей в футере по центру**, круглые, строкой под разделами | Владелец продукта |
-| 2026-10-02 | v9.2 | **Раздел Community убран** (соцсети уже иконками). Вместо него **Company**: About SkinHub, Partners (партнёрская программа), Business contact — мобайл и десктоп | Владелец продукта |
+| 2026-10-02 | v9.2 | **Раздел Community убран** (соцсети уже иконками). Вместо него **Company**: About SkinHub, Partners (партнёрская программа), Business Contact — мобайл и десктоп | Владелец продукта |
 | 2026-10-02 | v9.3 | **Смена языка в футере и в меню ☰** — отдельная кнопка «🌐 English ▾». Нарисован экран открытого меню. Раздел Company в футере остаётся | Владелец продукта |
 | 2026-10-02 | v9.4 | **Кнопка поиска с подписью «Search»**: «⌕ Search · ⇅ Price · ☷ Filters» | Владелец продукта |
 | 2026-10-02 | v9.5 | **Десктоп-макеты в разрешении 1440 × 900** (было 1280 × 800); сетка кейсов на главной — 6 колонок | Владелец продукта |
@@ -94,7 +94,7 @@
    Гостю — «Sign in to compete». [Casehug; ревью #18]
 8. **How it works — только гостю.** Try any case free (5 демо) → Sign in (Steam или Google) →
    Open for real, withdraw to Steam («delivered as a Steam trade offer after Steam confirmation»). [Ревью #25]
-9. **FAQ.** Is SkinHub legit? · How does Provably fair work? · How fast are withdrawals? · Is there an age limit?
+9. **FAQ.** Is SkinHub legit? · How does Provably Fair work? · How fast are withdrawals? · Is there an age limit?
 10. **SEO-текст** под «Read more».
 11. **Футер.** Разделы Games, Help, Legal, Company; иконки соцсетей по центру; кнопка «🌐 English ▾»; оплата и 18+;
     юрлицо и email; **строка под лицензию**; «Sign-in via Steam. Not affiliated with Valve Corporation»; копирайт. [Ревью #25, #26]
@@ -122,10 +122,10 @@ Event Cases и Cheap, без таймера, только гостю. В v11 б�
 1. **Профиль игрока:** аватар, ник, уровень и прогресс XP. У гостя — кнопки Sign in · Steam / Google.
 2. **Modes** (v12.1): Upgrade · Contracts (ниже 5 уровня — с замком «🔒 Lv 5», нажатие открывает тизер с прогрессом). Battles — в нижнем меню, Event — в карусели.
 3. **Profile · Inventory** (число скинов) — переехали из нижнего меню (v9).
-4. **Chat · Support · Provably fair · FAQ.** Chat перенесён из нижнего меню (v11.3); у пункта бабл непрочитанных — то же число, что на ☰ (v11.4).
-5. **Partners · Responsible gaming.**
+4. **Chat · Support · Provably Fair · FAQ.** Chat перенесён из нижнего меню (v11.3); у пункта бабл непрочитанных — то же число, что на ☰ (v11.4).
+5. **Partners · Responsible Gaming.**
 6. **Смена языка «🌐 English ▾»** — та же кнопка, что в футере (v9.3).
-7. **Sign out.**
+7. **Sign Out.**
 
 ## Нижнее меню — сравнение с конкурентами
 
@@ -175,7 +175,7 @@ Event Cases и Cheap, без таймера, только гостю. В v11 б�
 11. **Футер** со строкой под лицензию и «Sign-in via Steam. Not affiliated with Valve Corporation».
 12. **Чат** — плавающая кнопка.
 13. **Шапка игрока:** табы · поиск ⌕ · Rewards (бейдж) · уровень (→ профиль) · баланс с «+ Add funds» · аватар ▾ (профиль,
-    инвентарь, поддержка, Provably fair, ответственная игра, язык). [Ревью #7]
+    инвентарь, поддержка, Provably Fair, ответственная игра, язык). [Ревью #7]
 
 ## Чего на экране нет
 

@@ -38,7 +38,7 @@
 ## Стиль в деле
 
 Верх стенда: фрагмент мобильного экрана (шапка, баннер с лаймовым заголовком, строка карточек дропов,
-нижнее меню с иконками Solar) и рядом кнопки, карточки кейсов, состояния и отметка Provably fair.
+нижнее меню с иконками Solar) и рядом кнопки, карточки кейсов, состояния и отметка Provably Fair.
 
 ## Цвета
 
@@ -89,7 +89,7 @@
 |---|---|
 | Нижнее меню | box (Cases) · target (Battles) · user (Sign in) · gift (Rewards) · magnifer (Search) |
 | Характеристики | fire (Hot) · lock-keyhole (Lv 5) · clock-circle (таймер) · cup-star (топ) · tag-price (цена) · bolt (Fast mode) · users-group-rounded (игроки) |
-| Отметка проверки | shield-check (Provably fair) · verified-check |
+| Отметка проверки | shield-check (Provably Fair) · verified-check |
 | Кнопки | arrow-right · pause · hamburger-menu · close-circle · headphones-round (поддержка) |
 | Состояния | check-circle (успех) · danger-circle (ошибка) · info-circle · clock-circle (ожидание) |
 
