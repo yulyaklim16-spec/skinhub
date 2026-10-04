@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Главная игрока · мобайл</title>
-<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="../tokens.css?v=4">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
@@ -195,10 +195,10 @@ html{scroll-behavior:smooth}
 .bn .mid span.c{animation:ring 2s ease-out infinite}
 @keyframes ring{0%{box-shadow:var(--shadow-ring),0 0 0 0 color-mix(in srgb,var(--acc) 60%,transparent)}75%,100%{box-shadow:var(--shadow-ring),0 0 0 14px color-mix(in srgb,var(--acc) 0%,transparent)}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.demo .art,.bn .mid span.c{animation:none}}
-/* все баблы уведомлений — красный фон, чёрная цифра */
-.bn em,.bn em.rb,.cnt,.tr .cnt,.rw .cnt,.bell em{background:var(--c-error);color:var(--c-on-state)}
+/* все баблы уведомлений — красный фон, белая цифра */
+.bn em,.bn em.rb,.cnt,.tr .cnt,.rw .cnt,.bell em{background:var(--c-badge);color:var(--c-text)}
 </style>
-<script src="proto.js?v=3" defer></script>
+<script src="proto.js?v=4" defer></script>
 
 </head>
 <body>
