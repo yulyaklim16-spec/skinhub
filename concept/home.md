@@ -5,7 +5,7 @@
 > десктоп в окне браузера.
 > Холст в Claude Design: https://claude.ai/artifact/VGpSEgEJ7XKhLT6MGtfWNM
 > Исходники холста — [`home/canvas/`](./home/canvas/), автономные страницы — [`home/mobile.html`](./home/mobile.html),
-> [`home/desktop.html`](./home/desktop.html). Экраны игрока на стенд не выносятся — автономные страницы
+> [`home/desktop.html`](./home/desktop.html). Игрок — раздел «Игрок» на том же стенде; автономные страницы
 > [`home/mobile-player.html`](./home/mobile-player.html), [`home/desktop-player.html`](./home/desktop-player.html). Структура — вайрфрейм главной v12.1 ([`../wireframes/home.md`](../wireframes/home.md)).
 
 ## Из чего собран
