@@ -1,6 +1,10 @@
 // Прототип главной: перетаскивание мышью у горизонтальных лент и стрелка карусели.
 // Свайп, привязка к слайдам и бегущая строка работают на CSS; здесь только то, чего CSS не умеет.
 (function () {
+  // Пульс центральной кнопки нижнего меню — только до первой прокрутки
+  function stopPulse() { document.documentElement.classList.add('scrolled'); window.removeEventListener('scroll', stopPulse); }
+  window.addEventListener('scroll', stopPulse, { passive: true });
+
   // Таймеры на баннерах: обратный отсчёт от значений в разметке (дни · часы · минуты · секунды)
   var UNIT = { days: 86400, hrs: 3600, min: 60, sec: 1 };
   var timers = Array.prototype.slice.call(document.querySelectorAll('.tmr')).map(function (t) {
