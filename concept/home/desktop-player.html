@@ -205,6 +205,11 @@ html{scroll-behavior:smooth}
 .bn .mid span.c{animation:ring 2s ease-out infinite}
 @keyframes ring{0%{box-shadow:var(--shadow-ring),0 0 0 0 color-mix(in srgb,var(--acc) 60%,transparent)}75%,100%{box-shadow:var(--shadow-ring),0 0 0 14px color-mix(in srgb,var(--acc) 0%,transparent)}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.demo .art,.bn .mid span.c{animation:none}}
+.tr{position:relative}
+.tr .cnt{background:var(--c-accent);color:var(--c-on-accent);top:calc(var(--space-6) * -1);right:calc(var(--space-6) * -1)}
+.ava{display:block;width:48px;height:48px;border-radius:var(--radius-full);overflow:hidden;box-shadow:0 0 0 2px var(--c-line-strong);flex:none}
+.ava:hover{box-shadow:0 0 0 2px var(--acc)}
+.ava img{width:100%;height:100%;object-fit:cover;object-position:74% 22%;transform:scale(2.4);transform-origin:74% 22%}
 </style>
 <script src="proto.js" defer></script>
 
@@ -221,14 +226,13 @@ html{scroll-behavior:smooth}
         <a class="tab" href="#">Upgrade</a>
         <a class="tab" href="#">Contracts</a>
         <a class="tab" href="#">Event</a>
+        <a class="tab tr" href="#">Rewards<span class="cnt">3</span></a>
       </nav></div>
       <div class="hact">
         <button class="ib" type="button" aria-label="Search"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><circle cx="11.5" cy="11.5" r="9.5"></circle><path d="M18.2173 18.2178L21.9999 22.0004"></path></g></svg></button>
-        <a class="rw" href="#"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><path d="M22 12H2"></path><path d="M12 2V22"></path><path d="M13 12C13 14.2091 14.7909 16 17 16"></path><path d="M11 12C11 14.2091 9.20914 16 7 16"></path><path d="M12 10.0352C12 8.54529 13.014 7.24659 14.4594 6.88524C16.0631 6.48431 17.5158 7.93697 17.1148 9.5407C16.7535 10.9861 15.4548 12.0001 13.9649 12.0001H12V10.0352Z"></path><path d="M12.0001 10.0352C12.0001 8.54529 10.9861 7.24659 9.5407 6.88524C7.93698 6.48431 6.48431 7.93697 6.88524 9.5407C7.24659 10.9861 8.54529 12.0001 10.0352 12.0001H12.0001V10.0352Z"></path><path d="M2 12C2 7.28595 2 4.92893 3.46447 3.46447C4.92893 2 7.28595 2 12 2C16.714 2 19.0711 2 20.5355 3.46447C22 4.92893 22 7.28595 22 12C22 16.714 22 19.0711 20.5355 20.5355C19.0711 22 16.714 22 12 22C7.28595 22 4.92893 22 3.46447 20.5355C2 19.0711 2 16.714 2 12Z"></path></g></svg>Rewards<span class="cnt">3</span></a>
         <a class="lvl" href="#" aria-label="Level 7, profile"><span class="ring"></span>Lv 7</a>
-        <a class="bal" href="#" aria-label="Balance $24.50" style="padding: 0 var(--space-12)">$24.50</a>
-        <a class="bacc" href="#">Add funds</a>
-        <a class="ava" href="#" aria-label="Account menu"><span class="av">N</span><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9L12 15L5 9"></path></svg></a>
+        <a class="bal" href="#" aria-label="Balance $24.50, add funds">$24.50<span class="add"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><path d="M4 12L20 12"></path><path d="M12.0204 4L12.0205 20.0003"></path></g></svg></span></a>
+        <a class="ava" href="#" aria-label="Account"><img src="img/slide-event.jpg" alt=""></a>
       </div>
     </div>
   </header>
