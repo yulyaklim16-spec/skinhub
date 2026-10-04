@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="ru">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Главная игрока у конкурентов</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Golos+Text:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: one reading column (~1080px) — summary → scorecard → funnel → per-site teardowns with screenshot strips → recommendations. Score scale borrows CS2 item rarity colors. */
+:root{
+  --bg:#10131a; --surface:#181c25; --fg:#e7eaf1; --muted:#9aa3b5; --line:#2a303d;
+  --accent:#7f93ff; --good:#3fc58a; --bad:#f07070; --warn:#e2a94a;
+  --r1:#b0c3d9; --r2:#5e98d9; --r3:#6f86ff; --r4:#a175ff; --r5:#e05cf0; --shot-bg:#0b0d12;
+  --f-display:"Unbounded", "Golos Text", system-ui, sans-serif;
+  --f-body:"Golos Text", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono:"JetBrains Mono", ui-monospace, Consolas, monospace;
+  color-scheme:dark;
+}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:16px;line-height:1.6;margin:0}
+.wrap{max-width:1080px;margin:0 auto;padding-inline:20px;padding-block:40px 80px}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;line-height:1.2;margin:0}
+h1{font-size:clamp(1.7rem,4vw,2.5rem);font-weight:700;letter-spacing:-.01em}
+h2{font-size:1.35rem;font-weight:700}
+h3{font-size:1.1rem;font-weight:500}
+p{margin:0;max-width:68ch}
+a{color:var(--accent)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.eyebrow{font-family:var(--f-mono);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+section{display:grid;gap:20px;padding-block:44px;border-top:1px solid var(--line)}
+header{display:grid;gap:16px;padding-bottom:36px}
+.lede{font-size:1.1rem;color:var(--muted)}
+.meta{display:flex;flex-wrap:wrap;gap:8px 20px}
+
+/* jump nav */
+.jump{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line);margin-inline:-20px;padding:10px 20px;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+.jump a{flex:none;font-size:.85rem;text-decoration:none;color:var(--fg);padding:5px 11px;border:1px solid var(--line);border-radius:999px;background:var(--surface)}
+.jump a:hover{border-color:var(--accent)}
+
+/* verdict columns */
+.verdict{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.vcol{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:22px;display:grid;gap:14px;align-content:start}
+.vcol h3{display:flex;gap:10px;align-items:center}
+.tag{font-family:var(--f-mono);font-size:.7rem;font-weight:600;padding:2px 7px;border-radius:4px;letter-spacing:.04em}
+.tag.fn{background:color-mix(in srgb,var(--good) 16%,transparent);color:var(--good)}
+.tag.ft{background:color-mix(in srgb,var(--warn) 16%,transparent);color:var(--warn)}
+.tag.bs{background:color-mix(in srgb,var(--bad) 16%,transparent);color:var(--bad)}
+.vlist{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.vlist li{display:grid;grid-template-columns:28px 1fr;gap:4px 10px}
+.vlist .n{font-family:var(--f-mono);color:var(--muted);font-size:.85rem;padding-top:2px}
+.vlist b{font-weight:600}
+.vlist span.d{grid-column:2;color:var(--muted);font-size:.93rem}
+.note{background:color-mix(in srgb,var(--warn) 10%,var(--surface));border:1px solid color-mix(in srgb,var(--warn) 35%,var(--line));border-radius:10px;padding:16px 18px;display:grid;gap:6px;font-size:.95rem}
+.note strong{color:var(--warn)}
+
+/* tables */
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:760px;font-size:.92rem}
+th,td{padding:11px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:middle}
+thead th{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600;white-space:nowrap}
+tbody tr:last-child td{border-bottom:0}
+td.site{font-weight:600;white-space:nowrap}
+td.num{font-family:var(--f-mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+table.cmp{font-size:.84rem;min-width:0}
+table.cmp th,table.cmp td{padding:10px 8px}
+table.cmp thead th{white-space:normal;line-height:1.3}
+table.cmp td.menu{min-width:0;width:34%}
+table.cmp td.num{white-space:nowrap}
+.sc{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-mono);font-weight:600}
+.sc::before{content:"";width:10px;height:10px;border-radius:2px;background:var(--c)}
+.s1{--c:var(--r1)}.s2{--c:var(--r2)}.s3{--c:var(--r3)}.s4{--c:var(--r4)}.s5{--c:var(--r5)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:.82rem;color:var(--muted)}
+.yes{color:var(--good);font-weight:600}.no{color:var(--bad);font-weight:600}.na{color:var(--muted)}
+tr.grp td{background:color-mix(in srgb,var(--fg) 4%,transparent);font-family:var(--f-mono);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding-block:6px}
+
+/* site teardown */
+.site-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 16px}
+.site-head a{font-family:var(--f-mono);font-size:.85rem}
+.kpis{display:flex;flex-wrap:wrap;gap:8px}
+.kpi{font-family:var(--f-mono);font-size:.78rem;padding:4px 9px;border:1px solid var(--line);border-radius:6px;background:var(--surface);font-variant-numeric:tabular-nums}
+.kpi b{font-weight:600}
+.shots{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1.6fr) minmax(0,.55fr);gap:12px;align-items:start}
+.shots.two{grid-template-columns:minmax(0,1.6fr) minmax(0,.55fr)}
+figure{margin:0;display:grid;gap:6px;min-width:0}
+figure button{all:unset;cursor:zoom-in;display:block;border-radius:8px;overflow:hidden;border:1px solid var(--line);background:var(--shot-bg)}
+figure button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+figure img{display:block;width:100%;height:auto}
+figcaption{font-size:.8rem;color:var(--muted)}
+.pc{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.pc > div{min-width:0;display:grid;gap:8px;align-content:start}
+.pc h4{margin:0;font-family:var(--f-mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase}
+.pc .plus h4{color:var(--good)}.pc .minus h4{color:var(--bad)}.pc .take h4{color:var(--accent)}
+.pc ul{margin:0;padding-left:18px;display:grid;gap:6px;font-size:.94rem}
+.site-verdict{display:inline-flex;gap:8px;align-items:center}
+
+/* recommendations */
+.recs{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.rec{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px 20px;display:grid;gap:8px;align-content:start}
+.rec .src{font-family:var(--f-mono);font-size:.75rem;color:var(--muted)}
+.avoid{display:grid;gap:10px;padding:0;margin:0;list-style:none}
+.avoid li{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:baseline}
+.avoid li::before{content:"✕";color:var(--bad);font-weight:700}
+
+.sources{font-size:.88rem;color:var(--muted);display:grid;gap:4px;padding-left:18px;margin:0}
+
+dialog{border:0;padding:0;background:transparent;max-width:min(96vw,1500px);max-height:94vh}
+dialog::backdrop{background:rgba(5,7,12,.86)}
+dialog img{display:block;max-width:100%;max-height:88vh;width:auto;height:auto;border-radius:6px}
+dialog .cap{color:#e7eaf1;font-size:.85rem;padding-top:8px;display:flex;justify-content:space-between;gap:12px}
+dialog .cap button{all:unset;cursor:pointer;color:#e7eaf1;text-decoration:underline}
+
+@media (max-width:720px){
+  .shots,.shots.two{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .shots figure:first-child{grid-column:1 / -1}
+}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>Главная для вошедшего игрока у конкурентов</h1>
+<blockquote>
+<p>Этап 3 · 2026-10-04. Что меняется на главной после входа, по сравнению с гостевой
+(гостевые скриншоты — <a href="./screens/"><code>screens/</code></a>). Аккаунт новый: уровень 1, баланс $0.00,
+ни одного пополнения. Скриншоты под аккаунтом в репозиторий не кладём (аватар и ник).
+Исходник для Claude: <a href="./player-home.md"><code>player-home.md</code></a>.</p>
+</blockquote>
+<h2>Hellcase</h2>
+<h3>Десктоп</h3>
+<table>
+<thead>
+<tr>
+<th>Зона</th>
+<th>Гость</th>
+<th>Игрок</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Шапка, слева</td>
+<td>Онлайн · Blog · Daily Free · War Tag Shop · Reviews</td>
+<td>+ две плашки розыгрышей с призом (<strong>Hall of Fame $3500</strong>, <strong>Silent Hunt $1500</strong>) и <strong>Premium VIP</strong></td>
+</tr>
+<tr>
+<td>Шапка, справа</td>
+<td><strong>Sign in</strong> (оранжевая) · ☰</td>
+<td>Счётчик <strong>Event tokens</strong> · счётчик <strong>War Tags</strong> · <strong>баланс $0.00</strong> · <strong>REFILL</strong> (зелёная) · кнопка <strong>промокода</strong> · <strong>аватар с бейджем уровня</strong> · <strong>колокольчик с числом</strong> · ☰</td>
+</tr>
+<tr>
+<td>Строка режимов</td>
+<td>5: Cases · Upgrade · Event · Case Battle · Contract</td>
+<td>7: + <strong>User Giveaways</strong> · <strong>LVL Rewards</strong> (бейдж NEW)</td>
+</tr>
+<tr>
+<td>Первый экран</td>
+<td>Карусель на всю ширину</td>
+<td>Карусель сужается, справа колонка виджетов: <strong>Giveaways</strong> (призовой фонд, «Refill to join $0.00 / 1.50», REFILL) и <strong>Case Battles</strong> (открытые баттлы с ценой входа и JOIN)</td>
+</tr>
+<tr>
+<td>Слайды</td>
+<td>Акции и кейсы</td>
+<td>Первым — <strong>«Level up &amp; get rewards»</strong> (уровни); дальше те же акции</td>
+</tr>
+<tr>
+<td>Счётчики, полки кейсов, Best Deals, SEO, FAQ, футер</td>
+<td>—</td>
+<td><strong>Без изменений.</strong> Цены те же, карточки не персонализированы: ни «недавно открытых», ни опыта, ни «доступно по балансу»</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Что за элементами шапки:</strong></p>
+<ul>
+<li><strong>Аватар</strong> → страница профиля: статистика (кейсы, контракты, апгрейды, баттлы…), баланс + REFILL, Event tokens, War Tags, Trade URL, вкладки предметов.</li>
+<li><strong>☰</strong> → панель справа: аватар и ник, <strong>уровень с прогресс-баром XP (0 / 500)</strong>, переключатель CS2 · Dota 2 · Rust, сетка режимов <strong>плитками с картинками</strong> (Contract, Event, LVL Rewards, Store, Cases, Upgrade, Case Battle, User Giveaways), розыгрыши, «Other» (Daily Free, Esports, War Tag Shop, Premium, Hellsquad, Races), «Info and support».</li>
+<li><strong>Колокольчик</strong> → панель уведомлений: вкладки <strong>Platform / Personal</strong>; карточки новостей с картинкой, временем, CTA («ESL cases») и «Mark as read».</li>
+<li><strong>Кнопка промокода</strong> → модалка: поле, Apply, соцсети с промокодами, баннер «helltip — до 10% к пополнению».</li>
+<li><strong>Event tokens</strong> → страница ивента: «Refill quests» — токены за пополнения ($2 / $5 / $10 / $20…).</li>
+</ul>
+<h3>Мобайл</h3>
+<table>
+<thead>
+<tr>
+<th>Зона</th>
+<th>Гость</th>
+<th>Игрок</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Шапка</td>
+<td>Логотип · <strong>Sign in</strong></td>
+<td>Логотип · <strong>баланс $0.00</strong> · <strong>REFILL</strong> · <strong>колокольчик с числом</strong>. Аватара и ☰ в шапке нет</td>
+</tr>
+<tr>
+<td>Под шапкой</td>
+<td>Онлайн · Cases purchased · Case battles</td>
+<td>Без изменений</td>
+</tr>
+<tr>
+<td>Карусель</td>
+<td>Акции</td>
+<td>Первый слайд — <strong>«Boost your level now!»</strong></td>
+</tr>
+<tr>
+<td>Новый блок под каруселью</td>
+<td>—</td>
+<td>Виджет с переключателем <strong>Розыгрыши / Баттлы</strong> и «View all»: призовой фонд «Refill to join $0.00 / 1.50» + REFILL; на вкладке VS — карточки баттлов с ценой и JOIN</td>
+</tr>
+<tr>
+<td>Полки кейсов, SEO, FAQ, футер</td>
+<td>—</td>
+<td>Без изменений</td>
+</tr>
+<tr>
+<td>Нижнее меню</td>
+<td>4: Cases · VS (бейдж) · Upgrade · ☰</td>
+<td>5: + <strong>User Giveaways</strong> (иконка без подписи)</td>
+</tr>
+<tr>
+<td>☰ (из нижнего меню)</td>
+<td>Меню разделов</td>
+<td>Та же панель, что на десктопе, плюс сверху: уровень и XP, <strong>Event tokens и War Tags</strong>, <strong>баланс + DEPOSIT</strong>, «Do you have a promo code?»</td>
+</tr>
+</tbody>
+</table>
+<h3>Вывод по Hellcase</h3>
+<ol>
+<li><strong>Вход превращает шапку в кошелёк и прогресс:</strong> баланс, пополнение, уровень, уведомления, промокод. Это главное изменение.</li>
+<li><strong>Каталог не меняется.</strong> Персонализации на главной нет: ни «продолжить», ни рекомендаций, ни опыта на карточках.</li>
+<li><strong>Всё новое подталкивает к пополнению:</strong> REFILL в шапке, «Refill to join» в розыгрыше, токены ивента за пополнения, промокод на +10% к пополнению. Пустой баланс показан явно ($0.00).</li>
+<li><strong>Мобайл получает отдельный блок</strong> розыгрышей и баттлов под каруселью. На десктопе это колонка справа от карусели.</li>
+<li><strong>Уровень виден везде:</strong> бейдж на аватаре, XP в меню, первый слайд про уровни.</li>
+</ol>
+<h3>Сверка с нашей главной игрока</h3>
+<table>
+<thead>
+<tr>
+<th>Наше решение</th>
+<th>У Hellcase</th>
+<th>Вывод</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Баланс с «+» и Add funds в шапке</td>
+<td>Баланс + REFILL</td>
+<td>Совпадает</td>
+</tr>
+<tr>
+<td>Кольцо уровня в шапке</td>
+<td>Бейдж уровня на аватаре, XP — в меню</td>
+<td>У нас нагляднее; аватар у нас только на десктопе</td>
+</tr>
+<tr>
+<td>Бабл непрочитанных на ☰</td>
+<td>Колокольчик с числом и панель уведомлений</td>
+<td>Стоит подумать об отдельном колокольчике</td>
+</tr>
+<tr>
+<td>Free case ready вместо демо</td>
+<td>Daily Free — ссылкой в шапке</td>
+<td>Наш вариант заметнее</td>
+</tr>
+<tr>
+<td>Deposit bonus +15%</td>
+<td>Промокод helltip +10% в модалке</td>
+<td>Совпадает по смыслу</td>
+</tr>
+<tr>
+<td>+XP на карточках</td>
+<td>Нет</td>
+<td>Наше отличие</td>
+</tr>
+<tr>
+<td>Строка игрока в лидерборде</td>
+<td>Нет</td>
+<td>Наше отличие</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Виджет розыгрышей и баттлов на первом экране</td>
+<td>У нас нет; кандидат</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Event tokens и валюты в шапке</td>
+<td>У нас нет</td>
+</tr>
+</tbody>
+</table>
+</div>
+</body>
+</html>
