@@ -73,7 +73,7 @@ PAIRS += [
     ('--c-accent', '--c-bg-deep', 'Кейс: ссылки', False),
     ('--c-success', '--c-bg-deep', 'Кейс: метка версии v1.x', False),
     ('--c-live', '--c-bg', 'Кейс: подпись «fold · 844 px»', False),
-    ('--c-bg', '--c-text', 'Кейс и главная: счётчик Battles в нижнем меню', False),
+    ('--c-on-state', '--c-error', 'Баблы уведомлений (нижнее меню, шапка)', False),
     ('--c-info', '--c-bg', 'Иконка смены языка (не текст, ≥ 3)', True),
     ('--c-brand-discord', '--c-surface', 'Футер: иконка Discord (не текст, ≥ 3)', True),
     ('--c-brand-telegram', '--c-surface', 'Футер: иконка Telegram (не текст, ≥ 3)', True),

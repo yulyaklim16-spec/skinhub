@@ -1,6 +1,37 @@
 // Прототип главной: перетаскивание мышью у горизонтальных лент и стрелка карусели.
 // Свайп, привязка к слайдам и бегущая строка работают на CSS; здесь только то, чего CSS не умеет.
 (function () {
+  // Таймеры на баннерах: обратный отсчёт от значений в разметке (дни · часы · минуты · секунды)
+  var UNIT = { days: 86400, hrs: 3600, min: 60, sec: 1 };
+  var timers = Array.prototype.slice.call(document.querySelectorAll('.tmr')).map(function (t) {
+    var parts = Array.prototype.slice.call(t.children).map(function (s) {
+      var lab = (s.querySelector('small') || {}).textContent || '';
+      return { el: s.firstChild, u: UNIT[lab.trim().toLowerCase()] || 0 };
+    }).filter(function (p) { return p.u && p.el && p.el.nodeType === 3; });
+    var left = parts.reduce(function (a, p) { return a + parseInt(p.el.nodeValue, 10) * p.u; }, 0);
+    return { parts: parts, end: Date.now() + left * 1000 };
+  });
+  function pad(n) { return (n < 10 ? '0' : '') + n; }
+  function tick() {
+    timers.forEach(function (t) {
+      var left = Math.max(0, Math.round((t.end - Date.now()) / 1000));
+      t.parts.forEach(function (p, i) {
+        // старшая единица забирает всё, что выше неё
+        var v = i === 0 ? Math.floor(left / p.u) : Math.floor((left % t.parts[i - 1].u) / p.u);
+        p.el.nodeValue = pad(v);
+      });
+    });
+    // копии слайдов карусели — тот же текст, что у оригиналов
+    document.querySelectorAll('.sl.clone .tmr').forEach(function (c) {
+      var src = c.closest('.car, .track').querySelectorAll('.sl:not(.clone) .tmr');
+      var dsp = c.closest('.sl').querySelector('.dsp');
+      Array.prototype.forEach.call(src, function (o) {
+        if (o.closest('.sl').querySelector('.dsp').textContent === (dsp && dsp.textContent)) c.innerHTML = o.innerHTML;
+      });
+    });
+  }
+  if (timers.length) { tick(); setInterval(tick, 1000); }
+
   var SCROLLERS = '.car, .track, .row, .g6, .g6r, .tkr.top';
 
   // Перетаскивание мышью: на тачпадах и телефонах лента листается нативно
