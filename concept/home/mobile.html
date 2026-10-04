@@ -166,6 +166,14 @@ a{color:var(--c-text)}a:hover{color:var(--c-neutral-200)}
 .tkr.top{overflow-x:auto;scrollbar-width:none}
 @media (prefers-reduced-motion:reduce){.tkt{animation:none}.tkr.live{overflow-x:auto;scrollbar-width:none}}
 .car::-webkit-scrollbar,.track::-webkit-scrollbar,.row::-webkit-scrollbar,.g6::-webkit-scrollbar,.g6r::-webkit-scrollbar,.tkr::-webkit-scrollbar{display:none}
+.tkh label.pz{display:grid;place-items:center;gap:0;padding:0;font:inherit;color:var(--c-text);border-left:0}
+.car,.track,.row,.g6,.g6r,.tkr{overflow-y:hidden}
+.hstep svg{animation:hsp 2.4s ease-in-out infinite}
+.steps>:nth-child(4) svg{animation-delay:1.2s}
+.g6r.hot::before,.row.hot::before{inset:0}
+.rk .n{contain:paint;padding:0 0 0 var(--space-16);margin-left:calc(var(--space-16) * -1)}
+@keyframes hsp{0%,100%{opacity:.4;transform:scale(.88)}50%{opacity:1;transform:scale(1.12)}}
+@media (prefers-reduced-motion:reduce){.hstep svg{animation:none}}
 </style>
 <script src="proto.js" defer></script>
 
@@ -200,6 +208,26 @@ a{color:var(--c-text)}a:hover{color:var(--c-neutral-200)}
         <div class="dsp">Got a code from a streamer?</div>
         <div class="mut" style="font-size: var(--fs-md)">+15% on deposit or a free case</div>
         <a class="bw" href="#" style="width: 100%">I have a code</a>
+      </div>
+    </div>
+    <div class="sl">
+      <img src="img/slide-case.jpg" alt="" style="object-position: 55% 40%">
+      <div class="fade"></div>
+      <div class="ct">
+        <span class="plq">New case</span>
+        <div class="dsp">Dragon Hoard</div>
+        <div class="mut" style="font-size: var(--fs-md)">New this week · from $99</div>
+        <a class="bw" href="#" style="width: 100%">Open case <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 12H20M14 18L20 12L14 6"></path></svg></a>
+      </div>
+    </div>
+    <div class="sl">
+      <img src="img/slide-giveaway.jpg" alt="">
+      <div class="fade"></div>
+      <div class="ct">
+        <span class="plq">Giveaway</span>
+        <div class="dsp">Weekly AWP</div>
+        <div class="tmr num"><span>02<small>days</small></span><span>11<small>hrs</small></span><span>05<small>min</small></span></div>
+        <a class="bw" href="#" style="width: 100%">Join giveaway</a>
       </div>
     </div>
   </div>
