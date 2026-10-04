@@ -124,7 +124,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;1,700;1,800&amp;family=Golos+Text:wght@400;500;600;700&amp;display=swap">
 <style>
 body{margin:0;background:var(--c-bg)}
-a{color:var(--c-text)}a:hover{color:var(--c-neutral-200)}
+a{color:var(--c-text)}a:not([class]):not(.bn a):not(.soc a):hover{color:var(--c-neutral-200)}
 .p{position:relative;min-height:100vh;background:var(--c-bg);color:var(--c-text);font-family:var(--font-body);font-size:var(--fs-lg);line-height:1.45}
 .p *{box-sizing:border-box}
 .w{max-width:1440px;margin:0 auto;padding:0 var(--space-56)}
@@ -302,6 +302,17 @@ html{scroll-behavior:smooth}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.demo .art,.bn .mid span.c{animation:none}}
 /* все баблы уведомлений — красный фон, белая цифра */
 .bn em,.bn em.rb,.cnt,.tr .cnt,.rw .cnt,.bell em{background:var(--c-badge);color:var(--c-text)}
+/* наведение: текст и иконки сохраняют цвет, меняется фон */
+.bw:hover{color:var(--c-bg);background:color-mix(in srgb,var(--c-text) 80%,var(--c-bg))}
+.bacc:hover{color:var(--c-on-accent);background:color-mix(in srgb,var(--acc) 78%,var(--c-bg))}
+.bal:hover{color:var(--c-text)}
+.bal:hover .add{background:color-mix(in srgb,var(--c-accent) 78%,var(--c-bg))}
+.ib:hover,.pz:hover,.arw:hover,.lnk:hover,.lang:hover,.tile:hover{color:var(--c-text);background:var(--c-surface-well)}
+.tile:hover{color:var(--c-text-muted)}.tile.on:hover{color:var(--c-text)}
+.tab:hover{color:var(--c-text-muted);background:var(--c-surface)}.tab.on:hover{color:var(--c-text)}
+.hi2:hover{color:var(--c-text);background:var(--c-surface);border-radius:var(--radius-md)}
+.cd:hover{background:var(--c-surface-well)}
+.soc a:hover{background:var(--c-surface-well)}
 </style>
 </helmet>
 <div class="p" style="--acc: {{accent}}">

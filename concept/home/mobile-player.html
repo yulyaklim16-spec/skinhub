@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;1,700;1,800&amp;family=Golos+Text:wght@400;500;600;700&amp;display=swap">
 <style>
 body{margin:0;background:var(--c-bg-deep);overflow-x:hidden}
-a{color:var(--c-text)}a:hover{color:var(--c-neutral-200)}
+a{color:var(--c-text)}a:not([class]):not(.bn a):not(.soc a):hover{color:var(--c-neutral-200)}
 .m{width:390px;min-height:0px;box-sizing:border-box;background:var(--c-bg);color:var(--c-text);font-family:var(--font-body);font-size:var(--fs-base);line-height:1.4;display:flex;flex-direction:column;gap:var(--space-16)}
 .m *{box-sizing:border-box}
 .dsp{font-family:var(--font-display);font-style:italic;font-weight:800;text-transform:uppercase;letter-spacing:.01em;line-height:.92}
@@ -203,6 +203,17 @@ html{scroll-behavior:smooth}
 .lvb{position:absolute;right:-6px;bottom:-6px;width:22px;height:24px;padding:2px;background:var(--c-bg);clip-path:polygon(50% 0,100% 18%,100% 70%,50% 100%,0 70%,0 18%)}
 .lvb i{display:grid;place-items:center;width:100%;height:100%;padding-bottom:2px;background:var(--acc);color:var(--c-on-accent);font:italic 800 var(--fs-sm)/1 var(--font-display);font-style:italic;clip-path:inherit}
 html.scrolled .bn .mid span.c{animation:none}
+/* наведение: текст и иконки сохраняют цвет, меняется фон */
+.bw:hover{color:var(--c-bg);background:color-mix(in srgb,var(--c-text) 80%,var(--c-bg))}
+.bacc:hover{color:var(--c-on-accent);background:color-mix(in srgb,var(--acc) 78%,var(--c-bg))}
+.bal:hover{color:var(--c-text)}
+.bal:hover .add{background:color-mix(in srgb,var(--c-accent) 78%,var(--c-bg))}
+.ib:hover,.pz:hover,.arw:hover,.lnk:hover,.lang:hover,.tile:hover{color:var(--c-text);background:var(--c-surface-well)}
+.tile:hover{color:var(--c-text-muted)}.tile.on:hover{color:var(--c-text)}
+.tab:hover{color:var(--c-text-muted);background:var(--c-surface)}.tab.on:hover{color:var(--c-text)}
+.hi2:hover{color:var(--c-text);background:var(--c-surface);border-radius:var(--radius-md)}
+.cd:hover{background:var(--c-surface-well)}
+.soc a:hover{background:var(--c-surface-well)}
 </style>
 <script src="proto.js?v=5" defer></script>
 

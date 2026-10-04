@@ -15,7 +15,7 @@ body::-webkit-scrollbar{display:none}
 .sbar{position:sticky;top:0;z-index:6;height:47px;display:flex;align-items:center;justify-content:space-between;padding:0 var(--space-28) 0 var(--space-32);background:var(--c-bg);color:var(--c-text);font:600 var(--fs-lg) var(--font-body);width:390px;box-sizing:border-box}
 .sbar span{display:flex;align-items:center;gap:var(--space-6)}
 .hi{position:absolute;left:50%;bottom:var(--space-8);width:134px;height:5px;transform:translateX(-50%);border-radius:var(--radius-full);background:var(--c-text)}
-a{color:var(--c-text)}a:hover{color:var(--c-neutral-200)}
+a{color:var(--c-text)}a:not([class]):not(.bn a):not(.soc a):hover{color:var(--c-neutral-200)}
 .m{width:390px;min-height:100vh;box-sizing:border-box;background:var(--c-bg);color:var(--c-text);font-family:var(--font-body);font-size:var(--fs-base);line-height:1.4;display:flex;flex-direction:column;gap:var(--space-16)}
 .m *{box-sizing:border-box}
 .dsp{font-family:var(--font-display);font-style:italic;font-weight:800;text-transform:uppercase;letter-spacing:.01em;line-height:.92}
@@ -188,6 +188,17 @@ html{scroll-behavior:smooth}
 /* все баблы уведомлений — красный фон, белая цифра */
 .bn em,.bn em.rb,.cnt,.tr .cnt,.rw .cnt,.bell em{background:var(--c-badge);color:var(--c-text)}
 html.scrolled .bn .mid span.c{animation:none}
+/* наведение: текст и иконки сохраняют цвет, меняется фон */
+.bw:hover{color:var(--c-bg);background:color-mix(in srgb,var(--c-text) 80%,var(--c-bg))}
+.bacc:hover{color:var(--c-on-accent);background:color-mix(in srgb,var(--acc) 78%,var(--c-bg))}
+.bal:hover{color:var(--c-text)}
+.bal:hover .add{background:color-mix(in srgb,var(--c-accent) 78%,var(--c-bg))}
+.ib:hover,.pz:hover,.arw:hover,.lnk:hover,.lang:hover,.tile:hover{color:var(--c-text);background:var(--c-surface-well)}
+.tile:hover{color:var(--c-text-muted)}.tile.on:hover{color:var(--c-text)}
+.tab:hover{color:var(--c-text-muted);background:var(--c-surface)}.tab.on:hover{color:var(--c-text)}
+.hi2:hover{color:var(--c-text);background:var(--c-surface);border-radius:var(--radius-md)}
+.cd:hover{background:var(--c-surface-well)}
+.soc a:hover{background:var(--c-surface-well)}
 </style>
 
 <script src="proto.js?v=5" defer></script>
